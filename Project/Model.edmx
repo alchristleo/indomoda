@@ -1,0 +1,408 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="indomodaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Colors">
+          <Key>
+            <PropertyRef Name="ColorID" />
+          </Key>
+          <Property Name="ColorID" Type="int" Nullable="false" />
+          <Property Name="ColorCode" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="ColorName" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+          <Property Name="CustomerCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CustomerName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CustomerAddress" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CustomerPhone" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DetailPO">
+          <Key>
+            <PropertyRef Name="DetailPOID" />
+          </Key>
+          <Property Name="DetailPOID" Type="int" Nullable="false" />
+          <Property Name="PONumber" Type="bigint" Nullable="false" />
+          <Property Name="MaterialID" Type="int" Nullable="false" />
+          <Property Name="ColorID" Type="int" Nullable="false" />
+          <Property Name="DetailQty" Type="int" Nullable="false" />
+          <Property Name="DetailPrice" Type="int" Nullable="false" />
+          <Property Name="DetailTotal" Type="int" Nullable="false" />
+          <Property Name="DetailStatus" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="EmployeeCode" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="EmployeeName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="EmployeeEmail" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="EmployeePhone" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="EmployeePosition" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IndomodaSuppliers">
+          <Key>
+            <PropertyRef Name="SupplierID" />
+          </Key>
+          <Property Name="SupplierID" Type="int" Nullable="false" />
+          <Property Name="SupplierCode" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="SupplierName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="SupplierAddress" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="SupplierPhone" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Materials">
+          <Key>
+            <PropertyRef Name="MaterialID" />
+          </Key>
+          <Property Name="MaterialID" Type="int" Nullable="false" />
+          <Property Name="MaterialCode" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="MaterialName" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PreOrderKains">
+          <Key>
+            <PropertyRef Name="PONumber" />
+          </Key>
+          <Property Name="idPOKain" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PONumber" Type="bigint" Nullable="false" />
+          <Property Name="SupplierID" Type="int" Nullable="false" />
+          <Property Name="GrandTotal" Type="bigint" Nullable="false" />
+          <Property Name="Date_time" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserPassword" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserRole" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_DetailPO_Colors">
+          <End Role="Colors" Type="Self.Colors" Multiplicity="1" />
+          <End Role="DetailPO" Type="Self.DetailPO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colors">
+              <PropertyRef Name="ColorID" />
+            </Principal>
+            <Dependent Role="DetailPO">
+              <PropertyRef Name="ColorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetailPO_Materials">
+          <End Role="Materials" Type="Self.Materials" Multiplicity="1" />
+          <End Role="DetailPO" Type="Self.DetailPO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="MaterialID" />
+            </Principal>
+            <Dependent Role="DetailPO">
+              <PropertyRef Name="MaterialID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_POKain_Suppliers">
+          <End Role="IndomodaSuppliers" Type="Self.IndomodaSuppliers" Multiplicity="1" />
+          <End Role="PreOrderKains" Type="Self.PreOrderKains" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IndomodaSuppliers">
+              <PropertyRef Name="SupplierID" />
+            </Principal>
+            <Dependent Role="PreOrderKains">
+              <PropertyRef Name="SupplierID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="indomodaModelStoreContainer">
+          <EntitySet Name="Colors" EntityType="Self.Colors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetailPO" EntityType="Self.DetailPO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IndomodaSuppliers" EntityType="Self.IndomodaSuppliers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Materials" EntityType="Self.Materials" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PreOrderKains" EntityType="Self.PreOrderKains" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_DetailPO_Colors" Association="Self.FK_DetailPO_Colors">
+            <End Role="Colors" EntitySet="Colors" />
+            <End Role="DetailPO" EntitySet="DetailPO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetailPO_Materials" Association="Self.FK_DetailPO_Materials">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="DetailPO" EntitySet="DetailPO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_POKain_Suppliers" Association="Self.FK_POKain_Suppliers">
+            <End Role="IndomodaSuppliers" EntitySet="IndomodaSuppliers" />
+            <End Role="PreOrderKains" EntitySet="PreOrderKains" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="indomodaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Color">
+          <Key>
+            <PropertyRef Name="ColorID" />
+          </Key>
+          <Property Name="ColorID" Type="Int32" Nullable="false" />
+          <Property Name="ColorCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ColorName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="DetailPOes" Relationship="indomodaModel.FK_DetailPO_Colors" FromRole="Color" ToRole="DetailPO" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="Int32" Nullable="false" />
+          <Property Name="CustomerCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CustomerAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CustomerPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmployeeName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmployeeEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmployeePhone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmployeePosition" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IndomodaSupplier">
+          <Key>
+            <PropertyRef Name="SupplierID" />
+          </Key>
+          <Property Name="SupplierID" Type="Int32" Nullable="false" />
+          <Property Name="SupplierCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SupplierName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SupplierAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SupplierPhone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="PreOrderKains" Relationship="indomodaModel.FK_POKain_Suppliers" FromRole="IndomodaSupplier" ToRole="PreOrderKain" />
+        </EntityType>
+        <EntityType Name="Material">
+          <Key>
+            <PropertyRef Name="MaterialID" />
+          </Key>
+          <Property Name="MaterialID" Type="Int32" Nullable="false" />
+          <Property Name="MaterialCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MaterialName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="DetailPOes" Relationship="indomodaModel.FK_DetailPO_Materials" FromRole="Material" ToRole="DetailPO" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserRole" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="indomodaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Colors" EntityType="Self.Color" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="IndomodaSuppliers" EntityType="Self.IndomodaSupplier" />
+          <EntitySet Name="Materials" EntityType="Self.Material" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="DetailPOes" EntityType="indomodaModel.DetailPO" />
+          <EntitySet Name="PreOrderKains" EntityType="indomodaModel.PreOrderKain" />
+          <AssociationSet Name="FK_DetailPO_Colors" Association="indomodaModel.FK_DetailPO_Colors">
+            <End Role="Color" EntitySet="Colors" />
+            <End Role="DetailPO" EntitySet="DetailPOes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetailPO_Materials" Association="indomodaModel.FK_DetailPO_Materials">
+            <End Role="Material" EntitySet="Materials" />
+            <End Role="DetailPO" EntitySet="DetailPOes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_POKain_Suppliers" Association="indomodaModel.FK_POKain_Suppliers">
+            <End Role="IndomodaSupplier" EntitySet="IndomodaSuppliers" />
+            <End Role="PreOrderKain" EntitySet="PreOrderKains" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="DetailPO">
+          <Key>
+            <PropertyRef Name="DetailPOID" />
+          </Key>
+          <Property Name="DetailPOID" Type="Int32" Nullable="false" />
+          <Property Name="PONumber" Type="Int64" Nullable="false" />
+          <Property Name="MaterialID" Type="Int32" Nullable="false" />
+          <Property Name="ColorID" Type="Int32" Nullable="false" />
+          <Property Name="DetailQty" Type="Int32" Nullable="false" />
+          <Property Name="DetailPrice" Type="Int32" Nullable="false" />
+          <Property Name="DetailTotal" Type="Int32" Nullable="false" />
+          <Property Name="DetailStatus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Color" Relationship="indomodaModel.FK_DetailPO_Colors" FromRole="DetailPO" ToRole="Color" />
+          <NavigationProperty Name="Material" Relationship="indomodaModel.FK_DetailPO_Materials" FromRole="DetailPO" ToRole="Material" />
+        </EntityType>
+        <EntityType Name="PreOrderKain">
+          <Key>
+            <PropertyRef Name="PONumber" />
+          </Key>
+          <Property Name="idPOKain" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PONumber" Type="Int64" Nullable="false" />
+          <Property Name="SupplierID" Type="Int32" Nullable="false" />
+          <Property Name="GrandTotal" Type="Int64" Nullable="false" />
+          <Property Name="Date_time" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="IndomodaSupplier" Relationship="indomodaModel.FK_POKain_Suppliers" FromRole="PreOrderKain" ToRole="IndomodaSupplier" />
+        </EntityType>
+        <Association Name="FK_DetailPO_Colors">
+          <End Type="indomodaModel.Color" Role="Color" Multiplicity="1" />
+          <End Type="indomodaModel.DetailPO" Role="DetailPO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Color">
+              <PropertyRef Name="ColorID" />
+            </Principal>
+            <Dependent Role="DetailPO">
+              <PropertyRef Name="ColorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetailPO_Materials">
+          <End Type="indomodaModel.Material" Role="Material" Multiplicity="1" />
+          <End Type="indomodaModel.DetailPO" Role="DetailPO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material">
+              <PropertyRef Name="MaterialID" />
+            </Principal>
+            <Dependent Role="DetailPO">
+              <PropertyRef Name="MaterialID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_POKain_Suppliers">
+          <End Type="indomodaModel.IndomodaSupplier" Role="IndomodaSupplier" Multiplicity="1" />
+          <End Type="indomodaModel.PreOrderKain" Role="PreOrderKain" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IndomodaSupplier">
+              <PropertyRef Name="SupplierID" />
+            </Principal>
+            <Dependent Role="PreOrderKain">
+              <PropertyRef Name="SupplierID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="indomodaModelStoreContainer" CdmEntityContainer="indomodaEntities">
+          <EntitySetMapping Name="Colors">
+            <EntityTypeMapping TypeName="indomodaModel.Color">
+              <MappingFragment StoreEntitySet="Colors">
+                <ScalarProperty Name="ColorID" ColumnName="ColorID" />
+                <ScalarProperty Name="ColorCode" ColumnName="ColorCode" />
+                <ScalarProperty Name="ColorName" ColumnName="ColorName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="indomodaModel.Customer">
+              <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="CustomerAddress" ColumnName="CustomerAddress" />
+                <ScalarProperty Name="CustomerPhone" ColumnName="CustomerPhone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="indomodaModel.Employee">
+              <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+                <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+                <ScalarProperty Name="EmployeeEmail" ColumnName="EmployeeEmail" />
+                <ScalarProperty Name="EmployeePhone" ColumnName="EmployeePhone" />
+                <ScalarProperty Name="EmployeePosition" ColumnName="EmployeePosition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IndomodaSuppliers">
+            <EntityTypeMapping TypeName="indomodaModel.IndomodaSupplier">
+              <MappingFragment StoreEntitySet="IndomodaSuppliers">
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+                <ScalarProperty Name="SupplierCode" ColumnName="SupplierCode" />
+                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+                <ScalarProperty Name="SupplierAddress" ColumnName="SupplierAddress" />
+                <ScalarProperty Name="SupplierPhone" ColumnName="SupplierPhone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Materials">
+            <EntityTypeMapping TypeName="indomodaModel.Material">
+              <MappingFragment StoreEntitySet="Materials">
+                <ScalarProperty Name="MaterialID" ColumnName="MaterialID" />
+                <ScalarProperty Name="MaterialCode" ColumnName="MaterialCode" />
+                <ScalarProperty Name="MaterialName" ColumnName="MaterialName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="indomodaModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+                <ScalarProperty Name="UserRole" ColumnName="UserRole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetailPOes">
+            <EntityTypeMapping TypeName="indomodaModel.DetailPO">
+              <MappingFragment StoreEntitySet="DetailPO">
+                <ScalarProperty Name="DetailStatus" ColumnName="DetailStatus" />
+                <ScalarProperty Name="DetailTotal" ColumnName="DetailTotal" />
+                <ScalarProperty Name="DetailPrice" ColumnName="DetailPrice" />
+                <ScalarProperty Name="DetailQty" ColumnName="DetailQty" />
+                <ScalarProperty Name="ColorID" ColumnName="ColorID" />
+                <ScalarProperty Name="MaterialID" ColumnName="MaterialID" />
+                <ScalarProperty Name="PONumber" ColumnName="PONumber" />
+                <ScalarProperty Name="DetailPOID" ColumnName="DetailPOID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PreOrderKains">
+            <EntityTypeMapping TypeName="indomodaModel.PreOrderKain">
+              <MappingFragment StoreEntitySet="PreOrderKains">
+                <ScalarProperty Name="Date_time" ColumnName="Date_time" />
+                <ScalarProperty Name="GrandTotal" ColumnName="GrandTotal" />
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+                <ScalarProperty Name="PONumber" ColumnName="PONumber" />
+                <ScalarProperty Name="idPOKain" ColumnName="idPOKain" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

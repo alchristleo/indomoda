@@ -1,0 +1,449 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B48561CC-B664-43F8-BFE3-0DDDE9A6E890}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Project</RootNamespace>
+    <AssemblyName>Project</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Design, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.8.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.8.1\lib\net40\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity.Design" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Color.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Customer.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DetailPO.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Employee.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeModel.cs" />
+    <Compile Include="ExtensionAttribute.cs" />
+    <Compile Include="Helpers\GenericQuery.cs" />
+    <Compile Include="IndomodaSupplier.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Master\AddEditKaryawan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Master\AddEditMaterial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Master\AddEditPembeli.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Master\AddEditPembeli.Designer.cs">
+      <DependentUpon>AddEditPembeli.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Master\AddEditSupplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Master\AddEditSupplier.Designer.cs">
+      <DependentUpon>AddEditSupplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Master\AddEditWarna.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Master\MasterBahan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Master\MasterBahan.Designer.cs">
+      <DependentUpon>MasterBahan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Master\Pembeli.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Master\Pembeli.Designer.cs">
+      <DependentUpon>Pembeli.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Master\Supplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Master\Supplier.Designer.cs">
+      <DependentUpon>Supplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Master\Warna.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Master\Warna.Designer.cs">
+      <DependentUpon>Warna.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Material.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\POKainModel.cs" />
+    <Compile Include="Models\SupplierModel.cs" />
+    <Compile Include="Penerimaan\PenerimaanCMT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Penerimaan\PenerimaanCMT.Designer.cs">
+      <DependentUpon>PenerimaanCMT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Penerimaan\PenerimaanBordir.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Penerimaan\PenerimaanBordir.Designer.cs">
+      <DependentUpon>PenerimaanBordir.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PreOrderKain.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SPK\AddSpkCmt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SPK\AddSpkCmt.Designer.cs">
+      <DependentUpon>AddSpkCmt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Penerimaan\PenerimaanSablon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Penerimaan\PenerimaanSablon.Designer.cs">
+      <DependentUpon>PenerimaanSablon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SPK\SPKCmt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SPK\SPKCmt.Designer.cs">
+      <DependentUpon>SPKCmt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SPK\AddSpkBordir.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SPK\AddSpkBordir.Designer.cs">
+      <DependentUpon>AddSpkBordir.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SPK\SPKBordir.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SPK\SPKBordir.Designer.cs">
+      <DependentUpon>SPKBordir.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SPK\AddSpkSablon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SPK\AddSpkSablon.Designer.cs">
+      <DependentUpon>AddSpkSablon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bahan\AddPenerimaanTukangPotong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bahan\AddPenerimaanTukangPotong.Designer.cs">
+      <DependentUpon>AddPenerimaanTukangPotong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bahan\AddPOKain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bahan\AddPOKain.Designer.cs">
+      <DependentUpon>AddPOKain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Master\Karyawan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Master\Karyawan.Designer.cs">
+      <DependentUpon>Karyawan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainMenu.Designer.cs">
+      <DependentUpon>MainMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bahan\poKain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bahan\poKain.Designer.cs">
+      <DependentUpon>poKain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bahan\PenerimaanKain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bahan\PenerimaanKain.Designer.cs">
+      <DependentUpon>PenerimaanKain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bahan\PemotonganKain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bahan\PemotonganKain.Designer.cs">
+      <DependentUpon>PemotonganKain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bahan\PenerimaanTukangPotong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bahan\PenerimaanTukangPotong.Designer.cs">
+      <DependentUpon>PenerimaanTukangPotong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SPK\SPKSablon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SPK\SPKSablon.Designer.cs">
+      <DependentUpon>SPKSablon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Master\AddEditKaryawan.resx">
+      <DependentUpon>AddEditKaryawan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Master\AddEditMaterial.resx">
+      <DependentUpon>AddEditMaterial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Master\AddEditPembeli.resx">
+      <DependentUpon>AddEditPembeli.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Master\AddEditSupplier.resx">
+      <DependentUpon>AddEditSupplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Master\AddEditWarna.resx">
+      <DependentUpon>AddEditWarna.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Master\MasterBahan.resx">
+      <DependentUpon>MasterBahan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Master\Pembeli.resx">
+      <DependentUpon>Pembeli.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Master\Supplier.resx">
+      <DependentUpon>Supplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Master\Warna.resx">
+      <DependentUpon>Warna.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Penerimaan\PenerimaanCMT.resx">
+      <DependentUpon>PenerimaanCMT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Penerimaan\PenerimaanBordir.resx">
+      <DependentUpon>PenerimaanBordir.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SPK\AddSpkCmt.resx">
+      <DependentUpon>AddSpkCmt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Penerimaan\PenerimaanSablon.resx">
+      <DependentUpon>PenerimaanSablon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SPK\SPKCmt.resx">
+      <DependentUpon>SPKCmt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SPK\AddSpkBordir.resx">
+      <DependentUpon>AddSpkBordir.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SPK\SPKBordir.resx">
+      <DependentUpon>SPKBordir.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SPK\AddSpkSablon.resx">
+      <DependentUpon>AddSpkSablon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bahan\AddPenerimaanTukangPotong.resx">
+      <DependentUpon>AddPenerimaanTukangPotong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bahan\AddPOKain.resx">
+      <DependentUpon>AddPOKain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Master\Karyawan.resx">
+      <DependentUpon>Karyawan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainMenu.resx">
+      <DependentUpon>MainMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bahan\poKain.resx">
+      <DependentUpon>poKain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bahan\PenerimaanKain.resx">
+      <DependentUpon>PenerimaanKain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bahan\PemotonganKain.resx">
+      <DependentUpon>PemotonganKain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bahan\PenerimaanTukangPotong.resx">
+      <DependentUpon>PenerimaanTukangPotong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SPK\SPKSablon.resx">
+      <DependentUpon>SPKSablon.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model.edmx.diagram">
+      <DependentUpon>Model.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\DataSources\Color.datasource" />
+    <None Include="Properties\DataSources\DetailPO.datasource" />
+    <None Include="Properties\DataSources\Employee.datasource" />
+    <None Include="Properties\DataSources\IndomodaSupplier.datasource" />
+    <None Include="Properties\DataSources\Material.datasource" />
+    <None Include="Properties\DataSources\POKain.datasource" />
+    <None Include="Properties\DataSources\PreOrderKain.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\btn-refresh.png" />
+    <None Include="Assets\btn-add.png" />
+    <None Include="Assets\btn-delete.png" />
+    <None Include="Assets\btn-pencil.png" />
+    <None Include="Assets\btn-save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
