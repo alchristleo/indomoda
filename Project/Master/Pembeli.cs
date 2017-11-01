@@ -45,6 +45,7 @@ namespace Project
                         customerBindingSource.Add(addPembeli.CustomerInfo);
                         db.Customers.Add(addPembeli.CustomerInfo);
                         db.SaveChangesAsync().Wait();
+                        MetroFramework.MetroMessageBox.Show(this, "Success! New customer has been added to the database", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
                     catch (Exception ex)
                     {
@@ -72,6 +73,7 @@ namespace Project
                         {
                             customerBindingSource.EndEdit();
                             db.SaveChangesAsync();
+                            MetroFramework.MetroMessageBox.Show(this, "Success! This customer data has been updated", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
                         }
                         catch (Exception ex)
                         {
@@ -98,6 +100,7 @@ namespace Project
                     db.SaveChangesAsync().Wait();
                     // Refresh id to sync with db
                     customerBindingSource.DataSource = db.Customers.ToList();
+                    MetroFramework.MetroMessageBox.Show(this, "Success! This customer hase been removed from the database", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
                 }
             }
         }

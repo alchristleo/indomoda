@@ -65,6 +65,7 @@
             this.txtPasswordLogin.UseSelectable = true;
             this.txtPasswordLogin.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtPasswordLogin.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtPasswordLogin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPasswordLogin_KeyPress);
             // 
             // lblUsername
             // 
@@ -123,6 +124,7 @@
             this.txtUsernameLogin.UseSelectable = true;
             this.txtUsernameLogin.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtUsernameLogin.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtUsernameLogin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUsernameLogin_KeyPress);
             // 
             // btnLogin
             // 

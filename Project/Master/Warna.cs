@@ -45,6 +45,7 @@ namespace Project
                         colorBindingSource.Add(addWarna.ColorInfo);
                         db.Colors.Add(addWarna.ColorInfo);
                         db.SaveChangesAsync().Wait();
+                        MetroFramework.MetroMessageBox.Show(this, "Success! New color has been added to the database", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
                     catch (Exception ex)
                     {
@@ -72,6 +73,7 @@ namespace Project
                         {
                             colorBindingSource.EndEdit();
                             db.SaveChangesAsync();
+                            MetroFramework.MetroMessageBox.Show(this, "Success! This color data has been updated", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
                         }
                         catch (Exception ex)
                         {
@@ -98,6 +100,7 @@ namespace Project
                     db.SaveChangesAsync().Wait();
                     // Refresh id to sync with db
                     colorBindingSource.DataSource = db.Colors.ToList();
+                    MetroFramework.MetroMessageBox.Show(this, "Success! This color has been removed from the database", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
                 }
             }
         }

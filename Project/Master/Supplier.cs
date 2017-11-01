@@ -45,6 +45,7 @@ namespace Project
                         supplierBindingSource.Add(addSupplier.SupplierInfo);
                         db.IndomodaSuppliers.Add(addSupplier.SupplierInfo);
                         db.SaveChangesAsync().Wait();
+                        MetroFramework.MetroMessageBox.Show(this, "Success! New supplier has been added to the database", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
                     catch (Exception ex)
                     {
@@ -72,6 +73,7 @@ namespace Project
                         {
                             supplierBindingSource.EndEdit();
                             db.SaveChangesAsync();
+                            MetroFramework.MetroMessageBox.Show(this, "Success! This supplier data has been updated", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
                         }
                         catch (Exception ex)
                         {
@@ -98,6 +100,7 @@ namespace Project
                     db.SaveChangesAsync().Wait();
                     // Refresh id to sync with db
                     supplierBindingSource.DataSource = db.IndomodaSuppliers.ToList();
+                    MetroFramework.MetroMessageBox.Show(this, "Success! This supplier has been removed from the database", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
                 }
             }
         }

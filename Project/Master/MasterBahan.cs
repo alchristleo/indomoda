@@ -45,6 +45,8 @@ namespace Project
                         materialBindingSource.Add(addMaterial.MaterialInfo);
                         db.Materials.Add(addMaterial.MaterialInfo);
                         db.SaveChangesAsync().Wait();
+
+                        MetroFramework.MetroMessageBox.Show(this, "Success! New material has been added to the database", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
                     catch (Exception ex)
                     {
@@ -72,6 +74,7 @@ namespace Project
                         {
                             materialBindingSource.EndEdit();
                             db.SaveChangesAsync();
+                            MetroFramework.MetroMessageBox.Show(this, "Success! This material data has been updated", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
                         }
                         catch (Exception ex)
                         {
@@ -98,6 +101,7 @@ namespace Project
                     db.SaveChangesAsync().Wait();
                     // Refresh id to sync with db
                     materialBindingSource.DataSource = db.Materials.ToList();
+                    MetroFramework.MetroMessageBox.Show(this, "Success! This material has been removed from the database", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
                 }
             }
         }

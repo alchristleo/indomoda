@@ -46,6 +46,8 @@ namespace Project
                         employeeBindingSource2.Add(addKaryawan.EmployeeInfo);
                         db.Employees.Add(addKaryawan.EmployeeInfo);
                         db.SaveChangesAsync().Wait();
+
+                        MetroFramework.MetroMessageBox.Show(this, "Success! New employee has been added to the database", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
                     catch (Exception ex)
                     {
@@ -73,6 +75,7 @@ namespace Project
                         {
                             employeeBindingSource2.EndEdit();
                             db.SaveChangesAsync();
+                            MetroFramework.MetroMessageBox.Show(this, "Success! Employee data has been updated", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
                         }
                         catch (Exception ex)
                         {
@@ -99,6 +102,7 @@ namespace Project
                     db.SaveChangesAsync().Wait();
                     // Refresh id to sync with db
                     employeeBindingSource2.DataSource = db.Employees.ToList();
+                    MetroFramework.MetroMessageBox.Show(this, "Success! This employee has been removed from the database", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
                 }
             }
         }
