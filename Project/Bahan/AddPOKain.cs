@@ -86,8 +86,6 @@ namespace Project
             using (indomodaEntities db = new indomodaEntities())
             {
                 int setDetailPOID = db.DetailPOes.AsEnumerable().LastOrDefault() == null ? 1 : db.DetailPOes.AsEnumerable().LastOrDefault().DetailPOID + 1;
-                //long getPONumber = Convert.ToInt64(setPONumber.lblPONumber.Text.ToString());
-                //long getPONumber = Convert.ToInt64(txtPONumber.Text.ToString());
                 long getPONumber = Convert.ToInt64(poKain.poNumber);
                 int getMaterialID = Convert.ToInt32(cboMaterialCode.SelectedValue.ToString());
                 int getColorID = Convert.ToInt32(cboColorCode.SelectedValue.ToString());
@@ -142,9 +140,6 @@ namespace Project
 
         private void AddPOKain_Load(object sender, EventArgs e)
         {
-            //txtPONumber.Text = poKain.poNumber;
-            //long a = Convert.ToInt64(x.getPONumber);
-            //txtPONumber.Text = a.ToString();
             using (indomodaEntities entity = new indomodaEntities())
             {
                 colorBindingSource.DataSource = entity.Colors.ToList();

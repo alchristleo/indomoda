@@ -44,19 +44,10 @@ namespace Project
         private void btnAddPoKain_Click(object sender, EventArgs e)
         {
             poNumber = lblPONumber.Text;
-            //using (AddPOKain addPO = new AddPOKain(new DetailPO()))
-            //{
-
-            //    addPO.setBS(ref detailPOBindingSource);
-            //    addPO.Show();
-            //}
             AddPOKain addpokain = new AddPOKain();
             addpokain.setDGV(ref dataGridView1);
             addpokain.setBS(ref detailPOBindingSource);
             addpokain.Show();
-
-            //var db = GenericQuery.SqlQuerySingle<EmployeeModel>(QUERY);
-            //TXTA.TEXT = db.ponumber;
         }
 
         private void btnEditPoKain_Click(object sender, EventArgs e)
@@ -122,19 +113,8 @@ namespace Project
             }
         }
 
-        //private void GrandTotal()
-        //{
-        //    int grandTotal = dataGridView1.Rows.Cast<DataGridViewRow>().Sum(x => Convert.ToInt32(x.Cells["DetailPrice"].Value));
-        //    this.lblGrandTotal.Text = grandTotal.ToString();
-        //}
-
         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            //if (e.RowIndex >= 0)
-            //{
-            //    int grandTotal = CalculateTotal();
-            //    lblGrandTotal.Text = grandTotal.ToString();
-            //}
             if (e.ColumnIndex == 6)
             {
                 lblGrandTotal.Text = CellSum().ToString();
@@ -157,12 +137,6 @@ namespace Project
         {
             int total = 0;
             int sum = 0;
-            //for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            //{
-            //    int v = string.IsNullOrEmpty(dataGridView1.Rows[i].Cells["Price"].Value.ToString()) ? 0 
-            //        : Convert.ToInt32(dataGridView1.Rows[i].Cells["Price"].Value.ToString());
-            //}
-            //return total;
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
                 sum = sum + int.Parse(dataGridView1.Rows[i].Cells[6].Value.ToString());
@@ -185,8 +159,6 @@ namespace Project
             dataGridView1.Columns[6].DefaultCellStyle.Format = "C";
             dataGridView1.Columns[6].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("id-ID");
             lblGrandTotal.Text = CellSum().ToString();
-            //int grandTotal = CalculateTotal();
-            //lblGrandTotal.Text = grandTotal.ToString();
         }
 
         private void btnSavePoKain_Click(object sender, EventArgs e)
@@ -203,9 +175,10 @@ namespace Project
                     {
                         try
                         {
-                            int SupplierID = Convert.ToInt32(cboSupplierCode.SelectedValue.ToString());           
-
-                            int a = GenericQuery.ExecSQLCommand("INSERT INTO PreOrderKains (PONumber, SupplierID, GrandTotal, Date_time) VALUES(@PONumber, @SupplierID, @GrandTotal, @Date_time)", new[] {
+                            int setPOID = db.PreOrderKains.AsEnumerable().LastOrDefault() == null ? 1 : db.PreOrderKains.AsEnumerable().LastOrDefault().idPOKain + 1;
+                            int SupplierID = Convert.ToInt32(cboSupplierCode.SelectedValue.ToString());
+                            int a = GenericQuery.ExecSQLCommand("INSERT INTO PreOrderKains (idPOKain, PONumber, SupplierID, GrandTotal, Date_time) VALUES(@idPOKain, @PONumber, @SupplierID, @GrandTotal, @Date_time)", new[] {
+                                new SqlParameter("@idPOKain", setPOID),
                                 new SqlParameter("@PONumber", lblPONumber.Text),
                                 new SqlParameter("@SupplierID", SupplierID),
                                 new SqlParameter("@GrandTotal", lblGrandTotalDB.Text),

@@ -38,6 +38,7 @@ namespace Project.Helpers
             }
         }
 
+        // return single<Model>
         public static T SqlQuerySingle<T>(string Query, object[] Param = null) where T : class, new()
         {
             using (var ctx = new indomodaEntities())
