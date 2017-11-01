@@ -61,10 +61,8 @@ namespace Project
                     if (query.SingleOrDefault() != null)
                     {
                         MetroFramework.MetroMessageBox.Show(this, "Successfully login", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                        //MessageBox.Show("Successfully login", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                        //PROCCESS AFTER LOGIN
                         
+                        //PROCCESS AFTER LOGIN                        
                         MainMenu main = new MainMenu();
                         this.Hide();
                         main.Show();
@@ -72,7 +70,6 @@ namespace Project
                     else
                     {
                         MetroFramework.MetroMessageBox.Show(this, "Your username or password is incorrect", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        //MessageBox.Show("Your username or password is incorrect", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txtUsernameLogin.Clear();
                         txtPasswordLogin.Clear();
                     }
@@ -81,7 +78,6 @@ namespace Project
             catch (Exception ex)
             {
                 MetroFramework.MetroMessageBox.Show(this, ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
