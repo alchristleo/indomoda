@@ -29,7 +29,7 @@
     <Property Name="DetailQty" Type="int" Nullable="false" />
     <Property Name="DetailPrice" Type="int" Nullable="false" />
     <Property Name="DetailTotal" Type="int" Nullable="false" />
-    <Property Name="DetailStatus" Type="int" Nullable="false" />
+    <Property Name="DetailStatus" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Employees">
     <Key>
@@ -64,11 +64,12 @@
     <Key>
       <PropertyRef Name="PONumber" />
     </Key>
-    <Property Name="idPOKain" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idPOKain" Type="int" Nullable="false" />
     <Property Name="PONumber" Type="bigint" Nullable="false" />
     <Property Name="SupplierID" Type="int" Nullable="false" />
     <Property Name="GrandTotal" Type="bigint" Nullable="false" />
     <Property Name="Date_time" Type="datetime" Nullable="false" />
+    <Property Name="status" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Users">
     <Key>

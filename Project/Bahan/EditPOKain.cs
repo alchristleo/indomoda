@@ -14,7 +14,7 @@ using Project.Models;
 
 namespace Project
 {
-    public partial class AddPOKain : MetroForm
+    public partial class EditPOKain : MetroForm
     {
         private BindingSource _bs = null;
         private Form _form = null;
@@ -42,7 +42,7 @@ namespace Project
             _dpo = dpo;
         }
 
-        public AddPOKain()
+        public EditPOKain()
         {
             InitializeComponent();
 
@@ -94,7 +94,8 @@ namespace Project
 
             using (indomodaEntities db = new indomodaEntities())
             {
-                int setDetailPOID = db.DetailPOes.AsEnumerable().LastOrDefault() == null ? 1 : db.DetailPOes.AsEnumerable().LastOrDefault().DetailPOID + 1;
+                list = _dpo;
+                int setDetailPOID = list[0].DetailPOID; 
                 long getPONumber = Convert.ToInt64(poKain.poNumber);
                 int getMaterialID = Convert.ToInt32(cboMaterialCode.SelectedValue.ToString());
                 int getColorID = Convert.ToInt32(cboColorCode.SelectedValue.ToString());
@@ -107,7 +108,7 @@ namespace Project
                 {
                     try
                     {
-                        int a = GenericQuery.ExecSQLCommand("INSERT INTO DetailPO (DetailPOID, PONumber, MaterialID, ColorID, DetailQty, DetailPrice, DetailTotal, DetailStatus) VALUES(@DetailPOID, @PONumber, @MaterialID, @ColorID, @DetailQty, @DetailPrice, @DetailTotal, @DetailStatus)", new[] {
+                        int a = GenericQuery.ExecSQLCommand("UPDATE DetailPO SET DetailPOID = @DetailPOID, PONumber = @PONumber, MaterialID = @MaterialID, ColorID = @ColorID, DetailQty = @DetailQty, DetailPrice = @DetailPrice, DetailTotal = @DetailTotal, DetailStatus = @DetailStatus WHERE DetailPOID = '"+setDetailPOID+"'", new[] {
                                 new SqlParameter("DetailPOID", setDetailPOID),
                                 new SqlParameter("@PONumber", getPONumber),
                                 new SqlParameter("@MaterialID", getMaterialID),
@@ -124,17 +125,14 @@ namespace Project
                             _bs = new BindingSource();
                         }
 
-                        _bs.Add(new DetailPO
+                        foreach (var i in _bs.List.Cast<DetailPO>().Where(x => x.DetailPOID == setDetailPOID))
                         {
-                            DetailPOID = setDetailPOID,
-                            PONumber = getPONumber,
-                            MaterialID = getMaterialID,
-                            ColorID = getColorID,
-                            DetailQty = getQty,
-                            DetailPrice = getPrice,
-                            DetailTotal = setTotal,
-                            DetailStatus = setStatus
-                        });
+                            i.MaterialID = getMaterialID;
+                            i.ColorID = getColorID;
+                            i.DetailQty = getQty;
+                            i.DetailPrice = getPrice;
+                            i.DetailTotal = getQty * getPrice;
+                        }
 
                         _dv.Refresh();
                     }
@@ -147,7 +145,7 @@ namespace Project
             }
         }
 
-        private void AddPOKain_Load(object sender, EventArgs e)
+        private void EditPOKain_Load(object sender, EventArgs e)
         {
             using (indomodaEntities entity = new indomodaEntities())
             {

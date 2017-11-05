@@ -34,7 +34,7 @@
           <Property Name="DetailQty" Type="int" Nullable="false" />
           <Property Name="DetailPrice" Type="int" Nullable="false" />
           <Property Name="DetailTotal" Type="int" Nullable="false" />
-          <Property Name="DetailStatus" Type="int" Nullable="false" />
+          <Property Name="DetailStatus" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Employees">
           <Key>
@@ -69,11 +69,12 @@
           <Key>
             <PropertyRef Name="PONumber" />
           </Key>
-          <Property Name="idPOKain" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idPOKain" Type="int" Nullable="false" />
           <Property Name="PONumber" Type="bigint" Nullable="false" />
           <Property Name="SupplierID" Type="int" Nullable="false" />
           <Property Name="GrandTotal" Type="bigint" Nullable="false" />
           <Property Name="Date_time" Type="datetime" Nullable="false" />
+          <Property Name="status" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -238,7 +239,7 @@
           <Property Name="DetailQty" Type="Int32" Nullable="false" />
           <Property Name="DetailPrice" Type="Int32" Nullable="false" />
           <Property Name="DetailTotal" Type="Int32" Nullable="false" />
-          <Property Name="DetailStatus" Type="Int32" Nullable="false" />
+          <Property Name="DetailStatus" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Color" Relationship="indomodaModel.FK_DetailPO_Colors" FromRole="DetailPO" ToRole="Color" />
           <NavigationProperty Name="Material" Relationship="indomodaModel.FK_DetailPO_Materials" FromRole="DetailPO" ToRole="Material" />
         </EntityType>
@@ -246,11 +247,12 @@
           <Key>
             <PropertyRef Name="PONumber" />
           </Key>
-          <Property Name="idPOKain" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idPOKain" Type="Int32" Nullable="false" />
           <Property Name="PONumber" Type="Int64" Nullable="false" />
           <Property Name="SupplierID" Type="Int32" Nullable="false" />
           <Property Name="GrandTotal" Type="Int64" Nullable="false" />
           <Property Name="Date_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="status" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="IndomodaSupplier" Relationship="indomodaModel.FK_POKain_Suppliers" FromRole="PreOrderKain" ToRole="IndomodaSupplier" />
         </EntityType>
         <Association Name="FK_DetailPO_Colors">
@@ -374,6 +376,7 @@
           <EntitySetMapping Name="PreOrderKains">
             <EntityTypeMapping TypeName="indomodaModel.PreOrderKain">
               <MappingFragment StoreEntitySet="PreOrderKains">
+                <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="Date_time" ColumnName="Date_time" />
                 <ScalarProperty Name="GrandTotal" ColumnName="GrandTotal" />
                 <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />

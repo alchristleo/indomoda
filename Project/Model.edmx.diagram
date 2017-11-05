@@ -11,8 +11,8 @@
         <EntityTypeShape EntityType="indomodaModel.IndomodaSupplier" Width="1.5" PointX="0.5" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="indomodaModel.Material" Width="1.5" PointX="0.5" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="indomodaModel.User" Width="1.5" PointX="6.875" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="indomodaModel.DetailPO" Width="1.5" PointX="3" PointY="3.375" />
-        <EntityTypeShape EntityType="indomodaModel.PreOrderKain" Width="1.5" PointX="3" PointY="0.875" />
+        <EntityTypeShape EntityType="indomodaModel.DetailPO" Width="1.5" PointX="2.875" PointY="3.375" />
+        <EntityTypeShape EntityType="indomodaModel.PreOrderKain" Width="1.5" PointX="2.75" PointY="0.5" />
         <AssociationConnector Association="indomodaModel.FK_DetailPO_Colors" />
         <AssociationConnector Association="indomodaModel.FK_DetailPO_Materials" />
         <AssociationConnector Association="indomodaModel.FK_POKain_Suppliers" />

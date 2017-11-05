@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Globalization;
 using Project.Helpers;
 using System.Data.SqlClient;
+using Project.Models;
 
 namespace Project
 {
@@ -20,6 +21,8 @@ namespace Project
         private DataGridView _dv = null;
         private Form _form = null;
         public static string poNumber;
+        private List<DetailPOModel> _dpo = null;
+        public List<DetailPOModel> listPO = new List<DetailPOModel>();
 
         public void setRefForm(Form form)
         {
@@ -34,6 +37,11 @@ namespace Project
         public void setDGV(DataGridView dv)
         {
             _dv = dv;
+        }
+
+        public void setDPO(List<DetailPOModel> dpo)
+        {
+            _dpo = dpo;
         }
 
         public poKain()
@@ -57,27 +65,13 @@ namespace Project
                 MetroFramework.MetroMessageBox.Show(this, "You need to add detail PO first!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
+            EditPOKain editpokain = new EditPOKain();
             int currentPOID = Convert.ToInt32(dataGridView1[0, dataGridView1.CurrentRow.Index].Value.ToString());
 
-            //DetailPO obj = detailPOBindingSource.Current as DetailPO;
-            //if (obj != null)
-            //{
-            //    using (AddPOKain editPO = new AddPOKain(obj))
-            //    {
-            //        if (editPO.ShowDialog() == DialogResult.OK)
-            //        {
-            //            try
-            //            {
-            //                detailPOBindingSource.EndEdit();
-            //                db.SaveChangesAsync();
-            //            }
-            //            catch (Exception ex)
-            //            {
-            //                MetroFramework.MetroMessageBox.Show(this, ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //            }
-            //        }
-            //    }
-            //}
+            listPO = GenericQuery.SqlQuery<DetailPOModel>("SELECT d.DetailPOID, d.PONumber, d.MaterialID, d.ColorID, d.DetailQty, d.DetailPrice, d.DetailTotal, d.DetailStatus, m.MaterialCode, m.MaterialName, c.ColorCode, c.ColorName FROM DetailPO d JOIN Materials m ON d.MaterialID = m.MaterialID JOIN Colors c ON d.ColorID = c.ColorID  WHERE DetailPOID = '"+currentPOID+"'");
+            editpokain.setDPO(ref listPO);
+            editpokain.setBS(ref detailPOBindingSource);
+            editpokain.Show();
         }
 
         private void btnDeletePoKain_Click(object sender, EventArgs e)
@@ -163,6 +157,7 @@ namespace Project
 
         private void btnSavePoKain_Click(object sender, EventArgs e)
         {
+
             using (indomodaEntities db = new indomodaEntities())
             {
                 if (dataGridView1.RowCount == 0)
@@ -177,12 +172,14 @@ namespace Project
                         {
                             int setPOID = db.PreOrderKains.AsEnumerable().LastOrDefault() == null ? 1 : db.PreOrderKains.AsEnumerable().LastOrDefault().idPOKain + 1;
                             int SupplierID = Convert.ToInt32(cboSupplierCode.SelectedValue.ToString());
-                            int a = GenericQuery.ExecSQLCommand("INSERT INTO PreOrderKains (idPOKain, PONumber, SupplierID, GrandTotal, Date_time) VALUES(@idPOKain, @PONumber, @SupplierID, @GrandTotal, @Date_time)", new[] {
+                            bool setStatus = false;
+                            int a = GenericQuery.ExecSQLCommand("INSERT INTO PreOrderKains (idPOKain, PONumber, SupplierID, GrandTotal, Date_time, status) VALUES(@idPOKain, @PONumber, @SupplierID, @GrandTotal, @Date_time, @status)", new[] {
                                 new SqlParameter("@idPOKain", setPOID),
                                 new SqlParameter("@PONumber", lblPONumber.Text),
                                 new SqlParameter("@SupplierID", SupplierID),
                                 new SqlParameter("@GrandTotal", lblGrandTotalDB.Text),
-                                new SqlParameter("@Date_time", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"))
+                                new SqlParameter("@Date_time", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")),
+                                new SqlParameter("@status", setStatus)
                             });
 
                             db.SaveChangesAsync().Wait();

@@ -80,6 +80,7 @@
     <EntitySetMapping Name="PreOrderKains">
       <EntityTypeMapping TypeName="indomodaModel.PreOrderKain">
         <MappingFragment StoreEntitySet="PreOrderKains">
+          <ScalarProperty Name="status" ColumnName="status" />
           <ScalarProperty Name="Date_time" ColumnName="Date_time" />
           <ScalarProperty Name="GrandTotal" ColumnName="GrandTotal" />
           <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />

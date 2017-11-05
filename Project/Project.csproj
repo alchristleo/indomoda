@@ -86,6 +86,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bahan\EditPOKain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bahan\EditPOKain.Designer.cs">
+      <DependentUpon>EditPOKain.cs</DependentUpon>
+    </Compile>
     <Compile Include="Color.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -167,6 +173,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\DetailPOModel.cs" />
     <Compile Include="Models\POKainModel.cs" />
     <Compile Include="Models\SupplierModel.cs" />
     <Compile Include="Penerimaan\PenerimaanCMT.cs">
@@ -290,6 +297,9 @@
     <Compile Include="User.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Bahan\EditPOKain.resx">
+      <DependentUpon>EditPOKain.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Master\AddEditKaryawan.resx">
       <DependentUpon>AddEditKaryawan.cs</DependentUpon>
     </EmbeddedResource>

@@ -21,7 +21,7 @@ namespace Project
         public int DetailQty { get; set; }
         public int DetailPrice { get; set; }
         public int DetailTotal { get; set; }
-        public int DetailStatus { get; set; }
+        public bool DetailStatus { get; set; }
     
         public virtual Color Color { get; set; }
         public virtual Material Material { get; set; }
