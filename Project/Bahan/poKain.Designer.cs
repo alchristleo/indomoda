@@ -88,19 +88,14 @@ namespace Project
             this.dataGridView1.DataSource = this.detailPOBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(62, 272);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(645, 200);
             this.dataGridView1.TabIndex = 9;
-            this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
-            this.dataGridView1.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView1_RowAdded);
-            this.dataGridView1.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dataGridView1_RowsRemoved);
             // 
             // detailPOIDDataGridViewTextBoxColumn
             // 
             this.detailPOIDDataGridViewTextBoxColumn.DataPropertyName = "DetailPOID";
             this.detailPOIDDataGridViewTextBoxColumn.HeaderText = "No.";
             this.detailPOIDDataGridViewTextBoxColumn.Name = "detailPOIDDataGridViewTextBoxColumn";
-            this.detailPOIDDataGridViewTextBoxColumn.ReadOnly = true;
             this.detailPOIDDataGridViewTextBoxColumn.Width = 30;
             // 
             // pONumberDataGridViewTextBoxColumn
@@ -108,7 +103,6 @@ namespace Project
             this.pONumberDataGridViewTextBoxColumn.DataPropertyName = "PONumber";
             this.pONumberDataGridViewTextBoxColumn.HeaderText = "No. PO";
             this.pONumberDataGridViewTextBoxColumn.Name = "pONumberDataGridViewTextBoxColumn";
-            this.pONumberDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // materialIDDataGridViewComboBoxColumn
             // 
@@ -117,7 +111,6 @@ namespace Project
             this.materialIDDataGridViewComboBoxColumn.DisplayMember = "MaterialName";
             this.materialIDDataGridViewComboBoxColumn.HeaderText = "Material";
             this.materialIDDataGridViewComboBoxColumn.Name = "materialIDDataGridViewComboBoxColumn";
-            this.materialIDDataGridViewComboBoxColumn.ReadOnly = true;
             this.materialIDDataGridViewComboBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.materialIDDataGridViewComboBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.materialIDDataGridViewComboBoxColumn.ValueMember = "MaterialID";
@@ -133,7 +126,6 @@ namespace Project
             this.colorIDDataGridViewComboBoxColumn.DisplayMember = "ColorName";
             this.colorIDDataGridViewComboBoxColumn.HeaderText = "Color";
             this.colorIDDataGridViewComboBoxColumn.Name = "colorIDDataGridViewComboBoxColumn";
-            this.colorIDDataGridViewComboBoxColumn.ReadOnly = true;
             this.colorIDDataGridViewComboBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.colorIDDataGridViewComboBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.colorIDDataGridViewComboBoxColumn.ValueMember = "ColorID";
@@ -147,7 +139,6 @@ namespace Project
             this.qtyDataGridViewTextBoxColumn.DataPropertyName = "DetailQty";
             this.qtyDataGridViewTextBoxColumn.HeaderText = "Quantity";
             this.qtyDataGridViewTextBoxColumn.Name = "qtyDataGridViewTextBoxColumn";
-            this.qtyDataGridViewTextBoxColumn.ReadOnly = true;
             this.qtyDataGridViewTextBoxColumn.Width = 50;
             // 
             // priceDataGridViewTextBoxColumn
@@ -155,7 +146,6 @@ namespace Project
             this.priceDataGridViewTextBoxColumn.DataPropertyName = "DetailPrice";
             this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
             this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-            this.priceDataGridViewTextBoxColumn.ReadOnly = true;
             this.priceDataGridViewTextBoxColumn.Width = 80;
             // 
             // totalDataGridViewTextBoxColumn
@@ -163,7 +153,6 @@ namespace Project
             this.totalDataGridViewTextBoxColumn.DataPropertyName = "DetailTotal";
             this.totalDataGridViewTextBoxColumn.HeaderText = "Total";
             this.totalDataGridViewTextBoxColumn.Name = "totalDataGridViewTextBoxColumn";
-            this.totalDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // detailPOBindingSource
             // 
@@ -357,7 +346,6 @@ namespace Project
             this.lblGrandTotal.MaxLength = 32767;
             this.lblGrandTotal.Name = "lblGrandTotal";
             this.lblGrandTotal.PasswordChar = '\0';
-            this.lblGrandTotal.ReadOnly = true;
             this.lblGrandTotal.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.lblGrandTotal.SelectedText = "";
             this.lblGrandTotal.SelectionLength = 0;

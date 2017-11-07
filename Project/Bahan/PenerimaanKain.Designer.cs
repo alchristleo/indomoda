@@ -38,7 +38,7 @@
             this.colorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.detailQtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.detailPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.detailStatusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.detailStatusDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.detailPOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.metroDateTime1 = new MetroFramework.Controls.MetroDateTime();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
@@ -47,15 +47,14 @@
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.txtNoFaktur = new MetroFramework.Controls.MetroTextBox();
             this.cboNoPOKain = new MetroFramework.Controls.MetroComboBox();
+            this.preOrderKainBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtSupplierName = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.btnDeletePenerimaanKain = new MetroFramework.Controls.MetroTile();
-            this.btnSavePenerimaanKain = new MetroFramework.Controls.MetroButton();
             this.btnExitPenerimaanKain = new MetroFramework.Controls.MetroButton();
-            this.btnSaveEmployee = new MetroFramework.Controls.MetroTile();
+            this.btnUpdateStatus = new MetroFramework.Controls.MetroTile();
             this.txtSupplierCode = new MetroFramework.Controls.MetroTextBox();
-            this.preOrderKainBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.metroButton1 = new MetroFramework.Controls.MetroButton();
+            this.btnSaveUpdateStatus = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.materialBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).BeginInit();
@@ -76,11 +75,10 @@
             this.colorIDDataGridViewComboBoxColumn,
             this.detailQtyDataGridViewTextBoxColumn,
             this.detailPriceDataGridViewTextBoxColumn,
-            this.detailStatusDataGridViewTextBoxColumn});
+            this.detailStatusDataGridViewCheckBoxColumn});
             this.dataGridView1.DataSource = this.detailPOBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(37, 265);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(643, 177);
             this.dataGridView1.TabIndex = 1;
             // 
@@ -89,7 +87,6 @@
             this.detailPOIDDataGridViewTextBoxColumn.DataPropertyName = "DetailPOID";
             this.detailPOIDDataGridViewTextBoxColumn.HeaderText = "No.";
             this.detailPOIDDataGridViewTextBoxColumn.Name = "detailPOIDDataGridViewTextBoxColumn";
-            this.detailPOIDDataGridViewTextBoxColumn.ReadOnly = true;
             this.detailPOIDDataGridViewTextBoxColumn.Width = 40;
             // 
             // pONumberDataGridViewTextBoxColumn
@@ -97,7 +94,6 @@
             this.pONumberDataGridViewTextBoxColumn.DataPropertyName = "PONumber";
             this.pONumberDataGridViewTextBoxColumn.HeaderText = "No. PO";
             this.pONumberDataGridViewTextBoxColumn.Name = "pONumberDataGridViewTextBoxColumn";
-            this.pONumberDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // materialIDDataGridViewComboBoxColumn
             // 
@@ -136,7 +132,7 @@
             this.detailQtyDataGridViewTextBoxColumn.DataPropertyName = "DetailQty";
             this.detailQtyDataGridViewTextBoxColumn.HeaderText = "Quantity";
             this.detailQtyDataGridViewTextBoxColumn.Name = "detailQtyDataGridViewTextBoxColumn";
-            this.detailQtyDataGridViewTextBoxColumn.ReadOnly = true;
+            this.detailQtyDataGridViewTextBoxColumn.Width = 80;
             // 
             // detailPriceDataGridViewTextBoxColumn
             // 
@@ -145,12 +141,17 @@
             this.detailPriceDataGridViewTextBoxColumn.Name = "detailPriceDataGridViewTextBoxColumn";
             this.detailPriceDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // detailStatusDataGridViewTextBoxColumn
+            // detailStatusDataGridViewCheckBoxColumn
             // 
-            this.detailStatusDataGridViewTextBoxColumn.DataPropertyName = "DetailStatus";
-            this.detailStatusDataGridViewTextBoxColumn.HeaderText = "Status";
-            this.detailStatusDataGridViewTextBoxColumn.Name = "detailStatusDataGridViewTextBoxColumn";
-            this.detailStatusDataGridViewTextBoxColumn.ReadOnly = true;
+            this.detailStatusDataGridViewCheckBoxColumn.DataPropertyName = "DetailStatus";
+            this.detailStatusDataGridViewCheckBoxColumn.FalseValue = "false";
+            this.detailStatusDataGridViewCheckBoxColumn.HeaderText = "Status";
+            this.detailStatusDataGridViewCheckBoxColumn.IndeterminateValue = "";
+            this.detailStatusDataGridViewCheckBoxColumn.Name = "detailStatusDataGridViewCheckBoxColumn";
+            this.detailStatusDataGridViewCheckBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.detailStatusDataGridViewCheckBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.detailStatusDataGridViewCheckBoxColumn.TrueValue = "true";
+            this.detailStatusDataGridViewCheckBoxColumn.Width = 60;
             // 
             // detailPOBindingSource
             // 
@@ -244,6 +245,9 @@
             this.cboNoPOKain.ValueMember = "PONumber";
             this.cboNoPOKain.SelectedIndexChanged += new System.EventHandler(this.cboNoPOKain_SelectedIndexChanged);
             // 
+            // preOrderKainBindingSource
+            // 
+            // 
             // txtSupplierName
             // 
             // 
@@ -296,19 +300,11 @@
             this.btnDeletePenerimaanKain.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnDeletePenerimaanKain.UseSelectable = true;
             this.btnDeletePenerimaanKain.UseTileImage = true;
-            // 
-            // btnSavePenerimaanKain
-            // 
-            this.btnSavePenerimaanKain.Location = new System.Drawing.Point(282, 549);
-            this.btnSavePenerimaanKain.Name = "btnSavePenerimaanKain";
-            this.btnSavePenerimaanKain.Size = new System.Drawing.Size(110, 48);
-            this.btnSavePenerimaanKain.TabIndex = 8;
-            this.btnSavePenerimaanKain.Text = "SAVE";
-            this.btnSavePenerimaanKain.UseSelectable = true;
+            this.btnDeletePenerimaanKain.Click += new System.EventHandler(this.btnDeletePenerimaanKain_Click);
             // 
             // btnExitPenerimaanKain
             // 
-            this.btnExitPenerimaanKain.Location = new System.Drawing.Point(152, 549);
+            this.btnExitPenerimaanKain.Location = new System.Drawing.Point(203, 549);
             this.btnExitPenerimaanKain.Name = "btnExitPenerimaanKain";
             this.btnExitPenerimaanKain.Size = new System.Drawing.Size(110, 48);
             this.btnExitPenerimaanKain.TabIndex = 9;
@@ -316,19 +312,20 @@
             this.btnExitPenerimaanKain.UseSelectable = true;
             this.btnExitPenerimaanKain.Click += new System.EventHandler(this.btnExitPenerimaanKain_Click);
             // 
-            // btnSaveEmployee
+            // btnUpdateStatus
             // 
-            this.btnSaveEmployee.ActiveControl = null;
-            this.btnSaveEmployee.Location = new System.Drawing.Point(130, 448);
-            this.btnSaveEmployee.Name = "btnSaveEmployee";
-            this.btnSaveEmployee.Size = new System.Drawing.Size(183, 67);
-            this.btnSaveEmployee.TabIndex = 24;
-            this.btnSaveEmployee.Text = "UPDATE DETAIL PO STATUS";
-            this.btnSaveEmployee.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnSaveEmployee.TileImage = global::Project.Properties.Resources.btn_save;
-            this.btnSaveEmployee.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnSaveEmployee.UseSelectable = true;
-            this.btnSaveEmployee.UseTileImage = true;
+            this.btnUpdateStatus.ActiveControl = null;
+            this.btnUpdateStatus.Location = new System.Drawing.Point(130, 448);
+            this.btnUpdateStatus.Name = "btnUpdateStatus";
+            this.btnUpdateStatus.Size = new System.Drawing.Size(183, 67);
+            this.btnUpdateStatus.TabIndex = 24;
+            this.btnUpdateStatus.Text = "UPDATE DETAIL PO STATUS";
+            this.btnUpdateStatus.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnUpdateStatus.TileImage = global::Project.Properties.Resources.btn_save;
+            this.btnUpdateStatus.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnUpdateStatus.UseSelectable = true;
+            this.btnUpdateStatus.UseTileImage = true;
+            this.btnUpdateStatus.Click += new System.EventHandler(this.btnUpdateStatus_Click);
             // 
             // txtSupplierCode
             // 
@@ -360,28 +357,24 @@
             this.txtSupplierCode.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtSupplierCode.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // preOrderKainBindingSource
+            // btnSaveUpdateStatus
             // 
-            this.preOrderKainBindingSource.DataSource = typeof(Project.PreOrderKain);
-            // 
-            // metroButton1
-            // 
-            this.metroButton1.Location = new System.Drawing.Point(414, 549);
-            this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(151, 48);
-            this.metroButton1.TabIndex = 26;
-            this.metroButton1.Text = "Save and Mark PO Done";
-            this.metroButton1.UseSelectable = true;
+            this.btnSaveUpdateStatus.Location = new System.Drawing.Point(385, 549);
+            this.btnSaveUpdateStatus.Name = "btnSaveUpdateStatus";
+            this.btnSaveUpdateStatus.Size = new System.Drawing.Size(151, 48);
+            this.btnSaveUpdateStatus.TabIndex = 26;
+            this.btnSaveUpdateStatus.Text = "Save and Mark PO Done";
+            this.btnSaveUpdateStatus.UseSelectable = true;
+            this.btnSaveUpdateStatus.Click += new System.EventHandler(this.btnSaveUpdateStatus_Click);
             // 
             // PenerimaanKain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(714, 644);
-            this.Controls.Add(this.metroButton1);
+            this.Controls.Add(this.btnSaveUpdateStatus);
             this.Controls.Add(this.txtSupplierCode);
-            this.Controls.Add(this.btnSaveEmployee);
-            this.Controls.Add(this.btnSavePenerimaanKain);
+            this.Controls.Add(this.btnUpdateStatus);
             this.Controls.Add(this.btnExitPenerimaanKain);
             this.Controls.Add(this.btnDeletePenerimaanKain);
             this.Controls.Add(this.metroLabel5);
@@ -419,21 +412,20 @@
         private MetroFramework.Controls.MetroTextBox txtSupplierName;
         private MetroFramework.Controls.MetroLabel metroLabel5;
         private MetroFramework.Controls.MetroTile btnDeletePenerimaanKain;
-        private MetroFramework.Controls.MetroButton btnSavePenerimaanKain;
         private MetroFramework.Controls.MetroButton btnExitPenerimaanKain;
         private System.Windows.Forms.BindingSource detailPOBindingSource;
+        private System.Windows.Forms.BindingSource materialBindingSource;
+        private System.Windows.Forms.BindingSource colorBindingSource;
+        private MetroFramework.Controls.MetroTile btnUpdateStatus;
+        private MetroFramework.Controls.MetroTextBox txtSupplierCode;
+        private System.Windows.Forms.BindingSource preOrderKainBindingSource;
+        private MetroFramework.Controls.MetroButton btnSaveUpdateStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn detailPOIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn pONumberDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn materialIDDataGridViewComboBoxColumn;
-        private System.Windows.Forms.BindingSource materialBindingSource;
         private System.Windows.Forms.DataGridViewComboBoxColumn colorIDDataGridViewComboBoxColumn;
-        private System.Windows.Forms.BindingSource colorBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn detailQtyDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn detailPriceDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn detailStatusDataGridViewTextBoxColumn;
-        private MetroFramework.Controls.MetroTile btnSaveEmployee;
-        private MetroFramework.Controls.MetroTextBox txtSupplierCode;
-        private System.Windows.Forms.BindingSource preOrderKainBindingSource;
-        private MetroFramework.Controls.MetroButton metroButton1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn detailStatusDataGridViewCheckBoxColumn;
     }
 }

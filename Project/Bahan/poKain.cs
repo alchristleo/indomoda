@@ -70,6 +70,7 @@ namespace Project
 
             listPO = GenericQuery.SqlQuery<DetailPOModel>("SELECT d.DetailPOID, d.PONumber, d.MaterialID, d.ColorID, d.DetailQty, d.DetailPrice, d.DetailTotal, d.DetailStatus, m.MaterialCode, m.MaterialName, c.ColorCode, c.ColorName FROM DetailPO d JOIN Materials m ON d.MaterialID = m.MaterialID JOIN Colors c ON d.ColorID = c.ColorID  WHERE DetailPOID = '"+currentPOID+"'");
             editpokain.setDPO(ref listPO);
+            editpokain.setDGV(ref dataGridView1);
             editpokain.setBS(ref detailPOBindingSource);
             editpokain.Show();
         }
@@ -107,36 +108,57 @@ namespace Project
             }
         }
 
-        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == 6)
-            {
-                lblGrandTotal.Text = CellSum().ToString();
-            }
-        }
+        //private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    if (e.ColumnIndex == 6)
+        //    {
+        //        lblGrandTotal.Text = CellSum().ToString();
+        //    }
 
-        private double CellSum()
-        {
-            double sum = 0;
-            for (int i = 0; i < dataGridView1.Rows.Count; ++i)
-            {
-                double d = 0;
-                Double.TryParse(dataGridView1.Rows[i].Cells[6].Value.ToString(), out d);
-                sum += d;
-            }
-            return sum;
-        }
+        //        int grandTotal = CalculateTotal();
+        //        lblGrandTotalDB.Text = grandTotal.ToString();
+        //        lblGrandTotal.Text = String.Format(grandTotal.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("id-ID")));
+        //}
 
-        private int CalculateTotal()
-        {
-            int total = 0;
-            int sum = 0;
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            {
-                sum = sum + int.Parse(dataGridView1.Rows[i].Cells[6].Value.ToString());
-            }
-            return sum;
-        }
+        //private double CellSum()
+        //{
+        //    dataGridView1.Refresh();
+        //    double sum = 0;
+        //    for (int i = 0; i < dataGridView1.Rows.Count; ++i)
+        //    {
+        //        double d = 0;
+        //        Double.TryParse(dataGridView1.Rows[i].Cells[6].Value.ToString(), out d);
+        //        sum += d;
+        //    }
+        //    return sum;
+        //    //List<DetailPOModel> gTotal = GenericQuery.SqlQuery<DetailPOModel>("SELECT d.DetailPOID, d.PONumber, d.MaterialID, d.ColorID, d.DetailQty, d.DetailPrice, d.DetailTotal, d.DetailStatus, m.MaterialCode, m.MaterialName, c.ColorCode, c.ColorName FROM DetailPO d JOIN Materials m ON d.MaterialID = m.MaterialID JOIN Colors c ON d.ColorID = c.ColorID  WHERE PONumber = '" + lblPONumber.Text + "'");
+        //    //int x = 0;
+        //    //foreach (var c in gTotal)
+        //    //{
+        //    //    x += c.DetailTotal;
+        //    //}
+        //    //return x;
+        //}
+
+        //private double asd()
+        //{
+        //    double y = 0;
+        //    dataGridView1.Refresh();
+        //    int currentRow = dataGridView1.CurrentRow.Index;
+        //    Double.TryParse(dataGridView1.Rows[currentRow].Cells[6].Value.ToString(), out y);
+        //    return y;
+        //}
+
+        //private int CalculateTotal()
+        //{
+        //    int total = 0;
+        //    int sum = 0;
+        //    for (int i = 0; i < dataGridView1.Rows.Count; i++)
+        //    {
+        //        sum = sum + int.Parse(dataGridView1.Rows[i].Cells[6].Value.ToString());
+        //    }
+        //    return sum;
+        //}
 
         private void poKain_Load(object sender, EventArgs e)
         {
@@ -152,7 +174,15 @@ namespace Project
             dataGridView1.Columns[5].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("id-ID");
             dataGridView1.Columns[6].DefaultCellStyle.Format = "C";
             dataGridView1.Columns[6].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("id-ID");
-            lblGrandTotal.Text = CellSum().ToString();
+            //lblGrandTotal.Text = CellSum().ToString();
+
+            //List<DetailPOModel> gTotal = GenericQuery.SqlQuery<DetailPOModel>("SELECT d.DetailPOID, d.PONumber, d.MaterialID, d.ColorID, d.DetailQty, d.DetailPrice, d.DetailTotal, d.DetailStatus, m.MaterialCode, m.MaterialName, c.ColorCode, c.ColorName FROM DetailPO d JOIN Materials m ON d.MaterialID = m.MaterialID JOIN Colors c ON d.ColorID = c.ColorID  WHERE PONumber = '" + lblPONumber.Text + "'");
+            //int x = 0;
+            //foreach (var c in gTotal)
+            //{
+            //    x += c.DetailTotal;
+            //}
+            //lblGrandTotal.Text = x.ToString();
         }
 
         private void btnSavePoKain_Click(object sender, EventArgs e)
@@ -177,7 +207,7 @@ namespace Project
                                 new SqlParameter("@idPOKain", setPOID),
                                 new SqlParameter("@PONumber", lblPONumber.Text),
                                 new SqlParameter("@SupplierID", SupplierID),
-                                new SqlParameter("@GrandTotal", lblGrandTotalDB.Text),
+                                new SqlParameter("@GrandTotal", lblGrandTotal.Text),
                                 new SqlParameter("@Date_time", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")),
                                 new SqlParameter("@status", setStatus)
                             });
@@ -202,24 +232,62 @@ namespace Project
             Close();
         }
 
-        private void dataGridView1_RowAdded(object sender, DataGridViewRowsAddedEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                int grandTotal = CalculateTotal();
-                lblGrandTotalDB.Text = grandTotal.ToString();
-                lblGrandTotal.Text = String.Format(grandTotal.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("id-ID")));
-            }
-        }
+        //private void dataGridView1_RowAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        //{
+        //    if (e.RowIndex >= 0)
+        //    {
+        //        //int grandTotal = CalculateTotal();
+        //        //lblGrandTotalDB.Text = grandTotal.ToString();
+        //        //lblGrandTotal.Text = String.Format(grandTotal.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("id-ID")));
+        //        //int gTotal = 0;
+        //        //listPO = GenericQuery.SqlQuery<DetailPOModel>("SELECT d.DetailPOID, d.PONumber, d.MaterialID, d.ColorID, d.DetailQty, d.DetailPrice, d.DetailTotal, d.DetailStatus, m.MaterialCode, m.MaterialName, c.ColorCode, c.ColorName FROM DetailPO d JOIN Materials m ON d.MaterialID = m.MaterialID JOIN Colors c ON d.ColorID = c.ColorID  WHERE PONumber = '" + lblPONumber.Text + "'");
+        //        //gTotal = listPO.Sum(d => d.DetailTotal);
+        //        //lblGrandTotal.Text = gTotal.ToString();
+        //        lblGrandTotal.Text = CellSum().ToString();
+        //    }
+        //}
 
-        private void dataGridView1_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                int grandTotal = CalculateTotal();
-                lblGrandTotalDB.Text = grandTotal.ToString();
-                lblGrandTotal.Text = String.Format(grandTotal.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("id-ID")));
-            }
-        }
+        //private void dataGridView1_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        //{
+        //    if (e.RowIndex >= 0)
+        //    {
+        //        //int grandTotal = CalculateTotal();
+        //        //lblGrandTotalDB.Text = grandTotal.ToString();
+        //        //lblGrandTotal.Text = String.Format(grandTotal.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("id-ID")));
+        //        int gTotal = 0;
+        //        listPO = GenericQuery.SqlQuery<DetailPOModel>("SELECT d.DetailPOID, d.PONumber, d.MaterialID, d.ColorID, d.DetailQty, d.DetailPrice, d.DetailTotal, d.DetailStatus, m.MaterialCode, m.MaterialName, c.ColorCode, c.ColorName FROM DetailPO d JOIN Materials m ON d.MaterialID = m.MaterialID JOIN Colors c ON d.ColorID = c.ColorID  WHERE PONumber = '" + lblPONumber.Text + "'");
+        //        gTotal = listPO.Sum(d => d.DetailTotal);
+        //        lblGrandTotal.Text = gTotal.ToString();
+        //        lblGrandTotal.Text = CellSum().ToString();
+        //    }
+        //}
+
+        //private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    if (e.RowIndex >= 0)
+        //    {
+        //        //int gTotal = 0;
+        //        //listPO = GenericQuery.SqlQuery<DetailPOModel>("SELECT d.DetailPOID, d.PONumber, d.MaterialID, d.ColorID, d.DetailQty, d.DetailPrice, d.DetailTotal, d.DetailStatus, m.MaterialCode, m.MaterialName, c.ColorCode, c.ColorName FROM DetailPO d JOIN Materials m ON d.MaterialID = m.MaterialID JOIN Colors c ON d.ColorID = c.ColorID  WHERE PONumber = '" + lblPONumber.Text + "'");
+        //        //gTotal = listPO.Sum(d => d.DetailTotal);
+        //        //lblGrandTotal.Text = gTotal.ToString();
+        //        lblGrandTotal.Text = CellSum().ToString();
+        //        lblEditTotal.Text = asd().ToString();
+        //    }
+        //}
+
+        //private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    if (e.RowIndex >= 0)
+        //    {
+        //        //int grandTotal = CalculateTotal();
+        //        //lblGrandTotalDB.Text = grandTotal.ToString();
+        //        //lblGrandTotal.Text = String.Format(grandTotal.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("id-ID")));
+        //        int gTotal = 0;
+        //        listPO = GenericQuery.SqlQuery<DetailPOModel>("SELECT d.DetailPOID, d.PONumber, d.MaterialID, d.ColorID, d.DetailQty, d.DetailPrice, d.DetailTotal, d.DetailStatus, m.MaterialCode, m.MaterialName, c.ColorCode, c.ColorName FROM DetailPO d JOIN Materials m ON d.MaterialID = m.MaterialID JOIN Colors c ON d.ColorID = c.ColorID  WHERE PONumber = '" + lblPONumber.Text + "'");
+        //        gTotal = listPO.Sum(d => d.DetailTotal);
+        //        lblGrandTotal.Text = gTotal.ToString();
+        //        lblGrandTotal.Text = CellSum().ToString();
+        //    }
+        //}
     }
 }

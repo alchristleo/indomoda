@@ -127,13 +127,16 @@ namespace Project
 
                         foreach (var i in _bs.List.Cast<DetailPO>().Where(x => x.DetailPOID == setDetailPOID))
                         {
+                            i.PONumber = getPONumber;
                             i.MaterialID = getMaterialID;
                             i.ColorID = getColorID;
                             i.DetailQty = getQty;
                             i.DetailPrice = getPrice;
-                            i.DetailTotal = getQty * getPrice;
+                            i.DetailTotal = setTotal;
+                            i.DetailStatus = setStatus;
                         }
-
+                        _dv.DataSource = _bs;
+                        _dv.EndEdit();
                         _dv.Refresh();
                     }
                     catch (Exception ex)
