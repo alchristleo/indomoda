@@ -34,6 +34,7 @@ namespace Project
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<DetailPO> DetailPOes { get; set; }
         public virtual DbSet<PreOrderKain> PreOrderKains { get; set; }
+        public virtual DbSet<PenerimaanKain> PenerimaanKains { get; set; }
 
         internal Task<int> SaveChangesAsync()
         {

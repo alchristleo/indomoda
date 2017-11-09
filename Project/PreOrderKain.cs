@@ -14,6 +14,12 @@ namespace Project
     
     public partial class PreOrderKain
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public PreOrderKain()
+        {
+            this.PenerimaanKains = new HashSet<PenerimaanKain>();
+        }
+    
         public int idPOKain { get; set; }
         public long PONumber { get; set; }
         public int SupplierID { get; set; }
@@ -22,5 +28,7 @@ namespace Project
         public bool status { get; set; }
     
         public virtual IndomodaSupplier IndomodaSupplier { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PenerimaanKain> PenerimaanKains { get; set; }
     }
 }

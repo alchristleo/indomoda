@@ -151,7 +151,15 @@ namespace Project
 
                 if (listPODb.Count > 0)
                 {
-                    MetroFramework.MetroMessageBox.Show(this, "You must mark all the Detail PO as done first!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    MetroFramework.MetroMessageBox.Show(this, "You must mark all the Detail PO as done first!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else if (txtNoFaktur.Text == "")
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "You must fill No Faktur first!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else if (txtNoFaktur.Text.Length != 10 )
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "No Faktur must be 10 characters!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
@@ -164,6 +172,26 @@ namespace Project
                                 new SqlParameter("@status", setStatus)
                             });
                             db.SaveChangesAsync().Wait();
+
+                            try
+                            {
+                                int setFakturID = db.PenerimaanKains.AsEnumerable().LastOrDefault() == null ? 1 : db.PenerimaanKains.AsEnumerable().LastOrDefault().idFaktur + 1;
+                                string setNoFaktur = txtNoFaktur.Text;
+                                int setStatusFaktur = 0;
+                                int b = GenericQuery.ExecSQLCommand("INSERT INTO PenerimaanKains (idFaktur, NoFaktur, PONumber, Date_time, status) VALUES(@idFaktur, @NoFaktur, @PONumber, @Date_time, @status)", new[] {
+                                    new SqlParameter("@idFaktur", setFakturID),
+                                    new SqlParameter("@NoFaktur", setNoFaktur),
+                                    new SqlParameter("@PONumber", po),
+                                    new SqlParameter("@Date_time", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")),
+                                    new SqlParameter("@status", setStatusFaktur)
+                                });
+                                db.SaveChangesAsync().Wait();
+                            }
+                            catch (Exception ex)
+                            {
+                                MetroFramework.MetroMessageBox.Show(this, ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+
                             cboNoPOKain.Refresh();
 
                             if (cboNoPOKain.Items.Count == 0)
@@ -182,7 +210,8 @@ namespace Project
                             preOrderKainBindingSource.DataSource = listCboPO.ToList();
                             txtSupplierCode.Clear();
                             txtSupplierName.Clear();
-                            MetroFramework.MetroMessageBox.Show(this, "Success! This PO has been marked as done", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                            txtNoFaktur.Clear();
+                            MetroFramework.MetroMessageBox.Show(this, "Success! No Faktur created and this PO has been marked as done", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
                         }
                         catch (Exception ex)
                         {

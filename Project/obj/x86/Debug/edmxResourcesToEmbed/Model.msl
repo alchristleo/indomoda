@@ -89,5 +89,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="PenerimaanKains">
+      <EntityTypeMapping TypeName="indomodaModel.PenerimaanKain">
+        <MappingFragment StoreEntitySet="PenerimaanKains">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="Date_time" ColumnName="Date_time" />
+          <ScalarProperty Name="PONumber" ColumnName="PONumber" />
+          <ScalarProperty Name="NoFaktur" ColumnName="NoFaktur" />
+          <ScalarProperty Name="idFaktur" ColumnName="idFaktur" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

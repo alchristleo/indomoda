@@ -80,6 +80,11 @@
       <End Role="IndomodaSupplier" EntitySet="IndomodaSuppliers" />
       <End Role="PreOrderKain" EntitySet="PreOrderKains" />
     </AssociationSet>
+    <EntitySet Name="PenerimaanKains" EntityType="indomodaModel.PenerimaanKain" />
+    <AssociationSet Name="FK_POKain_PenerimaanKain" Association="indomodaModel.FK_POKain_PenerimaanKain">
+      <End Role="PreOrderKain" EntitySet="PreOrderKains" />
+      <End Role="PenerimaanKain" EntitySet="PenerimaanKains" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="DetailPO">
     <Key>
@@ -107,6 +112,7 @@
     <Property Name="Date_time" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="status" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="IndomodaSupplier" Relationship="indomodaModel.FK_POKain_Suppliers" FromRole="PreOrderKain" ToRole="IndomodaSupplier" />
+    <NavigationProperty Name="PenerimaanKains" Relationship="indomodaModel.FK_POKain_PenerimaanKain" FromRole="PreOrderKain" ToRole="PenerimaanKain" />
   </EntityType>
   <Association Name="FK_DetailPO_Colors">
     <End Type="indomodaModel.Color" Role="Color" Multiplicity="1" />
@@ -141,6 +147,29 @@
       </Principal>
       <Dependent Role="PreOrderKain">
         <PropertyRef Name="SupplierID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="PenerimaanKain">
+    <Key>
+      <PropertyRef Name="idFaktur" />
+    </Key>
+    <Property Name="idFaktur" Type="Int32" Nullable="false" />
+    <Property Name="NoFaktur" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="PONumber" Type="Int64" Nullable="false" />
+    <Property Name="Date_time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="status" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="PreOrderKain" Relationship="indomodaModel.FK_POKain_PenerimaanKain" FromRole="PenerimaanKain" ToRole="PreOrderKain" />
+  </EntityType>
+  <Association Name="FK_POKain_PenerimaanKain">
+    <End Type="indomodaModel.PreOrderKain" Role="PreOrderKain" Multiplicity="1" />
+    <End Type="indomodaModel.PenerimaanKain" Role="PenerimaanKain" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PreOrderKain">
+        <PropertyRef Name="PONumber" />
+      </Principal>
+      <Dependent Role="PenerimaanKain">
+        <PropertyRef Name="PONumber" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
