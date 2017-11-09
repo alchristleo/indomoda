@@ -7,7 +7,6 @@
       <Diagram DiagramId="79611bb975a5473386628d438f8c5e5e" Name="Diagram1">
         <EntityTypeShape EntityType="indomodaModel.Color" Width="1.5" PointX="0.5" PointY="3.375" IsExpanded="true" />
         <EntityTypeShape EntityType="indomodaModel.Customer" Width="1.5" PointX="5.125" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="indomodaModel.Employee" Width="1.5" PointX="7" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="indomodaModel.IndomodaSupplier" Width="1.5" PointX="0.5" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="indomodaModel.Material" Width="1.5" PointX="0.5" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="indomodaModel.User" Width="1.5" PointX="6.875" PointY="3.625" IsExpanded="true" />
@@ -16,8 +15,9 @@
         <AssociationConnector Association="indomodaModel.FK_DetailPO_Colors" />
         <AssociationConnector Association="indomodaModel.FK_DetailPO_Materials" />
         <AssociationConnector Association="indomodaModel.FK_POKain_Suppliers" />
-        <EntityTypeShape EntityType="indomodaModel.PenerimaanKain" Width="1.5" PointX="4.875" PointY="0.5" />
+        <EntityTypeShape EntityType="indomodaModel.DetailFaktur" Width="1.5" PointX="5.125" PointY="0.625" />
         <AssociationConnector Association="indomodaModel.FK_POKain_PenerimaanKain" />
+        <EntityTypeShape EntityType="indomodaModel.Employee" Width="1.5" PointX="7" PointY="1" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

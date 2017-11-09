@@ -15,8 +15,8 @@ namespace Project
     public partial class Employee
     {
         public int EmployeeID { get; set; }
-        public string EmployeeCode { get; set; }
         public string EmployeeName { get; set; }
+        public string EmployeeCode { get; set; }
         public string EmployeeEmail { get; set; }
         public string EmployeePhone { get; set; }
         public string EmployeePosition { get; set; }

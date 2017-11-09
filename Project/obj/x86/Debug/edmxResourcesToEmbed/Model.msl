@@ -21,18 +21,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Employees">
-      <EntityTypeMapping TypeName="indomodaModel.Employee">
-        <MappingFragment StoreEntitySet="Employees">
-          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
-          <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
-          <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
-          <ScalarProperty Name="EmployeeEmail" ColumnName="EmployeeEmail" />
-          <ScalarProperty Name="EmployeePhone" ColumnName="EmployeePhone" />
-          <ScalarProperty Name="EmployeePosition" ColumnName="EmployeePosition" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="IndomodaSuppliers">
       <EntityTypeMapping TypeName="indomodaModel.IndomodaSupplier">
         <MappingFragment StoreEntitySet="IndomodaSuppliers">
@@ -89,14 +77,26 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="PenerimaanKains">
-      <EntityTypeMapping TypeName="indomodaModel.PenerimaanKain">
-        <MappingFragment StoreEntitySet="PenerimaanKains">
+    <EntitySetMapping Name="DetailFakturs">
+      <EntityTypeMapping TypeName="indomodaModel.DetailFaktur">
+        <MappingFragment StoreEntitySet="DetailFaktur">
           <ScalarProperty Name="status" ColumnName="status" />
           <ScalarProperty Name="Date_time" ColumnName="Date_time" />
           <ScalarProperty Name="PONumber" ColumnName="PONumber" />
           <ScalarProperty Name="NoFaktur" ColumnName="NoFaktur" />
           <ScalarProperty Name="idFaktur" ColumnName="idFaktur" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="indomodaModel.Employee">
+        <MappingFragment StoreEntitySet="Employees">
+          <ScalarProperty Name="EmployeePosition" ColumnName="EmployeePosition" />
+          <ScalarProperty Name="EmployeePhone" ColumnName="EmployeePhone" />
+          <ScalarProperty Name="EmployeeEmail" ColumnName="EmployeeEmail" />
+          <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+          <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

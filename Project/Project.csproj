@@ -98,6 +98,9 @@
     <Compile Include="Customer.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="DetailFaktur.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="DetailPO.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -174,12 +177,9 @@
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\DetailPOModel.cs" />
+    <Compile Include="Models\FakturKainModel.cs" />
     <Compile Include="Models\POKainModel.cs" />
     <Compile Include="Models\SupplierModel.cs" />
-    <Compile Include="PenerimaanKain.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Penerimaan\PenerimaanCMT.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -404,10 +404,12 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\DataSources\Color.datasource" />
+    <None Include="Properties\DataSources\DetailFaktur.datasource" />
     <None Include="Properties\DataSources\DetailPO.datasource" />
     <None Include="Properties\DataSources\Employee.datasource" />
     <None Include="Properties\DataSources\IndomodaSupplier.datasource" />
     <None Include="Properties\DataSources\Material.datasource" />
+    <None Include="Properties\DataSources\PemotonganKain.datasource" />
     <None Include="Properties\DataSources\POKain.datasource" />
     <None Include="Properties\DataSources\PreOrderKain.datasource" />
     <None Include="Properties\Settings.settings">

@@ -12,7 +12,7 @@ namespace Project
     using System;
     using System.Collections.Generic;
     
-    public partial class PenerimaanKain
+    public partial class DetailFaktur
     {
         public int idFaktur { get; set; }
         public string NoFaktur { get; set; }

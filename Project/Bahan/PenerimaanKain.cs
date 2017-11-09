@@ -175,10 +175,10 @@ namespace Project
 
                             try
                             {
-                                int setFakturID = db.PenerimaanKains.AsEnumerable().LastOrDefault() == null ? 1 : db.PenerimaanKains.AsEnumerable().LastOrDefault().idFaktur + 1;
+                                int setFakturID = db.DetailFakturs.AsEnumerable().LastOrDefault() == null ? 1 : db.DetailFakturs.AsEnumerable().LastOrDefault().idFaktur + 1;
                                 string setNoFaktur = txtNoFaktur.Text;
                                 int setStatusFaktur = 0;
-                                int b = GenericQuery.ExecSQLCommand("INSERT INTO PenerimaanKains (idFaktur, NoFaktur, PONumber, Date_time, status) VALUES(@idFaktur, @NoFaktur, @PONumber, @Date_time, @status)", new[] {
+                                int b = GenericQuery.ExecSQLCommand("INSERT INTO DetailFaktur (idFaktur, NoFaktur, PONumber, Date_time, status) VALUES(@idFaktur, @NoFaktur, @PONumber, @Date_time, @status)", new[] {
                                     new SqlParameter("@idFaktur", setFakturID),
                                     new SqlParameter("@NoFaktur", setNoFaktur),
                                     new SqlParameter("@PONumber", po),

@@ -145,7 +145,7 @@ namespace Project
             this.lblEmployeeName.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.lblEmployeeName.CustomButton.UseSelectable = true;
             this.lblEmployeeName.CustomButton.Visible = false;
-            this.lblEmployeeName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceEmployee, "EmployeeCode", true));
+            this.lblEmployeeName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceEmployee, "EmployeeName", true));
             this.lblEmployeeName.Lines = new string[0];
             this.lblEmployeeName.Location = new System.Drawing.Point(423, 90);
             this.lblEmployeeName.MaxLength = 32767;
@@ -290,7 +290,7 @@ namespace Project
             this.lblEmployeeCode.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.lblEmployeeCode.CustomButton.UseSelectable = true;
             this.lblEmployeeCode.CustomButton.Visible = false;
-            this.lblEmployeeCode.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceEmployee, "EmployeeName", true));
+            this.lblEmployeeCode.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceEmployee, "EmployeeCode", true));
             this.lblEmployeeCode.Lines = new string[0];
             this.lblEmployeeCode.Location = new System.Drawing.Point(140, 140);
             this.lblEmployeeCode.MaxLength = 32767;
