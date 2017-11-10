@@ -30,10 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.idFakturDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.noFakturDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pONumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.datetimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.detailFakturBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
@@ -54,6 +50,12 @@
             this.btnExitPemotonganKain = new MetroFramework.Controls.MetroButton();
             this.txtSupplierCode = new MetroFramework.Controls.MetroTextBox();
             this.txtPONumber = new MetroFramework.Controls.MetroTextBox();
+            this.idFakturDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.noFakturDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pONumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.datetimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NoFakturStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.detailFakturBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.detailFakturBindingSourceCbo)).BeginInit();
@@ -70,45 +72,15 @@
             this.idFakturDataGridViewTextBoxColumn,
             this.noFakturDataGridViewTextBoxColumn,
             this.pONumberDataGridViewTextBoxColumn,
-            this.datetimeDataGridViewTextBoxColumn});
+            this.datetimeDataGridViewTextBoxColumn,
+            this.status,
+            this.NoFakturStatus});
             this.dataGridView1.DataSource = this.detailFakturBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(33, 292);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(721, 241);
             this.dataGridView1.TabIndex = 4;
-            // 
-            // idFakturDataGridViewTextBoxColumn
-            // 
-            this.idFakturDataGridViewTextBoxColumn.DataPropertyName = "idFaktur";
-            this.idFakturDataGridViewTextBoxColumn.HeaderText = "No";
-            this.idFakturDataGridViewTextBoxColumn.Name = "idFakturDataGridViewTextBoxColumn";
-            this.idFakturDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idFakturDataGridViewTextBoxColumn.Width = 40;
-            // 
-            // noFakturDataGridViewTextBoxColumn
-            // 
-            this.noFakturDataGridViewTextBoxColumn.DataPropertyName = "NoFaktur";
-            this.noFakturDataGridViewTextBoxColumn.HeaderText = "No. Faktur";
-            this.noFakturDataGridViewTextBoxColumn.Name = "noFakturDataGridViewTextBoxColumn";
-            this.noFakturDataGridViewTextBoxColumn.ReadOnly = true;
-            this.noFakturDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // pONumberDataGridViewTextBoxColumn
-            // 
-            this.pONumberDataGridViewTextBoxColumn.DataPropertyName = "PONumber";
-            this.pONumberDataGridViewTextBoxColumn.HeaderText = "No. PO";
-            this.pONumberDataGridViewTextBoxColumn.Name = "pONumberDataGridViewTextBoxColumn";
-            this.pONumberDataGridViewTextBoxColumn.ReadOnly = true;
-            this.pONumberDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // datetimeDataGridViewTextBoxColumn
-            // 
-            this.datetimeDataGridViewTextBoxColumn.DataPropertyName = "Date_time";
-            this.datetimeDataGridViewTextBoxColumn.HeaderText = "Time";
-            this.datetimeDataGridViewTextBoxColumn.Name = "datetimeDataGridViewTextBoxColumn";
-            this.datetimeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.datetimeDataGridViewTextBoxColumn.Width = 200;
             // 
             // detailFakturBindingSource
             // 
@@ -392,6 +364,55 @@
             this.txtPONumber.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtPONumber.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
+            // idFakturDataGridViewTextBoxColumn
+            // 
+            this.idFakturDataGridViewTextBoxColumn.DataPropertyName = "idFaktur";
+            this.idFakturDataGridViewTextBoxColumn.HeaderText = "No";
+            this.idFakturDataGridViewTextBoxColumn.Name = "idFakturDataGridViewTextBoxColumn";
+            this.idFakturDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idFakturDataGridViewTextBoxColumn.Width = 40;
+            // 
+            // noFakturDataGridViewTextBoxColumn
+            // 
+            this.noFakturDataGridViewTextBoxColumn.DataPropertyName = "NoFaktur";
+            this.noFakturDataGridViewTextBoxColumn.HeaderText = "No. Faktur";
+            this.noFakturDataGridViewTextBoxColumn.Name = "noFakturDataGridViewTextBoxColumn";
+            this.noFakturDataGridViewTextBoxColumn.ReadOnly = true;
+            this.noFakturDataGridViewTextBoxColumn.Width = 120;
+            // 
+            // pONumberDataGridViewTextBoxColumn
+            // 
+            this.pONumberDataGridViewTextBoxColumn.DataPropertyName = "PONumber";
+            this.pONumberDataGridViewTextBoxColumn.HeaderText = "No. PO";
+            this.pONumberDataGridViewTextBoxColumn.Name = "pONumberDataGridViewTextBoxColumn";
+            this.pONumberDataGridViewTextBoxColumn.ReadOnly = true;
+            this.pONumberDataGridViewTextBoxColumn.Width = 120;
+            // 
+            // datetimeDataGridViewTextBoxColumn
+            // 
+            this.datetimeDataGridViewTextBoxColumn.DataPropertyName = "Date_time";
+            this.datetimeDataGridViewTextBoxColumn.HeaderText = "Time";
+            this.datetimeDataGridViewTextBoxColumn.Name = "datetimeDataGridViewTextBoxColumn";
+            this.datetimeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.datetimeDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // status
+            // 
+            this.status.DataPropertyName = "status";
+            this.status.HeaderText = "Status";
+            this.status.Name = "status";
+            this.status.ReadOnly = true;
+            this.status.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.status.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.status.Visible = false;
+            // 
+            // NoFakturStatus
+            // 
+            this.NoFakturStatus.HeaderText = "No Faktur Status";
+            this.NoFakturStatus.Name = "NoFakturStatus";
+            this.NoFakturStatus.ReadOnly = true;
+            this.NoFakturStatus.Width = 150;
+            // 
             // PemotonganKain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -448,10 +469,12 @@
         private System.Windows.Forms.BindingSource detailFakturBindingSource;
         private System.Windows.Forms.BindingSource employeeBindingSource;
         private System.Windows.Forms.BindingSource detailFakturBindingSourceCbo;
+        private MetroFramework.Controls.MetroTextBox txtPONumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn idFakturDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn noFakturDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn pONumberDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn datetimeDataGridViewTextBoxColumn;
-        private MetroFramework.Controls.MetroTextBox txtPONumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn status;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NoFakturStatus;
     }
 }

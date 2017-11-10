@@ -47,6 +47,23 @@ namespace Project
                 detailFakturBindingSourceCbo.DataSource = listFaktur.ToList();
                 employeeBindingSource.DataSource = db.Employees.ToList();
                 detailFakturBindingSource.DataSource = db.DetailFakturs.ToList();
+                dataGridView1.Refresh();
+                for(int i = 0; i< dataGridView1.Rows.Count; i++)
+                {
+                    string status = dataGridView1.Rows[i].Cells["Status"].Value.ToString();
+                    if (status == "True")
+                    {
+                        dataGridView1.Columns[5].ValueType = typeof(String);
+                        dataGridView1.Rows[i].Cells[5].Value = "PIC Code has been assigned";
+                        dataGridView1.UpdateCellValue(5, i);
+                    }
+                    else
+                    {
+                        dataGridView1.Columns[5].ValueType = typeof(String);
+                        dataGridView1.Rows[i].Cells[5].Value = "PIC Code is not assigned";
+                        dataGridView1.UpdateCellValue(5, i);
+                    }
+                }
             }
         }
 
@@ -107,10 +124,30 @@ namespace Project
                             List<FakturKainModel> newListFaktur = GenericQuery.SqlQuery<FakturKainModel>("select df.idFaktur, df.NoFaktur, df.PONumber, df.status, df.Date_time, p.SupplierID, i.SupplierCode, i.SupplierName from DetailFaktur df JOIN PreOrderKains p on df.PONumber = p.PONumber JOIN IndomodaSuppliers i on p.SupplierID = i.SupplierID WHERE df.status = '" + 0 + "'");
                             newListFaktur.Remove(new FakturKainModel { NoFaktur = noFaktur });
                             detailFakturBindingSourceCbo.DataSource = newListFaktur.ToList();
+                            detailFakturBindingSource.DataSource = db.DetailFakturs.ToList();
+
+                            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                            {
+                                string status = dataGridView1.Rows[i].Cells["Status"].Value.ToString();
+                                if (status == "True")
+                                {
+                                    dataGridView1.Columns[5].ValueType = typeof(String);
+                                    dataGridView1.Rows[i].Cells[5].Value = "PIC Code has been assigned";
+                                    dataGridView1.UpdateCellValue(5, i);
+                                }
+                                else
+                                {
+                                    dataGridView1.Columns[5].ValueType = typeof(String);
+                                    dataGridView1.Rows[i].Cells[5].Value = "PIC Code is not assigned";
+                                    dataGridView1.UpdateCellValue(5, i);
+                                }
+                            }
+
                             txtNoPemotonganKain.Clear();
                             txtPONumber.Clear();
                             txtSupplierCode.Clear();
                             txtSupplierName.Clear();
+                            dataGridView1.Refresh();
                             MetroFramework.MetroMessageBox.Show(this, "Success! Pemotongan kain has been added to database", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
                         }
                         catch (Exception ex)
