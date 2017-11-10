@@ -18,6 +18,7 @@ namespace Project
         public PreOrderKain()
         {
             this.DetailFakturs = new HashSet<DetailFaktur>();
+            this.DetailPemotonganKains = new HashSet<DetailPemotonganKain>();
         }
     
         public int idPOKain { get; set; }
@@ -27,8 +28,10 @@ namespace Project
         public System.DateTime Date_time { get; set; }
         public bool status { get; set; }
     
-        public virtual IndomodaSupplier IndomodaSupplier { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DetailFaktur> DetailFakturs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DetailPemotonganKain> DetailPemotonganKains { get; set; }
+        public virtual IndomodaSupplier IndomodaSupplier { get; set; }
     }
 }

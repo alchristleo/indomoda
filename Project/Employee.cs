@@ -14,11 +14,20 @@ namespace Project
     
     public partial class Employee
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Employee()
+        {
+            this.DetailPemotonganKains = new HashSet<DetailPemotonganKain>();
+        }
+    
         public int EmployeeID { get; set; }
         public string EmployeeName { get; set; }
         public string EmployeeCode { get; set; }
         public string EmployeeEmail { get; set; }
         public string EmployeePhone { get; set; }
         public string EmployeePosition { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DetailPemotonganKain> DetailPemotonganKains { get; set; }
     }
 }

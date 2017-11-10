@@ -65,18 +65,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="PreOrderKains">
-      <EntityTypeMapping TypeName="indomodaModel.PreOrderKain">
-        <MappingFragment StoreEntitySet="PreOrderKains">
-          <ScalarProperty Name="status" ColumnName="status" />
-          <ScalarProperty Name="Date_time" ColumnName="Date_time" />
-          <ScalarProperty Name="GrandTotal" ColumnName="GrandTotal" />
-          <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
-          <ScalarProperty Name="PONumber" ColumnName="PONumber" />
-          <ScalarProperty Name="idPOKain" ColumnName="idPOKain" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="DetailFakturs">
       <EntityTypeMapping TypeName="indomodaModel.DetailFaktur">
         <MappingFragment StoreEntitySet="DetailFaktur">
@@ -85,6 +73,19 @@
           <ScalarProperty Name="PONumber" ColumnName="PONumber" />
           <ScalarProperty Name="NoFaktur" ColumnName="NoFaktur" />
           <ScalarProperty Name="idFaktur" ColumnName="idFaktur" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetailPemotonganKains">
+      <EntityTypeMapping TypeName="indomodaModel.DetailPemotonganKain">
+        <MappingFragment StoreEntitySet="DetailPemotonganKain">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="Date_time" ColumnName="Date_time" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="PONumber" ColumnName="PONumber" />
+          <ScalarProperty Name="NoFaktur" ColumnName="NoFaktur" />
+          <ScalarProperty Name="noPemotonganKain" ColumnName="noPemotonganKain" />
+          <ScalarProperty Name="idPemotonganKain" ColumnName="idPemotonganKain" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -97,6 +98,18 @@
           <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
           <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
           <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PreOrderKains">
+      <EntityTypeMapping TypeName="indomodaModel.PreOrderKain">
+        <MappingFragment StoreEntitySet="PreOrderKains">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="Date_time" ColumnName="Date_time" />
+          <ScalarProperty Name="GrandTotal" ColumnName="GrandTotal" />
+          <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+          <ScalarProperty Name="PONumber" ColumnName="PONumber" />
+          <ScalarProperty Name="idPOKain" ColumnName="idPOKain" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

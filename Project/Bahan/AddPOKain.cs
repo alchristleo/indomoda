@@ -53,41 +53,66 @@ namespace Project
             Close();
         }
 
+        bool IsDigitsOnly(string str)
+        {
+            foreach (char c in str)
+            {
+                if (c < '0' || c > '9')
+                    return false;
+            }
+
+            return true;
+        }
+
         private void btnSavePOKain_Click(object sender, EventArgs e)
         {
             if (cboMaterialCode.SelectedIndex == -1)
             {
-                MetroFramework.MetroMessageBox.Show(this, "You must select the Bahan Code!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MetroFramework.MetroMessageBox.Show(this, "You must select the Bahan Code!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 cboMaterialCode.Focus();
                 return;
             }
             else if (String.IsNullOrEmpty(txtAddMaterialName.Text))
             {
-                MetroFramework.MetroMessageBox.Show(this, "Bahan name can't be empty!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MetroFramework.MetroMessageBox.Show(this, "Bahan name can't be empty!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtAddMaterialName.Focus();
                 return;
             }
             else if (cboColorCode.SelectedIndex == -1)
             {
-                MetroFramework.MetroMessageBox.Show(this, "You must select the Warna Code!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MetroFramework.MetroMessageBox.Show(this, "You must select the Warna Code!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 cboColorCode.Focus();
                 return;
             }
             else if (String.IsNullOrEmpty(txtAddColorName.Text))
             {
-                MetroFramework.MetroMessageBox.Show(this, "Warna name can't be empty!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MetroFramework.MetroMessageBox.Show(this, "Warna name can't be empty!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtAddColorName.Focus();
                 return;
             }
             else if (String.IsNullOrEmpty(txtAddQuantity.Text))
             {
-                MetroFramework.MetroMessageBox.Show(this, "Quantity can't be empty!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MetroFramework.MetroMessageBox.Show(this, "Quantity can't be empty!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtAddQuantity.Focus();
+                return;
+            }
+            else if (!IsDigitsOnly(txtAddQuantity.Text))
+            {
+                MetroFramework.MetroMessageBox.Show(this, "Quantity must be numeric!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtAddQuantity.Clear();
                 txtAddQuantity.Focus();
                 return;
             }
             else if (String.IsNullOrEmpty(txtAddPrice.Text))
             {
-                MetroFramework.MetroMessageBox.Show(this, "Price can't be empty!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MetroFramework.MetroMessageBox.Show(this, "Price can't be empty!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtAddPrice.Focus();
+                return;
+            }
+            else if (!IsDigitsOnly(txtAddPrice.Text))
+            {
+                MetroFramework.MetroMessageBox.Show(this, "Price must be numeric!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtAddPrice.Clear();
                 txtAddPrice.Focus();
                 return;
             }

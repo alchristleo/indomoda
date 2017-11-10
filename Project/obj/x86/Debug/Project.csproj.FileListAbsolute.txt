@@ -42,3 +42,4 @@ C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x
 C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Debug\Project.Pembeli.resources
 C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Debug\Project.Supplier.resources
 C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Debug\Project.EditPOKain.resources
+C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Debug\Project.csprojResolveAssemblyReference.cache

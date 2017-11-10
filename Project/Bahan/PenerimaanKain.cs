@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using Project.Helpers;
 using Project.Models;
 using System.Data.SqlClient;
+using System.Globalization;
 
 namespace Project
 {
@@ -59,6 +60,8 @@ namespace Project
                 materialBindingSource.DataSource = db.Materials.ToList();
                 colorBindingSource.DataSource = db.Colors.ToList();
                 cboNoPOKain.Refresh();
+                dataGridView1.Columns[5].DefaultCellStyle.Format = "C";
+                dataGridView1.Columns[5].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("id-ID");
             }
         }
 
@@ -163,59 +166,62 @@ namespace Project
                 }
                 else
                 {
-                    using (indomodaEntities db = new indomodaEntities())
+                    if (MetroFramework.MetroMessageBox.Show(this, "Do you want to save this detail faktur data?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        try
+                        using (indomodaEntities db = new indomodaEntities())
                         {
-                            int setStatus = 1;
-                            int a = GenericQuery.ExecSQLCommand("UPDATE PreOrderKains SET status = @status WHERE PONumber = '" + po + "'", new[] {
-                                new SqlParameter("@status", setStatus)
-                            });
-                            db.SaveChangesAsync().Wait();
-
                             try
                             {
-                                int setFakturID = db.DetailFakturs.AsEnumerable().LastOrDefault() == null ? 1 : db.DetailFakturs.AsEnumerable().LastOrDefault().idFaktur + 1;
-                                string setNoFaktur = txtNoFaktur.Text;
-                                int setStatusFaktur = 0;
-                                int b = GenericQuery.ExecSQLCommand("INSERT INTO DetailFaktur (idFaktur, NoFaktur, PONumber, Date_time, status) VALUES(@idFaktur, @NoFaktur, @PONumber, @Date_time, @status)", new[] {
-                                    new SqlParameter("@idFaktur", setFakturID),
-                                    new SqlParameter("@NoFaktur", setNoFaktur),
-                                    new SqlParameter("@PONumber", po),
-                                    new SqlParameter("@Date_time", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")),
-                                    new SqlParameter("@status", setStatusFaktur)
+                                int setStatus = 1;
+                                int a = GenericQuery.ExecSQLCommand("UPDATE PreOrderKains SET status = @status WHERE PONumber = '" + po + "'", new[] {
+                                    new SqlParameter("@status", setStatus)
                                 });
                                 db.SaveChangesAsync().Wait();
+
+                                try
+                                {
+                                    int setFakturID = db.DetailFakturs.AsEnumerable().LastOrDefault() == null ? 1 : db.DetailFakturs.AsEnumerable().LastOrDefault().idFaktur + 1;
+                                    string setNoFaktur = txtNoFaktur.Text;
+                                    int setStatusFaktur = 0;
+                                    int b = GenericQuery.ExecSQLCommand("INSERT INTO DetailFaktur (idFaktur, NoFaktur, PONumber, Date_time, status) VALUES(@idFaktur, @NoFaktur, @PONumber, @Date_time, @status)", new[] {
+                                        new SqlParameter("@idFaktur", setFakturID),
+                                        new SqlParameter("@NoFaktur", setNoFaktur),
+                                        new SqlParameter("@PONumber", po),
+                                        new SqlParameter("@Date_time", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")),
+                                        new SqlParameter("@status", setStatusFaktur)
+                                    });
+                                    db.SaveChangesAsync().Wait();
+                                }
+                                catch (Exception ex)
+                                {
+                                    MetroFramework.MetroMessageBox.Show(this, ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+
+                                cboNoPOKain.Refresh();
+
+                                if (cboNoPOKain.Items.Count == 0)
+                                {
+                                    dataGridView1.Rows.Clear();
+                                    dataGridView1.Refresh();
+                                }
+                                else
+                                {
+                                    dataGridView1.Rows.Clear();
+                                }
+
+                                btnSaveUpdateStatus.Refresh();
+                                List<PreOrderKain> listCboPO = GenericQuery.SqlQuery<PreOrderKain>("SELECT p.idPOKain, p.PONumber, p.SupplierID, p.status, p.SupplierID, p.GrandTotal, p.Date_time FROM PreOrderKains p WHERE p.status = '" + 0 + "'");
+                                listCboPO.Remove(new PreOrderKain() { PONumber = po });
+                                preOrderKainBindingSource.DataSource = listCboPO.ToList();
+                                txtSupplierCode.Clear();
+                                txtSupplierName.Clear();
+                                txtNoFaktur.Clear();
+                                MetroFramework.MetroMessageBox.Show(this, "Success! No Faktur created and this PO has been marked as done", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
                             }
                             catch (Exception ex)
                             {
                                 MetroFramework.MetroMessageBox.Show(this, ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
-
-                            cboNoPOKain.Refresh();
-
-                            if (cboNoPOKain.Items.Count == 0)
-                            {
-                                dataGridView1.Rows.Clear();
-                                dataGridView1.Refresh();
-                            }
-                            else
-                            {
-                                dataGridView1.Rows.Clear();
-                            }
-
-                            btnSaveUpdateStatus.Refresh();
-                            List<PreOrderKain> listCboPO = GenericQuery.SqlQuery<PreOrderKain>("SELECT p.idPOKain, p.PONumber, p.SupplierID, p.status, p.SupplierID, p.GrandTotal, p.Date_time FROM PreOrderKains p WHERE p.status = '" + 0 + "'");
-                            listCboPO.Remove(new PreOrderKain() { PONumber = po });
-                            preOrderKainBindingSource.DataSource = listCboPO.ToList();
-                            txtSupplierCode.Clear();
-                            txtSupplierName.Clear();
-                            txtNoFaktur.Clear();
-                            MetroFramework.MetroMessageBox.Show(this, "Success! No Faktur created and this PO has been marked as done", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                        }
-                        catch (Exception ex)
-                        {
-                            MetroFramework.MetroMessageBox.Show(this, ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }

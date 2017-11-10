@@ -30,6 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.idFakturDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.noFakturDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pONumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.datetimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.detailFakturBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
@@ -40,23 +45,19 @@
             this.metroDateTime1 = new MetroFramework.Controls.MetroDateTime();
             this.txtNoPemotonganKain = new MetroFramework.Controls.MetroTextBox();
             this.cboFakturPenerimaanKain = new MetroFramework.Controls.MetroComboBox();
+            this.detailFakturBindingSourceCbo = new System.Windows.Forms.BindingSource(this.components);
             this.txtSupplierName = new MetroFramework.Controls.MetroTextBox();
             this.cboPICCode = new MetroFramework.Controls.MetroComboBox();
+            this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtPICName = new MetroFramework.Controls.MetroTextBox();
             this.btnSavePemotonganKain = new MetroFramework.Controls.MetroButton();
             this.btnExitPemotonganKain = new MetroFramework.Controls.MetroButton();
             this.txtSupplierCode = new MetroFramework.Controls.MetroTextBox();
-            this.detailFakturBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.detailFakturBindingSourceCbo = new System.Windows.Forms.BindingSource(this.components);
-            this.idFakturDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.noFakturDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pONumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.datetimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtPONumber = new MetroFramework.Controls.MetroTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.detailFakturBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.detailFakturBindingSourceCbo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -76,6 +77,42 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(721, 241);
             this.dataGridView1.TabIndex = 4;
+            // 
+            // idFakturDataGridViewTextBoxColumn
+            // 
+            this.idFakturDataGridViewTextBoxColumn.DataPropertyName = "idFaktur";
+            this.idFakturDataGridViewTextBoxColumn.HeaderText = "No";
+            this.idFakturDataGridViewTextBoxColumn.Name = "idFakturDataGridViewTextBoxColumn";
+            this.idFakturDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idFakturDataGridViewTextBoxColumn.Width = 40;
+            // 
+            // noFakturDataGridViewTextBoxColumn
+            // 
+            this.noFakturDataGridViewTextBoxColumn.DataPropertyName = "NoFaktur";
+            this.noFakturDataGridViewTextBoxColumn.HeaderText = "No. Faktur";
+            this.noFakturDataGridViewTextBoxColumn.Name = "noFakturDataGridViewTextBoxColumn";
+            this.noFakturDataGridViewTextBoxColumn.ReadOnly = true;
+            this.noFakturDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // pONumberDataGridViewTextBoxColumn
+            // 
+            this.pONumberDataGridViewTextBoxColumn.DataPropertyName = "PONumber";
+            this.pONumberDataGridViewTextBoxColumn.HeaderText = "No. PO";
+            this.pONumberDataGridViewTextBoxColumn.Name = "pONumberDataGridViewTextBoxColumn";
+            this.pONumberDataGridViewTextBoxColumn.ReadOnly = true;
+            this.pONumberDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // datetimeDataGridViewTextBoxColumn
+            // 
+            this.datetimeDataGridViewTextBoxColumn.DataPropertyName = "Date_time";
+            this.datetimeDataGridViewTextBoxColumn.HeaderText = "Time";
+            this.datetimeDataGridViewTextBoxColumn.Name = "datetimeDataGridViewTextBoxColumn";
+            this.datetimeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.datetimeDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // detailFakturBindingSource
+            // 
+            this.detailFakturBindingSource.DataSource = typeof(Project.DetailFaktur);
             // 
             // metroLabel1
             // 
@@ -192,6 +229,10 @@
             this.cboFakturPenerimaanKain.ValueMember = "NoFaktur";
             this.cboFakturPenerimaanKain.SelectedIndexChanged += new System.EventHandler(this.cboFakturPenerimaanKain_SelectedIndexChanged);
             // 
+            // detailFakturBindingSourceCbo
+            // 
+            this.detailFakturBindingSourceCbo.DataSource = typeof(Project.DetailFaktur);
+            // 
             // txtSupplierName
             // 
             // 
@@ -235,6 +276,10 @@
             this.cboPICCode.UseSelectable = true;
             this.cboPICCode.ValueMember = "EmployeeID";
             // 
+            // employeeBindingSource
+            // 
+            this.employeeBindingSource.DataSource = typeof(Project.Employee);
+            // 
             // txtPICName
             // 
             // 
@@ -268,21 +313,23 @@
             // 
             // btnSavePemotonganKain
             // 
-            this.btnSavePemotonganKain.Location = new System.Drawing.Point(443, 568);
+            this.btnSavePemotonganKain.Location = new System.Drawing.Point(423, 574);
             this.btnSavePemotonganKain.Name = "btnSavePemotonganKain";
             this.btnSavePemotonganKain.Size = new System.Drawing.Size(110, 48);
             this.btnSavePemotonganKain.TabIndex = 37;
             this.btnSavePemotonganKain.Text = "SAVE";
             this.btnSavePemotonganKain.UseSelectable = true;
+            this.btnSavePemotonganKain.Click += new System.EventHandler(this.btnSavePemotonganKain_Click);
             // 
             // btnExitPemotonganKain
             // 
-            this.btnExitPemotonganKain.Location = new System.Drawing.Point(275, 568);
+            this.btnExitPemotonganKain.Location = new System.Drawing.Point(255, 574);
             this.btnExitPemotonganKain.Name = "btnExitPemotonganKain";
             this.btnExitPemotonganKain.Size = new System.Drawing.Size(110, 48);
             this.btnExitPemotonganKain.TabIndex = 36;
             this.btnExitPemotonganKain.Text = "EXIT";
             this.btnExitPemotonganKain.UseSelectable = true;
+            this.btnExitPemotonganKain.Click += new System.EventHandler(this.btnExitPemotonganKain_Click_1);
             // 
             // txtSupplierCode
             // 
@@ -314,52 +361,43 @@
             this.txtSupplierCode.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtSupplierCode.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // detailFakturBindingSource
+            // txtPONumber
             // 
-            this.detailFakturBindingSource.DataSource = typeof(Project.DetailFaktur);
             // 
-            // employeeBindingSource
             // 
-            this.employeeBindingSource.DataSource = typeof(Project.Employee);
             // 
-            // detailFakturBindingSourceCbo
-            // 
-            this.detailFakturBindingSourceCbo.DataSource = typeof(Project.DetailFaktur);
-            // 
-            // idFakturDataGridViewTextBoxColumn
-            // 
-            this.idFakturDataGridViewTextBoxColumn.DataPropertyName = "idFaktur";
-            this.idFakturDataGridViewTextBoxColumn.HeaderText = "No";
-            this.idFakturDataGridViewTextBoxColumn.Name = "idFakturDataGridViewTextBoxColumn";
-            this.idFakturDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idFakturDataGridViewTextBoxColumn.Width = 40;
-            // 
-            // noFakturDataGridViewTextBoxColumn
-            // 
-            this.noFakturDataGridViewTextBoxColumn.DataPropertyName = "NoFaktur";
-            this.noFakturDataGridViewTextBoxColumn.HeaderText = "No. Faktur";
-            this.noFakturDataGridViewTextBoxColumn.Name = "noFakturDataGridViewTextBoxColumn";
-            this.noFakturDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // pONumberDataGridViewTextBoxColumn
-            // 
-            this.pONumberDataGridViewTextBoxColumn.DataPropertyName = "PONumber";
-            this.pONumberDataGridViewTextBoxColumn.HeaderText = "No. PO";
-            this.pONumberDataGridViewTextBoxColumn.Name = "pONumberDataGridViewTextBoxColumn";
-            this.pONumberDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // datetimeDataGridViewTextBoxColumn
-            // 
-            this.datetimeDataGridViewTextBoxColumn.DataPropertyName = "Date_time";
-            this.datetimeDataGridViewTextBoxColumn.HeaderText = "Time";
-            this.datetimeDataGridViewTextBoxColumn.Name = "datetimeDataGridViewTextBoxColumn";
-            this.datetimeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.txtPONumber.CustomButton.Image = null;
+            this.txtPONumber.CustomButton.Location = new System.Drawing.Point(148, 1);
+            this.txtPONumber.CustomButton.Name = "";
+            this.txtPONumber.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.txtPONumber.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtPONumber.CustomButton.TabIndex = 1;
+            this.txtPONumber.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtPONumber.CustomButton.UseSelectable = true;
+            this.txtPONumber.CustomButton.Visible = false;
+            this.txtPONumber.Lines = new string[0];
+            this.txtPONumber.Location = new System.Drawing.Point(443, 119);
+            this.txtPONumber.MaxLength = 32767;
+            this.txtPONumber.Name = "txtPONumber";
+            this.txtPONumber.PasswordChar = '\0';
+            this.txtPONumber.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtPONumber.SelectedText = "";
+            this.txtPONumber.SelectionLength = 0;
+            this.txtPONumber.SelectionStart = 0;
+            this.txtPONumber.ShortcutsEnabled = true;
+            this.txtPONumber.Size = new System.Drawing.Size(170, 23);
+            this.txtPONumber.TabIndex = 39;
+            this.txtPONumber.UseSelectable = true;
+            this.txtPONumber.Visible = false;
+            this.txtPONumber.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtPONumber.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // PemotonganKain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(797, 665);
+            this.Controls.Add(this.txtPONumber);
             this.Controls.Add(this.txtSupplierCode);
             this.Controls.Add(this.btnSavePemotonganKain);
             this.Controls.Add(this.btnExitPemotonganKain);
@@ -382,8 +420,8 @@
             this.Load += new System.EventHandler(this.PemotonganKain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.detailFakturBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.detailFakturBindingSourceCbo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -414,5 +452,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn noFakturDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn pONumberDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn datetimeDataGridViewTextBoxColumn;
+        private MetroFramework.Controls.MetroTextBox txtPONumber;
     }
 }

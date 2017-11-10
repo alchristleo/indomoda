@@ -101,6 +101,9 @@
     <Compile Include="DetailFaktur.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="DetailPemotonganKain.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="DetailPO.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>

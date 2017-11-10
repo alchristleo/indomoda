@@ -32,9 +32,10 @@ namespace Project
         public virtual DbSet<Material> Materials { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<DetailPO> DetailPOes { get; set; }
-        public virtual DbSet<PreOrderKain> PreOrderKains { get; set; }
         public virtual DbSet<DetailFaktur> DetailFakturs { get; set; }
+        public virtual DbSet<DetailPemotonganKain> DetailPemotonganKains { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
+        public virtual DbSet<PreOrderKain> PreOrderKains { get; set; }
 
         internal Task<int> SaveChangesAsync()
         {

@@ -62,7 +62,7 @@ namespace Project
         {
             if (dataGridView1.RowCount < 1)
             {
-                MetroFramework.MetroMessageBox.Show(this, "You need to add detail PO first!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MetroFramework.MetroMessageBox.Show(this, "You need to add detail PO first!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             EditPOKain editpokain = new EditPOKain();
@@ -79,7 +79,7 @@ namespace Project
         {
             if (dataGridView1.RowCount < 1)
             {
-                MetroFramework.MetroMessageBox.Show(this, "You need to add detail PO first!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MetroFramework.MetroMessageBox.Show(this, "You need to add detail PO first!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -185,6 +185,17 @@ namespace Project
             //lblGrandTotal.Text = x.ToString();
         }
 
+        bool IsDigitsOnly(string str)
+        {
+            foreach (char c in str)
+            {
+                if (c < '0' || c > '9')
+                    return false;
+            }
+
+            return true;
+        }
+
         private void btnSavePoKain_Click(object sender, EventArgs e)
         {
 
@@ -192,7 +203,18 @@ namespace Project
             {
                 if (dataGridView1.RowCount == 0)
                 {
-                    MetroFramework.MetroMessageBox.Show(this, "You need to add detail PO first!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MetroFramework.MetroMessageBox.Show(this, "You need to add detail PO first!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else if (lblGrandTotal.Text == "")
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "You must fill grand total!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    lblGrandTotal.Focus();
+                }
+                else if (!IsDigitsOnly(lblGrandTotal.Text.ToString()))
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "Grand total must be numeric!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    lblGrandTotal.Clear();
+                    lblGrandTotal.Focus();
                 }
                 else
                 {
