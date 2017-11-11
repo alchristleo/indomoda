@@ -77,11 +77,6 @@
     </AssociationSet>
     <EntitySet Name="DetailPemotonganKains" EntityType="indomodaModel.DetailPemotonganKain" />
     <EntitySet Name="DetailPenerimaanTukangPotongs" EntityType="indomodaModel.DetailPenerimaanTukangPotong" />
-    <EntitySet Name="ListPenerimaanTukangPotongs" EntityType="indomodaModel.ListPenerimaanTukangPotong" />
-    <AssociationSet Name="FK_ListPenerimaanTukangPotong_Colors" Association="indomodaModel.FK_ListPenerimaanTukangPotong_Colors">
-      <End Role="Color" EntitySet="Colors" />
-      <End Role="ListPenerimaanTukangPotong" EntitySet="ListPenerimaanTukangPotongs" />
-    </AssociationSet>
     <AssociationSet Name="FK_DetailPemotonganKain_DetailFaktur" Association="indomodaModel.FK_DetailPemotonganKain_DetailFaktur">
       <End Role="DetailFaktur" EntitySet="DetailFakturs" />
       <End Role="DetailPemotonganKain" EntitySet="DetailPemotonganKains" />
@@ -97,6 +92,11 @@
     <AssociationSet Name="FK_DetailPenerimaanTukangPotong_DetailPemotonganKain" Association="indomodaModel.FK_DetailPenerimaanTukangPotong_DetailPemotonganKain">
       <End Role="DetailPemotonganKain" EntitySet="DetailPemotonganKains" />
       <End Role="DetailPenerimaanTukangPotong" EntitySet="DetailPenerimaanTukangPotongs" />
+    </AssociationSet>
+    <EntitySet Name="ListPenerimaanTukangPotongs" EntityType="indomodaModel.ListPenerimaanTukangPotong" />
+    <AssociationSet Name="FK_ListPenerimaanTukangPotong_Colors" Association="indomodaModel.FK_ListPenerimaanTukangPotong_Colors">
+      <End Role="Color" EntitySet="Colors" />
+      <End Role="ListPenerimaanTukangPotong" EntitySet="ListPenerimaanTukangPotongs" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="DetailPO">
@@ -227,31 +227,6 @@
     <Property Name="status" Type="Int32" Nullable="false" />
     <NavigationProperty Name="DetailPemotonganKain" Relationship="indomodaModel.FK_DetailPenerimaanTukangPotong_DetailPemotonganKain" FromRole="DetailPenerimaanTukangPotong" ToRole="DetailPemotonganKain" />
   </EntityType>
-  <EntityType Name="ListPenerimaanTukangPotong">
-    <Key>
-      <PropertyRef Name="idListPTP" />
-    </Key>
-    <Property Name="idListPTP" Type="Int32" Nullable="false" />
-    <Property Name="noSeri" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="model" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="ColorID" Type="Int32" Nullable="false" />
-    <Property Name="merk" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="ukuran" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="quantity" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Color" Relationship="indomodaModel.FK_ListPenerimaanTukangPotong_Colors" FromRole="ListPenerimaanTukangPotong" ToRole="Color" />
-  </EntityType>
-  <Association Name="FK_ListPenerimaanTukangPotong_Colors">
-    <End Type="indomodaModel.Color" Role="Color" Multiplicity="1" />
-    <End Type="indomodaModel.ListPenerimaanTukangPotong" Role="ListPenerimaanTukangPotong" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Color">
-        <PropertyRef Name="ColorID" />
-      </Principal>
-      <Dependent Role="ListPenerimaanTukangPotong">
-        <PropertyRef Name="ColorID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_DetailPemotonganKain_DetailFaktur">
     <End Type="indomodaModel.DetailFaktur" Role="DetailFaktur" Multiplicity="1" />
     <End Type="indomodaModel.DetailPemotonganKain" Role="DetailPemotonganKain" Multiplicity="*" />
@@ -297,6 +272,32 @@
       </Principal>
       <Dependent Role="DetailPenerimaanTukangPotong">
         <PropertyRef Name="noPemotonganKain" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ListPenerimaanTukangPotong">
+    <Key>
+      <PropertyRef Name="idListPTP" />
+    </Key>
+    <Property Name="idListPTP" Type="Int32" Nullable="false" />
+    <Property Name="idPenerimaanTukangPotong" Type="Int32" />
+    <Property Name="noSeri" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="model" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ColorID" Type="Int32" Nullable="false" />
+    <Property Name="merk" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ukuran" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="quantity" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Color" Relationship="indomodaModel.FK_ListPenerimaanTukangPotong_Colors" FromRole="ListPenerimaanTukangPotong" ToRole="Color" />
+  </EntityType>
+  <Association Name="FK_ListPenerimaanTukangPotong_Colors">
+    <End Type="indomodaModel.Color" Role="Color" Multiplicity="1" />
+    <End Type="indomodaModel.ListPenerimaanTukangPotong" Role="ListPenerimaanTukangPotong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Color">
+        <PropertyRef Name="ColorID" />
+      </Principal>
+      <Dependent Role="ListPenerimaanTukangPotong">
+        <PropertyRef Name="ColorID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

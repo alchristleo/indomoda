@@ -163,6 +163,7 @@ namespace Project
                         _dv.DataSource = _bs;
                         _dv.EndEdit();
                         _dv.Refresh();
+                        MetroFramework.MetroMessageBox.Show(this, "Success! This detail PO has been updated", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
                     catch (Exception ex)
                     {

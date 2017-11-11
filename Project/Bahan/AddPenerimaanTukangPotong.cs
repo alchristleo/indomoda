@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using Project.Helpers;
 using Project.Models;
+using System.Data.SqlClient;
 
 namespace Project
 {
@@ -72,46 +73,100 @@ namespace Project
         {
             if (String.IsNullOrEmpty(txtNoSeriTukangPotong.Text))
             {
-                MetroFramework.MetroMessageBox.Show(this, "No. Seri can't be empty!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MetroFramework.MetroMessageBox.Show(this, "No. Seri can't be empty!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtNoSeriTukangPotong.Focus();
                 return;
             }
             else if (String.IsNullOrEmpty(txtModelTukangPotong.Text))
             {
-                MetroFramework.MetroMessageBox.Show(this, "Model can't be empty!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MetroFramework.MetroMessageBox.Show(this, "Model can't be empty!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtModelTukangPotong.Focus();
                 return;
             }
             else if (cboWarna.SelectedIndex == -1)
             {
-                MetroFramework.MetroMessageBox.Show(this, "You must select warna!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MetroFramework.MetroMessageBox.Show(this, "You must select warna!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 cboWarna.Focus();
                 return;
             }
             else if (String.IsNullOrEmpty(txtMerkTukangPotong.Text))
             {
-                MetroFramework.MetroMessageBox.Show(this, "Merk can't be empty!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MetroFramework.MetroMessageBox.Show(this, "Merk can't be empty!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtMerkTukangPotong.Focus();
                 return;
             }
             else if (String.IsNullOrEmpty(txtUkuranTukangPotong.Text))
             {
-                MetroFramework.MetroMessageBox.Show(this, "Ukuran can't be empty!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MetroFramework.MetroMessageBox.Show(this, "Ukuran can't be empty!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtUkuranTukangPotong.Focus();
                 return;
             }
             else if (String.IsNullOrEmpty(txtQtyTukangPotong.Text))
             {
-                MetroFramework.MetroMessageBox.Show(this, "Quantity can't be empty!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MetroFramework.MetroMessageBox.Show(this, "Quantity can't be empty!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtQtyTukangPotong.Focus();
                 return;
             }
             else if (!IsDigitsOnly(txtQtyTukangPotong.Text))
             {
-                MetroFramework.MetroMessageBox.Show(this, "Quantity must be numeric!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MetroFramework.MetroMessageBox.Show(this, "Quantity must be numeric!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtQtyTukangPotong.Clear();
                 txtQtyTukangPotong.Focus();
                 return;
+            }
+            using (indomodaEntities db = new indomodaEntities())
+            {
+                int setIDListPTP = db.ListPenerimaanTukangPotongs.AsEnumerable().LastOrDefault() == null ? 1 : db.ListPenerimaanTukangPotongs.AsEnumerable().LastOrDefault().idListPTP + 1;
+                int getIDPenerimaanKain = Convert.ToInt32(PenerimaanTukangPotong.idPenerimaanTukangPotong);
+                string getNoSeri = txtNoSeriTukangPotong.Text;
+                string getModel = txtModelTukangPotong.Text;
+                int getColorID = Convert.ToInt32(cboWarna.SelectedValue.ToString());
+                string getMerk = txtMerkTukangPotong.Text;
+                string getUkuran = txtUkuranTukangPotong.Text;
+                int getQty = Convert.ToInt32(txtQtyTukangPotong.Text.ToString());
+
+                if (MetroFramework.MetroMessageBox.Show(this, "Do you want to save this List penerimaan tukang potong to database?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    try
+                    {
+                        int a = GenericQuery.ExecSQLCommand("INSERT INTO ListPenerimaanTukangPotong (idListPTP, idPenerimaanTukangPotong, noSeri, model, ColorID, merk, ukuran, quantity) VALUES(@idListPTP, @idPenerimaanTukangPotong, @noSeri, @model, @ColorID, @merk, @ukuran, @quantity)", new[] {
+                                new SqlParameter("@idListPTP", setIDListPTP),
+                                new SqlParameter("@idPenerimaanTukangPotong", getIDPenerimaanKain),
+                                new SqlParameter("@noSeri", getNoSeri),
+                                new SqlParameter("@model", getModel),
+                                new SqlParameter("@ColorID", getColorID),
+                                new SqlParameter("@merk", getMerk),
+                                new SqlParameter("@ukuran", getUkuran),
+                                new SqlParameter("@quantity", getQty)
+                            });
+                        db.SaveChangesAsync().Wait();
+
+                        if (_bs == null)
+                        {
+                            _bs = new BindingSource();
+                        }
+
+                        _bs.Add(new ListPenerimaanTukangPotong
+                        {
+                            idListPTP = setIDListPTP,
+                            idPenerimaanTukangPotong = getIDPenerimaanKain,
+                            noSeri = getNoSeri,
+                            model = getModel,
+                            ColorID = getColorID,
+                            merk = getMerk,
+                            ukuran = getUkuran,
+                            quantity = getQty
+                        });
+
+                        _dv.Refresh();
+                        MetroFramework.MetroMessageBox.Show(this, "Success! This list penerimaan tukang potong has been added to database", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    }
+                    catch (Exception ex)
+                    {
+                        MetroFramework.MetroMessageBox.Show(this, ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                this.Close();
             }
         }
     }

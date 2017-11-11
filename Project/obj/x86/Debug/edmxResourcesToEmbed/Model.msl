@@ -133,6 +133,7 @@
           <ScalarProperty Name="ColorID" ColumnName="ColorID" />
           <ScalarProperty Name="model" ColumnName="model" />
           <ScalarProperty Name="noSeri" ColumnName="noSeri" />
+          <ScalarProperty Name="idPenerimaanTukangPotong" ColumnName="idPenerimaanTukangPotong" />
           <ScalarProperty Name="idListPTP" ColumnName="idListPTP" />
         </MappingFragment>
       </EntityTypeMapping>

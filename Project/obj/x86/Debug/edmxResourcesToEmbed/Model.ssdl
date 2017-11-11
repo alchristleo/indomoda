@@ -89,12 +89,13 @@
       <PropertyRef Name="idListPTP" />
     </Key>
     <Property Name="idListPTP" Type="int" Nullable="false" />
+    <Property Name="idPenerimaanTukangPotong" Type="int" />
     <Property Name="noSeri" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="model" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="ColorID" Type="int" Nullable="false" />
     <Property Name="merk" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="ukuran" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="quantity" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="quantity" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Materials">
     <Key>

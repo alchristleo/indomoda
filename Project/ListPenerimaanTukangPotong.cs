@@ -15,12 +15,13 @@ namespace Project
     public partial class ListPenerimaanTukangPotong
     {
         public int idListPTP { get; set; }
+        public Nullable<int> idPenerimaanTukangPotong { get; set; }
         public string noSeri { get; set; }
         public string model { get; set; }
         public int ColorID { get; set; }
         public string merk { get; set; }
         public string ukuran { get; set; }
-        public string quantity { get; set; }
+        public int quantity { get; set; }
     
         public virtual Color Color { get; set; }
     }

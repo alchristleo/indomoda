@@ -20,12 +20,12 @@
         <AssociationConnector Association="indomodaModel.FK_POKain_Suppliers" />
         <EntityTypeShape EntityType="indomodaModel.DetailPemotonganKain" Width="1.5" PointX="5.625" PointY="0.75" />
         <EntityTypeShape EntityType="indomodaModel.DetailPenerimaanTukangPotong" Width="1.5" PointX="8" PointY="4.625" />
-        <EntityTypeShape EntityType="indomodaModel.ListPenerimaanTukangPotong" Width="1.5" PointX="3" PointY="7.875" />
-        <AssociationConnector Association="indomodaModel.FK_ListPenerimaanTukangPotong_Colors" />
         <AssociationConnector Association="indomodaModel.FK_DetailPemotonganKain_DetailFaktur" />
         <AssociationConnector Association="indomodaModel.FK_DetailPemotonganKain_Employee" />
         <AssociationConnector Association="indomodaModel.FK_DetailPemotonganKain_PreOrderKain" />
         <AssociationConnector Association="indomodaModel.FK_DetailPenerimaanTukangPotong_DetailPemotonganKain" />
+        <EntityTypeShape EntityType="indomodaModel.ListPenerimaanTukangPotong" Width="1.5" PointX="2.875" PointY="8.25" />
+        <AssociationConnector Association="indomodaModel.FK_ListPenerimaanTukangPotong_Colors" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

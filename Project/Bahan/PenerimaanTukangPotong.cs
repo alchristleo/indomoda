@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using Project.Helpers;
 using Project.Models;
+using System.Data.SqlClient;
 
 namespace Project
 {
@@ -127,6 +128,7 @@ namespace Project
                 txtIDPenerimaanTukangPotong.Text = setID.ToString();
                 List<PemotonganKainModel> cboPK = GenericQuery.SqlQuery<PemotonganKainModel>("select pk.idPemotonganKain, pk.noPemotonganKain, pk.NoFaktur, pk.PONumber, pk.EmployeeID, pk.status, e.EmployeeCode, e.EmployeeName from DetailPemotonganKain pk JOIN Employees e on pk.EmployeeID = e.EmployeeID WHERE pk.status = '" + 0 + "'");
                 detailPemotonganKainBindingSourceCbo.DataSource = cboPK.ToList();
+                colorBindingSource.DataSource = db.Colors.ToList();
             }
         }
 
@@ -146,15 +148,50 @@ namespace Project
                 MetroFramework.MetroMessageBox.Show(this, "You must select No pemotongan kain first!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 cboNoPemotonganKain.Focus();
             }
+            else if (dataGridView1.Rows.Count == 0)
+            {
+                MetroFramework.MetroMessageBox.Show(this, "You must add List penerimaan tukang potong first!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             else
             {
                 try
                 {
+                    using (indomodaEntities db = new indomodaEntities())
+                    {
+                        int setIDPTK = Convert.ToInt32(txtIDPenerimaanTukangPotong.Text.ToString());
+                        string noPTK = txtNoPenerimaanTukangPotong.Text;
+                        string setNoPK = cboNoPemotonganKain.SelectedValue.ToString();
+                        bool setStatusPTK = false;
+                        int a = GenericQuery.ExecSQLCommand("INSERT INTO DetailPenerimaanTukangPotong (idPenerimaanTukangPotong, noPenerimaanTukangPotong, noPemotonganKain, Date_time, status) VALUES(@idPenerimaanTukangPotong, @noPenerimaanTukangPotong, @noPemotonganKain, @Date_time, @status)", new[] {
+                                new SqlParameter("@idPenerimaanTukangPotong", setIDPTK),
+                                new SqlParameter("@noPenerimaanTukangPotong", noPTK),
+                                new SqlParameter("@noPemotonganKain", setNoPK),
+                                new SqlParameter("@Date_time", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")),
+                                new SqlParameter("@status", setStatusPTK)
+                            });
 
+                        db.SaveChangesAsync().Wait();
+
+                        try
+                        {
+                            int setStatusDetailPK = 1;
+                            int b = GenericQuery.ExecSQLCommand("UPDATE DetailPemotonganKain SET status = @status WHERE noPemotonganKain = '" + setNoPK + "'", new[] {
+                                    new SqlParameter("@status", setStatusDetailPK)
+                                });
+                            db.SaveChangesAsync().Wait();
+                        }
+                        catch (Exception ex)
+                        {
+                            MetroFramework.MetroMessageBox.Show(this, ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                        MetroFramework.MetroMessageBox.Show(this, "Success! Penerimaan tukang potong for this data has been added to the database", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                        this.Close();
+                    }
                 }
                 catch (Exception ex)
                 {
-
+                    MetroFramework.MetroMessageBox.Show(this, ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

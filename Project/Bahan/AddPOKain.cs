@@ -133,7 +133,7 @@ namespace Project
                     try
                     {
                         int a = GenericQuery.ExecSQLCommand("INSERT INTO DetailPO (DetailPOID, PONumber, MaterialID, ColorID, DetailQty, DetailPrice, DetailTotal, DetailStatus) VALUES(@DetailPOID, @PONumber, @MaterialID, @ColorID, @DetailQty, @DetailPrice, @DetailTotal, @DetailStatus)", new[] {
-                                new SqlParameter("DetailPOID", setDetailPOID),
+                                new SqlParameter("@DetailPOID", setDetailPOID),
                                 new SqlParameter("@PONumber", getPONumber),
                                 new SqlParameter("@MaterialID", getMaterialID),
                                 new SqlParameter("@ColorID", getColorID),
@@ -162,6 +162,7 @@ namespace Project
                         });
 
                         _dv.Refresh();
+                        MetroFramework.MetroMessageBox.Show(this, "Success! New detail PO has been added to database", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
                     catch (Exception ex)
                     {

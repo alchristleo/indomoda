@@ -31,13 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PenerimaanTukangPotong));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.idListPTPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.noSeriDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.modelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colorIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.merkDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ukuranDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.listPenerimaanTukangPotongBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnExitPenerimaanTukangPotong = new MetroFramework.Controls.MetroButton();
             this.btnSavePenerimaanTukangPotong = new MetroFramework.Controls.MetroButton();
@@ -56,9 +49,18 @@
             this.metroDateTime1 = new MetroFramework.Controls.MetroDateTime();
             this.txtPICCode = new MetroFramework.Controls.MetroTextBox();
             this.txtIDPenerimaanTukangPotong = new MetroFramework.Controls.MetroTextBox();
+            this.colorBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.idListPTPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.noSeriDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.modelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colorIDDataGridViewComboBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.merkDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ukuranDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.listPenerimaanTukangPotongBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.detailPemotonganKainBindingSourceCbo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -71,7 +73,7 @@
             this.idListPTPDataGridViewTextBoxColumn,
             this.noSeriDataGridViewTextBoxColumn,
             this.modelDataGridViewTextBoxColumn,
-            this.colorIDDataGridViewTextBoxColumn,
+            this.colorIDDataGridViewComboBoxColumn,
             this.merkDataGridViewTextBoxColumn,
             this.ukuranDataGridViewTextBoxColumn,
             this.quantityDataGridViewTextBoxColumn});
@@ -81,55 +83,6 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(738, 216);
             this.dataGridView1.TabIndex = 8;
-            // 
-            // idListPTPDataGridViewTextBoxColumn
-            // 
-            this.idListPTPDataGridViewTextBoxColumn.DataPropertyName = "idListPTP";
-            this.idListPTPDataGridViewTextBoxColumn.HeaderText = "No.";
-            this.idListPTPDataGridViewTextBoxColumn.Name = "idListPTPDataGridViewTextBoxColumn";
-            this.idListPTPDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // noSeriDataGridViewTextBoxColumn
-            // 
-            this.noSeriDataGridViewTextBoxColumn.DataPropertyName = "noSeri";
-            this.noSeriDataGridViewTextBoxColumn.HeaderText = "No Seri";
-            this.noSeriDataGridViewTextBoxColumn.Name = "noSeriDataGridViewTextBoxColumn";
-            this.noSeriDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // modelDataGridViewTextBoxColumn
-            // 
-            this.modelDataGridViewTextBoxColumn.DataPropertyName = "model";
-            this.modelDataGridViewTextBoxColumn.HeaderText = "Model";
-            this.modelDataGridViewTextBoxColumn.Name = "modelDataGridViewTextBoxColumn";
-            this.modelDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // colorIDDataGridViewTextBoxColumn
-            // 
-            this.colorIDDataGridViewTextBoxColumn.DataPropertyName = "ColorID";
-            this.colorIDDataGridViewTextBoxColumn.HeaderText = "Color Name";
-            this.colorIDDataGridViewTextBoxColumn.Name = "colorIDDataGridViewTextBoxColumn";
-            this.colorIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // merkDataGridViewTextBoxColumn
-            // 
-            this.merkDataGridViewTextBoxColumn.DataPropertyName = "merk";
-            this.merkDataGridViewTextBoxColumn.HeaderText = "Merk";
-            this.merkDataGridViewTextBoxColumn.Name = "merkDataGridViewTextBoxColumn";
-            this.merkDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // ukuranDataGridViewTextBoxColumn
-            // 
-            this.ukuranDataGridViewTextBoxColumn.DataPropertyName = "ukuran";
-            this.ukuranDataGridViewTextBoxColumn.HeaderText = "Ukuran";
-            this.ukuranDataGridViewTextBoxColumn.Name = "ukuranDataGridViewTextBoxColumn";
-            this.ukuranDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // quantityDataGridViewTextBoxColumn
-            // 
-            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "quantity";
-            this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
-            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
-            this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // listPenerimaanTukangPotongBindingSource
             // 
@@ -392,6 +345,64 @@
             this.txtIDPenerimaanTukangPotong.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtIDPenerimaanTukangPotong.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
+            // colorBindingSource
+            // 
+            this.colorBindingSource.DataSource = typeof(Project.Color);
+            // 
+            // idListPTPDataGridViewTextBoxColumn
+            // 
+            this.idListPTPDataGridViewTextBoxColumn.DataPropertyName = "idListPTP";
+            this.idListPTPDataGridViewTextBoxColumn.HeaderText = "No.";
+            this.idListPTPDataGridViewTextBoxColumn.Name = "idListPTPDataGridViewTextBoxColumn";
+            this.idListPTPDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // noSeriDataGridViewTextBoxColumn
+            // 
+            this.noSeriDataGridViewTextBoxColumn.DataPropertyName = "noSeri";
+            this.noSeriDataGridViewTextBoxColumn.HeaderText = "No Seri";
+            this.noSeriDataGridViewTextBoxColumn.Name = "noSeriDataGridViewTextBoxColumn";
+            this.noSeriDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // modelDataGridViewTextBoxColumn
+            // 
+            this.modelDataGridViewTextBoxColumn.DataPropertyName = "model";
+            this.modelDataGridViewTextBoxColumn.HeaderText = "Model";
+            this.modelDataGridViewTextBoxColumn.Name = "modelDataGridViewTextBoxColumn";
+            this.modelDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // colorIDDataGridViewComboBoxColumn
+            // 
+            this.colorIDDataGridViewComboBoxColumn.DataPropertyName = "ColorID";
+            this.colorIDDataGridViewComboBoxColumn.DataSource = this.colorBindingSource;
+            this.colorIDDataGridViewComboBoxColumn.DisplayMember = "ColorName";
+            this.colorIDDataGridViewComboBoxColumn.HeaderText = "Color Name";
+            this.colorIDDataGridViewComboBoxColumn.Name = "colorIDDataGridViewComboBoxColumn";
+            this.colorIDDataGridViewComboBoxColumn.ReadOnly = true;
+            this.colorIDDataGridViewComboBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colorIDDataGridViewComboBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.colorIDDataGridViewComboBoxColumn.ValueMember = "ColorID";
+            // 
+            // merkDataGridViewTextBoxColumn
+            // 
+            this.merkDataGridViewTextBoxColumn.DataPropertyName = "merk";
+            this.merkDataGridViewTextBoxColumn.HeaderText = "Merk";
+            this.merkDataGridViewTextBoxColumn.Name = "merkDataGridViewTextBoxColumn";
+            this.merkDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // ukuranDataGridViewTextBoxColumn
+            // 
+            this.ukuranDataGridViewTextBoxColumn.DataPropertyName = "ukuran";
+            this.ukuranDataGridViewTextBoxColumn.HeaderText = "Ukuran";
+            this.ukuranDataGridViewTextBoxColumn.Name = "ukuranDataGridViewTextBoxColumn";
+            this.ukuranDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // quantityDataGridViewTextBoxColumn
+            // 
+            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "quantity";
+            this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
+            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
+            this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // PenerimaanTukangPotong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -420,6 +431,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.listPenerimaanTukangPotongBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.detailPemotonganKainBindingSourceCbo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -448,7 +460,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn idListPTPDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn noSeriDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn modelDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colorIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn colorIDDataGridViewComboBoxColumn;
+        private System.Windows.Forms.BindingSource colorBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn merkDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ukuranDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;

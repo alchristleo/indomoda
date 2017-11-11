@@ -38,7 +38,6 @@ namespace Project
         public virtual DbSet<DetailPemotonganKain> DetailPemotonganKains { get; set; }
         public virtual DbSet<DetailPenerimaanTukangPotong> DetailPenerimaanTukangPotongs { get; set; }
         public virtual DbSet<ListPenerimaanTukangPotong> ListPenerimaanTukangPotongs { get; set; }
-
         internal Task<int> SaveChangesAsync()
         {
             return Task.Factory.StartNew(() => base.SaveChanges());
