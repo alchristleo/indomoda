@@ -104,6 +104,9 @@
     <Compile Include="DetailPemotonganKain.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="DetailPenerimaanTukangPotong.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="DetailPO.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -114,6 +117,9 @@
     <Compile Include="ExtensionAttribute.cs" />
     <Compile Include="Helpers\GenericQuery.cs" />
     <Compile Include="IndomodaSupplier.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ListPenerimaanTukangPotong.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Master\AddEditKaryawan.cs">
@@ -181,6 +187,8 @@
     </Compile>
     <Compile Include="Models\DetailPOModel.cs" />
     <Compile Include="Models\FakturKainModel.cs" />
+    <Compile Include="Models\ListPTPModel.cs" />
+    <Compile Include="Models\PemotonganKainModel.cs" />
     <Compile Include="Models\POKainModel.cs" />
     <Compile Include="Models\SupplierModel.cs" />
     <Compile Include="Penerimaan\PenerimaanCMT.cs">
@@ -408,9 +416,11 @@
     </None>
     <None Include="Properties\DataSources\Color.datasource" />
     <None Include="Properties\DataSources\DetailFaktur.datasource" />
+    <None Include="Properties\DataSources\DetailPemotonganKain.datasource" />
     <None Include="Properties\DataSources\DetailPO.datasource" />
     <None Include="Properties\DataSources\Employee.datasource" />
     <None Include="Properties\DataSources\IndomodaSupplier.datasource" />
+    <None Include="Properties\DataSources\ListPenerimaanTukangPotong.datasource" />
     <None Include="Properties\DataSources\Material.datasource" />
     <None Include="Properties\DataSources\PemotonganKain.datasource" />
     <None Include="Properties\DataSources\POKain.datasource" />

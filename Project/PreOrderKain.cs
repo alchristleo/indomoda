@@ -30,8 +30,8 @@ namespace Project
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DetailFaktur> DetailFakturs { get; set; }
+        public virtual IndomodaSupplier IndomodaSupplier { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DetailPemotonganKain> DetailPemotonganKains { get; set; }
-        public virtual IndomodaSupplier IndomodaSupplier { get; set; }
     }
 }

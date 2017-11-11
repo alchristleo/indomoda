@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnExitAddPenerimaanTukangPotong = new MetroFramework.Controls.MetroButton();
             this.btnSaveAddPenerimaanTukangPotong = new MetroFramework.Controls.MetroButton();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
@@ -42,6 +43,9 @@
             this.txtMerkTukangPotong = new MetroFramework.Controls.MetroTextBox();
             this.txtUkuranTukangPotong = new MetroFramework.Controls.MetroTextBox();
             this.txtQtyTukangPotong = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
+            this.colorBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btnExitAddPenerimaanTukangPotong
@@ -52,6 +56,7 @@
             this.btnExitAddPenerimaanTukangPotong.TabIndex = 8;
             this.btnExitAddPenerimaanTukangPotong.Text = "EXIT";
             this.btnExitAddPenerimaanTukangPotong.UseSelectable = true;
+            this.btnExitAddPenerimaanTukangPotong.Click += new System.EventHandler(this.btnExitAddPenerimaanTukangPotong_Click);
             // 
             // btnSaveAddPenerimaanTukangPotong
             // 
@@ -84,7 +89,7 @@
             // metroLabel3
             // 
             this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(136, 158);
+            this.metroLabel3.Location = new System.Drawing.Point(136, 148);
             this.metroLabel3.Name = "metroLabel3";
             this.metroLabel3.Size = new System.Drawing.Size(47, 19);
             this.metroLabel3.TabIndex = 14;
@@ -179,6 +184,8 @@
             // 
             // cboWarna
             // 
+            this.cboWarna.DataSource = this.colorBindingSource;
+            this.cboWarna.DisplayMember = "ColorName";
             this.cboWarna.FormattingEnabled = true;
             this.cboWarna.ItemHeight = 23;
             this.cboWarna.Location = new System.Drawing.Point(240, 148);
@@ -186,6 +193,7 @@
             this.cboWarna.Size = new System.Drawing.Size(147, 29);
             this.cboWarna.TabIndex = 3;
             this.cboWarna.UseSelectable = true;
+            this.cboWarna.ValueMember = "ColorID";
             // 
             // txtMerkTukangPotong
             // 
@@ -253,7 +261,7 @@
             // 
             // 
             this.txtQtyTukangPotong.CustomButton.Image = null;
-            this.txtQtyTukangPotong.CustomButton.Location = new System.Drawing.Point(125, 1);
+            this.txtQtyTukangPotong.CustomButton.Location = new System.Drawing.Point(30, 1);
             this.txtQtyTukangPotong.CustomButton.Name = "";
             this.txtQtyTukangPotong.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.txtQtyTukangPotong.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -271,17 +279,31 @@
             this.txtQtyTukangPotong.SelectionLength = 0;
             this.txtQtyTukangPotong.SelectionStart = 0;
             this.txtQtyTukangPotong.ShortcutsEnabled = true;
-            this.txtQtyTukangPotong.Size = new System.Drawing.Size(147, 23);
+            this.txtQtyTukangPotong.Size = new System.Drawing.Size(52, 23);
             this.txtQtyTukangPotong.TabIndex = 6;
             this.txtQtyTukangPotong.UseSelectable = true;
             this.txtQtyTukangPotong.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtQtyTukangPotong.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
+            // metroLabel7
+            // 
+            this.metroLabel7.AutoSize = true;
+            this.metroLabel7.Location = new System.Drawing.Point(294, 247);
+            this.metroLabel7.Name = "metroLabel7";
+            this.metroLabel7.Size = new System.Drawing.Size(28, 19);
+            this.metroLabel7.TabIndex = 18;
+            this.metroLabel7.Text = "pcs";
+            // 
+            // colorBindingSource
+            // 
+            this.colorBindingSource.DataSource = typeof(Project.Color);
+            // 
             // AddPenerimaanTukangPotong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(526, 387);
+            this.ClientSize = new System.Drawing.Size(534, 387);
+            this.Controls.Add(this.metroLabel7);
             this.Controls.Add(this.txtQtyTukangPotong);
             this.Controls.Add(this.txtUkuranTukangPotong);
             this.Controls.Add(this.txtMerkTukangPotong);
@@ -298,6 +320,8 @@
             this.Controls.Add(this.btnSaveAddPenerimaanTukangPotong);
             this.Name = "AddPenerimaanTukangPotong";
             this.Text = "Add Penerimaan Tukang Potong";
+            this.Load += new System.EventHandler(this.AddPenerimaanTukangPotong_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -318,5 +342,7 @@
         private MetroFramework.Controls.MetroTextBox txtMerkTukangPotong;
         private MetroFramework.Controls.MetroTextBox txtUkuranTukangPotong;
         private MetroFramework.Controls.MetroTextBox txtQtyTukangPotong;
+        private MetroFramework.Controls.MetroLabel metroLabel7;
+        private System.Windows.Forms.BindingSource colorBindingSource;
     }
 }

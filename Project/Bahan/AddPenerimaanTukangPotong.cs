@@ -6,24 +6,66 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Project.Helpers;
+using Project.Models;
 
 namespace Project
 {
     public partial class AddPenerimaanTukangPotong : MetroFramework.Forms.MetroForm
     {
+        private BindingSource _bs = null;
+        private Form _form = null;
+        private DataGridView _dv = null;
+        private List<ListPTPModel> _dpo = null;
+        public List<ListPTPModel> list = new List<ListPTPModel>();
+
+        public void setRefForm(Form form)
+        {
+            _form = form;
+        }
+
+        public void setBS(ref BindingSource bs)
+        {
+            _bs = bs;
+        }
+
+        public void setDGV(ref DataGridView dv)
+        {
+            _dv = dv;
+        }
+
+        public void setDPO(ref List<ListPTPModel> dpo)
+        {
+            _dpo = dpo;
+        }
+
         public AddPenerimaanTukangPotong()
         {
             InitializeComponent();
         }
 
-        private void btnExitAddPenerimaanTukangPotong_Click(object sender, EventArgs e)
+        private void AddPenerimaanTukangPotong_Load(object sender, EventArgs e)
         {
-            Close();
+            using (indomodaEntities db = new indomodaEntities())
+            {
+                colorBindingSource.DataSource = db.Colors.ToList();
+            }
         }
 
-        private void btnToWarnaTukangPotong_Click(object sender, EventArgs e)
+        private void btnExitAddPenerimaanTukangPotong_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
 
+        bool IsDigitsOnly(string str)
+        {
+            foreach (char c in str)
+            {
+                if (c < '0' || c > '9')
+                    return false;
+            }
+
+            return true;
         }
 
         private void btnSaveAddPenerimaanTukangPotong_Click(object sender, EventArgs e)
@@ -61,6 +103,13 @@ namespace Project
             else if (String.IsNullOrEmpty(txtQtyTukangPotong.Text))
             {
                 MetroFramework.MetroMessageBox.Show(this, "Quantity can't be empty!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtQtyTukangPotong.Focus();
+                return;
+            }
+            else if (!IsDigitsOnly(txtQtyTukangPotong.Text))
+            {
+                MetroFramework.MetroMessageBox.Show(this, "Quantity must be numeric!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtQtyTukangPotong.Clear();
                 txtQtyTukangPotong.Focus();
                 return;
             }

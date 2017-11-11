@@ -45,6 +45,16 @@
           <Property Name="Date_time" Type="datetime" Nullable="false" />
           <Property Name="status" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="DetailPenerimaanTukangPotong">
+          <Key>
+            <PropertyRef Name="idPenerimaanTukangPotong" />
+          </Key>
+          <Property Name="idPenerimaanTukangPotong" Type="int" Nullable="false" />
+          <Property Name="noPenerimaanTukangPotong" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="noPemotonganKain" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Date_time" Type="datetime" Nullable="false" />
+          <Property Name="status" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="DetailPO">
           <Key>
             <PropertyRef Name="DetailPOID" />
@@ -78,6 +88,18 @@
           <Property Name="SupplierName" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="SupplierAddress" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="SupplierPhone" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ListPenerimaanTukangPotong">
+          <Key>
+            <PropertyRef Name="idListPTP" />
+          </Key>
+          <Property Name="idListPTP" Type="int" Nullable="false" />
+          <Property Name="noSeri" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="model" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ColorID" Type="int" Nullable="false" />
+          <Property Name="merk" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ukuran" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="quantity" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Materials">
           <Key>
@@ -143,6 +165,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_DetailPenerimaanTukangPotong_DetailPemotonganKain">
+          <End Role="DetailPemotonganKain" Type="Self.DetailPemotonganKain" Multiplicity="1" />
+          <End Role="DetailPenerimaanTukangPotong" Type="Self.DetailPenerimaanTukangPotong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DetailPemotonganKain">
+              <PropertyRef Name="noPemotonganKain" />
+            </Principal>
+            <Dependent Role="DetailPenerimaanTukangPotong">
+              <PropertyRef Name="noPemotonganKain" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_DetailPO_Colors">
           <End Role="Colors" Type="Self.Colors" Multiplicity="1" />
           <End Role="DetailPO" Type="Self.DetailPO" Multiplicity="*" />
@@ -164,6 +198,18 @@
             </Principal>
             <Dependent Role="DetailPO">
               <PropertyRef Name="MaterialID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ListPenerimaanTukangPotong_Colors">
+          <End Role="Colors" Type="Self.Colors" Multiplicity="1" />
+          <End Role="ListPenerimaanTukangPotong" Type="Self.ListPenerimaanTukangPotong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colors">
+              <PropertyRef Name="ColorID" />
+            </Principal>
+            <Dependent Role="ListPenerimaanTukangPotong">
+              <PropertyRef Name="ColorID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -196,9 +242,11 @@
           <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DetailFaktur" EntityType="Self.DetailFaktur" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DetailPemotonganKain" EntityType="Self.DetailPemotonganKain" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetailPenerimaanTukangPotong" EntityType="Self.DetailPenerimaanTukangPotong" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DetailPO" EntityType="Self.DetailPO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="IndomodaSuppliers" EntityType="Self.IndomodaSuppliers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ListPenerimaanTukangPotong" EntityType="Self.ListPenerimaanTukangPotong" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Materials" EntityType="Self.Materials" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PreOrderKains" EntityType="Self.PreOrderKains" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
@@ -214,6 +262,10 @@
             <End Role="PreOrderKains" EntitySet="PreOrderKains" />
             <End Role="DetailPemotonganKain" EntitySet="DetailPemotonganKain" />
           </AssociationSet>
+          <AssociationSet Name="FK_DetailPenerimaanTukangPotong_DetailPemotonganKain" Association="Self.FK_DetailPenerimaanTukangPotong_DetailPemotonganKain">
+            <End Role="DetailPemotonganKain" EntitySet="DetailPemotonganKain" />
+            <End Role="DetailPenerimaanTukangPotong" EntitySet="DetailPenerimaanTukangPotong" />
+          </AssociationSet>
           <AssociationSet Name="FK_DetailPO_Colors" Association="Self.FK_DetailPO_Colors">
             <End Role="Colors" EntitySet="Colors" />
             <End Role="DetailPO" EntitySet="DetailPO" />
@@ -221,6 +273,10 @@
           <AssociationSet Name="FK_DetailPO_Materials" Association="Self.FK_DetailPO_Materials">
             <End Role="Materials" EntitySet="Materials" />
             <End Role="DetailPO" EntitySet="DetailPO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ListPenerimaanTukangPotong_Colors" Association="Self.FK_ListPenerimaanTukangPotong_Colors">
+            <End Role="Colors" EntitySet="Colors" />
+            <End Role="ListPenerimaanTukangPotong" EntitySet="ListPenerimaanTukangPotong" />
           </AssociationSet>
           <AssociationSet Name="FK_POKain_PenerimaanKain" Association="Self.FK_POKain_PenerimaanKain">
             <End Role="PreOrderKains" EntitySet="PreOrderKains" />
@@ -243,6 +299,7 @@
           <Property Name="ColorCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ColorName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="DetailPOes" Relationship="indomodaModel.FK_DetailPO_Colors" FromRole="Color" ToRole="DetailPO" />
+          <NavigationProperty Name="ListPenerimaanTukangPotongs" Relationship="indomodaModel.FK_ListPenerimaanTukangPotong_Colors" FromRole="Color" ToRole="ListPenerimaanTukangPotong" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -299,16 +356,26 @@
             <End Role="DetailPO" EntitySet="DetailPOes" />
           </AssociationSet>
           <EntitySet Name="DetailFakturs" EntityType="indomodaModel.DetailFaktur" />
-          <EntitySet Name="DetailPemotonganKains" EntityType="indomodaModel.DetailPemotonganKain" />
           <EntitySet Name="Employees" EntityType="indomodaModel.Employee" />
           <EntitySet Name="PreOrderKains" EntityType="indomodaModel.PreOrderKain" />
-          <AssociationSet Name="FK_DetailPemotonganKain_DetailFaktur" Association="indomodaModel.FK_DetailPemotonganKain_DetailFaktur">
-            <End Role="DetailFaktur" EntitySet="DetailFakturs" />
-            <End Role="DetailPemotonganKain" EntitySet="DetailPemotonganKains" />
-          </AssociationSet>
           <AssociationSet Name="FK_POKain_PenerimaanKain" Association="indomodaModel.FK_POKain_PenerimaanKain">
             <End Role="PreOrderKain" EntitySet="PreOrderKains" />
             <End Role="DetailFaktur" EntitySet="DetailFakturs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_POKain_Suppliers" Association="indomodaModel.FK_POKain_Suppliers">
+            <End Role="IndomodaSupplier" EntitySet="IndomodaSuppliers" />
+            <End Role="PreOrderKain" EntitySet="PreOrderKains" />
+          </AssociationSet>
+          <EntitySet Name="DetailPemotonganKains" EntityType="indomodaModel.DetailPemotonganKain" />
+          <EntitySet Name="DetailPenerimaanTukangPotongs" EntityType="indomodaModel.DetailPenerimaanTukangPotong" />
+          <EntitySet Name="ListPenerimaanTukangPotongs" EntityType="indomodaModel.ListPenerimaanTukangPotong" />
+          <AssociationSet Name="FK_ListPenerimaanTukangPotong_Colors" Association="indomodaModel.FK_ListPenerimaanTukangPotong_Colors">
+            <End Role="Color" EntitySet="Colors" />
+            <End Role="ListPenerimaanTukangPotong" EntitySet="ListPenerimaanTukangPotongs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetailPemotonganKain_DetailFaktur" Association="indomodaModel.FK_DetailPemotonganKain_DetailFaktur">
+            <End Role="DetailFaktur" EntitySet="DetailFakturs" />
+            <End Role="DetailPemotonganKain" EntitySet="DetailPemotonganKains" />
           </AssociationSet>
           <AssociationSet Name="FK_DetailPemotonganKain_Employee" Association="indomodaModel.FK_DetailPemotonganKain_Employee">
             <End Role="Employee" EntitySet="Employees" />
@@ -318,9 +385,9 @@
             <End Role="PreOrderKain" EntitySet="PreOrderKains" />
             <End Role="DetailPemotonganKain" EntitySet="DetailPemotonganKains" />
           </AssociationSet>
-          <AssociationSet Name="FK_POKain_Suppliers" Association="indomodaModel.FK_POKain_Suppliers">
-            <End Role="IndomodaSupplier" EntitySet="IndomodaSuppliers" />
-            <End Role="PreOrderKain" EntitySet="PreOrderKains" />
+          <AssociationSet Name="FK_DetailPenerimaanTukangPotong_DetailPemotonganKain" Association="indomodaModel.FK_DetailPenerimaanTukangPotong_DetailPemotonganKain">
+            <End Role="DetailPemotonganKain" EntitySet="DetailPemotonganKains" />
+            <End Role="DetailPenerimaanTukangPotong" EntitySet="DetailPenerimaanTukangPotongs" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="DetailPO">
@@ -371,23 +438,8 @@
           <Property Name="PONumber" Type="Int64" Nullable="false" />
           <Property Name="Date_time" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="status" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="DetailPemotonganKains" Relationship="indomodaModel.FK_DetailPemotonganKain_DetailFaktur" FromRole="DetailFaktur" ToRole="DetailPemotonganKain" />
           <NavigationProperty Name="PreOrderKain" Relationship="indomodaModel.FK_POKain_PenerimaanKain" FromRole="DetailFaktur" ToRole="PreOrderKain" />
-        </EntityType>
-        <EntityType Name="DetailPemotonganKain">
-          <Key>
-            <PropertyRef Name="noPemotonganKain" />
-          </Key>
-          <Property Name="idPemotonganKain" Type="Int32" Nullable="false" />
-          <Property Name="noPemotonganKain" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="NoFaktur" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
-          <Property Name="PONumber" Type="Int64" Nullable="false" />
-          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
-          <Property Name="Date_time" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="status" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="DetailFaktur" Relationship="indomodaModel.FK_DetailPemotonganKain_DetailFaktur" FromRole="DetailPemotonganKain" ToRole="DetailFaktur" />
-          <NavigationProperty Name="Employee" Relationship="indomodaModel.FK_DetailPemotonganKain_Employee" FromRole="DetailPemotonganKain" ToRole="Employee" />
-          <NavigationProperty Name="PreOrderKain" Relationship="indomodaModel.FK_DetailPemotonganKain_PreOrderKain" FromRole="DetailPemotonganKain" ToRole="PreOrderKain" />
+          <NavigationProperty Name="DetailPemotonganKains" Relationship="indomodaModel.FK_DetailPemotonganKain_DetailFaktur" FromRole="DetailFaktur" ToRole="DetailPemotonganKain" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -412,21 +464,9 @@
           <Property Name="Date_time" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="status" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="DetailFakturs" Relationship="indomodaModel.FK_POKain_PenerimaanKain" FromRole="PreOrderKain" ToRole="DetailFaktur" />
-          <NavigationProperty Name="DetailPemotonganKains" Relationship="indomodaModel.FK_DetailPemotonganKain_PreOrderKain" FromRole="PreOrderKain" ToRole="DetailPemotonganKain" />
           <NavigationProperty Name="IndomodaSupplier" Relationship="indomodaModel.FK_POKain_Suppliers" FromRole="PreOrderKain" ToRole="IndomodaSupplier" />
+          <NavigationProperty Name="DetailPemotonganKains" Relationship="indomodaModel.FK_DetailPemotonganKain_PreOrderKain" FromRole="PreOrderKain" ToRole="DetailPemotonganKain" />
         </EntityType>
-        <Association Name="FK_DetailPemotonganKain_DetailFaktur">
-          <End Type="indomodaModel.DetailFaktur" Role="DetailFaktur" Multiplicity="1" />
-          <End Type="indomodaModel.DetailPemotonganKain" Role="DetailPemotonganKain" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DetailFaktur">
-              <PropertyRef Name="NoFaktur" />
-            </Principal>
-            <Dependent Role="DetailPemotonganKain">
-              <PropertyRef Name="NoFaktur" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_POKain_PenerimaanKain">
           <End Type="indomodaModel.PreOrderKain" Role="PreOrderKain" Multiplicity="1" />
           <End Type="indomodaModel.DetailFaktur" Role="DetailFaktur" Multiplicity="*" />
@@ -436,6 +476,82 @@
             </Principal>
             <Dependent Role="DetailFaktur">
               <PropertyRef Name="PONumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_POKain_Suppliers">
+          <End Type="indomodaModel.IndomodaSupplier" Role="IndomodaSupplier" Multiplicity="1" />
+          <End Type="indomodaModel.PreOrderKain" Role="PreOrderKain" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IndomodaSupplier">
+              <PropertyRef Name="SupplierID" />
+            </Principal>
+            <Dependent Role="PreOrderKain">
+              <PropertyRef Name="SupplierID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="DetailPemotonganKain">
+          <Key>
+            <PropertyRef Name="noPemotonganKain" />
+          </Key>
+          <Property Name="idPemotonganKain" Type="Int32" Nullable="false" />
+          <Property Name="noPemotonganKain" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NoFaktur" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="PONumber" Type="Int64" Nullable="false" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="Date_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DetailFaktur" Relationship="indomodaModel.FK_DetailPemotonganKain_DetailFaktur" FromRole="DetailPemotonganKain" ToRole="DetailFaktur" />
+          <NavigationProperty Name="Employee" Relationship="indomodaModel.FK_DetailPemotonganKain_Employee" FromRole="DetailPemotonganKain" ToRole="Employee" />
+          <NavigationProperty Name="PreOrderKain" Relationship="indomodaModel.FK_DetailPemotonganKain_PreOrderKain" FromRole="DetailPemotonganKain" ToRole="PreOrderKain" />
+          <NavigationProperty Name="DetailPenerimaanTukangPotongs" Relationship="indomodaModel.FK_DetailPenerimaanTukangPotong_DetailPemotonganKain" FromRole="DetailPemotonganKain" ToRole="DetailPenerimaanTukangPotong" />
+        </EntityType>
+        <EntityType Name="DetailPenerimaanTukangPotong">
+          <Key>
+            <PropertyRef Name="idPenerimaanTukangPotong" />
+          </Key>
+          <Property Name="idPenerimaanTukangPotong" Type="Int32" Nullable="false" />
+          <Property Name="noPenerimaanTukangPotong" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="noPemotonganKain" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Date_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DetailPemotonganKain" Relationship="indomodaModel.FK_DetailPenerimaanTukangPotong_DetailPemotonganKain" FromRole="DetailPenerimaanTukangPotong" ToRole="DetailPemotonganKain" />
+        </EntityType>
+        <EntityType Name="ListPenerimaanTukangPotong">
+          <Key>
+            <PropertyRef Name="idListPTP" />
+          </Key>
+          <Property Name="idListPTP" Type="Int32" Nullable="false" />
+          <Property Name="noSeri" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="model" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ColorID" Type="Int32" Nullable="false" />
+          <Property Name="merk" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ukuran" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="quantity" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Color" Relationship="indomodaModel.FK_ListPenerimaanTukangPotong_Colors" FromRole="ListPenerimaanTukangPotong" ToRole="Color" />
+        </EntityType>
+        <Association Name="FK_ListPenerimaanTukangPotong_Colors">
+          <End Type="indomodaModel.Color" Role="Color" Multiplicity="1" />
+          <End Type="indomodaModel.ListPenerimaanTukangPotong" Role="ListPenerimaanTukangPotong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Color">
+              <PropertyRef Name="ColorID" />
+            </Principal>
+            <Dependent Role="ListPenerimaanTukangPotong">
+              <PropertyRef Name="ColorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetailPemotonganKain_DetailFaktur">
+          <End Type="indomodaModel.DetailFaktur" Role="DetailFaktur" Multiplicity="1" />
+          <End Type="indomodaModel.DetailPemotonganKain" Role="DetailPemotonganKain" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DetailFaktur">
+              <PropertyRef Name="NoFaktur" />
+            </Principal>
+            <Dependent Role="DetailPemotonganKain">
+              <PropertyRef Name="NoFaktur" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -463,15 +579,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_POKain_Suppliers">
-          <End Type="indomodaModel.IndomodaSupplier" Role="IndomodaSupplier" Multiplicity="1" />
-          <End Type="indomodaModel.PreOrderKain" Role="PreOrderKain" Multiplicity="*" />
+        <Association Name="FK_DetailPenerimaanTukangPotong_DetailPemotonganKain">
+          <End Type="indomodaModel.DetailPemotonganKain" Role="DetailPemotonganKain" Multiplicity="1" />
+          <End Type="indomodaModel.DetailPenerimaanTukangPotong" Role="DetailPenerimaanTukangPotong" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="IndomodaSupplier">
-              <PropertyRef Name="SupplierID" />
+            <Principal Role="DetailPemotonganKain">
+              <PropertyRef Name="noPemotonganKain" />
             </Principal>
-            <Dependent Role="PreOrderKain">
-              <PropertyRef Name="SupplierID" />
+            <Dependent Role="DetailPenerimaanTukangPotong">
+              <PropertyRef Name="noPemotonganKain" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -556,19 +672,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="DetailPemotonganKains">
-            <EntityTypeMapping TypeName="indomodaModel.DetailPemotonganKain">
-              <MappingFragment StoreEntitySet="DetailPemotonganKain">
-                <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="Date_time" ColumnName="Date_time" />
-                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
-                <ScalarProperty Name="PONumber" ColumnName="PONumber" />
-                <ScalarProperty Name="NoFaktur" ColumnName="NoFaktur" />
-                <ScalarProperty Name="noPemotonganKain" ColumnName="noPemotonganKain" />
-                <ScalarProperty Name="idPemotonganKain" ColumnName="idPemotonganKain" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Employees">
             <EntityTypeMapping TypeName="indomodaModel.Employee">
               <MappingFragment StoreEntitySet="Employees">
@@ -590,6 +693,43 @@
                 <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
                 <ScalarProperty Name="PONumber" ColumnName="PONumber" />
                 <ScalarProperty Name="idPOKain" ColumnName="idPOKain" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetailPemotonganKains">
+            <EntityTypeMapping TypeName="indomodaModel.DetailPemotonganKain">
+              <MappingFragment StoreEntitySet="DetailPemotonganKain">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="Date_time" ColumnName="Date_time" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="PONumber" ColumnName="PONumber" />
+                <ScalarProperty Name="NoFaktur" ColumnName="NoFaktur" />
+                <ScalarProperty Name="noPemotonganKain" ColumnName="noPemotonganKain" />
+                <ScalarProperty Name="idPemotonganKain" ColumnName="idPemotonganKain" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetailPenerimaanTukangPotongs">
+            <EntityTypeMapping TypeName="indomodaModel.DetailPenerimaanTukangPotong">
+              <MappingFragment StoreEntitySet="DetailPenerimaanTukangPotong">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="Date_time" ColumnName="Date_time" />
+                <ScalarProperty Name="noPemotonganKain" ColumnName="noPemotonganKain" />
+                <ScalarProperty Name="noPenerimaanTukangPotong" ColumnName="noPenerimaanTukangPotong" />
+                <ScalarProperty Name="idPenerimaanTukangPotong" ColumnName="idPenerimaanTukangPotong" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListPenerimaanTukangPotongs">
+            <EntityTypeMapping TypeName="indomodaModel.ListPenerimaanTukangPotong">
+              <MappingFragment StoreEntitySet="ListPenerimaanTukangPotong">
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="ukuran" ColumnName="ukuran" />
+                <ScalarProperty Name="merk" ColumnName="merk" />
+                <ScalarProperty Name="ColorID" ColumnName="ColorID" />
+                <ScalarProperty Name="model" ColumnName="model" />
+                <ScalarProperty Name="noSeri" ColumnName="noSeri" />
+                <ScalarProperty Name="idListPTP" ColumnName="idListPTP" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

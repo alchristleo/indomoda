@@ -28,8 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PenerimaanTukangPotong));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.idListPTPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.noSeriDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.modelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colorIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.merkDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ukuranDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.listPenerimaanTukangPotongBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnExitPenerimaanTukangPotong = new MetroFramework.Controls.MetroButton();
             this.btnSavePenerimaanTukangPotong = new MetroFramework.Controls.MetroButton();
             this.btnDeletePenerimaanTukangPotong = new MetroFramework.Controls.MetroTile();
@@ -40,25 +49,95 @@
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.txtNoPenerimaanTukangPotong = new MetroFramework.Controls.MetroTextBox();
-            this.cboNoPemotonganKain = new MetroFramework.Controls.MetroComboBox();
             this.txtPICName = new MetroFramework.Controls.MetroTextBox();
-            this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
+            this.cboNoPemotonganKain = new MetroFramework.Controls.MetroComboBox();
+            this.detailPemotonganKainBindingSourceCbo = new System.Windows.Forms.BindingSource(this.components);
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.metroDateTime1 = new MetroFramework.Controls.MetroDateTime();
+            this.txtPICCode = new MetroFramework.Controls.MetroTextBox();
+            this.txtIDPenerimaanTukangPotong = new MetroFramework.Controls.MetroTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listPenerimaanTukangPotongBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.detailPemotonganKainBindingSourceCbo)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idListPTPDataGridViewTextBoxColumn,
+            this.noSeriDataGridViewTextBoxColumn,
+            this.modelDataGridViewTextBoxColumn,
+            this.colorIDDataGridViewTextBoxColumn,
+            this.merkDataGridViewTextBoxColumn,
+            this.ukuranDataGridViewTextBoxColumn,
+            this.quantityDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.listPenerimaanTukangPotongBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(52, 293);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(686, 216);
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(738, 216);
             this.dataGridView1.TabIndex = 8;
+            // 
+            // idListPTPDataGridViewTextBoxColumn
+            // 
+            this.idListPTPDataGridViewTextBoxColumn.DataPropertyName = "idListPTP";
+            this.idListPTPDataGridViewTextBoxColumn.HeaderText = "No.";
+            this.idListPTPDataGridViewTextBoxColumn.Name = "idListPTPDataGridViewTextBoxColumn";
+            this.idListPTPDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // noSeriDataGridViewTextBoxColumn
+            // 
+            this.noSeriDataGridViewTextBoxColumn.DataPropertyName = "noSeri";
+            this.noSeriDataGridViewTextBoxColumn.HeaderText = "No Seri";
+            this.noSeriDataGridViewTextBoxColumn.Name = "noSeriDataGridViewTextBoxColumn";
+            this.noSeriDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // modelDataGridViewTextBoxColumn
+            // 
+            this.modelDataGridViewTextBoxColumn.DataPropertyName = "model";
+            this.modelDataGridViewTextBoxColumn.HeaderText = "Model";
+            this.modelDataGridViewTextBoxColumn.Name = "modelDataGridViewTextBoxColumn";
+            this.modelDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // colorIDDataGridViewTextBoxColumn
+            // 
+            this.colorIDDataGridViewTextBoxColumn.DataPropertyName = "ColorID";
+            this.colorIDDataGridViewTextBoxColumn.HeaderText = "Color Name";
+            this.colorIDDataGridViewTextBoxColumn.Name = "colorIDDataGridViewTextBoxColumn";
+            this.colorIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // merkDataGridViewTextBoxColumn
+            // 
+            this.merkDataGridViewTextBoxColumn.DataPropertyName = "merk";
+            this.merkDataGridViewTextBoxColumn.HeaderText = "Merk";
+            this.merkDataGridViewTextBoxColumn.Name = "merkDataGridViewTextBoxColumn";
+            this.merkDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // ukuranDataGridViewTextBoxColumn
+            // 
+            this.ukuranDataGridViewTextBoxColumn.DataPropertyName = "ukuran";
+            this.ukuranDataGridViewTextBoxColumn.HeaderText = "Ukuran";
+            this.ukuranDataGridViewTextBoxColumn.Name = "ukuranDataGridViewTextBoxColumn";
+            this.ukuranDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // quantityDataGridViewTextBoxColumn
+            // 
+            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "quantity";
+            this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
+            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
+            this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // listPenerimaanTukangPotongBindingSource
+            // 
+            this.listPenerimaanTukangPotongBindingSource.DataSource = typeof(Project.ListPenerimaanTukangPotong);
             // 
             // btnExitPenerimaanTukangPotong
             // 
-            this.btnExitPenerimaanTukangPotong.Location = new System.Drawing.Point(257, 613);
+            this.btnExitPenerimaanTukangPotong.Location = new System.Drawing.Point(290, 615);
             this.btnExitPenerimaanTukangPotong.Name = "btnExitPenerimaanTukangPotong";
             this.btnExitPenerimaanTukangPotong.Size = new System.Drawing.Size(93, 47);
             this.btnExitPenerimaanTukangPotong.TabIndex = 9;
@@ -68,7 +147,7 @@
             // 
             // btnSavePenerimaanTukangPotong
             // 
-            this.btnSavePenerimaanTukangPotong.Location = new System.Drawing.Point(431, 613);
+            this.btnSavePenerimaanTukangPotong.Location = new System.Drawing.Point(464, 615);
             this.btnSavePenerimaanTukangPotong.Name = "btnSavePenerimaanTukangPotong";
             this.btnSavePenerimaanTukangPotong.Size = new System.Drawing.Size(93, 47);
             this.btnSavePenerimaanTukangPotong.TabIndex = 8;
@@ -89,6 +168,7 @@
             this.btnDeletePenerimaanTukangPotong.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnDeletePenerimaanTukangPotong.UseSelectable = true;
             this.btnDeletePenerimaanTukangPotong.UseTileImage = true;
+            this.btnDeletePenerimaanTukangPotong.Click += new System.EventHandler(this.btnDeletePenerimaanTukangPotong_Click);
             // 
             // btnEditPenerimaanTukangPotong
             // 
@@ -103,6 +183,7 @@
             this.btnEditPenerimaanTukangPotong.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnEditPenerimaanTukangPotong.UseSelectable = true;
             this.btnEditPenerimaanTukangPotong.UseTileImage = true;
+            this.btnEditPenerimaanTukangPotong.Click += new System.EventHandler(this.btnEditPenerimaanTukangPotong_Click);
             // 
             // btnAddPenerimaanTukangPotong
             // 
@@ -117,6 +198,7 @@
             this.btnAddPenerimaanTukangPotong.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnAddPenerimaanTukangPotong.UseSelectable = true;
             this.btnAddPenerimaanTukangPotong.UseTileImage = true;
+            this.btnAddPenerimaanTukangPotong.Click += new System.EventHandler(this.btnAddPenerimaanTukangPotong_Click);
             // 
             // metroLabel1
             // 
@@ -184,16 +266,6 @@
             this.txtNoPenerimaanTukangPotong.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtNoPenerimaanTukangPotong.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // cboNoPemotonganKain
-            // 
-            this.cboNoPemotonganKain.FormattingEnabled = true;
-            this.cboNoPemotonganKain.ItemHeight = 23;
-            this.cboNoPemotonganKain.Location = new System.Drawing.Point(275, 188);
-            this.cboNoPemotonganKain.Name = "cboNoPemotonganKain";
-            this.cboNoPemotonganKain.Size = new System.Drawing.Size(156, 29);
-            this.cboNoPemotonganKain.TabIndex = 3;
-            this.cboNoPemotonganKain.UseSelectable = true;
-            // 
             // txtPICName
             // 
             // 
@@ -209,7 +281,7 @@
             this.txtPICName.CustomButton.UseSelectable = true;
             this.txtPICName.CustomButton.Visible = false;
             this.txtPICName.Lines = new string[0];
-            this.txtPICName.Location = new System.Drawing.Point(275, 237);
+            this.txtPICName.Location = new System.Drawing.Point(275, 233);
             this.txtPICName.MaxLength = 32767;
             this.txtPICName.Name = "txtPICName";
             this.txtPICName.PasswordChar = '\0';
@@ -224,20 +296,28 @@
             this.txtPICName.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtPICName.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // metroComboBox1
+            // cboNoPemotonganKain
             // 
-            this.metroComboBox1.FormattingEnabled = true;
-            this.metroComboBox1.ItemHeight = 23;
-            this.metroComboBox1.Location = new System.Drawing.Point(275, 146);
-            this.metroComboBox1.Name = "metroComboBox1";
-            this.metroComboBox1.Size = new System.Drawing.Size(156, 29);
-            this.metroComboBox1.TabIndex = 2;
-            this.metroComboBox1.UseSelectable = true;
+            this.cboNoPemotonganKain.DataSource = this.detailPemotonganKainBindingSourceCbo;
+            this.cboNoPemotonganKain.DisplayMember = "noPemotonganKain";
+            this.cboNoPemotonganKain.FormattingEnabled = true;
+            this.cboNoPemotonganKain.ItemHeight = 23;
+            this.cboNoPemotonganKain.Location = new System.Drawing.Point(275, 146);
+            this.cboNoPemotonganKain.Name = "cboNoPemotonganKain";
+            this.cboNoPemotonganKain.Size = new System.Drawing.Size(156, 29);
+            this.cboNoPemotonganKain.TabIndex = 2;
+            this.cboNoPemotonganKain.UseSelectable = true;
+            this.cboNoPemotonganKain.ValueMember = "noPemotonganKain";
+            this.cboNoPemotonganKain.SelectedIndexChanged += new System.EventHandler(this.cboNoPemotonganKain_SelectedIndexChanged);
+            // 
+            // detailPemotonganKainBindingSourceCbo
+            // 
+            this.detailPemotonganKainBindingSourceCbo.DataSource = typeof(Project.DetailPemotonganKain);
             // 
             // metroLabel5
             // 
             this.metroLabel5.AutoSize = true;
-            this.metroLabel5.Location = new System.Drawing.Point(488, 66);
+            this.metroLabel5.Location = new System.Drawing.Point(539, 60);
             this.metroLabel5.Name = "metroLabel5";
             this.metroLabel5.Size = new System.Drawing.Size(36, 19);
             this.metroLabel5.TabIndex = 45;
@@ -245,22 +325,84 @@
             // 
             // metroDateTime1
             // 
-            this.metroDateTime1.Location = new System.Drawing.Point(538, 66);
+            this.metroDateTime1.Location = new System.Drawing.Point(589, 60);
             this.metroDateTime1.MinimumSize = new System.Drawing.Size(0, 29);
             this.metroDateTime1.Name = "metroDateTime1";
             this.metroDateTime1.Size = new System.Drawing.Size(200, 29);
             this.metroDateTime1.TabIndex = 46;
             // 
+            // txtPICCode
+            // 
+            // 
+            // 
+            // 
+            this.txtPICCode.CustomButton.Image = null;
+            this.txtPICCode.CustomButton.Location = new System.Drawing.Point(134, 1);
+            this.txtPICCode.CustomButton.Name = "";
+            this.txtPICCode.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.txtPICCode.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtPICCode.CustomButton.TabIndex = 1;
+            this.txtPICCode.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtPICCode.CustomButton.UseSelectable = true;
+            this.txtPICCode.CustomButton.Visible = false;
+            this.txtPICCode.Lines = new string[0];
+            this.txtPICCode.Location = new System.Drawing.Point(275, 188);
+            this.txtPICCode.MaxLength = 32767;
+            this.txtPICCode.Name = "txtPICCode";
+            this.txtPICCode.PasswordChar = '\0';
+            this.txtPICCode.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtPICCode.SelectedText = "";
+            this.txtPICCode.SelectionLength = 0;
+            this.txtPICCode.SelectionStart = 0;
+            this.txtPICCode.ShortcutsEnabled = true;
+            this.txtPICCode.Size = new System.Drawing.Size(156, 23);
+            this.txtPICCode.TabIndex = 47;
+            this.txtPICCode.UseSelectable = true;
+            this.txtPICCode.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtPICCode.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // txtIDPenerimaanTukangPotong
+            // 
+            // 
+            // 
+            // 
+            this.txtIDPenerimaanTukangPotong.CustomButton.Image = null;
+            this.txtIDPenerimaanTukangPotong.CustomButton.Location = new System.Drawing.Point(134, 1);
+            this.txtIDPenerimaanTukangPotong.CustomButton.Name = "";
+            this.txtIDPenerimaanTukangPotong.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.txtIDPenerimaanTukangPotong.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtIDPenerimaanTukangPotong.CustomButton.TabIndex = 1;
+            this.txtIDPenerimaanTukangPotong.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtIDPenerimaanTukangPotong.CustomButton.UseSelectable = true;
+            this.txtIDPenerimaanTukangPotong.CustomButton.Visible = false;
+            this.txtIDPenerimaanTukangPotong.Lines = new string[0];
+            this.txtIDPenerimaanTukangPotong.Location = new System.Drawing.Point(455, 105);
+            this.txtIDPenerimaanTukangPotong.MaxLength = 32767;
+            this.txtIDPenerimaanTukangPotong.Name = "txtIDPenerimaanTukangPotong";
+            this.txtIDPenerimaanTukangPotong.PasswordChar = '\0';
+            this.txtIDPenerimaanTukangPotong.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtIDPenerimaanTukangPotong.SelectedText = "";
+            this.txtIDPenerimaanTukangPotong.SelectionLength = 0;
+            this.txtIDPenerimaanTukangPotong.SelectionStart = 0;
+            this.txtIDPenerimaanTukangPotong.ShortcutsEnabled = true;
+            this.txtIDPenerimaanTukangPotong.Size = new System.Drawing.Size(156, 23);
+            this.txtIDPenerimaanTukangPotong.TabIndex = 48;
+            this.txtIDPenerimaanTukangPotong.UseSelectable = true;
+            this.txtIDPenerimaanTukangPotong.Visible = false;
+            this.txtIDPenerimaanTukangPotong.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtIDPenerimaanTukangPotong.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
             // PenerimaanTukangPotong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(790, 702);
+            this.ClientSize = new System.Drawing.Size(841, 704);
+            this.Controls.Add(this.txtIDPenerimaanTukangPotong);
+            this.Controls.Add(this.txtPICCode);
             this.Controls.Add(this.metroDateTime1);
             this.Controls.Add(this.metroLabel5);
-            this.Controls.Add(this.metroComboBox1);
-            this.Controls.Add(this.txtPICName);
             this.Controls.Add(this.cboNoPemotonganKain);
+            this.Controls.Add(this.txtPICName);
             this.Controls.Add(this.txtNoPenerimaanTukangPotong);
             this.Controls.Add(this.metroLabel4);
             this.Controls.Add(this.metroLabel3);
@@ -276,6 +418,8 @@
             this.Text = "Penerimaan Tukang Potong";
             this.Load += new System.EventHandler(this.PenerimaanTukangPotong_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listPenerimaanTukangPotongBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.detailPemotonganKainBindingSourceCbo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -293,10 +437,20 @@
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private MetroFramework.Controls.MetroTextBox txtNoPenerimaanTukangPotong;
-        private MetroFramework.Controls.MetroComboBox cboNoPemotonganKain;
         private MetroFramework.Controls.MetroTextBox txtPICName;
-        private MetroFramework.Controls.MetroComboBox metroComboBox1;
+        private MetroFramework.Controls.MetroComboBox cboNoPemotonganKain;
         private MetroFramework.Controls.MetroLabel metroLabel5;
         private MetroFramework.Controls.MetroDateTime metroDateTime1;
+        private MetroFramework.Controls.MetroTextBox txtPICCode;
+        private MetroFramework.Controls.MetroTextBox txtIDPenerimaanTukangPotong;
+        private System.Windows.Forms.BindingSource detailPemotonganKainBindingSourceCbo;
+        private System.Windows.Forms.BindingSource listPenerimaanTukangPotongBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idListPTPDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn noSeriDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn modelDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colorIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn merkDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ukuranDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
     }
 }
