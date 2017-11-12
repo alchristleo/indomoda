@@ -31,10 +31,11 @@ namespace Project
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroLabel metroLabel1;
-        private MetroFramework.Controls.MetroButton btnExitAddPenerimaanTukangPotong;
+        private MetroFramework.Controls.MetroButton btnExitEditPenerimaanTukangPotong;
         private MetroFramework.Controls.MetroButton btnSaveAddPenerimaanTukangPotong;
         private BindingSource colorBindingSource;
         private IContainer components;
+        private MetroFramework.Controls.MetroButton btnSaveEditPenrimaanTukangPotong;
         public List<ListPTPModel> list = new List<ListPTPModel>();
 
         public void setRefForm(Form form)
@@ -133,8 +134,9 @@ namespace Project
             }
             using (indomodaEntities db = new indomodaEntities())
             {
-                int setIDListPTP = db.ListPenerimaanTukangPotongs.AsEnumerable().LastOrDefault() == null ? 1 : db.ListPenerimaanTukangPotongs.AsEnumerable().LastOrDefault().idListPTP + 1;
-                int getIDPenerimaanKain = Convert.ToInt32(PenerimaanTukangPotong.idPenerimaanTukangPotong);
+                list = _dpo;
+                int setIDListPTP = list[0].idListPTP;
+                int getIDPTP = Convert.ToInt32(PenerimaanTukangPotong.idPenerimaanTukangPotong);
                 string getNoSeri = txtNoSeriTukangPotong.Text;
                 string getModel = txtModelTukangPotong.Text;
                 int getColorID = Convert.ToInt32(cboWarna.SelectedValue.ToString());
@@ -146,9 +148,9 @@ namespace Project
                 {
                     try
                     {
-                        int a = GenericQuery.ExecSQLCommand("INSERT INTO ListPenerimaanTukangPotong (idListPTP, idPenerimaanTukangPotong, noSeri, model, ColorID, merk, ukuran, quantity) VALUES(@idListPTP, @idPenerimaanTukangPotong, @noSeri, @model, @ColorID, @merk, @ukuran, @quantity)", new[] {
+                        int a = GenericQuery.ExecSQLCommand("UPDATE ListPenerimaanTukangPotong SET idListPTP = @idListPTP, idPenerimaanTukangPotong = @idPenerimaanTukangPotong, noSeri = @noSeri, model = @model, ColorID = @ColorID, merk = @merk, ukuran = @ukuran, quantity = @quantity WHERE idListPTP = '"+setIDListPTP+"'", new[] {
                                 new SqlParameter("@idListPTP", setIDListPTP),
-                                new SqlParameter("@idPenerimaanTukangPotong", getIDPenerimaanKain),
+                                new SqlParameter("@idPenerimaanTukangPotong", getIDPTP),
                                 new SqlParameter("@noSeri", getNoSeri),
                                 new SqlParameter("@model", getModel),
                                 new SqlParameter("@ColorID", getColorID),
@@ -163,20 +165,20 @@ namespace Project
                             _bs = new BindingSource();
                         }
 
-                        _bs.Add(new ListPenerimaanTukangPotong
+                        foreach (var i in _bs.List.Cast<ListPenerimaanTukangPotong>().Where(x => x.idListPTP == setIDListPTP))
                         {
-                            idListPTP = setIDListPTP,
-                            idPenerimaanTukangPotong = getIDPenerimaanKain,
-                            noSeri = getNoSeri,
-                            model = getModel,
-                            ColorID = getColorID,
-                            merk = getMerk,
-                            ukuran = getUkuran,
-                            quantity = getQty
-                        });
-
+                            i.idPenerimaanTukangPotong = getIDPTP;
+                            i.noSeri = getNoSeri;
+                            i.model = getModel;
+                            i.ColorID = getColorID;
+                            i.merk = getMerk;
+                            i.ukuran = getUkuran;
+                            i.quantity = getQty;
+                        }
+                        _dv.DataSource = _bs;
+                        _dv.EndEdit();
                         _dv.Refresh();
-                        MetroFramework.MetroMessageBox.Show(this, "Success! This list penerimaan tukang potong has been added to database", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                        MetroFramework.MetroMessageBox.Show(this, "Success! This list penerimaan tukang potong has been updated", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
                     catch (Exception ex)
                     {
@@ -198,12 +200,12 @@ namespace Project
 
             if (list != null && list.Count > 0)
             {
-                cboMaterialCode.SelectedValue = list[0].MaterialID;
-                txtAddMaterialName.Text = list[0].MaterialName;
-                cboColorCode.SelectedValue = list[0].ColorID;
-                txtAddColorName.Text = list[0].ColorName;
-                txtAddQuantity.Text = list[0].DetailQty.ToString();
-                txtAddPrice.Text = list[0].DetailPrice.ToString();
+                cboWarna.SelectedValue = list[0].ColorID;
+                txtNoSeriTukangPotong.Text = list[0].noSeri.ToString();
+                txtModelTukangPotong.Text = list[0].model.ToString();
+                txtMerkTukangPotong.Text = list[0].merk.ToString();
+                txtUkuranTukangPotong.Text = list[0].ukuran.ToString();
+                txtQtyTukangPotong.Text = list[0].quantity.ToString();
                 //cboMaterialCode.Refresh();
             }
         }
@@ -216,6 +218,7 @@ namespace Project
             this.txtUkuranTukangPotong = new MetroFramework.Controls.MetroTextBox();
             this.txtMerkTukangPotong = new MetroFramework.Controls.MetroTextBox();
             this.cboWarna = new MetroFramework.Controls.MetroComboBox();
+            this.colorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtModelTukangPotong = new MetroFramework.Controls.MetroTextBox();
             this.txtNoSeriTukangPotong = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
@@ -224,9 +227,9 @@ namespace Project
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.btnExitAddPenerimaanTukangPotong = new MetroFramework.Controls.MetroButton();
+            this.btnExitEditPenerimaanTukangPotong = new MetroFramework.Controls.MetroButton();
             this.btnSaveAddPenerimaanTukangPotong = new MetroFramework.Controls.MetroButton();
-            this.colorBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnSaveEditPenrimaanTukangPotong = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -342,6 +345,10 @@ namespace Project
             this.cboWarna.UseSelectable = true;
             this.cboWarna.ValueMember = "ColorID";
             // 
+            // colorBindingSource
+            // 
+            this.colorBindingSource.DataSource = typeof(Project.Color);
+            // 
             // txtModelTukangPotong
             // 
             // 
@@ -456,31 +463,38 @@ namespace Project
             this.metroLabel1.TabIndex = 27;
             this.metroLabel1.Text = "No. Seri";
             // 
-            // btnExitAddPenerimaanTukangPotong
+            // btnExitEditPenerimaanTukangPotong
             // 
-            this.btnExitAddPenerimaanTukangPotong.Location = new System.Drawing.Point(137, 310);
-            this.btnExitAddPenerimaanTukangPotong.Name = "btnExitAddPenerimaanTukangPotong";
-            this.btnExitAddPenerimaanTukangPotong.Size = new System.Drawing.Size(93, 47);
-            this.btnExitAddPenerimaanTukangPotong.TabIndex = 26;
-            this.btnExitAddPenerimaanTukangPotong.Text = "EXIT";
-            this.btnExitAddPenerimaanTukangPotong.UseSelectable = true;
+            this.btnExitEditPenerimaanTukangPotong.Location = new System.Drawing.Point(137, 310);
+            this.btnExitEditPenerimaanTukangPotong.Name = "btnExitEditPenerimaanTukangPotong";
+            this.btnExitEditPenerimaanTukangPotong.Size = new System.Drawing.Size(93, 47);
+            this.btnExitEditPenerimaanTukangPotong.TabIndex = 26;
+            this.btnExitEditPenerimaanTukangPotong.Text = "EXIT";
+            this.btnExitEditPenerimaanTukangPotong.UseSelectable = true;
+            this.btnExitEditPenerimaanTukangPotong.Click += new System.EventHandler(this.btnExitEditPenerimaanTukangPotong_Click);
             // 
             // btnSaveAddPenerimaanTukangPotong
             // 
-            this.btnSaveAddPenerimaanTukangPotong.Location = new System.Drawing.Point(295, 310);
+            this.btnSaveAddPenerimaanTukangPotong.Location = new System.Drawing.Point(0, 0);
             this.btnSaveAddPenerimaanTukangPotong.Name = "btnSaveAddPenerimaanTukangPotong";
-            this.btnSaveAddPenerimaanTukangPotong.Size = new System.Drawing.Size(93, 47);
-            this.btnSaveAddPenerimaanTukangPotong.TabIndex = 25;
-            this.btnSaveAddPenerimaanTukangPotong.Text = "SAVE";
+            this.btnSaveAddPenerimaanTukangPotong.Size = new System.Drawing.Size(75, 23);
+            this.btnSaveAddPenerimaanTukangPotong.TabIndex = 0;
             this.btnSaveAddPenerimaanTukangPotong.UseSelectable = true;
             // 
-            // colorBindingSource
+            // btnSaveEditPenrimaanTukangPotong
             // 
-            this.colorBindingSource.DataSource = typeof(Project.Color);
+            this.btnSaveEditPenrimaanTukangPotong.Location = new System.Drawing.Point(295, 310);
+            this.btnSaveEditPenrimaanTukangPotong.Name = "btnSaveEditPenrimaanTukangPotong";
+            this.btnSaveEditPenrimaanTukangPotong.Size = new System.Drawing.Size(93, 47);
+            this.btnSaveEditPenrimaanTukangPotong.TabIndex = 34;
+            this.btnSaveEditPenrimaanTukangPotong.Text = "SAVE";
+            this.btnSaveEditPenrimaanTukangPotong.UseSelectable = true;
+            this.btnSaveEditPenrimaanTukangPotong.Click += new System.EventHandler(this.btnSaveEditPenerimaanTukangPotong_Click);
             // 
             // EditPenerimaanTukangPotong
             // 
             this.ClientSize = new System.Drawing.Size(539, 415);
+            this.Controls.Add(this.btnSaveEditPenrimaanTukangPotong);
             this.Controls.Add(this.metroLabel7);
             this.Controls.Add(this.txtQtyTukangPotong);
             this.Controls.Add(this.txtUkuranTukangPotong);
@@ -494,8 +508,7 @@ namespace Project
             this.Controls.Add(this.metroLabel3);
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.metroLabel1);
-            this.Controls.Add(this.btnExitAddPenerimaanTukangPotong);
-            this.Controls.Add(this.btnSaveAddPenerimaanTukangPotong);
+            this.Controls.Add(this.btnExitEditPenerimaanTukangPotong);
             this.Name = "EditPenerimaanTukangPotong";
             this.Text = "Edit Penerimaan Tukang Potong";
             this.Load += new System.EventHandler(this.EditPenerimaanTukangPotong_Load_1);

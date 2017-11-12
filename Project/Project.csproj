@@ -86,6 +86,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bahan\EditPenerimaanTukangPotong.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Bahan\EditPOKain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -312,6 +315,9 @@
     <Compile Include="User.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Bahan\EditPenerimaanTukangPotong.resx">
+      <DependentUpon>EditPenerimaanTukangPotong.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Bahan\EditPOKain.resx">
       <DependentUpon>EditPOKain.cs</DependentUpon>
     </EmbeddedResource>

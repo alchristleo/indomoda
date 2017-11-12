@@ -117,7 +117,7 @@ namespace Project
             using (indomodaEntities db = new indomodaEntities())
             {
                 int setIDListPTP = db.ListPenerimaanTukangPotongs.AsEnumerable().LastOrDefault() == null ? 1 : db.ListPenerimaanTukangPotongs.AsEnumerable().LastOrDefault().idListPTP + 1;
-                int getIDPenerimaanKain = Convert.ToInt32(PenerimaanTukangPotong.idPenerimaanTukangPotong);
+                int getIDPTP = Convert.ToInt32(PenerimaanTukangPotong.idPenerimaanTukangPotong);
                 string getNoSeri = txtNoSeriTukangPotong.Text;
                 string getModel = txtModelTukangPotong.Text;
                 int getColorID = Convert.ToInt32(cboWarna.SelectedValue.ToString());
@@ -131,7 +131,7 @@ namespace Project
                     {
                         int a = GenericQuery.ExecSQLCommand("INSERT INTO ListPenerimaanTukangPotong (idListPTP, idPenerimaanTukangPotong, noSeri, model, ColorID, merk, ukuran, quantity) VALUES(@idListPTP, @idPenerimaanTukangPotong, @noSeri, @model, @ColorID, @merk, @ukuran, @quantity)", new[] {
                                 new SqlParameter("@idListPTP", setIDListPTP),
-                                new SqlParameter("@idPenerimaanTukangPotong", getIDPenerimaanKain),
+                                new SqlParameter("@idPenerimaanTukangPotong", getIDPTP),
                                 new SqlParameter("@noSeri", getNoSeri),
                                 new SqlParameter("@model", getModel),
                                 new SqlParameter("@ColorID", getColorID),
@@ -149,7 +149,7 @@ namespace Project
                         _bs.Add(new ListPenerimaanTukangPotong
                         {
                             idListPTP = setIDListPTP,
-                            idPenerimaanTukangPotong = getIDPenerimaanKain,
+                            idPenerimaanTukangPotong = getIDPTP,
                             noSeri = getNoSeri,
                             model = getModel,
                             ColorID = getColorID,

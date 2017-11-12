@@ -85,6 +85,15 @@ namespace Project
             {
                 MetroFramework.MetroMessageBox.Show(this, "You need to add list penerimaan tukang potong first!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            EditPenerimaanTukangPotong editPTP = new EditPenerimaanTukangPotong();
+            int currentIDPTP = Convert.ToInt32(dataGridView1[0, dataGridView1.CurrentRow.Index].Value.ToString());
+
+            listPO = GenericQuery.SqlQuery<ListPTPModel>("SELECT lp.idListPTP, lp.idPenerimaanTukangPotong, lp.noSeri, lp.model, lp.ColorID, lp.merk, lp.ukuran, lp.quantity, c.ColorName FROM ListPenerimaanTukangPotong lp JOIN Colors c ON lp.ColorID = c.ColorID  WHERE idListPTP = '" + currentIDPTP + "'");
+            editPTP.setDPO(ref listPO);
+            editPTP.setDGV(ref dataGridView1);
+            editPTP.setBS(ref listPenerimaanTukangPotongBindingSource);
+            editPTP.Show();
         }
 
         private void btnDeletePenerimaanTukangPotong_Click(object sender, EventArgs e)
@@ -109,7 +118,7 @@ namespace Project
                             dataGridView1.Refresh();
                             listPenerimaanTukangPotongBindingSource.EndEdit();
 
-                            MetroFramework.MetroMessageBox.Show(this, "Success! This Detail PO has been deleted to the database", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                            MetroFramework.MetroMessageBox.Show(this, "Success! This List penerimaan tukang potong has been deleted to the database", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
                         }
                         catch (Exception ex)
                         {

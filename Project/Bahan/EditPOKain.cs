@@ -134,7 +134,7 @@ namespace Project
                     try
                     {
                         int a = GenericQuery.ExecSQLCommand("UPDATE DetailPO SET DetailPOID = @DetailPOID, PONumber = @PONumber, MaterialID = @MaterialID, ColorID = @ColorID, DetailQty = @DetailQty, DetailPrice = @DetailPrice, DetailTotal = @DetailTotal, DetailStatus = @DetailStatus WHERE DetailPOID = '"+setDetailPOID+"'", new[] {
-                                new SqlParameter("DetailPOID", setDetailPOID),
+                                new SqlParameter("@DetailPOID", setDetailPOID),
                                 new SqlParameter("@PONumber", getPONumber),
                                 new SqlParameter("@MaterialID", getMaterialID),
                                 new SqlParameter("@ColorID", getColorID),
