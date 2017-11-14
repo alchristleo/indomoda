@@ -29,20 +29,22 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Karyawan));
             this.employeeDataGrid = new System.Windows.Forms.DataGridView();
-            this.employeeIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.employeeCodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.employeeNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.employeeEmailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.employeePhoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.employeePositionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.employeeBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.btnSaveEmployee = new MetroFramework.Controls.MetroTile();
             this.btnDeleteEmployee = new MetroFramework.Controls.MetroTile();
             this.btnEditEmployee = new MetroFramework.Controls.MetroTile();
             this.btnAddEmployee = new MetroFramework.Controls.MetroTile();
             this.btnRefresh = new MetroFramework.Controls.MetroTile();
+            this.NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.employeeCodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.employeeNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.employeeEmailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.employeePhoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.employeePositionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.employeeIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.employeeDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource2)).BeginInit();
             this.SuspendLayout();
@@ -51,64 +53,41 @@
             // 
             this.employeeDataGrid.AllowUserToAddRows = false;
             this.employeeDataGrid.AllowUserToDeleteRows = false;
+            this.employeeDataGrid.AllowUserToResizeRows = false;
             this.employeeDataGrid.AutoGenerateColumns = false;
-            this.employeeDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.employeeDataGrid.BackgroundColor = System.Drawing.SystemColors.Menu;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Bisque;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.employeeDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.employeeDataGrid.ColumnHeadersHeight = 30;
             this.employeeDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.employeeIDDataGridViewTextBoxColumn,
+            this.NO,
             this.employeeCodeDataGridViewTextBoxColumn,
             this.employeeNameDataGridViewTextBoxColumn,
             this.employeeEmailDataGridViewTextBoxColumn,
             this.employeePhoneDataGridViewTextBoxColumn,
-            this.employeePositionDataGridViewTextBoxColumn});
+            this.employeePositionDataGridViewTextBoxColumn,
+            this.employeeIDDataGridViewTextBoxColumn});
+            this.employeeDataGrid.Cursor = System.Windows.Forms.Cursors.Hand;
             this.employeeDataGrid.DataSource = this.employeeBindingSource2;
-            this.employeeDataGrid.Location = new System.Drawing.Point(58, 161);
+            this.employeeDataGrid.EnableHeadersVisualStyles = false;
+            this.employeeDataGrid.GridColor = System.Drawing.SystemColors.ScrollBar;
+            this.employeeDataGrid.Location = new System.Drawing.Point(57, 161);
             this.employeeDataGrid.Name = "employeeDataGrid";
             this.employeeDataGrid.ReadOnly = true;
-            this.employeeDataGrid.Size = new System.Drawing.Size(610, 230);
+            this.employeeDataGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.employeeDataGrid.RowHeadersVisible = false;
+            this.employeeDataGrid.RowHeadersWidth = 50;
+            this.employeeDataGrid.RowTemplate.Height = 30;
+            this.employeeDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.employeeDataGrid.Size = new System.Drawing.Size(724, 283);
             this.employeeDataGrid.TabIndex = 0;
-            // 
-            // employeeIDDataGridViewTextBoxColumn
-            // 
-            this.employeeIDDataGridViewTextBoxColumn.DataPropertyName = "EmployeeID";
-            this.employeeIDDataGridViewTextBoxColumn.HeaderText = "ID";
-            this.employeeIDDataGridViewTextBoxColumn.Name = "employeeIDDataGridViewTextBoxColumn";
-            this.employeeIDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.employeeIDDataGridViewTextBoxColumn.Width = 40;
-            // 
-            // employeeCodeDataGridViewTextBoxColumn
-            // 
-            this.employeeCodeDataGridViewTextBoxColumn.DataPropertyName = "EmployeeCode";
-            this.employeeCodeDataGridViewTextBoxColumn.HeaderText = "EmployeeCode";
-            this.employeeCodeDataGridViewTextBoxColumn.Name = "employeeCodeDataGridViewTextBoxColumn";
-            this.employeeCodeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // employeeNameDataGridViewTextBoxColumn
-            // 
-            this.employeeNameDataGridViewTextBoxColumn.DataPropertyName = "EmployeeName";
-            this.employeeNameDataGridViewTextBoxColumn.HeaderText = "EmployeeName";
-            this.employeeNameDataGridViewTextBoxColumn.Name = "employeeNameDataGridViewTextBoxColumn";
-            this.employeeNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // employeeEmailDataGridViewTextBoxColumn
-            // 
-            this.employeeEmailDataGridViewTextBoxColumn.DataPropertyName = "EmployeeEmail";
-            this.employeeEmailDataGridViewTextBoxColumn.HeaderText = "EmployeeEmail";
-            this.employeeEmailDataGridViewTextBoxColumn.Name = "employeeEmailDataGridViewTextBoxColumn";
-            this.employeeEmailDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // employeePhoneDataGridViewTextBoxColumn
-            // 
-            this.employeePhoneDataGridViewTextBoxColumn.DataPropertyName = "EmployeePhone";
-            this.employeePhoneDataGridViewTextBoxColumn.HeaderText = "EmployeePhone";
-            this.employeePhoneDataGridViewTextBoxColumn.Name = "employeePhoneDataGridViewTextBoxColumn";
-            this.employeePhoneDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // employeePositionDataGridViewTextBoxColumn
-            // 
-            this.employeePositionDataGridViewTextBoxColumn.DataPropertyName = "EmployeePosition";
-            this.employeePositionDataGridViewTextBoxColumn.HeaderText = "EmployeePosition";
-            this.employeePositionDataGridViewTextBoxColumn.Name = "employeePositionDataGridViewTextBoxColumn";
-            this.employeePositionDataGridViewTextBoxColumn.ReadOnly = true;
+            this.employeeDataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.employeeDataGrid_CellContentClick);
             // 
             // employeeBindingSource2
             // 
@@ -117,6 +96,7 @@
             // btnSaveEmployee
             // 
             this.btnSaveEmployee.ActiveControl = null;
+            this.btnSaveEmployee.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSaveEmployee.Location = new System.Drawing.Point(466, 88);
             this.btnSaveEmployee.Name = "btnSaveEmployee";
             this.btnSaveEmployee.Size = new System.Drawing.Size(88, 67);
@@ -132,6 +112,7 @@
             // btnDeleteEmployee
             // 
             this.btnDeleteEmployee.ActiveControl = null;
+            this.btnDeleteEmployee.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDeleteEmployee.Location = new System.Drawing.Point(363, 88);
             this.btnDeleteEmployee.Name = "btnDeleteEmployee";
             this.btnDeleteEmployee.Size = new System.Drawing.Size(87, 67);
@@ -147,6 +128,7 @@
             // btnEditEmployee
             // 
             this.btnEditEmployee.ActiveControl = null;
+            this.btnEditEmployee.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEditEmployee.Location = new System.Drawing.Point(261, 88);
             this.btnEditEmployee.Name = "btnEditEmployee";
             this.btnEditEmployee.Size = new System.Drawing.Size(87, 67);
@@ -162,6 +144,7 @@
             // btnAddEmployee
             // 
             this.btnAddEmployee.ActiveControl = null;
+            this.btnAddEmployee.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAddEmployee.Location = new System.Drawing.Point(159, 88);
             this.btnAddEmployee.Name = "btnAddEmployee";
             this.btnAddEmployee.Size = new System.Drawing.Size(85, 67);
@@ -190,11 +173,66 @@
             this.btnRefresh.UseTileImage = true;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
+            // NO
+            // 
+            this.NO.HeaderText = "No.";
+            this.NO.Name = "NO";
+            this.NO.ReadOnly = true;
+            this.NO.Width = 40;
+            // 
+            // employeeCodeDataGridViewTextBoxColumn
+            // 
+            this.employeeCodeDataGridViewTextBoxColumn.DataPropertyName = "EmployeeCode";
+            this.employeeCodeDataGridViewTextBoxColumn.HeaderText = "Employee Code";
+            this.employeeCodeDataGridViewTextBoxColumn.Name = "employeeCodeDataGridViewTextBoxColumn";
+            this.employeeCodeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.employeeCodeDataGridViewTextBoxColumn.Width = 120;
+            // 
+            // employeeNameDataGridViewTextBoxColumn
+            // 
+            this.employeeNameDataGridViewTextBoxColumn.DataPropertyName = "EmployeeName";
+            this.employeeNameDataGridViewTextBoxColumn.HeaderText = "Employee Name";
+            this.employeeNameDataGridViewTextBoxColumn.Name = "employeeNameDataGridViewTextBoxColumn";
+            this.employeeNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.employeeNameDataGridViewTextBoxColumn.Width = 120;
+            // 
+            // employeeEmailDataGridViewTextBoxColumn
+            // 
+            this.employeeEmailDataGridViewTextBoxColumn.DataPropertyName = "EmployeeEmail";
+            this.employeeEmailDataGridViewTextBoxColumn.HeaderText = "Employee Email";
+            this.employeeEmailDataGridViewTextBoxColumn.Name = "employeeEmailDataGridViewTextBoxColumn";
+            this.employeeEmailDataGridViewTextBoxColumn.ReadOnly = true;
+            this.employeeEmailDataGridViewTextBoxColumn.Width = 120;
+            // 
+            // employeePhoneDataGridViewTextBoxColumn
+            // 
+            this.employeePhoneDataGridViewTextBoxColumn.DataPropertyName = "EmployeePhone";
+            this.employeePhoneDataGridViewTextBoxColumn.HeaderText = "Employee Phone";
+            this.employeePhoneDataGridViewTextBoxColumn.Name = "employeePhoneDataGridViewTextBoxColumn";
+            this.employeePhoneDataGridViewTextBoxColumn.ReadOnly = true;
+            this.employeePhoneDataGridViewTextBoxColumn.Width = 120;
+            // 
+            // employeePositionDataGridViewTextBoxColumn
+            // 
+            this.employeePositionDataGridViewTextBoxColumn.DataPropertyName = "EmployeePosition";
+            this.employeePositionDataGridViewTextBoxColumn.HeaderText = "Employee Position";
+            this.employeePositionDataGridViewTextBoxColumn.Name = "employeePositionDataGridViewTextBoxColumn";
+            this.employeePositionDataGridViewTextBoxColumn.ReadOnly = true;
+            this.employeePositionDataGridViewTextBoxColumn.Width = 120;
+            // 
+            // employeeIDDataGridViewTextBoxColumn
+            // 
+            this.employeeIDDataGridViewTextBoxColumn.DataPropertyName = "EmployeeID";
+            this.employeeIDDataGridViewTextBoxColumn.HeaderText = "Employee ID";
+            this.employeeIDDataGridViewTextBoxColumn.Name = "employeeIDDataGridViewTextBoxColumn";
+            this.employeeIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.employeeIDDataGridViewTextBoxColumn.Width = 80;
+            // 
             // Karyawan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(726, 442);
+            this.ClientSize = new System.Drawing.Size(838, 492);
             this.Controls.Add(this.btnSaveEmployee);
             this.Controls.Add(this.btnDeleteEmployee);
             this.Controls.Add(this.btnEditEmployee);
@@ -219,11 +257,12 @@
         private MetroFramework.Controls.MetroTile btnDeleteEmployee;
         private MetroFramework.Controls.MetroTile btnSaveEmployee;
         private System.Windows.Forms.BindingSource employeeBindingSource2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn employeeIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NO;
         private System.Windows.Forms.DataGridViewTextBoxColumn employeeCodeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn employeeNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn employeeEmailDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn employeePhoneDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn employeePositionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn employeeIDDataGridViewTextBoxColumn;
     }
 }

@@ -33,15 +33,8 @@ namespace Project
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(poKain));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.detailPOIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pONumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.materialIDDataGridViewComboBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.materialBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.colorIDDataGridViewComboBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.colorBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.qtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.detailPOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.metroDateTime1 = new MetroFramework.Controls.MetroDateTime();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
@@ -63,6 +56,14 @@ namespace Project
             this.btnAddPoKain = new MetroFramework.Controls.MetroTile();
             this.cboSupplierCode = new MetroFramework.Controls.MetroComboBox();
             this.lblGrandTotalDB = new MetroFramework.Controls.MetroTextBox();
+            this.NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pONumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.materialIDDataGridViewComboBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.colorIDDataGridViewComboBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.qtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.detailPOIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.materialBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).BeginInit();
@@ -76,83 +77,35 @@ namespace Project
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.detailPOIDDataGridViewTextBoxColumn,
+            this.NO,
             this.pONumberDataGridViewTextBoxColumn,
             this.materialIDDataGridViewComboBoxColumn,
             this.colorIDDataGridViewComboBoxColumn,
             this.qtyDataGridViewTextBoxColumn,
             this.priceDataGridViewTextBoxColumn,
-            this.totalDataGridViewTextBoxColumn});
+            this.totalDataGridViewTextBoxColumn,
+            this.detailPOIDDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.detailPOBindingSource;
+            this.dataGridView1.GridColor = System.Drawing.SystemColors.ScrollBar;
             this.dataGridView1.Location = new System.Drawing.Point(62, 272);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(645, 200);
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(699, 200);
             this.dataGridView1.TabIndex = 9;
-            // 
-            // detailPOIDDataGridViewTextBoxColumn
-            // 
-            this.detailPOIDDataGridViewTextBoxColumn.DataPropertyName = "DetailPOID";
-            this.detailPOIDDataGridViewTextBoxColumn.HeaderText = "No.";
-            this.detailPOIDDataGridViewTextBoxColumn.Name = "detailPOIDDataGridViewTextBoxColumn";
-            this.detailPOIDDataGridViewTextBoxColumn.Width = 30;
-            // 
-            // pONumberDataGridViewTextBoxColumn
-            // 
-            this.pONumberDataGridViewTextBoxColumn.DataPropertyName = "PONumber";
-            this.pONumberDataGridViewTextBoxColumn.HeaderText = "No. PO";
-            this.pONumberDataGridViewTextBoxColumn.Name = "pONumberDataGridViewTextBoxColumn";
-            // 
-            // materialIDDataGridViewComboBoxColumn
-            // 
-            this.materialIDDataGridViewComboBoxColumn.DataPropertyName = "MaterialID";
-            this.materialIDDataGridViewComboBoxColumn.DataSource = this.materialBindingSource;
-            this.materialIDDataGridViewComboBoxColumn.DisplayMember = "MaterialName";
-            this.materialIDDataGridViewComboBoxColumn.HeaderText = "Material";
-            this.materialIDDataGridViewComboBoxColumn.Name = "materialIDDataGridViewComboBoxColumn";
-            this.materialIDDataGridViewComboBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.materialIDDataGridViewComboBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.materialIDDataGridViewComboBoxColumn.ValueMember = "MaterialID";
             // 
             // materialBindingSource
             // 
             this.materialBindingSource.DataSource = typeof(Project.Material);
             // 
-            // colorIDDataGridViewComboBoxColumn
-            // 
-            this.colorIDDataGridViewComboBoxColumn.DataPropertyName = "ColorID";
-            this.colorIDDataGridViewComboBoxColumn.DataSource = this.colorBindingSource;
-            this.colorIDDataGridViewComboBoxColumn.DisplayMember = "ColorName";
-            this.colorIDDataGridViewComboBoxColumn.HeaderText = "Color";
-            this.colorIDDataGridViewComboBoxColumn.Name = "colorIDDataGridViewComboBoxColumn";
-            this.colorIDDataGridViewComboBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colorIDDataGridViewComboBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.colorIDDataGridViewComboBoxColumn.ValueMember = "ColorID";
-            // 
             // colorBindingSource
             // 
             this.colorBindingSource.DataSource = typeof(Project.Color);
-            // 
-            // qtyDataGridViewTextBoxColumn
-            // 
-            this.qtyDataGridViewTextBoxColumn.DataPropertyName = "DetailQty";
-            this.qtyDataGridViewTextBoxColumn.HeaderText = "Quantity";
-            this.qtyDataGridViewTextBoxColumn.Name = "qtyDataGridViewTextBoxColumn";
-            this.qtyDataGridViewTextBoxColumn.Width = 50;
-            // 
-            // priceDataGridViewTextBoxColumn
-            // 
-            this.priceDataGridViewTextBoxColumn.DataPropertyName = "DetailPrice";
-            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
-            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-            this.priceDataGridViewTextBoxColumn.Width = 80;
-            // 
-            // totalDataGridViewTextBoxColumn
-            // 
-            this.totalDataGridViewTextBoxColumn.DataPropertyName = "DetailTotal";
-            this.totalDataGridViewTextBoxColumn.HeaderText = "Total";
-            this.totalDataGridViewTextBoxColumn.Name = "totalDataGridViewTextBoxColumn";
             // 
             // detailPOBindingSource
             // 
@@ -179,11 +132,11 @@ namespace Project
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(415, 123);
+            this.metroLabel2.Location = new System.Drawing.Point(466, 123);
             this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(97, 19);
+            this.metroLabel2.Size = new System.Drawing.Size(93, 19);
             this.metroLabel2.TabIndex = 16;
-            this.metroLabel2.Text = "Supplier Name";
+            this.metroLabel2.Text = "Supplier Code";
             // 
             // lblSupplierName
             // 
@@ -199,9 +152,9 @@ namespace Project
             this.lblSupplierName.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.lblSupplierName.CustomButton.UseSelectable = true;
             this.lblSupplierName.CustomButton.Visible = false;
-            this.lblSupplierName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.indomodaSupplierBindingSource, "SupplierName", true));
+            this.lblSupplierName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.indomodaSupplierBindingSource, "SupplierCode", true));
             this.lblSupplierName.Lines = new string[0];
-            this.lblSupplierName.Location = new System.Drawing.Point(524, 123);
+            this.lblSupplierName.Location = new System.Drawing.Point(575, 123);
             this.lblSupplierName.MaxLength = 32767;
             this.lblSupplierName.Name = "lblSupplierName";
             this.lblSupplierName.PasswordChar = '\0';
@@ -246,7 +199,7 @@ namespace Project
             this.lblPONumber.CustomButton.Visible = false;
             this.lblPONumber.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourcePreOrderKain, "PONumber", true));
             this.lblPONumber.Lines = new string[0];
-            this.lblPONumber.Location = new System.Drawing.Point(161, 80);
+            this.lblPONumber.Location = new System.Drawing.Point(182, 80);
             this.lblPONumber.MaxLength = 32767;
             this.lblPONumber.Name = "lblPONumber";
             this.lblPONumber.PasswordChar = '\0';
@@ -271,18 +224,18 @@ namespace Project
             this.metroLabel4.AutoSize = true;
             this.metroLabel4.Location = new System.Drawing.Point(62, 123);
             this.metroLabel4.Name = "metroLabel4";
-            this.metroLabel4.Size = new System.Drawing.Size(93, 19);
+            this.metroLabel4.Size = new System.Drawing.Size(97, 19);
             this.metroLabel4.TabIndex = 21;
-            this.metroLabel4.Text = "Supplier Code";
+            this.metroLabel4.Text = "Supplier Name";
             // 
             // metroLabel5
             // 
             this.metroLabel5.AutoSize = true;
             this.metroLabel5.Location = new System.Drawing.Point(62, 161);
             this.metroLabel5.Name = "metroLabel5";
-            this.metroLabel5.Size = new System.Drawing.Size(56, 19);
+            this.metroLabel5.Size = new System.Drawing.Size(108, 19);
             this.metroLabel5.TabIndex = 22;
-            this.metroLabel5.Text = "Address";
+            this.metroLabel5.Text = "Supplier Address";
             // 
             // lblSupplierAddress
             // 
@@ -300,7 +253,7 @@ namespace Project
             this.lblSupplierAddress.CustomButton.Visible = false;
             this.lblSupplierAddress.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.indomodaSupplierBindingSource, "SupplierAddress", true));
             this.lblSupplierAddress.Lines = new string[0];
-            this.lblSupplierAddress.Location = new System.Drawing.Point(161, 161);
+            this.lblSupplierAddress.Location = new System.Drawing.Point(182, 161);
             this.lblSupplierAddress.MaxLength = 32767;
             this.lblSupplierAddress.Multiline = true;
             this.lblSupplierAddress.Name = "lblSupplierAddress";
@@ -426,10 +379,10 @@ namespace Project
             // cboSupplierCode
             // 
             this.cboSupplierCode.DataSource = this.indomodaSupplierBindingSource;
-            this.cboSupplierCode.DisplayMember = "SupplierCode";
+            this.cboSupplierCode.DisplayMember = "SupplierName";
             this.cboSupplierCode.FormattingEnabled = true;
             this.cboSupplierCode.ItemHeight = 23;
-            this.cboSupplierCode.Location = new System.Drawing.Point(161, 117);
+            this.cboSupplierCode.Location = new System.Drawing.Point(182, 117);
             this.cboSupplierCode.Name = "cboSupplierCode";
             this.cboSupplierCode.Size = new System.Drawing.Size(183, 29);
             this.cboSupplierCode.TabIndex = 2;
@@ -469,11 +422,80 @@ namespace Project
             this.lblGrandTotalDB.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.lblGrandTotalDB.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
+            // NO
+            // 
+            this.NO.HeaderText = "No.";
+            this.NO.Name = "NO";
+            this.NO.ReadOnly = true;
+            this.NO.Width = 60;
+            // 
+            // pONumberDataGridViewTextBoxColumn
+            // 
+            this.pONumberDataGridViewTextBoxColumn.DataPropertyName = "PONumber";
+            this.pONumberDataGridViewTextBoxColumn.HeaderText = "No. PO";
+            this.pONumberDataGridViewTextBoxColumn.Name = "pONumberDataGridViewTextBoxColumn";
+            this.pONumberDataGridViewTextBoxColumn.ReadOnly = true;
+            this.pONumberDataGridViewTextBoxColumn.Width = 120;
+            // 
+            // materialIDDataGridViewComboBoxColumn
+            // 
+            this.materialIDDataGridViewComboBoxColumn.DataPropertyName = "MaterialID";
+            this.materialIDDataGridViewComboBoxColumn.DataSource = this.materialBindingSource;
+            this.materialIDDataGridViewComboBoxColumn.DisplayMember = "MaterialName";
+            this.materialIDDataGridViewComboBoxColumn.HeaderText = "Material";
+            this.materialIDDataGridViewComboBoxColumn.Name = "materialIDDataGridViewComboBoxColumn";
+            this.materialIDDataGridViewComboBoxColumn.ReadOnly = true;
+            this.materialIDDataGridViewComboBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.materialIDDataGridViewComboBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.materialIDDataGridViewComboBoxColumn.ValueMember = "MaterialID";
+            // 
+            // colorIDDataGridViewComboBoxColumn
+            // 
+            this.colorIDDataGridViewComboBoxColumn.DataPropertyName = "ColorID";
+            this.colorIDDataGridViewComboBoxColumn.DataSource = this.colorBindingSource;
+            this.colorIDDataGridViewComboBoxColumn.DisplayMember = "ColorName";
+            this.colorIDDataGridViewComboBoxColumn.HeaderText = "Color";
+            this.colorIDDataGridViewComboBoxColumn.Name = "colorIDDataGridViewComboBoxColumn";
+            this.colorIDDataGridViewComboBoxColumn.ReadOnly = true;
+            this.colorIDDataGridViewComboBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colorIDDataGridViewComboBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.colorIDDataGridViewComboBoxColumn.ValueMember = "ColorID";
+            // 
+            // qtyDataGridViewTextBoxColumn
+            // 
+            this.qtyDataGridViewTextBoxColumn.DataPropertyName = "DetailQty";
+            this.qtyDataGridViewTextBoxColumn.HeaderText = "Quantity (kg)";
+            this.qtyDataGridViewTextBoxColumn.Name = "qtyDataGridViewTextBoxColumn";
+            this.qtyDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // priceDataGridViewTextBoxColumn
+            // 
+            this.priceDataGridViewTextBoxColumn.DataPropertyName = "DetailPrice";
+            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
+            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            this.priceDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // totalDataGridViewTextBoxColumn
+            // 
+            this.totalDataGridViewTextBoxColumn.DataPropertyName = "DetailTotal";
+            this.totalDataGridViewTextBoxColumn.HeaderText = "Total";
+            this.totalDataGridViewTextBoxColumn.Name = "totalDataGridViewTextBoxColumn";
+            this.totalDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // detailPOIDDataGridViewTextBoxColumn
+            // 
+            this.detailPOIDDataGridViewTextBoxColumn.DataPropertyName = "DetailPOID";
+            this.detailPOIDDataGridViewTextBoxColumn.HeaderText = "DetailPOID";
+            this.detailPOIDDataGridViewTextBoxColumn.Name = "detailPOIDDataGridViewTextBoxColumn";
+            this.detailPOIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.detailPOIDDataGridViewTextBoxColumn.Visible = false;
+            this.detailPOIDDataGridViewTextBoxColumn.Width = 30;
+            // 
             // poKain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(767, 675);
+            this.ClientSize = new System.Drawing.Size(823, 675);
             this.Controls.Add(this.lblGrandTotalDB);
             this.Controls.Add(this.cboSupplierCode);
             this.Controls.Add(this.btnDeletePoKain);
@@ -531,13 +553,14 @@ namespace Project
         private System.Windows.Forms.BindingSource colorBindingSource;
         public MetroFramework.Controls.MetroTextBox lblPONumber;
         public System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn detailPOIDDataGridViewTextBoxColumn;
+        private MetroFramework.Controls.MetroTextBox lblGrandTotalDB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NO;
         private System.Windows.Forms.DataGridViewTextBoxColumn pONumberDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn materialIDDataGridViewComboBoxColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn colorIDDataGridViewComboBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn qtyDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalDataGridViewTextBoxColumn;
-        private MetroFramework.Controls.MetroTextBox lblGrandTotalDB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn detailPOIDDataGridViewTextBoxColumn;
     }
 }

@@ -245,13 +245,13 @@ namespace Project
         {
             if (String.IsNullOrEmpty(lblColorCode.Text))
             {
-                MetroFramework.MetroMessageBox.Show(this, "Please enter color code!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MetroFramework.MetroMessageBox.Show(this, "Please enter color code!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 lblColorCode.Focus();
                 return;
             }
             else if (String.IsNullOrEmpty(lblColorName.Text))
             {
-                MetroFramework.MetroMessageBox.Show(this, "Please enter color name!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MetroFramework.MetroMessageBox.Show(this, "Please enter color name!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 lblColorName.Focus();
                 return;
             }

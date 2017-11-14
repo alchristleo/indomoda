@@ -228,13 +228,13 @@ namespace Project
         {
             if (String.IsNullOrEmpty(lblMaterialCode.Text))
             {
-                MetroFramework.MetroMessageBox.Show(this, "Please enter material code!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MetroFramework.MetroMessageBox.Show(this, "Please enter material code!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 lblMaterialCode.Focus();
                 return;
             }
             else if (String.IsNullOrEmpty(lblMaterialName.Text))
             {
-                MetroFramework.MetroMessageBox.Show(this, "Please enter material name!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MetroFramework.MetroMessageBox.Show(this, "Please enter material name!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 lblMaterialName.Focus();
                 return;
             }

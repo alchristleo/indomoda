@@ -29,17 +29,19 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MasterBahan));
             this.dataGridBahan = new System.Windows.Forms.DataGridView();
-            this.materialIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.materialCodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.materialNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.materialBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnSaveBahan = new MetroFramework.Controls.MetroTile();
             this.btnDeleteBahan = new MetroFramework.Controls.MetroTile();
             this.btnEditBahan = new MetroFramework.Controls.MetroTile();
             this.btnAddBahan = new MetroFramework.Controls.MetroTile();
             this.btnRefreshBahan = new MetroFramework.Controls.MetroTile();
+            this.NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.materialCodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.materialNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.materialIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridBahan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.materialBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -49,38 +51,34 @@
             this.dataGridBahan.AllowUserToAddRows = false;
             this.dataGridBahan.AllowUserToDeleteRows = false;
             this.dataGridBahan.AutoGenerateColumns = false;
-            this.dataGridBahan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridBahan.BackgroundColor = System.Drawing.SystemColors.Menu;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Bisque;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridBahan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridBahan.ColumnHeadersHeight = 30;
             this.dataGridBahan.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.materialIDDataGridViewTextBoxColumn,
+            this.NO,
             this.materialCodeDataGridViewTextBoxColumn,
-            this.materialNameDataGridViewTextBoxColumn});
+            this.materialNameDataGridViewTextBoxColumn,
+            this.materialIDDataGridViewTextBoxColumn});
+            this.dataGridBahan.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dataGridBahan.DataSource = this.materialBindingSource;
+            this.dataGridBahan.EnableHeadersVisualStyles = false;
+            this.dataGridBahan.GridColor = System.Drawing.SystemColors.ScrollBar;
             this.dataGridBahan.Location = new System.Drawing.Point(47, 165);
             this.dataGridBahan.Name = "dataGridBahan";
             this.dataGridBahan.ReadOnly = true;
-            this.dataGridBahan.Size = new System.Drawing.Size(536, 192);
+            this.dataGridBahan.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dataGridBahan.RowHeadersVisible = false;
+            this.dataGridBahan.RowTemplate.Height = 30;
+            this.dataGridBahan.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridBahan.Size = new System.Drawing.Size(536, 271);
             this.dataGridBahan.TabIndex = 0;
-            // 
-            // materialIDDataGridViewTextBoxColumn
-            // 
-            this.materialIDDataGridViewTextBoxColumn.DataPropertyName = "MaterialID";
-            this.materialIDDataGridViewTextBoxColumn.HeaderText = "MaterialID";
-            this.materialIDDataGridViewTextBoxColumn.Name = "materialIDDataGridViewTextBoxColumn";
-            this.materialIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // materialCodeDataGridViewTextBoxColumn
-            // 
-            this.materialCodeDataGridViewTextBoxColumn.DataPropertyName = "MaterialCode";
-            this.materialCodeDataGridViewTextBoxColumn.HeaderText = "MaterialCode";
-            this.materialCodeDataGridViewTextBoxColumn.Name = "materialCodeDataGridViewTextBoxColumn";
-            this.materialCodeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // materialNameDataGridViewTextBoxColumn
-            // 
-            this.materialNameDataGridViewTextBoxColumn.DataPropertyName = "MaterialName";
-            this.materialNameDataGridViewTextBoxColumn.HeaderText = "MaterialName";
-            this.materialNameDataGridViewTextBoxColumn.Name = "materialNameDataGridViewTextBoxColumn";
-            this.materialNameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // materialBindingSource
             // 
@@ -89,6 +87,7 @@
             // btnSaveBahan
             // 
             this.btnSaveBahan.ActiveControl = null;
+            this.btnSaveBahan.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSaveBahan.Location = new System.Drawing.Point(458, 92);
             this.btnSaveBahan.Name = "btnSaveBahan";
             this.btnSaveBahan.Size = new System.Drawing.Size(88, 67);
@@ -104,6 +103,7 @@
             // btnDeleteBahan
             // 
             this.btnDeleteBahan.ActiveControl = null;
+            this.btnDeleteBahan.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDeleteBahan.Location = new System.Drawing.Point(355, 92);
             this.btnDeleteBahan.Name = "btnDeleteBahan";
             this.btnDeleteBahan.Size = new System.Drawing.Size(87, 67);
@@ -119,6 +119,7 @@
             // btnEditBahan
             // 
             this.btnEditBahan.ActiveControl = null;
+            this.btnEditBahan.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEditBahan.Location = new System.Drawing.Point(253, 92);
             this.btnEditBahan.Name = "btnEditBahan";
             this.btnEditBahan.Size = new System.Drawing.Size(87, 67);
@@ -134,6 +135,7 @@
             // btnAddBahan
             // 
             this.btnAddBahan.ActiveControl = null;
+            this.btnAddBahan.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAddBahan.Location = new System.Drawing.Point(151, 92);
             this.btnAddBahan.Name = "btnAddBahan";
             this.btnAddBahan.Size = new System.Drawing.Size(85, 67);
@@ -162,11 +164,41 @@
             this.btnRefreshBahan.UseTileImage = true;
             this.btnRefreshBahan.Click += new System.EventHandler(this.btnRefreshBahan_Click);
             // 
+            // NO
+            // 
+            this.NO.HeaderText = "No.";
+            this.NO.Name = "NO";
+            this.NO.ReadOnly = true;
+            this.NO.Width = 60;
+            // 
+            // materialCodeDataGridViewTextBoxColumn
+            // 
+            this.materialCodeDataGridViewTextBoxColumn.DataPropertyName = "MaterialCode";
+            this.materialCodeDataGridViewTextBoxColumn.HeaderText = "Material Code";
+            this.materialCodeDataGridViewTextBoxColumn.Name = "materialCodeDataGridViewTextBoxColumn";
+            this.materialCodeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.materialCodeDataGridViewTextBoxColumn.Width = 180;
+            // 
+            // materialNameDataGridViewTextBoxColumn
+            // 
+            this.materialNameDataGridViewTextBoxColumn.DataPropertyName = "MaterialName";
+            this.materialNameDataGridViewTextBoxColumn.HeaderText = "Material Name";
+            this.materialNameDataGridViewTextBoxColumn.Name = "materialNameDataGridViewTextBoxColumn";
+            this.materialNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.materialNameDataGridViewTextBoxColumn.Width = 180;
+            // 
+            // materialIDDataGridViewTextBoxColumn
+            // 
+            this.materialIDDataGridViewTextBoxColumn.DataPropertyName = "MaterialID";
+            this.materialIDDataGridViewTextBoxColumn.HeaderText = "Material ID";
+            this.materialIDDataGridViewTextBoxColumn.Name = "materialIDDataGridViewTextBoxColumn";
+            this.materialIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // MasterBahan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(633, 380);
+            this.ClientSize = new System.Drawing.Size(632, 478);
             this.Controls.Add(this.btnSaveBahan);
             this.Controls.Add(this.btnDeleteBahan);
             this.Controls.Add(this.btnEditBahan);
@@ -190,9 +222,10 @@
         private MetroFramework.Controls.MetroTile btnEditBahan;
         private MetroFramework.Controls.MetroTile btnAddBahan;
         private MetroFramework.Controls.MetroTile btnRefreshBahan;
-        private System.Windows.Forms.DataGridViewTextBoxColumn materialIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource materialBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NO;
         private System.Windows.Forms.DataGridViewTextBoxColumn materialCodeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn materialNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource materialBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn materialIDDataGridViewTextBoxColumn;
     }
 }

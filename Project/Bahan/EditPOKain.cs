@@ -66,28 +66,28 @@ namespace Project
 
         private void btnSavePOKain_Click(object sender, EventArgs e)
         {
-            if (cboMaterialCode.SelectedIndex == -1)
+            if (cboMaterialName.SelectedIndex == -1)
             {
                 MetroFramework.MetroMessageBox.Show(this, "You must select the Bahan Code!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                cboMaterialCode.Focus();
+                cboMaterialName.Focus();
                 return;
             }
-            else if (String.IsNullOrEmpty(txtAddMaterialName.Text))
+            else if (String.IsNullOrEmpty(txtAddMaterialCode.Text))
             {
                 MetroFramework.MetroMessageBox.Show(this, "Bahan name can't be empty!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtAddMaterialName.Focus();
+                txtAddMaterialCode.Focus();
                 return;
             }
-            else if (cboColorCode.SelectedIndex == -1)
+            else if (cboColorName.SelectedIndex == -1)
             {
                 MetroFramework.MetroMessageBox.Show(this, "You must select the Warna Code!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                cboColorCode.Focus();
+                cboColorName.Focus();
                 return;
             }
-            else if (String.IsNullOrEmpty(txtAddColorName.Text))
+            else if (String.IsNullOrEmpty(txtAddColorCode.Text))
             {
                 MetroFramework.MetroMessageBox.Show(this, "Warna name can't be empty!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtAddColorName.Focus();
+                txtAddColorCode.Focus();
                 return;
             }
             else if (String.IsNullOrEmpty(txtAddQuantity.Text))
@@ -122,8 +122,8 @@ namespace Project
                 list = _dpo;
                 int setDetailPOID = list[0].DetailPOID; 
                 long getPONumber = Convert.ToInt64(poKain.poNumber);
-                int getMaterialID = Convert.ToInt32(cboMaterialCode.SelectedValue.ToString());
-                int getColorID = Convert.ToInt32(cboColorCode.SelectedValue.ToString());
+                int getMaterialID = Convert.ToInt32(cboMaterialName.SelectedValue.ToString());
+                int getColorID = Convert.ToInt32(cboColorName.SelectedValue.ToString());
                 int getQty = Convert.ToInt32(txtAddQuantity.Text.ToString());
                 int getPrice = Convert.ToInt32(txtAddPrice.Text.ToString());
                 int setTotal = getQty * getPrice;
@@ -186,10 +186,10 @@ namespace Project
 
             if (list != null && list.Count > 0)
             {
-                cboMaterialCode.SelectedValue = list[0].MaterialID;
-                txtAddMaterialName.Text = list[0].MaterialName;
-                cboColorCode.SelectedValue = list[0].ColorID;
-                txtAddColorName.Text = list[0].ColorName;
+                cboMaterialName.SelectedValue = list[0].MaterialID;
+                txtAddMaterialCode.Text = list[0].MaterialCode;
+                cboColorName.SelectedValue = list[0].ColorID;
+                txtAddColorCode.Text = list[0].ColorCode;
                 txtAddQuantity.Text = list[0].DetailQty.ToString();
                 txtAddPrice.Text = list[0].DetailPrice.ToString();
                 //cboMaterialCode.Refresh();

@@ -125,6 +125,12 @@
     <Compile Include="ListPenerimaanTukangPotong.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Master\AddEditEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Master\AddEditEmployee.Designer.cs">
+      <DependentUpon>AddEditEmployee.cs</DependentUpon>
+    </Compile>
     <Compile Include="Master\AddEditKaryawan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -320,6 +326,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Bahan\EditPOKain.resx">
       <DependentUpon>EditPOKain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Master\AddEditEmployee.resx">
+      <DependentUpon>AddEditEmployee.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Master\AddEditKaryawan.resx">
       <DependentUpon>AddEditKaryawan.cs</DependentUpon>

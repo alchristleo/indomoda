@@ -94,6 +94,14 @@ namespace Project
                             int b = GenericQuery.ExecSQLCommand("DELETE FROM DetailPO WHERE DetailPOID = '"+currentPOID+"'");
                             db.SaveChangesAsync().Wait();
                             dataGridView1.Rows.RemoveAt(currentRow);
+
+                            int rowCount = dataGridView1.Rows.Count;
+                            for (int i = 0; i < rowCount; i++)
+                            {
+                                dataGridView1.Columns[0].ValueType = typeof(int);
+                                dataGridView1.Rows[i].Cells[0].Value = i + 1;
+                                dataGridView1.UpdateCellValue(0, i);
+                            }
                             dataGridView1.Refresh();
                             bindingSourcePreOrderKain.EndEdit();
 

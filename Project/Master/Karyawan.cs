@@ -24,18 +24,34 @@ namespace Project
         {
             db = new indomodaEntities();
             employeeBindingSource2.DataSource = db.Employees.ToList();
+            int rowCount = employeeDataGrid.Rows.Count;
+            for (int i = 0; i < rowCount; i++)
+            {
+                employeeDataGrid.Columns[0].ValueType = typeof(int);
+                employeeDataGrid.Rows[i].Cells[0].Value = i + 1;
+                employeeDataGrid.UpdateCellValue(0, i);
+            }
+            employeeDataGrid.Refresh();
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
             employeeBindingSource2.DataSource = db.Employees.ToList();
-            Cursor.Current = Cursors.Default;
+            int rowCount = employeeDataGrid.Rows.Count;
+            for (int i = 0; i < rowCount; i++)
+            {
+                employeeDataGrid.Columns[0].ValueType = typeof(int);
+                employeeDataGrid.Rows[i].Cells[0].Value = i + 1;
+                employeeDataGrid.UpdateCellValue(0, i);
+            }
+            employeeDataGrid.Refresh();
+            Cursor.Current = Cursors.Hand;
         }
 
         private  void btnAddEmployee_Click(object sender, EventArgs e)
         {
-            using (AddEditKaryawan addKaryawan = new AddEditKaryawan(new Employee {
+            using (AddEditEmployee addKaryawan = new AddEditEmployee(new Employee {
                 EmployeeID = db.Employees.AsEnumerable().LastOrDefault() == null ? 1 : db.Employees.AsEnumerable().LastOrDefault().EmployeeID + 1
             }))
             {
@@ -46,6 +62,14 @@ namespace Project
                         employeeBindingSource2.Add(addKaryawan.EmployeeInfo);
                         db.Employees.Add(addKaryawan.EmployeeInfo);
                         db.SaveChangesAsync().Wait();
+                        int rowCount = employeeDataGrid.Rows.Count;
+                        for (int i = 0; i < rowCount; i++)
+                        {
+                            employeeDataGrid.Columns[0].ValueType = typeof(int);
+                            employeeDataGrid.Rows[i].Cells[0].Value = i + 1;
+                            employeeDataGrid.UpdateCellValue(0, i);
+                        }
+                        employeeDataGrid.Refresh();
 
                         MetroFramework.MetroMessageBox.Show(this, "Success! New employee has been added to the database", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
@@ -67,7 +91,7 @@ namespace Project
             Employee obj = employeeBindingSource2.Current as Employee;
             if (obj != null)
             {
-                using (AddEditKaryawan editKaryawan = new AddEditKaryawan(obj))
+                using (AddEditEmployee editKaryawan = new AddEditEmployee(obj))
                 {
                     if (editKaryawan.ShowDialog() == DialogResult.OK)
                     {
@@ -102,6 +126,14 @@ namespace Project
                     db.SaveChangesAsync().Wait();
                     // Refresh id to sync with db
                     employeeBindingSource2.DataSource = db.Employees.ToList();
+                    int rowCount = employeeDataGrid.Rows.Count;
+                    for (int i = 0; i < rowCount; i++)
+                    {
+                        employeeDataGrid.Columns[0].ValueType = typeof(int);
+                        employeeDataGrid.Rows[i].Cells[0].Value = i + 1;
+                        employeeDataGrid.UpdateCellValue(0, i);
+                    }
+                    employeeDataGrid.Refresh();
                     MetroFramework.MetroMessageBox.Show(this, "Success! This employee has been removed from the database", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
                 }
             }
@@ -126,6 +158,11 @@ namespace Project
         private void btnExit_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void employeeDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

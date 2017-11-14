@@ -30,18 +30,20 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Supplier));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnSaveSup = new MetroFramework.Controls.MetroTile();
             this.btnDeleteSup = new MetroFramework.Controls.MetroTile();
             this.btnEditSup = new MetroFramework.Controls.MetroTile();
             this.btnAddSup = new MetroFramework.Controls.MetroTile();
             this.btnRefreshSup = new MetroFramework.Controls.MetroTile();
             this.supplierDataGrid = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.supplierBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.supplierBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.supplierDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -49,6 +51,7 @@
             // btnSaveSup
             // 
             this.btnSaveSup.ActiveControl = null;
+            this.btnSaveSup.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSaveSup.Location = new System.Drawing.Point(461, 82);
             this.btnSaveSup.Name = "btnSaveSup";
             this.btnSaveSup.Size = new System.Drawing.Size(88, 67);
@@ -64,6 +67,7 @@
             // btnDeleteSup
             // 
             this.btnDeleteSup.ActiveControl = null;
+            this.btnDeleteSup.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDeleteSup.Location = new System.Drawing.Point(354, 82);
             this.btnDeleteSup.Name = "btnDeleteSup";
             this.btnDeleteSup.Size = new System.Drawing.Size(87, 67);
@@ -79,6 +83,7 @@
             // btnEditSup
             // 
             this.btnEditSup.ActiveControl = null;
+            this.btnEditSup.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEditSup.Location = new System.Drawing.Point(247, 82);
             this.btnEditSup.Name = "btnEditSup";
             this.btnEditSup.Size = new System.Drawing.Size(87, 67);
@@ -94,6 +99,7 @@
             // btnAddSup
             // 
             this.btnAddSup.ActiveControl = null;
+            this.btnAddSup.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAddSup.Location = new System.Drawing.Point(143, 82);
             this.btnAddSup.Name = "btnAddSup";
             this.btnAddSup.Size = new System.Drawing.Size(85, 67);
@@ -127,64 +133,91 @@
             this.supplierDataGrid.AllowUserToAddRows = false;
             this.supplierDataGrid.AllowUserToDeleteRows = false;
             this.supplierDataGrid.AutoGenerateColumns = false;
-            this.supplierDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.supplierDataGrid.BackgroundColor = System.Drawing.SystemColors.Menu;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Bisque;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.supplierDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.supplierDataGrid.ColumnHeadersHeight = 30;
             this.supplierDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
+            this.NO,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5});
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn1});
+            this.supplierDataGrid.Cursor = System.Windows.Forms.Cursors.Hand;
             this.supplierDataGrid.DataSource = this.supplierBindingSource;
+            this.supplierDataGrid.EnableHeadersVisualStyles = false;
+            this.supplierDataGrid.GridColor = System.Drawing.SystemColors.ScrollBar;
             this.supplierDataGrid.Location = new System.Drawing.Point(40, 165);
             this.supplierDataGrid.Name = "supplierDataGrid";
             this.supplierDataGrid.ReadOnly = true;
-            this.supplierDataGrid.Size = new System.Drawing.Size(592, 207);
+            this.supplierDataGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.supplierDataGrid.RowHeadersVisible = false;
+            this.supplierDataGrid.RowTemplate.Height = 30;
+            this.supplierDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.supplierDataGrid.Size = new System.Drawing.Size(617, 305);
             this.supplierDataGrid.TabIndex = 12;
             // 
-            // dataGridViewTextBoxColumn1
+            // supplierBindingSource
             // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "SupplierID";
-            this.dataGridViewTextBoxColumn1.HeaderText = "SupplierID";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.supplierBindingSource.DataSource = typeof(Project.IndomodaSupplier);
+            // 
+            // NO
+            // 
+            this.NO.HeaderText = "No.";
+            this.NO.Name = "NO";
+            this.NO.ReadOnly = true;
+            this.NO.Width = 40;
             // 
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.DataPropertyName = "SupplierCode";
-            this.dataGridViewTextBoxColumn2.HeaderText = "SupplierCode";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Supplier Code";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.DataPropertyName = "SupplierName";
-            this.dataGridViewTextBoxColumn3.HeaderText = "SupplierName";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Supplier Name";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 120;
             // 
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.DataPropertyName = "SupplierAddress";
-            this.dataGridViewTextBoxColumn4.HeaderText = "SupplierAddress";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Supplier Address";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 130;
             // 
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.DataPropertyName = "SupplierPhone";
-            this.dataGridViewTextBoxColumn5.HeaderText = "SupplierPhone";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Supplier Phone";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Width = 120;
             // 
-            // supplierBindingSource
+            // dataGridViewTextBoxColumn1
             // 
-            this.supplierBindingSource.DataSource = typeof(Project.IndomodaSupplier);
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "SupplierID";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Supplier ID";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // Supplier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(674, 406);
+            this.ClientSize = new System.Drawing.Size(699, 505);
             this.Controls.Add(this.btnSaveSup);
             this.Controls.Add(this.btnDeleteSup);
             this.Controls.Add(this.btnEditSup);
@@ -214,10 +247,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn supplierAddressDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn supplierPhoneDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource supplierBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NO;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
     }
 }

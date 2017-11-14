@@ -29,11 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Warna));
             this.colorDataGrid = new System.Windows.Forms.DataGridView();
-            this.colorIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colorCodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colorNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colorIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnSaveWarna = new MetroFramework.Controls.MetroTile();
             this.btnDeleteWarna = new MetroFramework.Controls.MetroTile();
@@ -59,17 +61,57 @@
             this.colorDataGrid.AllowUserToAddRows = false;
             this.colorDataGrid.AllowUserToDeleteRows = false;
             this.colorDataGrid.AutoGenerateColumns = false;
-            this.colorDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.colorDataGrid.BackgroundColor = System.Drawing.SystemColors.Menu;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Bisque;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.colorDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.colorDataGrid.ColumnHeadersHeight = 30;
             this.colorDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colorIDDataGridViewTextBoxColumn,
+            this.NO,
             this.colorCodeDataGridViewTextBoxColumn,
-            this.colorNameDataGridViewTextBoxColumn});
+            this.colorNameDataGridViewTextBoxColumn,
+            this.colorIDDataGridViewTextBoxColumn});
+            this.colorDataGrid.Cursor = System.Windows.Forms.Cursors.Hand;
             this.colorDataGrid.DataSource = this.colorBindingSource;
+            this.colorDataGrid.EnableHeadersVisualStyles = false;
+            this.colorDataGrid.GridColor = System.Drawing.SystemColors.ScrollBar;
             this.colorDataGrid.Location = new System.Drawing.Point(36, 161);
             this.colorDataGrid.Name = "colorDataGrid";
             this.colorDataGrid.ReadOnly = true;
-            this.colorDataGrid.Size = new System.Drawing.Size(528, 216);
+            this.colorDataGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.colorDataGrid.RowHeadersVisible = false;
+            this.colorDataGrid.RowTemplate.Height = 30;
+            this.colorDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.colorDataGrid.Size = new System.Drawing.Size(528, 290);
             this.colorDataGrid.TabIndex = 0;
+            // 
+            // NO
+            // 
+            this.NO.HeaderText = "No.";
+            this.NO.Name = "NO";
+            this.NO.ReadOnly = true;
+            this.NO.Width = 40;
+            // 
+            // colorCodeDataGridViewTextBoxColumn
+            // 
+            this.colorCodeDataGridViewTextBoxColumn.DataPropertyName = "ColorCode";
+            this.colorCodeDataGridViewTextBoxColumn.HeaderText = "ColorCode";
+            this.colorCodeDataGridViewTextBoxColumn.Name = "colorCodeDataGridViewTextBoxColumn";
+            this.colorCodeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.colorCodeDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // colorNameDataGridViewTextBoxColumn
+            // 
+            this.colorNameDataGridViewTextBoxColumn.DataPropertyName = "ColorName";
+            this.colorNameDataGridViewTextBoxColumn.HeaderText = "ColorName";
+            this.colorNameDataGridViewTextBoxColumn.Name = "colorNameDataGridViewTextBoxColumn";
+            this.colorNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.colorNameDataGridViewTextBoxColumn.Width = 150;
             // 
             // colorIDDataGridViewTextBoxColumn
             // 
@@ -78,20 +120,6 @@
             this.colorIDDataGridViewTextBoxColumn.Name = "colorIDDataGridViewTextBoxColumn";
             this.colorIDDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // colorCodeDataGridViewTextBoxColumn
-            // 
-            this.colorCodeDataGridViewTextBoxColumn.DataPropertyName = "ColorCode";
-            this.colorCodeDataGridViewTextBoxColumn.HeaderText = "ColorCode";
-            this.colorCodeDataGridViewTextBoxColumn.Name = "colorCodeDataGridViewTextBoxColumn";
-            this.colorCodeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // colorNameDataGridViewTextBoxColumn
-            // 
-            this.colorNameDataGridViewTextBoxColumn.DataPropertyName = "ColorName";
-            this.colorNameDataGridViewTextBoxColumn.HeaderText = "ColorName";
-            this.colorNameDataGridViewTextBoxColumn.Name = "colorNameDataGridViewTextBoxColumn";
-            this.colorNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // colorBindingSource
             // 
             this.colorBindingSource.DataSource = typeof(Project.Color);
@@ -99,6 +127,7 @@
             // btnSaveWarna
             // 
             this.btnSaveWarna.ActiveControl = null;
+            this.btnSaveWarna.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSaveWarna.Location = new System.Drawing.Point(457, 78);
             this.btnSaveWarna.Name = "btnSaveWarna";
             this.btnSaveWarna.Size = new System.Drawing.Size(88, 67);
@@ -114,6 +143,7 @@
             // btnDeleteWarna
             // 
             this.btnDeleteWarna.ActiveControl = null;
+            this.btnDeleteWarna.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDeleteWarna.Location = new System.Drawing.Point(350, 78);
             this.btnDeleteWarna.Name = "btnDeleteWarna";
             this.btnDeleteWarna.Size = new System.Drawing.Size(87, 67);
@@ -129,6 +159,7 @@
             // btnEditWarna
             // 
             this.btnEditWarna.ActiveControl = null;
+            this.btnEditWarna.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEditWarna.Location = new System.Drawing.Point(243, 78);
             this.btnEditWarna.Name = "btnEditWarna";
             this.btnEditWarna.Size = new System.Drawing.Size(87, 67);
@@ -144,6 +175,7 @@
             // btnAddWarna
             // 
             this.btnAddWarna.ActiveControl = null;
+            this.btnAddWarna.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAddWarna.Location = new System.Drawing.Point(139, 78);
             this.btnAddWarna.Name = "btnAddWarna";
             this.btnAddWarna.Size = new System.Drawing.Size(85, 67);
@@ -176,7 +208,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(599, 417);
+            this.ClientSize = new System.Drawing.Size(599, 489);
             this.Controls.Add(this.btnSaveWarna);
             this.Controls.Add(this.btnDeleteWarna);
             this.Controls.Add(this.btnEditWarna);
@@ -263,9 +295,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn imeModeDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource warnaBindingSource2;
         private System.Windows.Forms.BindingSource warnaBindingSource3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colorIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource colorBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NO;
         private System.Windows.Forms.DataGridViewTextBoxColumn colorCodeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn colorNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource colorBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colorIDDataGridViewTextBoxColumn;
     }
 }
