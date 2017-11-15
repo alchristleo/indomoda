@@ -1,15 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="indomodaModelStoreContainer" CdmEntityContainer="indomodaEntities">
-    <EntitySetMapping Name="Colors">
-      <EntityTypeMapping TypeName="indomodaModel.Color">
-        <MappingFragment StoreEntitySet="Colors">
-          <ScalarProperty Name="ColorID" ColumnName="ColorID" />
-          <ScalarProperty Name="ColorCode" ColumnName="ColorCode" />
-          <ScalarProperty Name="ColorName" ColumnName="ColorName" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Customers">
       <EntityTypeMapping TypeName="indomodaModel.Customer">
         <MappingFragment StoreEntitySet="Customers">
@@ -48,20 +39,6 @@
           <ScalarProperty Name="UserName" ColumnName="UserName" />
           <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
           <ScalarProperty Name="UserRole" ColumnName="UserRole" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="DetailPOes">
-      <EntityTypeMapping TypeName="indomodaModel.DetailPO">
-        <MappingFragment StoreEntitySet="DetailPO">
-          <ScalarProperty Name="DetailStatus" ColumnName="DetailStatus" />
-          <ScalarProperty Name="DetailTotal" ColumnName="DetailTotal" />
-          <ScalarProperty Name="DetailPrice" ColumnName="DetailPrice" />
-          <ScalarProperty Name="DetailQty" ColumnName="DetailQty" />
-          <ScalarProperty Name="ColorID" ColumnName="ColorID" />
-          <ScalarProperty Name="MaterialID" ColumnName="MaterialID" />
-          <ScalarProperty Name="PONumber" ColumnName="PONumber" />
-          <ScalarProperty Name="DetailPOID" ColumnName="DetailPOID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -135,6 +112,30 @@
           <ScalarProperty Name="noSeri" ColumnName="noSeri" />
           <ScalarProperty Name="idPenerimaanTukangPotong" ColumnName="idPenerimaanTukangPotong" />
           <ScalarProperty Name="idListPTP" ColumnName="idListPTP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Colors">
+      <EntityTypeMapping TypeName="indomodaModel.Color">
+        <MappingFragment StoreEntitySet="Colors">
+          <ScalarProperty Name="ColorName" ColumnName="ColorName" />
+          <ScalarProperty Name="ColorCode" ColumnName="ColorCode" />
+          <ScalarProperty Name="ColorID" ColumnName="ColorID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetailPOes">
+      <EntityTypeMapping TypeName="indomodaModel.DetailPO">
+        <MappingFragment StoreEntitySet="DetailPO">
+          <ScalarProperty Name="statusFaktur" ColumnName="statusFaktur" />
+          <ScalarProperty Name="DetailStatus" ColumnName="DetailStatus" />
+          <ScalarProperty Name="DetailTotal" ColumnName="DetailTotal" />
+          <ScalarProperty Name="DetailPrice" ColumnName="DetailPrice" />
+          <ScalarProperty Name="DetailQty" ColumnName="DetailQty" />
+          <ScalarProperty Name="ColorID" ColumnName="ColorID" />
+          <ScalarProperty Name="MaterialID" ColumnName="MaterialID" />
+          <ScalarProperty Name="PONumber" ColumnName="PONumber" />
+          <ScalarProperty Name="DetailPOID" ColumnName="DetailPOID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

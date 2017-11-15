@@ -18,10 +18,11 @@ namespace Project
         public long PONumber { get; set; }
         public int MaterialID { get; set; }
         public int ColorID { get; set; }
-        public int DetailQty { get; set; }
-        public int DetailPrice { get; set; }
-        public int DetailTotal { get; set; }
+        public double DetailQty { get; set; }
+        public decimal DetailPrice { get; set; }
+        public decimal DetailTotal { get; set; }
         public bool DetailStatus { get; set; }
+        public bool statusFaktur { get; set; }
     
         public virtual Color Color { get; set; }
         public virtual Material Material { get; set; }

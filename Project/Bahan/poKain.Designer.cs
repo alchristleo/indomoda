@@ -31,10 +31,19 @@ namespace Project
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(poKain));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pONumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.materialIDDataGridViewComboBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.materialBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.colorIDDataGridViewComboBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.colorBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.qtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.detailPOIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.detailPOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.metroDateTime1 = new MetroFramework.Controls.MetroDateTime();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
@@ -56,14 +65,7 @@ namespace Project
             this.btnAddPoKain = new MetroFramework.Controls.MetroTile();
             this.cboSupplierCode = new MetroFramework.Controls.MetroComboBox();
             this.lblGrandTotalDB = new MetroFramework.Controls.MetroTextBox();
-            this.NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pONumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.materialIDDataGridViewComboBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.colorIDDataGridViewComboBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.qtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.detailPOIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnCountGrandTotal = new MetroFramework.Controls.MetroTile();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.materialBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).BeginInit();
@@ -77,9 +79,17 @@ namespace Project
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Menu;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Bisque;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dataGridView1.ColumnHeadersHeight = 30;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NO,
             this.pONumberDataGridViewTextBoxColumn,
@@ -89,23 +99,98 @@ namespace Project
             this.priceDataGridViewTextBoxColumn,
             this.totalDataGridViewTextBoxColumn,
             this.detailPOIDDataGridViewTextBoxColumn});
+            this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dataGridView1.DataSource = this.detailPOBindingSource;
+            this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ScrollBar;
             this.dataGridView1.Location = new System.Drawing.Point(62, 272);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.RowTemplate.Height = 30;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(699, 200);
+            this.dataGridView1.Size = new System.Drawing.Size(696, 242);
             this.dataGridView1.TabIndex = 9;
+            // 
+            // NO
+            // 
+            this.NO.HeaderText = "No.";
+            this.NO.Name = "NO";
+            this.NO.ReadOnly = true;
+            this.NO.Width = 60;
+            // 
+            // pONumberDataGridViewTextBoxColumn
+            // 
+            this.pONumberDataGridViewTextBoxColumn.DataPropertyName = "PONumber";
+            this.pONumberDataGridViewTextBoxColumn.HeaderText = "No. PO";
+            this.pONumberDataGridViewTextBoxColumn.Name = "pONumberDataGridViewTextBoxColumn";
+            this.pONumberDataGridViewTextBoxColumn.ReadOnly = true;
+            this.pONumberDataGridViewTextBoxColumn.Width = 120;
+            // 
+            // materialIDDataGridViewComboBoxColumn
+            // 
+            this.materialIDDataGridViewComboBoxColumn.DataPropertyName = "MaterialID";
+            this.materialIDDataGridViewComboBoxColumn.DataSource = this.materialBindingSource;
+            this.materialIDDataGridViewComboBoxColumn.DisplayMember = "MaterialName";
+            this.materialIDDataGridViewComboBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.materialIDDataGridViewComboBoxColumn.HeaderText = "Material";
+            this.materialIDDataGridViewComboBoxColumn.Name = "materialIDDataGridViewComboBoxColumn";
+            this.materialIDDataGridViewComboBoxColumn.ReadOnly = true;
+            this.materialIDDataGridViewComboBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.materialIDDataGridViewComboBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.materialIDDataGridViewComboBoxColumn.ValueMember = "MaterialID";
             // 
             // materialBindingSource
             // 
             this.materialBindingSource.DataSource = typeof(Project.Material);
             // 
+            // colorIDDataGridViewComboBoxColumn
+            // 
+            this.colorIDDataGridViewComboBoxColumn.DataPropertyName = "ColorID";
+            this.colorIDDataGridViewComboBoxColumn.DataSource = this.colorBindingSource;
+            this.colorIDDataGridViewComboBoxColumn.DisplayMember = "ColorName";
+            this.colorIDDataGridViewComboBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.colorIDDataGridViewComboBoxColumn.HeaderText = "Color";
+            this.colorIDDataGridViewComboBoxColumn.Name = "colorIDDataGridViewComboBoxColumn";
+            this.colorIDDataGridViewComboBoxColumn.ReadOnly = true;
+            this.colorIDDataGridViewComboBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colorIDDataGridViewComboBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.colorIDDataGridViewComboBoxColumn.ValueMember = "ColorID";
+            // 
             // colorBindingSource
             // 
             this.colorBindingSource.DataSource = typeof(Project.Color);
+            // 
+            // qtyDataGridViewTextBoxColumn
+            // 
+            this.qtyDataGridViewTextBoxColumn.DataPropertyName = "DetailQty";
+            this.qtyDataGridViewTextBoxColumn.HeaderText = "Quantity (kg)";
+            this.qtyDataGridViewTextBoxColumn.Name = "qtyDataGridViewTextBoxColumn";
+            this.qtyDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // priceDataGridViewTextBoxColumn
+            // 
+            this.priceDataGridViewTextBoxColumn.DataPropertyName = "DetailPrice";
+            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
+            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            this.priceDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // totalDataGridViewTextBoxColumn
+            // 
+            this.totalDataGridViewTextBoxColumn.DataPropertyName = "DetailTotal";
+            this.totalDataGridViewTextBoxColumn.HeaderText = "Total";
+            this.totalDataGridViewTextBoxColumn.Name = "totalDataGridViewTextBoxColumn";
+            this.totalDataGridViewTextBoxColumn.ReadOnly = true;
+            this.totalDataGridViewTextBoxColumn.Width = 110;
+            // 
+            // detailPOIDDataGridViewTextBoxColumn
+            // 
+            this.detailPOIDDataGridViewTextBoxColumn.DataPropertyName = "DetailPOID";
+            this.detailPOIDDataGridViewTextBoxColumn.HeaderText = "DetailPOID";
+            this.detailPOIDDataGridViewTextBoxColumn.Name = "detailPOIDDataGridViewTextBoxColumn";
+            this.detailPOIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.detailPOIDDataGridViewTextBoxColumn.Visible = false;
+            this.detailPOIDDataGridViewTextBoxColumn.Width = 30;
             // 
             // detailPOBindingSource
             // 
@@ -273,7 +358,7 @@ namespace Project
             // metroLabel6
             // 
             this.metroLabel6.AutoSize = true;
-            this.metroLabel6.Location = new System.Drawing.Point(412, 491);
+            this.metroLabel6.Location = new System.Drawing.Point(482, 532);
             this.metroLabel6.Name = "metroLabel6";
             this.metroLabel6.Size = new System.Drawing.Size(76, 19);
             this.metroLabel6.TabIndex = 24;
@@ -295,10 +380,11 @@ namespace Project
             this.lblGrandTotal.CustomButton.Visible = false;
             this.lblGrandTotal.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourcePreOrderKain, "GrandTotal", true));
             this.lblGrandTotal.Lines = new string[0];
-            this.lblGrandTotal.Location = new System.Drawing.Point(521, 491);
+            this.lblGrandTotal.Location = new System.Drawing.Point(574, 532);
             this.lblGrandTotal.MaxLength = 32767;
             this.lblGrandTotal.Name = "lblGrandTotal";
             this.lblGrandTotal.PasswordChar = '\0';
+            this.lblGrandTotal.ReadOnly = true;
             this.lblGrandTotal.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.lblGrandTotal.SelectedText = "";
             this.lblGrandTotal.SelectionLength = 0;
@@ -312,7 +398,8 @@ namespace Project
             // 
             // btnExitPoKain
             // 
-            this.btnExitPoKain.Location = new System.Drawing.Point(194, 590);
+            this.btnExitPoKain.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExitPoKain.Location = new System.Drawing.Point(242, 632);
             this.btnExitPoKain.Name = "btnExitPoKain";
             this.btnExitPoKain.Size = new System.Drawing.Size(110, 48);
             this.btnExitPoKain.TabIndex = 10;
@@ -322,8 +409,9 @@ namespace Project
             // 
             // btnSavePoKain
             // 
+            this.btnSavePoKain.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSavePoKain.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnSavePoKain.Location = new System.Drawing.Point(449, 590);
+            this.btnSavePoKain.Location = new System.Drawing.Point(448, 632);
             this.btnSavePoKain.Name = "btnSavePoKain";
             this.btnSavePoKain.Size = new System.Drawing.Size(110, 48);
             this.btnSavePoKain.TabIndex = 9;
@@ -334,7 +422,8 @@ namespace Project
             // btnDeletePoKain
             // 
             this.btnDeletePoKain.ActiveControl = null;
-            this.btnDeletePoKain.Location = new System.Drawing.Point(266, 478);
+            this.btnDeletePoKain.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDeletePoKain.Location = new System.Drawing.Point(265, 520);
             this.btnDeletePoKain.Name = "btnDeletePoKain";
             this.btnDeletePoKain.Size = new System.Drawing.Size(87, 67);
             this.btnDeletePoKain.TabIndex = 7;
@@ -349,7 +438,8 @@ namespace Project
             // btnEditPoKain
             // 
             this.btnEditPoKain.ActiveControl = null;
-            this.btnEditPoKain.Location = new System.Drawing.Point(164, 478);
+            this.btnEditPoKain.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEditPoKain.Location = new System.Drawing.Point(163, 520);
             this.btnEditPoKain.Name = "btnEditPoKain";
             this.btnEditPoKain.Size = new System.Drawing.Size(87, 67);
             this.btnEditPoKain.TabIndex = 6;
@@ -364,7 +454,8 @@ namespace Project
             // btnAddPoKain
             // 
             this.btnAddPoKain.ActiveControl = null;
-            this.btnAddPoKain.Location = new System.Drawing.Point(62, 478);
+            this.btnAddPoKain.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddPoKain.Location = new System.Drawing.Point(61, 520);
             this.btnAddPoKain.Name = "btnAddPoKain";
             this.btnAddPoKain.Size = new System.Drawing.Size(85, 67);
             this.btnAddPoKain.TabIndex = 5;
@@ -378,6 +469,7 @@ namespace Project
             // 
             // cboSupplierCode
             // 
+            this.cboSupplierCode.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cboSupplierCode.DataSource = this.indomodaSupplierBindingSource;
             this.cboSupplierCode.DisplayMember = "SupplierName";
             this.cboSupplierCode.FormattingEnabled = true;
@@ -405,7 +497,7 @@ namespace Project
             this.lblGrandTotalDB.CustomButton.Visible = false;
             this.lblGrandTotalDB.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourcePreOrderKain, "GrandTotal", true));
             this.lblGrandTotalDB.Lines = new string[0];
-            this.lblGrandTotalDB.Location = new System.Drawing.Point(521, 520);
+            this.lblGrandTotalDB.Location = new System.Drawing.Point(574, 561);
             this.lblGrandTotalDB.MaxLength = 32767;
             this.lblGrandTotalDB.Name = "lblGrandTotalDB";
             this.lblGrandTotalDB.PasswordChar = '\0';
@@ -422,80 +514,28 @@ namespace Project
             this.lblGrandTotalDB.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.lblGrandTotalDB.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // NO
+            // btnCountGrandTotal
             // 
-            this.NO.HeaderText = "No.";
-            this.NO.Name = "NO";
-            this.NO.ReadOnly = true;
-            this.NO.Width = 60;
-            // 
-            // pONumberDataGridViewTextBoxColumn
-            // 
-            this.pONumberDataGridViewTextBoxColumn.DataPropertyName = "PONumber";
-            this.pONumberDataGridViewTextBoxColumn.HeaderText = "No. PO";
-            this.pONumberDataGridViewTextBoxColumn.Name = "pONumberDataGridViewTextBoxColumn";
-            this.pONumberDataGridViewTextBoxColumn.ReadOnly = true;
-            this.pONumberDataGridViewTextBoxColumn.Width = 120;
-            // 
-            // materialIDDataGridViewComboBoxColumn
-            // 
-            this.materialIDDataGridViewComboBoxColumn.DataPropertyName = "MaterialID";
-            this.materialIDDataGridViewComboBoxColumn.DataSource = this.materialBindingSource;
-            this.materialIDDataGridViewComboBoxColumn.DisplayMember = "MaterialName";
-            this.materialIDDataGridViewComboBoxColumn.HeaderText = "Material";
-            this.materialIDDataGridViewComboBoxColumn.Name = "materialIDDataGridViewComboBoxColumn";
-            this.materialIDDataGridViewComboBoxColumn.ReadOnly = true;
-            this.materialIDDataGridViewComboBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.materialIDDataGridViewComboBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.materialIDDataGridViewComboBoxColumn.ValueMember = "MaterialID";
-            // 
-            // colorIDDataGridViewComboBoxColumn
-            // 
-            this.colorIDDataGridViewComboBoxColumn.DataPropertyName = "ColorID";
-            this.colorIDDataGridViewComboBoxColumn.DataSource = this.colorBindingSource;
-            this.colorIDDataGridViewComboBoxColumn.DisplayMember = "ColorName";
-            this.colorIDDataGridViewComboBoxColumn.HeaderText = "Color";
-            this.colorIDDataGridViewComboBoxColumn.Name = "colorIDDataGridViewComboBoxColumn";
-            this.colorIDDataGridViewComboBoxColumn.ReadOnly = true;
-            this.colorIDDataGridViewComboBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colorIDDataGridViewComboBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.colorIDDataGridViewComboBoxColumn.ValueMember = "ColorID";
-            // 
-            // qtyDataGridViewTextBoxColumn
-            // 
-            this.qtyDataGridViewTextBoxColumn.DataPropertyName = "DetailQty";
-            this.qtyDataGridViewTextBoxColumn.HeaderText = "Quantity (kg)";
-            this.qtyDataGridViewTextBoxColumn.Name = "qtyDataGridViewTextBoxColumn";
-            this.qtyDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // priceDataGridViewTextBoxColumn
-            // 
-            this.priceDataGridViewTextBoxColumn.DataPropertyName = "DetailPrice";
-            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
-            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-            this.priceDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // totalDataGridViewTextBoxColumn
-            // 
-            this.totalDataGridViewTextBoxColumn.DataPropertyName = "DetailTotal";
-            this.totalDataGridViewTextBoxColumn.HeaderText = "Total";
-            this.totalDataGridViewTextBoxColumn.Name = "totalDataGridViewTextBoxColumn";
-            this.totalDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // detailPOIDDataGridViewTextBoxColumn
-            // 
-            this.detailPOIDDataGridViewTextBoxColumn.DataPropertyName = "DetailPOID";
-            this.detailPOIDDataGridViewTextBoxColumn.HeaderText = "DetailPOID";
-            this.detailPOIDDataGridViewTextBoxColumn.Name = "detailPOIDDataGridViewTextBoxColumn";
-            this.detailPOIDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.detailPOIDDataGridViewTextBoxColumn.Visible = false;
-            this.detailPOIDDataGridViewTextBoxColumn.Width = 30;
+            this.btnCountGrandTotal.ActiveControl = null;
+            this.btnCountGrandTotal.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCountGrandTotal.Location = new System.Drawing.Point(367, 520);
+            this.btnCountGrandTotal.Name = "btnCountGrandTotal";
+            this.btnCountGrandTotal.Size = new System.Drawing.Size(87, 67);
+            this.btnCountGrandTotal.TabIndex = 26;
+            this.btnCountGrandTotal.Text = "COUNT";
+            this.btnCountGrandTotal.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCountGrandTotal.TileImage = global::Project.Properties.Resources.btn_calculator;
+            this.btnCountGrandTotal.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCountGrandTotal.UseSelectable = true;
+            this.btnCountGrandTotal.UseTileImage = true;
+            this.btnCountGrandTotal.Click += new System.EventHandler(this.btnCountGrandTotal_Click);
             // 
             // poKain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(823, 675);
+            this.ClientSize = new System.Drawing.Size(823, 744);
+            this.Controls.Add(this.btnCountGrandTotal);
             this.Controls.Add(this.lblGrandTotalDB);
             this.Controls.Add(this.cboSupplierCode);
             this.Controls.Add(this.btnDeletePoKain);
@@ -542,7 +582,6 @@ namespace Project
         private MetroFramework.Controls.MetroTextBox lblGrandTotal;
         private MetroFramework.Controls.MetroButton btnExitPoKain;
         private MetroFramework.Controls.MetroButton btnSavePoKain;
-        private MetroFramework.Controls.MetroTile btnDeletePoKain;
         private MetroFramework.Controls.MetroTile btnEditPoKain;
         private MetroFramework.Controls.MetroTile btnAddPoKain;
         private MetroFramework.Controls.MetroComboBox cboSupplierCode;
@@ -562,5 +601,7 @@ namespace Project
         private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn detailPOIDDataGridViewTextBoxColumn;
+        private MetroFramework.Controls.MetroTile btnDeletePoKain;
+        internal MetroFramework.Controls.MetroTile btnCountGrandTotal;
     }
 }

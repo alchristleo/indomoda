@@ -183,6 +183,7 @@
             // 
             // cboMaterialName
             // 
+            this.cboMaterialName.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cboMaterialName.DataSource = this.materialBindingSource;
             this.cboMaterialName.DisplayMember = "MaterialName";
             this.cboMaterialName.FormattingEnabled = true;
@@ -231,6 +232,7 @@
             // 
             // cboColorName
             // 
+            this.cboColorName.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cboColorName.DataSource = this.colorBindingSource;
             this.cboColorName.DisplayMember = "ColorName";
             this.cboColorName.FormattingEnabled = true;

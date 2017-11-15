@@ -63,10 +63,11 @@
           <Property Name="PONumber" Type="bigint" Nullable="false" />
           <Property Name="MaterialID" Type="int" Nullable="false" />
           <Property Name="ColorID" Type="int" Nullable="false" />
-          <Property Name="DetailQty" Type="int" Nullable="false" />
-          <Property Name="DetailPrice" Type="int" Nullable="false" />
-          <Property Name="DetailTotal" Type="int" Nullable="false" />
+          <Property Name="DetailQty" Type="float" Nullable="false" />
+          <Property Name="DetailPrice" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="DetailTotal" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="DetailStatus" Type="bit" Nullable="false" />
+          <Property Name="statusFaktur" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Employees">
           <Key>
@@ -292,16 +293,6 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="indomodaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Color">
-          <Key>
-            <PropertyRef Name="ColorID" />
-          </Key>
-          <Property Name="ColorID" Type="Int32" Nullable="false" />
-          <Property Name="ColorCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ColorName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="DetailPOes" Relationship="indomodaModel.FK_DetailPO_Colors" FromRole="Color" ToRole="DetailPO" />
-          <NavigationProperty Name="ListPenerimaanTukangPotongs" Relationship="indomodaModel.FK_ListPenerimaanTukangPotong_Colors" FromRole="Color" ToRole="ListPenerimaanTukangPotong" />
-        </EntityType>
         <EntityType Name="Customer">
           <Key>
             <PropertyRef Name="CustomerID" />
@@ -342,20 +333,10 @@
           <Property Name="UserRole" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityContainer Name="indomodaEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Colors" EntityType="Self.Color" />
           <EntitySet Name="Customers" EntityType="Self.Customer" />
           <EntitySet Name="IndomodaSuppliers" EntityType="Self.IndomodaSupplier" />
           <EntitySet Name="Materials" EntityType="Self.Material" />
           <EntitySet Name="Users" EntityType="Self.User" />
-          <EntitySet Name="DetailPOes" EntityType="indomodaModel.DetailPO" />
-          <AssociationSet Name="FK_DetailPO_Colors" Association="indomodaModel.FK_DetailPO_Colors">
-            <End Role="Color" EntitySet="Colors" />
-            <End Role="DetailPO" EntitySet="DetailPOes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DetailPO_Materials" Association="indomodaModel.FK_DetailPO_Materials">
-            <End Role="Material" EntitySet="Materials" />
-            <End Role="DetailPO" EntitySet="DetailPOes" />
-          </AssociationSet>
           <EntitySet Name="DetailFakturs" EntityType="indomodaModel.DetailFaktur" />
           <EntitySet Name="Employees" EntityType="indomodaModel.Employee" />
           <EntitySet Name="PreOrderKains" EntityType="indomodaModel.PreOrderKain" />
@@ -386,50 +367,21 @@
             <End Role="DetailPenerimaanTukangPotong" EntitySet="DetailPenerimaanTukangPotongs" />
           </AssociationSet>
           <EntitySet Name="ListPenerimaanTukangPotongs" EntityType="indomodaModel.ListPenerimaanTukangPotong" />
+          <EntitySet Name="Colors" EntityType="indomodaModel.Color" />
+          <EntitySet Name="DetailPOes" EntityType="indomodaModel.DetailPO" />
+          <AssociationSet Name="FK_DetailPO_Colors" Association="indomodaModel.FK_DetailPO_Colors">
+            <End Role="Color" EntitySet="Colors" />
+            <End Role="DetailPO" EntitySet="DetailPOes" />
+          </AssociationSet>
           <AssociationSet Name="FK_ListPenerimaanTukangPotong_Colors" Association="indomodaModel.FK_ListPenerimaanTukangPotong_Colors">
             <End Role="Color" EntitySet="Colors" />
             <End Role="ListPenerimaanTukangPotong" EntitySet="ListPenerimaanTukangPotongs" />
           </AssociationSet>
+          <AssociationSet Name="FK_DetailPO_Materials" Association="indomodaModel.FK_DetailPO_Materials">
+            <End Role="Material" EntitySet="Materials" />
+            <End Role="DetailPO" EntitySet="DetailPOes" />
+          </AssociationSet>
           </EntityContainer>
-        <EntityType Name="DetailPO">
-          <Key>
-            <PropertyRef Name="DetailPOID" />
-          </Key>
-          <Property Name="DetailPOID" Type="Int32" Nullable="false" />
-          <Property Name="PONumber" Type="Int64" Nullable="false" />
-          <Property Name="MaterialID" Type="Int32" Nullable="false" />
-          <Property Name="ColorID" Type="Int32" Nullable="false" />
-          <Property Name="DetailQty" Type="Int32" Nullable="false" />
-          <Property Name="DetailPrice" Type="Int32" Nullable="false" />
-          <Property Name="DetailTotal" Type="Int32" Nullable="false" />
-          <Property Name="DetailStatus" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Color" Relationship="indomodaModel.FK_DetailPO_Colors" FromRole="DetailPO" ToRole="Color" />
-          <NavigationProperty Name="Material" Relationship="indomodaModel.FK_DetailPO_Materials" FromRole="DetailPO" ToRole="Material" />
-        </EntityType>
-        <Association Name="FK_DetailPO_Colors">
-          <End Type="indomodaModel.Color" Role="Color" Multiplicity="1" />
-          <End Type="indomodaModel.DetailPO" Role="DetailPO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Color">
-              <PropertyRef Name="ColorID" />
-            </Principal>
-            <Dependent Role="DetailPO">
-              <PropertyRef Name="ColorID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_DetailPO_Materials">
-          <End Type="indomodaModel.Material" Role="Material" Multiplicity="1" />
-          <End Type="indomodaModel.DetailPO" Role="DetailPO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Material">
-              <PropertyRef Name="MaterialID" />
-            </Principal>
-            <Dependent Role="DetailPO">
-              <PropertyRef Name="MaterialID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="DetailFaktur">
           <Key>
             <PropertyRef Name="NoFaktur" />
@@ -581,6 +533,44 @@
           <Property Name="quantity" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Color" Relationship="indomodaModel.FK_ListPenerimaanTukangPotong_Colors" FromRole="ListPenerimaanTukangPotong" ToRole="Color" />
         </EntityType>
+        <EntityType Name="Color">
+          <Key>
+            <PropertyRef Name="ColorID" />
+          </Key>
+          <Property Name="ColorID" Type="Int32" Nullable="false" />
+          <Property Name="ColorCode" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ColorName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DetailPOes" Relationship="indomodaModel.FK_DetailPO_Colors" FromRole="Color" ToRole="DetailPO" />
+          <NavigationProperty Name="ListPenerimaanTukangPotongs" Relationship="indomodaModel.FK_ListPenerimaanTukangPotong_Colors" FromRole="Color" ToRole="ListPenerimaanTukangPotong" />
+        </EntityType>
+        <EntityType Name="DetailPO">
+          <Key>
+            <PropertyRef Name="DetailPOID" />
+          </Key>
+          <Property Name="DetailPOID" Type="Int32" Nullable="false" />
+          <Property Name="PONumber" Type="Int64" Nullable="false" />
+          <Property Name="MaterialID" Type="Int32" Nullable="false" />
+          <Property Name="ColorID" Type="Int32" Nullable="false" />
+          <Property Name="DetailQty" Type="Double" Nullable="false" />
+          <Property Name="DetailPrice" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="DetailTotal" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="DetailStatus" Type="Boolean" Nullable="false" />
+          <Property Name="statusFaktur" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Color" Relationship="indomodaModel.FK_DetailPO_Colors" FromRole="DetailPO" ToRole="Color" />
+          <NavigationProperty Name="Material" Relationship="indomodaModel.FK_DetailPO_Materials" FromRole="DetailPO" ToRole="Material" />
+        </EntityType>
+        <Association Name="FK_DetailPO_Colors">
+          <End Type="indomodaModel.Color" Role="Color" Multiplicity="1" />
+          <End Type="indomodaModel.DetailPO" Role="DetailPO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Color">
+              <PropertyRef Name="ColorID" />
+            </Principal>
+            <Dependent Role="DetailPO">
+              <PropertyRef Name="ColorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ListPenerimaanTukangPotong_Colors">
           <End Type="indomodaModel.Color" Role="Color" Multiplicity="1" />
           <End Type="indomodaModel.ListPenerimaanTukangPotong" Role="ListPenerimaanTukangPotong" Multiplicity="*" />
@@ -593,21 +583,24 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_DetailPO_Materials">
+          <End Type="indomodaModel.Material" Role="Material" Multiplicity="1" />
+          <End Type="indomodaModel.DetailPO" Role="DetailPO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material">
+              <PropertyRef Name="MaterialID" />
+            </Principal>
+            <Dependent Role="DetailPO">
+              <PropertyRef Name="MaterialID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="indomodaModelStoreContainer" CdmEntityContainer="indomodaEntities">
-          <EntitySetMapping Name="Colors">
-            <EntityTypeMapping TypeName="indomodaModel.Color">
-              <MappingFragment StoreEntitySet="Colors">
-                <ScalarProperty Name="ColorID" ColumnName="ColorID" />
-                <ScalarProperty Name="ColorCode" ColumnName="ColorCode" />
-                <ScalarProperty Name="ColorName" ColumnName="ColorName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Customers">
             <EntityTypeMapping TypeName="indomodaModel.Customer">
               <MappingFragment StoreEntitySet="Customers">
@@ -646,20 +639,6 @@
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
                 <ScalarProperty Name="UserRole" ColumnName="UserRole" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DetailPOes">
-            <EntityTypeMapping TypeName="indomodaModel.DetailPO">
-              <MappingFragment StoreEntitySet="DetailPO">
-                <ScalarProperty Name="DetailStatus" ColumnName="DetailStatus" />
-                <ScalarProperty Name="DetailTotal" ColumnName="DetailTotal" />
-                <ScalarProperty Name="DetailPrice" ColumnName="DetailPrice" />
-                <ScalarProperty Name="DetailQty" ColumnName="DetailQty" />
-                <ScalarProperty Name="ColorID" ColumnName="ColorID" />
-                <ScalarProperty Name="MaterialID" ColumnName="MaterialID" />
-                <ScalarProperty Name="PONumber" ColumnName="PONumber" />
-                <ScalarProperty Name="DetailPOID" ColumnName="DetailPOID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -733,6 +712,30 @@
                 <ScalarProperty Name="noSeri" ColumnName="noSeri" />
                 <ScalarProperty Name="idPenerimaanTukangPotong" ColumnName="idPenerimaanTukangPotong" />
                 <ScalarProperty Name="idListPTP" ColumnName="idListPTP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Colors">
+            <EntityTypeMapping TypeName="indomodaModel.Color">
+              <MappingFragment StoreEntitySet="Colors">
+                <ScalarProperty Name="ColorName" ColumnName="ColorName" />
+                <ScalarProperty Name="ColorCode" ColumnName="ColorCode" />
+                <ScalarProperty Name="ColorID" ColumnName="ColorID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetailPOes">
+            <EntityTypeMapping TypeName="indomodaModel.DetailPO">
+              <MappingFragment StoreEntitySet="DetailPO">
+                <ScalarProperty Name="statusFaktur" ColumnName="statusFaktur" />
+                <ScalarProperty Name="DetailStatus" ColumnName="DetailStatus" />
+                <ScalarProperty Name="DetailTotal" ColumnName="DetailTotal" />
+                <ScalarProperty Name="DetailPrice" ColumnName="DetailPrice" />
+                <ScalarProperty Name="DetailQty" ColumnName="DetailQty" />
+                <ScalarProperty Name="ColorID" ColumnName="ColorID" />
+                <ScalarProperty Name="MaterialID" ColumnName="MaterialID" />
+                <ScalarProperty Name="PONumber" ColumnName="PONumber" />
+                <ScalarProperty Name="DetailPOID" ColumnName="DetailPOID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

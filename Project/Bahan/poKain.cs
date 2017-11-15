@@ -66,7 +66,7 @@ namespace Project
             }
 
             EditPOKain editpokain = new EditPOKain();
-            int currentPOID = Convert.ToInt32(dataGridView1[0, dataGridView1.CurrentRow.Index].Value.ToString());
+            int currentPOID = Convert.ToInt32(dataGridView1[7, dataGridView1.CurrentRow.Index].Value.ToString());
 
             listPO = GenericQuery.SqlQuery<DetailPOModel>("SELECT d.DetailPOID, d.PONumber, d.MaterialID, d.ColorID, d.DetailQty, d.DetailPrice, d.DetailTotal, d.DetailStatus, m.MaterialCode, m.MaterialName, c.ColorCode, c.ColorName FROM DetailPO d JOIN Materials m ON d.MaterialID = m.MaterialID JOIN Colors c ON d.ColorID = c.ColorID  WHERE DetailPOID = '"+currentPOID+"'");
             editpokain.setDPO(ref listPO);
@@ -90,7 +90,7 @@ namespace Project
                         try
                         {
                             int currentRow = dataGridView1.CurrentRow.Index;
-                            int currentPOID = Convert.ToInt32(dataGridView1[0, dataGridView1.CurrentRow.Index].Value.ToString());
+                            int currentPOID = Convert.ToInt32(dataGridView1[7, dataGridView1.CurrentRow.Index].Value.ToString());
                             int b = GenericQuery.ExecSQLCommand("DELETE FROM DetailPO WHERE DetailPOID = '"+currentPOID+"'");
                             db.SaveChangesAsync().Wait();
                             dataGridView1.Rows.RemoveAt(currentRow);
@@ -105,6 +105,8 @@ namespace Project
                             dataGridView1.Refresh();
                             bindingSourcePreOrderKain.EndEdit();
 
+                            btnCountGrandTotal.PerformClick();
+
                             MetroFramework.MetroMessageBox.Show(this, "Success! This Detail PO has been deleted to the database", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
                         }
                         catch (Exception ex)
@@ -115,59 +117,7 @@ namespace Project
                 }
             }
         }
-
-        //private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        //{
-        //    if (e.ColumnIndex == 6)
-        //    {
-        //        lblGrandTotal.Text = CellSum().ToString();
-        //    }
-
-        //        int grandTotal = CalculateTotal();
-        //        lblGrandTotalDB.Text = grandTotal.ToString();
-        //        lblGrandTotal.Text = String.Format(grandTotal.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("id-ID")));
-        //}
-
-        //private double CellSum()
-        //{
-        //    dataGridView1.Refresh();
-        //    double sum = 0;
-        //    for (int i = 0; i < dataGridView1.Rows.Count; ++i)
-        //    {
-        //        double d = 0;
-        //        Double.TryParse(dataGridView1.Rows[i].Cells[6].Value.ToString(), out d);
-        //        sum += d;
-        //    }
-        //    return sum;
-        //    //List<DetailPOModel> gTotal = GenericQuery.SqlQuery<DetailPOModel>("SELECT d.DetailPOID, d.PONumber, d.MaterialID, d.ColorID, d.DetailQty, d.DetailPrice, d.DetailTotal, d.DetailStatus, m.MaterialCode, m.MaterialName, c.ColorCode, c.ColorName FROM DetailPO d JOIN Materials m ON d.MaterialID = m.MaterialID JOIN Colors c ON d.ColorID = c.ColorID  WHERE PONumber = '" + lblPONumber.Text + "'");
-        //    //int x = 0;
-        //    //foreach (var c in gTotal)
-        //    //{
-        //    //    x += c.DetailTotal;
-        //    //}
-        //    //return x;
-        //}
-
-        //private double asd()
-        //{
-        //    double y = 0;
-        //    dataGridView1.Refresh();
-        //    int currentRow = dataGridView1.CurrentRow.Index;
-        //    Double.TryParse(dataGridView1.Rows[currentRow].Cells[6].Value.ToString(), out y);
-        //    return y;
-        //}
-
-        //private int CalculateTotal()
-        //{
-        //    int total = 0;
-        //    int sum = 0;
-        //    for (int i = 0; i < dataGridView1.Rows.Count; i++)
-        //    {
-        //        sum = sum + int.Parse(dataGridView1.Rows[i].Cells[6].Value.ToString());
-        //    }
-        //    return sum;
-        //}
-
+        
         private void poKain_Load(object sender, EventArgs e)
         {
             long randomNumber = Convert.ToInt64(DateTime.Now.ToString("ddMMyyHHmm"));
@@ -182,15 +132,6 @@ namespace Project
             dataGridView1.Columns[5].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("id-ID");
             dataGridView1.Columns[6].DefaultCellStyle.Format = "C";
             dataGridView1.Columns[6].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("id-ID");
-            //lblGrandTotal.Text = CellSum().ToString();
-
-            //List<DetailPOModel> gTotal = GenericQuery.SqlQuery<DetailPOModel>("SELECT d.DetailPOID, d.PONumber, d.MaterialID, d.ColorID, d.DetailQty, d.DetailPrice, d.DetailTotal, d.DetailStatus, m.MaterialCode, m.MaterialName, c.ColorCode, c.ColorName FROM DetailPO d JOIN Materials m ON d.MaterialID = m.MaterialID JOIN Colors c ON d.ColorID = c.ColorID  WHERE PONumber = '" + lblPONumber.Text + "'");
-            //int x = 0;
-            //foreach (var c in gTotal)
-            //{
-            //    x += c.DetailTotal;
-            //}
-            //lblGrandTotal.Text = x.ToString();
         }
 
         bool IsDigitsOnly(string str)
@@ -206,23 +147,13 @@ namespace Project
 
         private void btnSavePoKain_Click(object sender, EventArgs e)
         {
+            btnCountGrandTotal.PerformClick();
 
             using (indomodaEntities db = new indomodaEntities())
             {
                 if (dataGridView1.RowCount == 0)
                 {
                     MetroFramework.MetroMessageBox.Show(this, "You need to add detail PO first!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else if (lblGrandTotal.Text == "")
-                {
-                    MetroFramework.MetroMessageBox.Show(this, "You must fill grand total!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    lblGrandTotal.Focus();
-                }
-                else if (!IsDigitsOnly(lblGrandTotal.Text.ToString()))
-                {
-                    MetroFramework.MetroMessageBox.Show(this, "Grand total must be numeric!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    lblGrandTotal.Clear();
-                    lblGrandTotal.Focus();
                 }
                 else
                 {
@@ -232,12 +163,13 @@ namespace Project
                         {
                             int setPOID = db.PreOrderKains.AsEnumerable().LastOrDefault() == null ? 1 : db.PreOrderKains.AsEnumerable().LastOrDefault().idPOKain + 1;
                             int SupplierID = Convert.ToInt32(cboSupplierCode.SelectedValue.ToString());
+                            decimal setGTotal = Convert.ToDecimal(lblGrandTotalDB.Text.ToString());
                             bool setStatus = false;
                             int a = GenericQuery.ExecSQLCommand("INSERT INTO PreOrderKains (idPOKain, PONumber, SupplierID, GrandTotal, Date_time, status) VALUES(@idPOKain, @PONumber, @SupplierID, @GrandTotal, @Date_time, @status)", new[] {
                                 new SqlParameter("@idPOKain", setPOID),
                                 new SqlParameter("@PONumber", lblPONumber.Text),
                                 new SqlParameter("@SupplierID", SupplierID),
-                                new SqlParameter("@GrandTotal", lblGrandTotal.Text),
+                                new SqlParameter("@GrandTotal", setGTotal),
                                 new SqlParameter("@Date_time", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")),
                                 new SqlParameter("@status", setStatus)
                             });
@@ -262,62 +194,16 @@ namespace Project
             Close();
         }
 
-        //private void dataGridView1_RowAdded(object sender, DataGridViewRowsAddedEventArgs e)
-        //{
-        //    if (e.RowIndex >= 0)
-        //    {
-        //        //int grandTotal = CalculateTotal();
-        //        //lblGrandTotalDB.Text = grandTotal.ToString();
-        //        //lblGrandTotal.Text = String.Format(grandTotal.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("id-ID")));
-        //        //int gTotal = 0;
-        //        //listPO = GenericQuery.SqlQuery<DetailPOModel>("SELECT d.DetailPOID, d.PONumber, d.MaterialID, d.ColorID, d.DetailQty, d.DetailPrice, d.DetailTotal, d.DetailStatus, m.MaterialCode, m.MaterialName, c.ColorCode, c.ColorName FROM DetailPO d JOIN Materials m ON d.MaterialID = m.MaterialID JOIN Colors c ON d.ColorID = c.ColorID  WHERE PONumber = '" + lblPONumber.Text + "'");
-        //        //gTotal = listPO.Sum(d => d.DetailTotal);
-        //        //lblGrandTotal.Text = gTotal.ToString();
-        //        lblGrandTotal.Text = CellSum().ToString();
-        //    }
-        //}
-
-        //private void dataGridView1_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
-        //{
-        //    if (e.RowIndex >= 0)
-        //    {
-        //        //int grandTotal = CalculateTotal();
-        //        //lblGrandTotalDB.Text = grandTotal.ToString();
-        //        //lblGrandTotal.Text = String.Format(grandTotal.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("id-ID")));
-        //        int gTotal = 0;
-        //        listPO = GenericQuery.SqlQuery<DetailPOModel>("SELECT d.DetailPOID, d.PONumber, d.MaterialID, d.ColorID, d.DetailQty, d.DetailPrice, d.DetailTotal, d.DetailStatus, m.MaterialCode, m.MaterialName, c.ColorCode, c.ColorName FROM DetailPO d JOIN Materials m ON d.MaterialID = m.MaterialID JOIN Colors c ON d.ColorID = c.ColorID  WHERE PONumber = '" + lblPONumber.Text + "'");
-        //        gTotal = listPO.Sum(d => d.DetailTotal);
-        //        lblGrandTotal.Text = gTotal.ToString();
-        //        lblGrandTotal.Text = CellSum().ToString();
-        //    }
-        //}
-
-        //private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        //{
-        //    if (e.RowIndex >= 0)
-        //    {
-        //        //int gTotal = 0;
-        //        //listPO = GenericQuery.SqlQuery<DetailPOModel>("SELECT d.DetailPOID, d.PONumber, d.MaterialID, d.ColorID, d.DetailQty, d.DetailPrice, d.DetailTotal, d.DetailStatus, m.MaterialCode, m.MaterialName, c.ColorCode, c.ColorName FROM DetailPO d JOIN Materials m ON d.MaterialID = m.MaterialID JOIN Colors c ON d.ColorID = c.ColorID  WHERE PONumber = '" + lblPONumber.Text + "'");
-        //        //gTotal = listPO.Sum(d => d.DetailTotal);
-        //        //lblGrandTotal.Text = gTotal.ToString();
-        //        lblGrandTotal.Text = CellSum().ToString();
-        //        lblEditTotal.Text = asd().ToString();
-        //    }
-        //}
-
-        //private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        //{
-        //    if (e.RowIndex >= 0)
-        //    {
-        //        //int grandTotal = CalculateTotal();
-        //        //lblGrandTotalDB.Text = grandTotal.ToString();
-        //        //lblGrandTotal.Text = String.Format(grandTotal.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("id-ID")));
-        //        int gTotal = 0;
-        //        listPO = GenericQuery.SqlQuery<DetailPOModel>("SELECT d.DetailPOID, d.PONumber, d.MaterialID, d.ColorID, d.DetailQty, d.DetailPrice, d.DetailTotal, d.DetailStatus, m.MaterialCode, m.MaterialName, c.ColorCode, c.ColorName FROM DetailPO d JOIN Materials m ON d.MaterialID = m.MaterialID JOIN Colors c ON d.ColorID = c.ColorID  WHERE PONumber = '" + lblPONumber.Text + "'");
-        //        gTotal = listPO.Sum(d => d.DetailTotal);
-        //        lblGrandTotal.Text = gTotal.ToString();
-        //        lblGrandTotal.Text = CellSum().ToString();
-        //    }
-        //}
+        private void btnCountGrandTotal_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Refresh();
+            decimal gt = 0;
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                gt = gt + decimal.Parse(dataGridView1.Rows[i].Cells[6].Value.ToString());
+            }
+            lblGrandTotal.Text = String.Format(gt.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("id-ID")));
+            lblGrandTotalDB.Text = gt.ToString();
+        }
     }
 }

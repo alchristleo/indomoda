@@ -131,9 +131,6 @@
     <Compile Include="Master\AddEditEmployee.Designer.cs">
       <DependentUpon>AddEditEmployee.cs</DependentUpon>
     </Compile>
-    <Compile Include="Master\AddEditKaryawan.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Master\AddEditMaterial.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -330,9 +327,6 @@
     <EmbeddedResource Include="Master\AddEditEmployee.resx">
       <DependentUpon>AddEditEmployee.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Master\AddEditKaryawan.resx">
-      <DependentUpon>AddEditKaryawan.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Master\AddEditMaterial.resx">
       <DependentUpon>AddEditMaterial.cs</DependentUpon>
     </EmbeddedResource>
@@ -471,6 +465,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\btn-calculator.png" />
     <Content Include="Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>

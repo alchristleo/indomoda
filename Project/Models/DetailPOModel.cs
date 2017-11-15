@@ -15,9 +15,9 @@ namespace Project.Models
         public int ColorID { get; set; }
         public string ColorCode { get; set; }
         public string ColorName { get; set; }
-        public int DetailQty { get; set; }
-        public int DetailPrice { get; set; }
-        public int DetailTotal { get; set; }
+        public double DetailQty { get; set; }
+        public decimal DetailPrice { get; set; }
+        public decimal DetailTotal { get; set; }
         public bool DetailStatus { get; set; }
 
         public virtual Color Color { get; set; }

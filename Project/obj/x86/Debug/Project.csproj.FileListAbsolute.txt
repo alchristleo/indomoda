@@ -1,4 +1,3 @@
-C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Debug\Project.AddEditKaryawan.resources
 C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Debug\Project.PenerimaanCMT.resources
 C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Debug\Project.PenerimaanBordir.resources
 C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Debug\Project.AddSpkCmt.resources

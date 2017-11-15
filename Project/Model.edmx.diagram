@@ -5,14 +5,10 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="79611bb975a5473386628d438f8c5e5e" Name="Diagram1" ZoomLevel="83">
-        <EntityTypeShape EntityType="indomodaModel.Color" Width="1.5" PointX="0.5" PointY="4.625" IsExpanded="true" />
         <EntityTypeShape EntityType="indomodaModel.Customer" Width="1.5" PointX="5" PointY="8.5" IsExpanded="true" />
         <EntityTypeShape EntityType="indomodaModel.IndomodaSupplier" Width="1.5" PointX="0.5" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="indomodaModel.Material" Width="1.5" PointX="0.5" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="indomodaModel.User" Width="1.5" PointX="7.5" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="indomodaModel.DetailPO" Width="1.5" PointX="2.875" PointY="4.625" />
-        <AssociationConnector Association="indomodaModel.FK_DetailPO_Colors" />
-        <AssociationConnector Association="indomodaModel.FK_DetailPO_Materials" />
         <EntityTypeShape EntityType="indomodaModel.DetailFaktur" Width="1.5" PointX="8.5" PointY="0.625" />
         <EntityTypeShape EntityType="indomodaModel.Employee" Width="1.5" PointX="5.125" PointY="5.125" />
         <EntityTypeShape EntityType="indomodaModel.PreOrderKain" Width="1.5" PointX="3" PointY="0.625" />
@@ -25,7 +21,11 @@
         <AssociationConnector Association="indomodaModel.FK_DetailPemotonganKain_PreOrderKain" />
         <AssociationConnector Association="indomodaModel.FK_DetailPenerimaanTukangPotong_DetailPemotonganKain" />
         <EntityTypeShape EntityType="indomodaModel.ListPenerimaanTukangPotong" Width="1.5" PointX="2.875" PointY="8.25" />
+        <EntityTypeShape EntityType="indomodaModel.Color" Width="1.5" PointX="0.5" PointY="4.625" />
+        <EntityTypeShape EntityType="indomodaModel.DetailPO" Width="1.5" PointX="3.125" PointY="4.5" />
+        <AssociationConnector Association="indomodaModel.FK_DetailPO_Colors" />
         <AssociationConnector Association="indomodaModel.FK_ListPenerimaanTukangPotong_Colors" />
+        <AssociationConnector Association="indomodaModel.FK_DetailPO_Materials" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

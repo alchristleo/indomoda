@@ -96,13 +96,13 @@ namespace Project
                 txtAddQuantity.Focus();
                 return;
             }
-            else if (!IsDigitsOnly(txtAddQuantity.Text))
-            {
-                MetroFramework.MetroMessageBox.Show(this, "Quantity must be numeric!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtAddQuantity.Clear();
-                txtAddQuantity.Focus();
-                return;
-            }
+            //else if (!IsDigitsOnly(txtAddQuantity.Text))
+            //{
+            //    MetroFramework.MetroMessageBox.Show(this, "Quantity must be numeric!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    txtAddQuantity.Clear();
+            //    txtAddQuantity.Focus();
+            //    return;
+            //}
             else if (String.IsNullOrEmpty(txtAddPrice.Text))
             {
                 MetroFramework.MetroMessageBox.Show(this, "Price can't be empty!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -124,16 +124,17 @@ namespace Project
                 long getPONumber = Convert.ToInt64(poKain.poNumber);
                 int getMaterialID = Convert.ToInt32(cboMaterialName.SelectedValue.ToString());
                 int getColorID = Convert.ToInt32(cboColorName.SelectedValue.ToString());
-                int getQty = Convert.ToInt32(txtAddQuantity.Text.ToString());
-                int getPrice = Convert.ToInt32(txtAddPrice.Text.ToString());
-                int setTotal = getQty * getPrice;
+                double getQty = Convert.ToDouble(txtAddQuantity.Text.ToString());
+                decimal getPrice = Convert.ToDecimal(txtAddPrice.Text.ToString());
+                decimal setTotal = (decimal)getQty * getPrice;
                 bool setStatus = false;
+                bool setStatusFaktur = false;
 
                 if (MetroFramework.MetroMessageBox.Show(this, "Do you want to save this detail PO to database?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     try
                     {
-                        int a = GenericQuery.ExecSQLCommand("UPDATE DetailPO SET DetailPOID = @DetailPOID, PONumber = @PONumber, MaterialID = @MaterialID, ColorID = @ColorID, DetailQty = @DetailQty, DetailPrice = @DetailPrice, DetailTotal = @DetailTotal, DetailStatus = @DetailStatus WHERE DetailPOID = '"+setDetailPOID+"'", new[] {
+                        int a = GenericQuery.ExecSQLCommand("UPDATE DetailPO SET DetailPOID = @DetailPOID, PONumber = @PONumber, MaterialID = @MaterialID, ColorID = @ColorID, DetailQty = @DetailQty, DetailPrice = @DetailPrice, DetailTotal = @DetailTotal, DetailStatus = @DetailStatus, statusFaktur = @statusFaktur WHERE DetailPOID = '" + setDetailPOID+"'", new[] {
                                 new SqlParameter("@DetailPOID", setDetailPOID),
                                 new SqlParameter("@PONumber", getPONumber),
                                 new SqlParameter("@MaterialID", getMaterialID),
@@ -141,7 +142,8 @@ namespace Project
                                 new SqlParameter("@DetailQty", getQty),
                                 new SqlParameter("@DetailPrice", getPrice),
                                 new SqlParameter("@DetailTotal", setTotal),
-                                new SqlParameter("@DetailStatus", setStatus)
+                                new SqlParameter("@DetailStatus", setStatus),
+                                new SqlParameter("@statusFaktur", setStatusFaktur)
                             });
                         db.SaveChangesAsync().Wait();
 
@@ -159,6 +161,7 @@ namespace Project
                             i.DetailPrice = getPrice;
                             i.DetailTotal = setTotal;
                             i.DetailStatus = setStatus;
+                            i.statusFaktur = setStatusFaktur;
                         }
                         _dv.DataSource = _bs;
                         _dv.EndEdit();
@@ -170,6 +173,8 @@ namespace Project
                         MetroFramework.MetroMessageBox.Show(this, ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
+                poKain btnCount = (poKain)Application.OpenForms["poKain"];
+                btnCount.btnCountGrandTotal.PerformClick();
                 this.Close();
             }
         }
