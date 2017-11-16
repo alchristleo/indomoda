@@ -31,7 +31,7 @@ namespace Project
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(poKain));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,7 +48,7 @@ namespace Project
             this.metroDateTime1 = new MetroFramework.Controls.MetroDateTime();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
-            this.lblSupplierName = new MetroFramework.Controls.MetroTextBox();
+            this.lblSupplierCode = new MetroFramework.Controls.MetroTextBox();
             this.indomodaSupplierBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.lblPONumber = new MetroFramework.Controls.MetroTextBox();
@@ -63,7 +63,7 @@ namespace Project
             this.btnDeletePoKain = new MetroFramework.Controls.MetroTile();
             this.btnEditPoKain = new MetroFramework.Controls.MetroTile();
             this.btnAddPoKain = new MetroFramework.Controls.MetroTile();
-            this.cboSupplierCode = new MetroFramework.Controls.MetroComboBox();
+            this.cboSupplierName = new MetroFramework.Controls.MetroComboBox();
             this.lblGrandTotalDB = new MetroFramework.Controls.MetroTextBox();
             this.btnCountGrandTotal = new MetroFramework.Controls.MetroTile();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -81,14 +81,14 @@ namespace Project
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Menu;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Bisque;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Bisque;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeight = 30;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NO,
@@ -223,37 +223,36 @@ namespace Project
             this.metroLabel2.TabIndex = 16;
             this.metroLabel2.Text = "Supplier Code";
             // 
-            // lblSupplierName
+            // lblSupplierCode
             // 
             // 
             // 
             // 
-            this.lblSupplierName.CustomButton.Image = null;
-            this.lblSupplierName.CustomButton.Location = new System.Drawing.Point(161, 1);
-            this.lblSupplierName.CustomButton.Name = "";
-            this.lblSupplierName.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.lblSupplierName.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.lblSupplierName.CustomButton.TabIndex = 1;
-            this.lblSupplierName.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.lblSupplierName.CustomButton.UseSelectable = true;
-            this.lblSupplierName.CustomButton.Visible = false;
-            this.lblSupplierName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.indomodaSupplierBindingSource, "SupplierCode", true));
-            this.lblSupplierName.Lines = new string[0];
-            this.lblSupplierName.Location = new System.Drawing.Point(575, 123);
-            this.lblSupplierName.MaxLength = 32767;
-            this.lblSupplierName.Name = "lblSupplierName";
-            this.lblSupplierName.PasswordChar = '\0';
-            this.lblSupplierName.ReadOnly = true;
-            this.lblSupplierName.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.lblSupplierName.SelectedText = "";
-            this.lblSupplierName.SelectionLength = 0;
-            this.lblSupplierName.SelectionStart = 0;
-            this.lblSupplierName.ShortcutsEnabled = true;
-            this.lblSupplierName.Size = new System.Drawing.Size(183, 23);
-            this.lblSupplierName.TabIndex = 3;
-            this.lblSupplierName.UseSelectable = true;
-            this.lblSupplierName.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.lblSupplierName.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.lblSupplierCode.CustomButton.Image = null;
+            this.lblSupplierCode.CustomButton.Location = new System.Drawing.Point(161, 1);
+            this.lblSupplierCode.CustomButton.Name = "";
+            this.lblSupplierCode.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.lblSupplierCode.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.lblSupplierCode.CustomButton.TabIndex = 1;
+            this.lblSupplierCode.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.lblSupplierCode.CustomButton.UseSelectable = true;
+            this.lblSupplierCode.CustomButton.Visible = false;
+            this.lblSupplierCode.Lines = new string[0];
+            this.lblSupplierCode.Location = new System.Drawing.Point(575, 123);
+            this.lblSupplierCode.MaxLength = 32767;
+            this.lblSupplierCode.Name = "lblSupplierCode";
+            this.lblSupplierCode.PasswordChar = '\0';
+            this.lblSupplierCode.ReadOnly = true;
+            this.lblSupplierCode.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.lblSupplierCode.SelectedText = "";
+            this.lblSupplierCode.SelectionLength = 0;
+            this.lblSupplierCode.SelectionStart = 0;
+            this.lblSupplierCode.ShortcutsEnabled = true;
+            this.lblSupplierCode.Size = new System.Drawing.Size(183, 23);
+            this.lblSupplierCode.TabIndex = 3;
+            this.lblSupplierCode.UseSelectable = true;
+            this.lblSupplierCode.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.lblSupplierCode.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // indomodaSupplierBindingSource
             // 
@@ -336,7 +335,6 @@ namespace Project
             this.lblSupplierAddress.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.lblSupplierAddress.CustomButton.UseSelectable = true;
             this.lblSupplierAddress.CustomButton.Visible = false;
-            this.lblSupplierAddress.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.indomodaSupplierBindingSource, "SupplierAddress", true));
             this.lblSupplierAddress.Lines = new string[0];
             this.lblSupplierAddress.Location = new System.Drawing.Point(182, 161);
             this.lblSupplierAddress.MaxLength = 32767;
@@ -467,19 +465,20 @@ namespace Project
             this.btnAddPoKain.UseTileImage = true;
             this.btnAddPoKain.Click += new System.EventHandler(this.btnAddPoKain_Click);
             // 
-            // cboSupplierCode
+            // cboSupplierName
             // 
-            this.cboSupplierCode.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cboSupplierCode.DataSource = this.indomodaSupplierBindingSource;
-            this.cboSupplierCode.DisplayMember = "SupplierName";
-            this.cboSupplierCode.FormattingEnabled = true;
-            this.cboSupplierCode.ItemHeight = 23;
-            this.cboSupplierCode.Location = new System.Drawing.Point(182, 117);
-            this.cboSupplierCode.Name = "cboSupplierCode";
-            this.cboSupplierCode.Size = new System.Drawing.Size(183, 29);
-            this.cboSupplierCode.TabIndex = 2;
-            this.cboSupplierCode.UseSelectable = true;
-            this.cboSupplierCode.ValueMember = "SupplierID";
+            this.cboSupplierName.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cboSupplierName.DataSource = this.indomodaSupplierBindingSource;
+            this.cboSupplierName.DisplayMember = "SupplierName";
+            this.cboSupplierName.FormattingEnabled = true;
+            this.cboSupplierName.ItemHeight = 23;
+            this.cboSupplierName.Location = new System.Drawing.Point(182, 117);
+            this.cboSupplierName.Name = "cboSupplierName";
+            this.cboSupplierName.Size = new System.Drawing.Size(183, 29);
+            this.cboSupplierName.TabIndex = 2;
+            this.cboSupplierName.UseSelectable = true;
+            this.cboSupplierName.ValueMember = "SupplierID";
+            this.cboSupplierName.SelectedIndexChanged += new System.EventHandler(this.cboSupplierName_SelectedIndexChanged);
             // 
             // lblGrandTotalDB
             // 
@@ -537,7 +536,7 @@ namespace Project
             this.ClientSize = new System.Drawing.Size(823, 744);
             this.Controls.Add(this.btnCountGrandTotal);
             this.Controls.Add(this.lblGrandTotalDB);
-            this.Controls.Add(this.cboSupplierCode);
+            this.Controls.Add(this.cboSupplierName);
             this.Controls.Add(this.btnDeletePoKain);
             this.Controls.Add(this.btnEditPoKain);
             this.Controls.Add(this.btnAddPoKain);
@@ -550,7 +549,7 @@ namespace Project
             this.Controls.Add(this.metroLabel4);
             this.Controls.Add(this.lblPONumber);
             this.Controls.Add(this.metroLabel3);
-            this.Controls.Add(this.lblSupplierName);
+            this.Controls.Add(this.lblSupplierCode);
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.metroDateTime1);
@@ -573,7 +572,7 @@ namespace Project
         private MetroFramework.Controls.MetroDateTime metroDateTime1;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroLabel metroLabel2;
-        private MetroFramework.Controls.MetroTextBox lblSupplierName;
+        private MetroFramework.Controls.MetroTextBox lblSupplierCode;
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private MetroFramework.Controls.MetroLabel metroLabel5;
@@ -584,7 +583,7 @@ namespace Project
         private MetroFramework.Controls.MetroButton btnSavePoKain;
         private MetroFramework.Controls.MetroTile btnEditPoKain;
         private MetroFramework.Controls.MetroTile btnAddPoKain;
-        private MetroFramework.Controls.MetroComboBox cboSupplierCode;
+        private MetroFramework.Controls.MetroComboBox cboSupplierName;
         private System.Windows.Forms.BindingSource indomodaSupplierBindingSource;
         private System.Windows.Forms.BindingSource bindingSourcePreOrderKain;
         private System.Windows.Forms.BindingSource detailPOBindingSource;

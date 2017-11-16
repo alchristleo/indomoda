@@ -192,6 +192,7 @@
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\DetailPOModel.cs" />
+    <Compile Include="Models\FakturDetailPO.cs" />
     <Compile Include="Models\FakturKainModel.cs" />
     <Compile Include="Models\ListPTPModel.cs" />
     <Compile Include="Models\PemotonganKainModel.cs" />

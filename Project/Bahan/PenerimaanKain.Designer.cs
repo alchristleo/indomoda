@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.detailPOIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pONumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.materialIDDataGridViewComboBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.materialBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -39,6 +40,7 @@
             this.detailQtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.detailPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.detailStatusDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.detailPOIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.detailPOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.metroDateTime1 = new MetroFramework.Controls.MetroDateTime();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
@@ -67,27 +69,43 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Menu;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Bisque;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView1.ColumnHeadersHeight = 30;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.detailPOIDDataGridViewTextBoxColumn,
+            this.NO,
             this.pONumberDataGridViewTextBoxColumn,
             this.materialIDDataGridViewComboBoxColumn,
             this.colorIDDataGridViewComboBoxColumn,
             this.detailQtyDataGridViewTextBoxColumn,
             this.detailPriceDataGridViewTextBoxColumn,
-            this.detailStatusDataGridViewCheckBoxColumn});
+            this.detailStatusDataGridViewCheckBoxColumn,
+            this.detailPOIDDataGridViewTextBoxColumn});
+            this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dataGridView1.DataSource = this.detailPOBindingSource;
+            this.dataGridView1.EnableHeadersVisualStyles = false;
+            this.dataGridView1.GridColor = System.Drawing.SystemColors.ScrollBar;
             this.dataGridView1.Location = new System.Drawing.Point(37, 265);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(643, 177);
+            this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.RowTemplate.Height = 30;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(643, 249);
             this.dataGridView1.TabIndex = 1;
             // 
-            // detailPOIDDataGridViewTextBoxColumn
+            // NO
             // 
-            this.detailPOIDDataGridViewTextBoxColumn.DataPropertyName = "DetailPOID";
-            this.detailPOIDDataGridViewTextBoxColumn.HeaderText = "No.";
-            this.detailPOIDDataGridViewTextBoxColumn.Name = "detailPOIDDataGridViewTextBoxColumn";
-            this.detailPOIDDataGridViewTextBoxColumn.Width = 40;
+            this.NO.HeaderText = "No.";
+            this.NO.Name = "NO";
+            this.NO.Width = 40;
             // 
             // pONumberDataGridViewTextBoxColumn
             // 
@@ -100,12 +118,14 @@
             this.materialIDDataGridViewComboBoxColumn.DataPropertyName = "MaterialID";
             this.materialIDDataGridViewComboBoxColumn.DataSource = this.materialBindingSource;
             this.materialIDDataGridViewComboBoxColumn.DisplayMember = "MaterialName";
+            this.materialIDDataGridViewComboBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
             this.materialIDDataGridViewComboBoxColumn.HeaderText = "Material";
             this.materialIDDataGridViewComboBoxColumn.Name = "materialIDDataGridViewComboBoxColumn";
             this.materialIDDataGridViewComboBoxColumn.ReadOnly = true;
             this.materialIDDataGridViewComboBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.materialIDDataGridViewComboBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.materialIDDataGridViewComboBoxColumn.ValueMember = "MaterialID";
+            this.materialIDDataGridViewComboBoxColumn.Width = 120;
             // 
             // materialBindingSource
             // 
@@ -116,12 +136,14 @@
             this.colorIDDataGridViewComboBoxColumn.DataPropertyName = "ColorID";
             this.colorIDDataGridViewComboBoxColumn.DataSource = this.colorBindingSource;
             this.colorIDDataGridViewComboBoxColumn.DisplayMember = "ColorName";
+            this.colorIDDataGridViewComboBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
             this.colorIDDataGridViewComboBoxColumn.HeaderText = "Color";
             this.colorIDDataGridViewComboBoxColumn.Name = "colorIDDataGridViewComboBoxColumn";
             this.colorIDDataGridViewComboBoxColumn.ReadOnly = true;
             this.colorIDDataGridViewComboBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.colorIDDataGridViewComboBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.colorIDDataGridViewComboBoxColumn.ValueMember = "ColorID";
+            this.colorIDDataGridViewComboBoxColumn.Width = 120;
             // 
             // colorBindingSource
             // 
@@ -130,9 +152,8 @@
             // detailQtyDataGridViewTextBoxColumn
             // 
             this.detailQtyDataGridViewTextBoxColumn.DataPropertyName = "DetailQty";
-            this.detailQtyDataGridViewTextBoxColumn.HeaderText = "Quantity";
+            this.detailQtyDataGridViewTextBoxColumn.HeaderText = "Quantity (kg)";
             this.detailQtyDataGridViewTextBoxColumn.Name = "detailQtyDataGridViewTextBoxColumn";
-            this.detailQtyDataGridViewTextBoxColumn.Width = 80;
             // 
             // detailPriceDataGridViewTextBoxColumn
             // 
@@ -152,6 +173,14 @@
             this.detailStatusDataGridViewCheckBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.detailStatusDataGridViewCheckBoxColumn.TrueValue = "true";
             this.detailStatusDataGridViewCheckBoxColumn.Width = 60;
+            // 
+            // detailPOIDDataGridViewTextBoxColumn
+            // 
+            this.detailPOIDDataGridViewTextBoxColumn.DataPropertyName = "DetailPOID";
+            this.detailPOIDDataGridViewTextBoxColumn.HeaderText = "DetailPOID";
+            this.detailPOIDDataGridViewTextBoxColumn.Name = "detailPOIDDataGridViewTextBoxColumn";
+            this.detailPOIDDataGridViewTextBoxColumn.Visible = false;
+            this.detailPOIDDataGridViewTextBoxColumn.Width = 40;
             // 
             // detailPOBindingSource
             // 
@@ -233,6 +262,7 @@
             // 
             // cboNoPOKain
             // 
+            this.cboNoPOKain.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cboNoPOKain.DataSource = this.preOrderKainBindingSource;
             this.cboNoPOKain.DisplayMember = "PONumber";
             this.cboNoPOKain.FormattingEnabled = true;
@@ -244,9 +274,6 @@
             this.cboNoPOKain.UseSelectable = true;
             this.cboNoPOKain.ValueMember = "PONumber";
             this.cboNoPOKain.SelectedIndexChanged += new System.EventHandler(this.cboNoPOKain_SelectedIndexChanged);
-            // 
-            // preOrderKainBindingSource
-            // 
             // 
             // txtSupplierName
             // 
@@ -290,11 +317,12 @@
             // btnDeletePenerimaanKain
             // 
             this.btnDeletePenerimaanKain.ActiveControl = null;
-            this.btnDeletePenerimaanKain.Location = new System.Drawing.Point(37, 448);
+            this.btnDeletePenerimaanKain.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDeletePenerimaanKain.Location = new System.Drawing.Point(37, 520);
             this.btnDeletePenerimaanKain.Name = "btnDeletePenerimaanKain";
-            this.btnDeletePenerimaanKain.Size = new System.Drawing.Size(87, 67);
+            this.btnDeletePenerimaanKain.Size = new System.Drawing.Size(97, 67);
             this.btnDeletePenerimaanKain.TabIndex = 7;
-            this.btnDeletePenerimaanKain.Text = "DELETE";
+            this.btnDeletePenerimaanKain.Text = "DELETE PO";
             this.btnDeletePenerimaanKain.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnDeletePenerimaanKain.TileImage = global::Project.Properties.Resources.btn_delete;
             this.btnDeletePenerimaanKain.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -304,7 +332,8 @@
             // 
             // btnExitPenerimaanKain
             // 
-            this.btnExitPenerimaanKain.Location = new System.Drawing.Point(203, 549);
+            this.btnExitPenerimaanKain.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExitPenerimaanKain.Location = new System.Drawing.Point(203, 621);
             this.btnExitPenerimaanKain.Name = "btnExitPenerimaanKain";
             this.btnExitPenerimaanKain.Size = new System.Drawing.Size(110, 48);
             this.btnExitPenerimaanKain.TabIndex = 9;
@@ -315,7 +344,8 @@
             // btnUpdateStatus
             // 
             this.btnUpdateStatus.ActiveControl = null;
-            this.btnUpdateStatus.Location = new System.Drawing.Point(130, 448);
+            this.btnUpdateStatus.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnUpdateStatus.Location = new System.Drawing.Point(140, 520);
             this.btnUpdateStatus.Name = "btnUpdateStatus";
             this.btnUpdateStatus.Size = new System.Drawing.Size(183, 67);
             this.btnUpdateStatus.TabIndex = 24;
@@ -359,7 +389,8 @@
             // 
             // btnSaveUpdateStatus
             // 
-            this.btnSaveUpdateStatus.Location = new System.Drawing.Point(385, 549);
+            this.btnSaveUpdateStatus.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSaveUpdateStatus.Location = new System.Drawing.Point(385, 621);
             this.btnSaveUpdateStatus.Name = "btnSaveUpdateStatus";
             this.btnSaveUpdateStatus.Size = new System.Drawing.Size(151, 48);
             this.btnSaveUpdateStatus.TabIndex = 26;
@@ -371,7 +402,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(714, 644);
+            this.ClientSize = new System.Drawing.Size(714, 718);
             this.Controls.Add(this.btnSaveUpdateStatus);
             this.Controls.Add(this.txtSupplierCode);
             this.Controls.Add(this.btnUpdateStatus);
@@ -420,12 +451,13 @@
         private MetroFramework.Controls.MetroTextBox txtSupplierCode;
         private System.Windows.Forms.BindingSource preOrderKainBindingSource;
         private MetroFramework.Controls.MetroButton btnSaveUpdateStatus;
-        private System.Windows.Forms.DataGridViewTextBoxColumn detailPOIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NO;
         private System.Windows.Forms.DataGridViewTextBoxColumn pONumberDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn materialIDDataGridViewComboBoxColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn colorIDDataGridViewComboBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn detailQtyDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn detailPriceDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn detailStatusDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn detailPOIDDataGridViewTextBoxColumn;
     }
 }

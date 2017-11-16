@@ -28,9 +28,21 @@ namespace Project
                     cboFakturPenerimaanKain.Refresh();
                     string noFakturKain = cboFakturPenerimaanKain.SelectedValue.ToString();
                     var db = GenericQuery.SqlQuerySingle<FakturKainModel>("select df.idFaktur, df.NoFaktur, df.PONumber, df.status, df.Date_time, p.SupplierID, i.SupplierCode, i.SupplierName from DetailFaktur df JOIN PreOrderKains p on df.PONumber = p.PONumber JOIN IndomodaSuppliers i on p.SupplierID = i.SupplierID WHERE df.status = '"+0+"' AND df.NoFaktur = '"+noFakturKain+"'");
+                    long poNumber = Convert.ToInt64(db.PONumber.ToString());
                     txtSupplierCode.Text = db.SupplierCode.ToString();
                     txtSupplierName.Text = db.SupplierName.ToString();
                     txtPONumber.Text = db.PONumber.ToString();
+                    List<FakturDetailPO> listFakturDetail = GenericQuery.SqlQuery<FakturDetailPO>("select df.idFaktur, df.NoFaktur, df.PONumber, df.status, dp.DetailPOID, dp.MaterialID, dp.ColorID, dp.DetailQty, dp.DetailStatus, dp.statusFaktur from DetailFaktur df JOIN DetailPO dp on df.PONumber = dp.PONumber WHERE df.PONumber = '" + poNumber + "'");
+                    detailPOBindingSource.DataSource = listFakturDetail.ToList();
+
+                    int rowCount = dataGridView1.Rows.Count;
+                    for (int i = 0; i < rowCount; i++)
+                    {
+                        dataGridView1.Columns[0].ValueType = typeof(int);
+                        dataGridView1.Rows[i].Cells[0].Value = i + 1;
+                        dataGridView1.UpdateCellValue(0, i);
+                    }
+                    dataGridView1.Refresh();
                 }
             }
             catch (NullReferenceException ex)
@@ -46,24 +58,9 @@ namespace Project
                 List<FakturKainModel> listFaktur = GenericQuery.SqlQuery<FakturKainModel>("select df.idFaktur, df.NoFaktur, df.PONumber, df.status, df.Date_time, p.SupplierID, i.SupplierCode, i.SupplierName from DetailFaktur df JOIN PreOrderKains p on df.PONumber = p.PONumber JOIN IndomodaSuppliers i on p.SupplierID = i.SupplierID WHERE df.status = '" + 0 + "'");
                 detailFakturBindingSourceCbo.DataSource = listFaktur.ToList();
                 employeeBindingSource.DataSource = db.Employees.ToList();
-                detailFakturBindingSource.DataSource = db.DetailFakturs.ToList();
+                colorBindingSource.DataSource = db.Colors.ToList();
+                materialBindingSource.DataSource = db.Materials.ToList();
                 dataGridView1.Refresh();
-                for(int i = 0; i< dataGridView1.Rows.Count; i++)
-                {
-                    string status = dataGridView1.Rows[i].Cells["Status"].Value.ToString();
-                    if (status == "True")
-                    {
-                        dataGridView1.Columns[5].ValueType = typeof(String);
-                        dataGridView1.Rows[i].Cells[5].Value = "PIC Code has been assigned";
-                        dataGridView1.UpdateCellValue(5, i);
-                    }
-                    else
-                    {
-                        dataGridView1.Columns[5].ValueType = typeof(String);
-                        dataGridView1.Rows[i].Cells[5].Value = "PIC Code is not assigned";
-                        dataGridView1.UpdateCellValue(5, i);
-                    }
-                }
             }
         }
 
@@ -73,6 +70,7 @@ namespace Project
             {
                 MetroFramework.MetroMessageBox.Show(this, "No pemotongan kain must be filled!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtNoPemotonganKain.Focus();
+                txtNoPemotonganKain.ForeColor = System.Drawing.Color.Red;
             }
             else if (cboFakturPenerimaanKain.Items.Count == 0)
             {
@@ -90,7 +88,7 @@ namespace Project
                     using (indomodaEntities db = new indomodaEntities())
                     {
                         string noFaktur = cboFakturPenerimaanKain.SelectedValue.ToString();
-                        int setPICCode = Convert.ToInt32(cboPICCode.SelectedValue.ToString());
+                        int setPICCode = Convert.ToInt32(cboPICName.SelectedValue.ToString());
                         int setStatusPemotonganKain = 0;
                         int setPemotonganKainID = db.DetailPemotonganKains.AsEnumerable().LastOrDefault() == null ? 1 : db.DetailPemotonganKains.AsEnumerable().LastOrDefault().idPemotonganKain + 1;
 
@@ -124,7 +122,7 @@ namespace Project
                             List<FakturKainModel> newListFaktur = GenericQuery.SqlQuery<FakturKainModel>("select df.idFaktur, df.NoFaktur, df.PONumber, df.status, df.Date_time, p.SupplierID, i.SupplierCode, i.SupplierName from DetailFaktur df JOIN PreOrderKains p on df.PONumber = p.PONumber JOIN IndomodaSuppliers i on p.SupplierID = i.SupplierID WHERE df.status = '" + 0 + "'");
                             newListFaktur.Remove(new FakturKainModel { NoFaktur = noFaktur });
                             detailFakturBindingSourceCbo.DataSource = newListFaktur.ToList();
-                            detailFakturBindingSource.DataSource = db.DetailFakturs.ToList();
+                            //detailFakturBindingSource.DataSource = db.DetailFakturs.ToList();
 
                             for (int i = 0; i < dataGridView1.Rows.Count; i++)
                             {
@@ -162,6 +160,103 @@ namespace Project
         private void btnExitPemotonganKain_Click_1(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void cboPICName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboPICName.Items.Count > 0 && cboPICName.Text != "")
+            {
+                int eID = Convert.ToInt32(cboPICName.SelectedValue.ToString());
+                var dba = GenericQuery.SqlQuerySingle<Employee>("SELECT e.EmployeeID, e.EmployeeName, e.EmployeeCode, e.EmployeeEmail, e.EmployeePhone, e.EmployeePosition from Employees e WHERE e.EmployeeID = '" + eID + "'");
+                txtPICCode.Text = dba.EmployeeCode.ToString();
+            }
+        }
+
+        private void btnDeleteFaktur_Click(object sender, EventArgs e)
+        {
+            if (cboFakturPenerimaanKain.Items.Count == 0)
+            {
+                MetroFramework.MetroMessageBox.Show(this, "List Faktur is empty!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                if (MetroFramework.MetroMessageBox.Show(this, "Do you want to delete this faktur kain", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
+                {
+                    using (indomodaEntities db = new indomodaEntities())
+                    {
+                        try
+                        {
+                            string noFaktur = cboFakturPenerimaanKain.SelectedValue.ToString();
+                            int c = GenericQuery.ExecSQLCommand("DELETE FROM DetailFaktur WHERE NoFaktur = '" + noFaktur + "'");
+                            db.SaveChangesAsync().Wait();
+                            cboFakturPenerimaanKain.Refresh();
+                            dataGridView1.Refresh();
+
+                            try
+                            {
+                                int setStatus = 0;
+                                long poNumber = Convert.ToInt64(txtPONumber.Text.ToString());
+                                int d = GenericQuery.ExecSQLCommand("UPDATE PreOrderKains SET status = @status WHERE PONumber = '" + poNumber + "'", new[] {
+                                    new SqlParameter("@status", setStatus)
+                                });
+                                db.SaveChangesAsync().Wait();
+                            }
+                            catch (Exception ex)
+                            {
+                                MetroFramework.MetroMessageBox.Show(this, ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+
+                            List<FakturKainModel> listFaktur = GenericQuery.SqlQuery<FakturKainModel>("select df.idFaktur, df.NoFaktur, df.PONumber, df.status, df.Date_time, p.SupplierID, i.SupplierCode, i.SupplierName from DetailFaktur df JOIN PreOrderKains p on df.PONumber = p.PONumber JOIN IndomodaSuppliers i on p.SupplierID = i.SupplierID WHERE df.status = '" + 0 + "'");
+                            listFaktur.Remove(new FakturKainModel() { NoFaktur = noFaktur });
+                            detailFakturBindingSourceCbo.DataSource = listFaktur.ToList();
+
+                            MetroFramework.MetroMessageBox.Show(this, "Success! This PO has been deleted from the database", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                        }
+                        catch (Exception ex)
+                        {
+                            MetroFramework.MetroMessageBox.Show(this, ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void btnUpdateStatusPemotongan_Click(object sender, EventArgs e)
+        {
+            if (cboFakturPenerimaanKain.Items.Count == 0)
+            {
+                MetroFramework.MetroMessageBox.Show(this, "Detail PO for this No pemotongan kain is empty!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (cboFakturPenerimaanKain.Items.Count > 0 && txtSupplierCode.Text == "" && txtSupplierName.Text == "")
+            {
+                MetroFramework.MetroMessageBox.Show(this, "You must select no pemotongan kain first!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                if (MetroFramework.MetroMessageBox.Show(this, "Do you want to update this detail PO pemotongan status?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    using (indomodaEntities db = new indomodaEntities())
+                    {
+                        try
+                        {
+                            int currentRow = dataGridView1.CurrentRow.Index;
+                            int currentDetailPOID = Convert.ToInt32(dataGridView1[6, dataGridView1.CurrentRow.Index].Value.ToString());
+                            bool setStatusFaktur = Convert.ToBoolean(dataGridView1.Rows[currentRow].Cells[5].Value);
+                            int a = GenericQuery.ExecSQLCommand("UPDATE DetailPO SET statusFaktur = @statusFaktur WHERE DetailPOID = '" + currentDetailPOID + "'", new[] {
+                                new SqlParameter("@statusFaktur", setStatusFaktur)
+                            });
+                            db.SaveChangesAsync().Wait();
+                            dataGridView1.Refresh();
+
+                            MetroFramework.MetroMessageBox.Show(this, "Success! This detail PO pemotongan status has been updated", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                        }
+                        catch (Exception ex)
+                        {
+                            MetroFramework.MetroMessageBox.Show(this, ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
         }
     }
 }

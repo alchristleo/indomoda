@@ -64,15 +64,17 @@ namespace Project
             {
                 MetroFramework.MetroMessageBox.Show(this, "You need to add detail PO first!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            else
+            {
+                EditPOKain editpokain = new EditPOKain();
+                int currentPOID = Convert.ToInt32(dataGridView1[7, dataGridView1.CurrentRow.Index].Value.ToString());
 
-            EditPOKain editpokain = new EditPOKain();
-            int currentPOID = Convert.ToInt32(dataGridView1[7, dataGridView1.CurrentRow.Index].Value.ToString());
-
-            listPO = GenericQuery.SqlQuery<DetailPOModel>("SELECT d.DetailPOID, d.PONumber, d.MaterialID, d.ColorID, d.DetailQty, d.DetailPrice, d.DetailTotal, d.DetailStatus, m.MaterialCode, m.MaterialName, c.ColorCode, c.ColorName FROM DetailPO d JOIN Materials m ON d.MaterialID = m.MaterialID JOIN Colors c ON d.ColorID = c.ColorID  WHERE DetailPOID = '"+currentPOID+"'");
-            editpokain.setDPO(ref listPO);
-            editpokain.setDGV(ref dataGridView1);
-            editpokain.setBS(ref detailPOBindingSource);
-            editpokain.Show();
+                listPO = GenericQuery.SqlQuery<DetailPOModel>("SELECT d.DetailPOID, d.PONumber, d.MaterialID, d.ColorID, d.DetailQty, d.DetailPrice, d.DetailTotal, d.DetailStatus, m.MaterialCode, m.MaterialName, c.ColorCode, c.ColorName FROM DetailPO d JOIN Materials m ON d.MaterialID = m.MaterialID JOIN Colors c ON d.ColorID = c.ColorID  WHERE DetailPOID = '" + currentPOID + "'");
+                editpokain.setDPO(ref listPO);
+                editpokain.setDGV(ref dataGridView1);
+                editpokain.setBS(ref detailPOBindingSource);
+                editpokain.Show();
+            }
         }
 
         private void btnDeletePoKain_Click(object sender, EventArgs e)
@@ -162,7 +164,7 @@ namespace Project
                         try
                         {
                             int setPOID = db.PreOrderKains.AsEnumerable().LastOrDefault() == null ? 1 : db.PreOrderKains.AsEnumerable().LastOrDefault().idPOKain + 1;
-                            int SupplierID = Convert.ToInt32(cboSupplierCode.SelectedValue.ToString());
+                            int SupplierID = Convert.ToInt32(cboSupplierName.SelectedValue.ToString());
                             decimal setGTotal = Convert.ToDecimal(lblGrandTotalDB.Text.ToString());
                             bool setStatus = false;
                             int a = GenericQuery.ExecSQLCommand("INSERT INTO PreOrderKains (idPOKain, PONumber, SupplierID, GrandTotal, Date_time, status) VALUES(@idPOKain, @PONumber, @SupplierID, @GrandTotal, @Date_time, @status)", new[] {
@@ -204,6 +206,17 @@ namespace Project
             }
             lblGrandTotal.Text = String.Format(gt.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("id-ID")));
             lblGrandTotalDB.Text = gt.ToString();
+        }
+
+        private void cboSupplierName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboSupplierName.Items.Count > 0 && cboSupplierName.Text != "")
+            {
+                int sID = Convert.ToInt32(cboSupplierName.SelectedValue.ToString());
+                var dba = GenericQuery.SqlQuerySingle<IndomodaSupplier>("SELECT i.SupplierID, i.SupplierCode, i.SupplierName, i.SupplierAddress, i.SupplierPhone from IndomodaSuppliers i WHERE i.SupplierID = '" + sID + "'");
+                lblSupplierCode.Text = dba.SupplierCode.ToString();
+                lblSupplierAddress.Text = dba.SupplierAddress.ToString();
+            }
         }
     }
 }

@@ -42,6 +42,15 @@ namespace Project
                     txtSupplierName.Text = db.SupplierName.ToString();
                     List<DetailPOModel> listPO = GenericQuery.SqlQuery<DetailPOModel>("SELECT * FROM DetailPO WHERE PONumber = '" + poNumber + "'");
                     detailPOBindingSource.DataSource = listPO.ToList();
+
+                    int rowCount = dataGridView1.Rows.Count;
+                    for (int i = 0; i < rowCount; i++)
+                    {
+                        dataGridView1.Columns[0].ValueType = typeof(int);
+                        dataGridView1.Rows[i].Cells[0].Value = i + 1;
+                        dataGridView1.UpdateCellValue(0, i);
+                    }
+                    dataGridView1.Refresh();
                 }
             }
             catch (NullReferenceException ex)
@@ -114,11 +123,11 @@ namespace Project
                         try
                         {
                             int currentRow = dataGridView1.CurrentRow.Index;
-                            int currentDetailPOID = Convert.ToInt32(dataGridView1[0, dataGridView1.CurrentRow.Index].Value.ToString());
+                            int currentDetailPOID = Convert.ToInt32(dataGridView1[7, dataGridView1.CurrentRow.Index].Value.ToString());
                             bool setStatus = Convert.ToBoolean(dataGridView1.Rows[currentRow].Cells[6].Value);
                             int a = GenericQuery.ExecSQLCommand("UPDATE DetailPO SET DetailStatus = @DetailStatus WHERE DetailPOID = '" + currentDetailPOID + "'", new[] {
-                            new SqlParameter("@DetailStatus", setStatus)
-                        });
+                                new SqlParameter("@DetailStatus", setStatus)
+                            });
                             db.SaveChangesAsync().Wait();
                             dataGridView1.Refresh();
 
