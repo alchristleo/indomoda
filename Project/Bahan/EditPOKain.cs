@@ -129,12 +129,14 @@ namespace Project
                 decimal setTotal = (decimal)getQty * getPrice;
                 bool setStatus = false;
                 bool setStatusFaktur = false;
+                string noPK = "";
+                int tempPK = 0;
 
                 if (MetroFramework.MetroMessageBox.Show(this, "Do you want to save this detail PO to database?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     try
                     {
-                        int a = GenericQuery.ExecSQLCommand("UPDATE DetailPO SET DetailPOID = @DetailPOID, PONumber = @PONumber, MaterialID = @MaterialID, ColorID = @ColorID, DetailQty = @DetailQty, DetailPrice = @DetailPrice, DetailTotal = @DetailTotal, DetailStatus = @DetailStatus, statusFaktur = @statusFaktur WHERE DetailPOID = '" + setDetailPOID+"'", new[] {
+                        int a = GenericQuery.ExecSQLCommand("UPDATE DetailPO SET DetailPOID = @DetailPOID, PONumber = @PONumber, MaterialID = @MaterialID, ColorID = @ColorID, DetailQty = @DetailQty, DetailPrice = @DetailPrice, DetailTotal = @DetailTotal, DetailStatus = @DetailStatus, statusFaktur = @statusFaktur, noPemotonganKain = @noPemotonganKain, tempPemotongan = @tempPemotongan WHERE DetailPOID = '" + setDetailPOID+"'", new[] {
                                 new SqlParameter("@DetailPOID", setDetailPOID),
                                 new SqlParameter("@PONumber", getPONumber),
                                 new SqlParameter("@MaterialID", getMaterialID),
@@ -143,7 +145,9 @@ namespace Project
                                 new SqlParameter("@DetailPrice", getPrice),
                                 new SqlParameter("@DetailTotal", setTotal),
                                 new SqlParameter("@DetailStatus", setStatus),
-                                new SqlParameter("@statusFaktur", setStatusFaktur)
+                                new SqlParameter("@statusFaktur", setStatusFaktur),
+                                new SqlParameter("@noPemotonganKain", noPK),
+                                new SqlParameter("@tempPemotongan", tempPK)
                             });
                         db.SaveChangesAsync().Wait();
 
@@ -162,6 +166,8 @@ namespace Project
                             i.DetailTotal = setTotal;
                             i.DetailStatus = setStatus;
                             i.statusFaktur = setStatusFaktur;
+                            i.noPemotonganKain = noPK;
+                            i.tempPemotongan = tempPK;
                         }
                         _dv.DataSource = _bs;
                         _dv.EndEdit();

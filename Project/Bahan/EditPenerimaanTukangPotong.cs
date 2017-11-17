@@ -465,6 +465,7 @@ namespace Project
             // 
             // btnExitEditPenerimaanTukangPotong
             // 
+            this.btnExitEditPenerimaanTukangPotong.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnExitEditPenerimaanTukangPotong.Location = new System.Drawing.Point(137, 310);
             this.btnExitEditPenerimaanTukangPotong.Name = "btnExitEditPenerimaanTukangPotong";
             this.btnExitEditPenerimaanTukangPotong.Size = new System.Drawing.Size(93, 47);
@@ -483,6 +484,7 @@ namespace Project
             // 
             // btnSaveEditPenrimaanTukangPotong
             // 
+            this.btnSaveEditPenrimaanTukangPotong.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSaveEditPenrimaanTukangPotong.Location = new System.Drawing.Point(295, 310);
             this.btnSaveEditPenrimaanTukangPotong.Name = "btnSaveEditPenrimaanTukangPotong";
             this.btnSaveEditPenrimaanTukangPotong.Size = new System.Drawing.Size(93, 47);

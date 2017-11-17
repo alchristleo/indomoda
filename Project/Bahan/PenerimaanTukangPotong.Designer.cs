@@ -29,8 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PenerimaanTukangPotong));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.colorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.listPenerimaanTukangPotongBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnExitPenerimaanTukangPotong = new MetroFramework.Controls.MetroButton();
             this.btnSavePenerimaanTukangPotong = new MetroFramework.Controls.MetroButton();
@@ -49,18 +52,30 @@
             this.metroDateTime1 = new MetroFramework.Controls.MetroDateTime();
             this.txtPICCode = new MetroFramework.Controls.MetroTextBox();
             this.txtIDPenerimaanTukangPotong = new MetroFramework.Controls.MetroTextBox();
-            this.colorBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.idListPTPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.detailPOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.materialBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pONumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.materialIDDataGridViewComboBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.colorIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.detailQtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.detailPOIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NUMBER = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.noSeriDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colorIDDataGridViewComboBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.merkDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ukuranDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idListPTPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.listPenerimaanTukangPotongBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.detailPemotonganKainBindingSourceCbo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.detailPOBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.materialBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -68,21 +83,42 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Menu;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Bisque;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.ColumnHeadersHeight = 30;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idListPTPDataGridViewTextBoxColumn,
+            this.NUMBER,
             this.noSeriDataGridViewTextBoxColumn,
             this.modelDataGridViewTextBoxColumn,
             this.colorIDDataGridViewComboBoxColumn,
             this.merkDataGridViewTextBoxColumn,
             this.ukuranDataGridViewTextBoxColumn,
-            this.quantityDataGridViewTextBoxColumn});
+            this.quantityDataGridViewTextBoxColumn,
+            this.idListPTPDataGridViewTextBoxColumn});
+            this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dataGridView1.DataSource = this.listPenerimaanTukangPotongBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(52, 293);
+            this.dataGridView1.EnableHeadersVisualStyles = false;
+            this.dataGridView1.GridColor = System.Drawing.SystemColors.ScrollBar;
+            this.dataGridView1.Location = new System.Drawing.Point(51, 357);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(738, 216);
+            this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.RowTemplate.Height = 30;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(738, 159);
             this.dataGridView1.TabIndex = 8;
+            // 
+            // colorBindingSource
+            // 
+            this.colorBindingSource.DataSource = typeof(Project.Color);
             // 
             // listPenerimaanTukangPotongBindingSource
             // 
@@ -90,7 +126,8 @@
             // 
             // btnExitPenerimaanTukangPotong
             // 
-            this.btnExitPenerimaanTukangPotong.Location = new System.Drawing.Point(290, 615);
+            this.btnExitPenerimaanTukangPotong.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExitPenerimaanTukangPotong.Location = new System.Drawing.Point(289, 622);
             this.btnExitPenerimaanTukangPotong.Name = "btnExitPenerimaanTukangPotong";
             this.btnExitPenerimaanTukangPotong.Size = new System.Drawing.Size(93, 47);
             this.btnExitPenerimaanTukangPotong.TabIndex = 9;
@@ -100,7 +137,8 @@
             // 
             // btnSavePenerimaanTukangPotong
             // 
-            this.btnSavePenerimaanTukangPotong.Location = new System.Drawing.Point(464, 615);
+            this.btnSavePenerimaanTukangPotong.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSavePenerimaanTukangPotong.Location = new System.Drawing.Point(463, 622);
             this.btnSavePenerimaanTukangPotong.Name = "btnSavePenerimaanTukangPotong";
             this.btnSavePenerimaanTukangPotong.Size = new System.Drawing.Size(93, 47);
             this.btnSavePenerimaanTukangPotong.TabIndex = 8;
@@ -111,7 +149,8 @@
             // btnDeletePenerimaanTukangPotong
             // 
             this.btnDeletePenerimaanTukangPotong.ActiveControl = null;
-            this.btnDeletePenerimaanTukangPotong.Location = new System.Drawing.Point(256, 515);
+            this.btnDeletePenerimaanTukangPotong.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDeletePenerimaanTukangPotong.Location = new System.Drawing.Point(255, 522);
             this.btnDeletePenerimaanTukangPotong.Name = "btnDeletePenerimaanTukangPotong";
             this.btnDeletePenerimaanTukangPotong.Size = new System.Drawing.Size(87, 67);
             this.btnDeletePenerimaanTukangPotong.TabIndex = 7;
@@ -126,7 +165,8 @@
             // btnEditPenerimaanTukangPotong
             // 
             this.btnEditPenerimaanTukangPotong.ActiveControl = null;
-            this.btnEditPenerimaanTukangPotong.Location = new System.Drawing.Point(154, 515);
+            this.btnEditPenerimaanTukangPotong.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEditPenerimaanTukangPotong.Location = new System.Drawing.Point(153, 522);
             this.btnEditPenerimaanTukangPotong.Name = "btnEditPenerimaanTukangPotong";
             this.btnEditPenerimaanTukangPotong.Size = new System.Drawing.Size(87, 67);
             this.btnEditPenerimaanTukangPotong.TabIndex = 6;
@@ -141,7 +181,8 @@
             // btnAddPenerimaanTukangPotong
             // 
             this.btnAddPenerimaanTukangPotong.ActiveControl = null;
-            this.btnAddPenerimaanTukangPotong.Location = new System.Drawing.Point(52, 515);
+            this.btnAddPenerimaanTukangPotong.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddPenerimaanTukangPotong.Location = new System.Drawing.Point(51, 522);
             this.btnAddPenerimaanTukangPotong.Name = "btnAddPenerimaanTukangPotong";
             this.btnAddPenerimaanTukangPotong.Size = new System.Drawing.Size(85, 67);
             this.btnAddPenerimaanTukangPotong.TabIndex = 5;
@@ -156,7 +197,7 @@
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(63, 105);
+            this.metroLabel1.Location = new System.Drawing.Point(51, 109);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(193, 19);
             this.metroLabel1.TabIndex = 37;
@@ -165,7 +206,7 @@
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(63, 146);
+            this.metroLabel2.Location = new System.Drawing.Point(51, 143);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(137, 19);
             this.metroLabel2.TabIndex = 38;
@@ -174,7 +215,7 @@
             // metroLabel3
             // 
             this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(63, 188);
+            this.metroLabel3.Location = new System.Drawing.Point(529, 153);
             this.metroLabel3.Name = "metroLabel3";
             this.metroLabel3.Size = new System.Drawing.Size(65, 19);
             this.metroLabel3.TabIndex = 39;
@@ -183,7 +224,7 @@
             // metroLabel4
             // 
             this.metroLabel4.AutoSize = true;
-            this.metroLabel4.Location = new System.Drawing.Point(63, 237);
+            this.metroLabel4.Location = new System.Drawing.Point(529, 113);
             this.metroLabel4.Name = "metroLabel4";
             this.metroLabel4.Size = new System.Drawing.Size(69, 19);
             this.metroLabel4.TabIndex = 40;
@@ -204,7 +245,7 @@
             this.txtNoPenerimaanTukangPotong.CustomButton.UseSelectable = true;
             this.txtNoPenerimaanTukangPotong.CustomButton.Visible = false;
             this.txtNoPenerimaanTukangPotong.Lines = new string[0];
-            this.txtNoPenerimaanTukangPotong.Location = new System.Drawing.Point(275, 105);
+            this.txtNoPenerimaanTukangPotong.Location = new System.Drawing.Point(255, 109);
             this.txtNoPenerimaanTukangPotong.MaxLength = 32767;
             this.txtNoPenerimaanTukangPotong.Name = "txtNoPenerimaanTukangPotong";
             this.txtNoPenerimaanTukangPotong.PasswordChar = '\0';
@@ -234,7 +275,7 @@
             this.txtPICName.CustomButton.UseSelectable = true;
             this.txtPICName.CustomButton.Visible = false;
             this.txtPICName.Lines = new string[0];
-            this.txtPICName.Location = new System.Drawing.Point(275, 233);
+            this.txtPICName.Location = new System.Drawing.Point(625, 109);
             this.txtPICName.MaxLength = 32767;
             this.txtPICName.Name = "txtPICName";
             this.txtPICName.PasswordChar = '\0';
@@ -255,7 +296,7 @@
             this.cboNoPemotonganKain.DisplayMember = "noPemotonganKain";
             this.cboNoPemotonganKain.FormattingEnabled = true;
             this.cboNoPemotonganKain.ItemHeight = 23;
-            this.cboNoPemotonganKain.Location = new System.Drawing.Point(275, 146);
+            this.cboNoPemotonganKain.Location = new System.Drawing.Point(255, 143);
             this.cboNoPemotonganKain.Name = "cboNoPemotonganKain";
             this.cboNoPemotonganKain.Size = new System.Drawing.Size(156, 29);
             this.cboNoPemotonganKain.TabIndex = 2;
@@ -270,7 +311,7 @@
             // metroLabel5
             // 
             this.metroLabel5.AutoSize = true;
-            this.metroLabel5.Location = new System.Drawing.Point(539, 60);
+            this.metroLabel5.Location = new System.Drawing.Point(538, 50);
             this.metroLabel5.Name = "metroLabel5";
             this.metroLabel5.Size = new System.Drawing.Size(36, 19);
             this.metroLabel5.TabIndex = 45;
@@ -278,7 +319,7 @@
             // 
             // metroDateTime1
             // 
-            this.metroDateTime1.Location = new System.Drawing.Point(589, 60);
+            this.metroDateTime1.Location = new System.Drawing.Point(588, 50);
             this.metroDateTime1.MinimumSize = new System.Drawing.Size(0, 29);
             this.metroDateTime1.Name = "metroDateTime1";
             this.metroDateTime1.Size = new System.Drawing.Size(200, 29);
@@ -299,7 +340,7 @@
             this.txtPICCode.CustomButton.UseSelectable = true;
             this.txtPICCode.CustomButton.Visible = false;
             this.txtPICCode.Lines = new string[0];
-            this.txtPICCode.Location = new System.Drawing.Point(275, 188);
+            this.txtPICCode.Location = new System.Drawing.Point(625, 153);
             this.txtPICCode.MaxLength = 32767;
             this.txtPICCode.Name = "txtPICCode";
             this.txtPICCode.PasswordChar = '\0';
@@ -329,7 +370,7 @@
             this.txtIDPenerimaanTukangPotong.CustomButton.UseSelectable = true;
             this.txtIDPenerimaanTukangPotong.CustomButton.Visible = false;
             this.txtIDPenerimaanTukangPotong.Lines = new string[0];
-            this.txtIDPenerimaanTukangPotong.Location = new System.Drawing.Point(455, 105);
+            this.txtIDPenerimaanTukangPotong.Location = new System.Drawing.Point(103, 63);
             this.txtIDPenerimaanTukangPotong.MaxLength = 32767;
             this.txtIDPenerimaanTukangPotong.Name = "txtIDPenerimaanTukangPotong";
             this.txtIDPenerimaanTukangPotong.PasswordChar = '\0';
@@ -345,16 +386,115 @@
             this.txtIDPenerimaanTukangPotong.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtIDPenerimaanTukangPotong.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // colorBindingSource
+            // dataGridView2
             // 
-            this.colorBindingSource.DataSource = typeof(Project.Color);
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToDeleteRows = false;
+            this.dataGridView2.AutoGenerateColumns = false;
+            this.dataGridView2.BackgroundColor = System.Drawing.Color.LightGreen;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Aquamarine;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView2.ColumnHeadersHeight = 25;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.NO,
+            this.pONumberDataGridViewTextBoxColumn,
+            this.materialIDDataGridViewComboBoxColumn,
+            this.colorIDDataGridViewTextBoxColumn,
+            this.detailQtyDataGridViewTextBoxColumn,
+            this.detailPOIDDataGridViewTextBoxColumn});
+            this.dataGridView2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dataGridView2.DataSource = this.detailPOBindingSource;
+            this.dataGridView2.EnableHeadersVisualStyles = false;
+            this.dataGridView2.GridColor = System.Drawing.SystemColors.ScrollBar;
+            this.dataGridView2.Location = new System.Drawing.Point(51, 201);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
+            this.dataGridView2.RowHeadersVisible = false;
+            this.dataGridView2.RowTemplate.Height = 25;
+            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView2.Size = new System.Drawing.Size(737, 150);
+            this.dataGridView2.TabIndex = 49;
+            this.dataGridView2.Visible = false;
             // 
-            // idListPTPDataGridViewTextBoxColumn
+            // detailPOBindingSource
             // 
-            this.idListPTPDataGridViewTextBoxColumn.DataPropertyName = "idListPTP";
-            this.idListPTPDataGridViewTextBoxColumn.HeaderText = "No.";
-            this.idListPTPDataGridViewTextBoxColumn.Name = "idListPTPDataGridViewTextBoxColumn";
-            this.idListPTPDataGridViewTextBoxColumn.ReadOnly = true;
+            this.detailPOBindingSource.DataSource = typeof(Project.DetailPO);
+            // 
+            // materialBindingSource
+            // 
+            this.materialBindingSource.DataSource = typeof(Project.Material);
+            // 
+            // NO
+            // 
+            this.NO.HeaderText = "No.";
+            this.NO.Name = "NO";
+            this.NO.ReadOnly = true;
+            this.NO.Width = 60;
+            // 
+            // pONumberDataGridViewTextBoxColumn
+            // 
+            this.pONumberDataGridViewTextBoxColumn.DataPropertyName = "PONumber";
+            this.pONumberDataGridViewTextBoxColumn.HeaderText = "No. PO";
+            this.pONumberDataGridViewTextBoxColumn.Name = "pONumberDataGridViewTextBoxColumn";
+            this.pONumberDataGridViewTextBoxColumn.ReadOnly = true;
+            this.pONumberDataGridViewTextBoxColumn.Width = 170;
+            // 
+            // materialIDDataGridViewComboBoxColumn
+            // 
+            this.materialIDDataGridViewComboBoxColumn.DataPropertyName = "MaterialID";
+            this.materialIDDataGridViewComboBoxColumn.DataSource = this.materialBindingSource;
+            this.materialIDDataGridViewComboBoxColumn.DisplayMember = "MaterialName";
+            this.materialIDDataGridViewComboBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.materialIDDataGridViewComboBoxColumn.HeaderText = "Material Name";
+            this.materialIDDataGridViewComboBoxColumn.Name = "materialIDDataGridViewComboBoxColumn";
+            this.materialIDDataGridViewComboBoxColumn.ReadOnly = true;
+            this.materialIDDataGridViewComboBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.materialIDDataGridViewComboBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.materialIDDataGridViewComboBoxColumn.ValueMember = "MaterialID";
+            this.materialIDDataGridViewComboBoxColumn.Width = 165;
+            // 
+            // colorIDDataGridViewTextBoxColumn
+            // 
+            this.colorIDDataGridViewTextBoxColumn.DataPropertyName = "ColorID";
+            this.colorIDDataGridViewTextBoxColumn.DataSource = this.colorBindingSource;
+            this.colorIDDataGridViewTextBoxColumn.DisplayMember = "ColorName";
+            this.colorIDDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.colorIDDataGridViewTextBoxColumn.HeaderText = "Color Name";
+            this.colorIDDataGridViewTextBoxColumn.Name = "colorIDDataGridViewTextBoxColumn";
+            this.colorIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.colorIDDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colorIDDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.colorIDDataGridViewTextBoxColumn.ValueMember = "ColorID";
+            this.colorIDDataGridViewTextBoxColumn.Width = 170;
+            // 
+            // detailQtyDataGridViewTextBoxColumn
+            // 
+            this.detailQtyDataGridViewTextBoxColumn.DataPropertyName = "DetailQty";
+            this.detailQtyDataGridViewTextBoxColumn.HeaderText = "Quantity (kg)";
+            this.detailQtyDataGridViewTextBoxColumn.Name = "detailQtyDataGridViewTextBoxColumn";
+            this.detailQtyDataGridViewTextBoxColumn.ReadOnly = true;
+            this.detailQtyDataGridViewTextBoxColumn.Width = 168;
+            // 
+            // detailPOIDDataGridViewTextBoxColumn
+            // 
+            this.detailPOIDDataGridViewTextBoxColumn.DataPropertyName = "DetailPOID";
+            this.detailPOIDDataGridViewTextBoxColumn.HeaderText = "DetailPOID";
+            this.detailPOIDDataGridViewTextBoxColumn.Name = "detailPOIDDataGridViewTextBoxColumn";
+            this.detailPOIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.detailPOIDDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // NUMBER
+            // 
+            this.NUMBER.HeaderText = "No.";
+            this.NUMBER.Name = "NUMBER";
+            this.NUMBER.ReadOnly = true;
+            this.NUMBER.Width = 40;
             // 
             // noSeriDataGridViewTextBoxColumn
             // 
@@ -362,6 +502,7 @@
             this.noSeriDataGridViewTextBoxColumn.HeaderText = "No Seri";
             this.noSeriDataGridViewTextBoxColumn.Name = "noSeriDataGridViewTextBoxColumn";
             this.noSeriDataGridViewTextBoxColumn.ReadOnly = true;
+            this.noSeriDataGridViewTextBoxColumn.Width = 123;
             // 
             // modelDataGridViewTextBoxColumn
             // 
@@ -369,18 +510,21 @@
             this.modelDataGridViewTextBoxColumn.HeaderText = "Model";
             this.modelDataGridViewTextBoxColumn.Name = "modelDataGridViewTextBoxColumn";
             this.modelDataGridViewTextBoxColumn.ReadOnly = true;
+            this.modelDataGridViewTextBoxColumn.Width = 120;
             // 
             // colorIDDataGridViewComboBoxColumn
             // 
             this.colorIDDataGridViewComboBoxColumn.DataPropertyName = "ColorID";
             this.colorIDDataGridViewComboBoxColumn.DataSource = this.colorBindingSource;
             this.colorIDDataGridViewComboBoxColumn.DisplayMember = "ColorName";
+            this.colorIDDataGridViewComboBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
             this.colorIDDataGridViewComboBoxColumn.HeaderText = "Color Name";
             this.colorIDDataGridViewComboBoxColumn.Name = "colorIDDataGridViewComboBoxColumn";
             this.colorIDDataGridViewComboBoxColumn.ReadOnly = true;
             this.colorIDDataGridViewComboBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.colorIDDataGridViewComboBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.colorIDDataGridViewComboBoxColumn.ValueMember = "ColorID";
+            this.colorIDDataGridViewComboBoxColumn.Width = 120;
             // 
             // merkDataGridViewTextBoxColumn
             // 
@@ -388,6 +532,7 @@
             this.merkDataGridViewTextBoxColumn.HeaderText = "Merk";
             this.merkDataGridViewTextBoxColumn.Name = "merkDataGridViewTextBoxColumn";
             this.merkDataGridViewTextBoxColumn.ReadOnly = true;
+            this.merkDataGridViewTextBoxColumn.Width = 120;
             // 
             // ukuranDataGridViewTextBoxColumn
             // 
@@ -399,15 +544,26 @@
             // quantityDataGridViewTextBoxColumn
             // 
             this.quantityDataGridViewTextBoxColumn.DataPropertyName = "quantity";
-            this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
+            this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity (pcs)";
             this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
             this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
+            this.quantityDataGridViewTextBoxColumn.Width = 110;
+            // 
+            // idListPTPDataGridViewTextBoxColumn
+            // 
+            this.idListPTPDataGridViewTextBoxColumn.DataPropertyName = "idListPTP";
+            this.idListPTPDataGridViewTextBoxColumn.HeaderText = "idListPTP";
+            this.idListPTPDataGridViewTextBoxColumn.Name = "idListPTPDataGridViewTextBoxColumn";
+            this.idListPTPDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idListPTPDataGridViewTextBoxColumn.Visible = false;
+            this.idListPTPDataGridViewTextBoxColumn.Width = 40;
             // 
             // PenerimaanTukangPotong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(841, 704);
+            this.ClientSize = new System.Drawing.Size(841, 693);
+            this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.txtIDPenerimaanTukangPotong);
             this.Controls.Add(this.txtPICCode);
             this.Controls.Add(this.metroDateTime1);
@@ -429,9 +585,12 @@
             this.Text = "Penerimaan Tukang Potong";
             this.Load += new System.EventHandler(this.PenerimaanTukangPotong_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.listPenerimaanTukangPotongBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.detailPemotonganKainBindingSourceCbo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.detailPOBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.materialBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -457,13 +616,23 @@
         private MetroFramework.Controls.MetroTextBox txtIDPenerimaanTukangPotong;
         private System.Windows.Forms.BindingSource detailPemotonganKainBindingSourceCbo;
         private System.Windows.Forms.BindingSource listPenerimaanTukangPotongBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idListPTPDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource colorBindingSource;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.BindingSource detailPOBindingSource;
+        private System.Windows.Forms.BindingSource materialBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pONumberDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn materialIDDataGridViewComboBoxColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn colorIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn detailQtyDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn detailPOIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NUMBER;
         private System.Windows.Forms.DataGridViewTextBoxColumn noSeriDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn modelDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn colorIDDataGridViewComboBoxColumn;
-        private System.Windows.Forms.BindingSource colorBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn merkDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ukuranDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idListPTPDataGridViewTextBoxColumn;
     }
 }

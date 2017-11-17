@@ -63,6 +63,8 @@
     <Property Name="DetailTotal" Type="decimal" Precision="18" Scale="0" Nullable="false" />
     <Property Name="DetailStatus" Type="bit" Nullable="false" />
     <Property Name="statusFaktur" Type="bit" Nullable="false" />
+    <Property Name="noPemotonganKain" Type="varchar" MaxLength="50" />
+    <Property Name="tempPemotongan" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Employees">
     <Key>

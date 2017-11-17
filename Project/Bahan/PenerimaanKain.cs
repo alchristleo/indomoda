@@ -168,6 +168,7 @@ namespace Project
                 else if (txtNoFaktur.Text == "")
                 {
                     MetroFramework.MetroMessageBox.Show(this, "You must fill No Faktur first!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtNoFaktur.Focus();
                 }
                 else if (txtNoFaktur.Text.Length != 10 )
                 {

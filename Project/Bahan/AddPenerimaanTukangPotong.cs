@@ -159,6 +159,15 @@ namespace Project
                         });
 
                         _dv.Refresh();
+
+                        int rowCount = _dv.Rows.Count;
+                        for (int i = 0; i < rowCount; i++)
+                        {
+                            _dv.Columns[0].ValueType = typeof(int);
+                            _dv.Rows[i].Cells[0].Value = i + 1;
+                            _dv.UpdateCellValue(0, i);
+                        }
+                        _dv.Refresh();
                         MetroFramework.MetroMessageBox.Show(this, "Success! This list penerimaan tukang potong has been added to database", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
                     catch (Exception ex)

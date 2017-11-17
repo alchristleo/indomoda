@@ -157,6 +157,10 @@ namespace Project
                 {
                     MetroFramework.MetroMessageBox.Show(this, "You need to add detail PO first!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                else if (lblSupplierCode.Text == "" && lblSupplierAddress.Text == "")
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "You must select supplier first !", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
                 else
                 {
                     if (MetroFramework.MetroMessageBox.Show(this, "Do you want to save this transaction to database?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)

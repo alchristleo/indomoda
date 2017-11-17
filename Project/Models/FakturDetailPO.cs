@@ -18,6 +18,8 @@ namespace Project.Models
         public double DetailQty { get; set; }
         public bool DetailStatus { get; set; }
         public bool statusFaktur { get; set; }
+        public string noPemotonganKain { get; set; }
+        public int tempPemotongan { get; set; }
 
         public virtual Color Color { get; set; }
         public virtual Material Material { get; set; }

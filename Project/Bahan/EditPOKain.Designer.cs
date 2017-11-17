@@ -279,6 +279,7 @@
             // 
             // btnSavePOKain
             // 
+            this.btnSavePOKain.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSavePOKain.Location = new System.Drawing.Point(340, 375);
             this.btnSavePOKain.Name = "btnSavePOKain";
             this.btnSavePOKain.Size = new System.Drawing.Size(93, 47);
@@ -289,6 +290,7 @@
             // 
             // btnExitPOKain
             // 
+            this.btnExitPOKain.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnExitPOKain.Location = new System.Drawing.Point(175, 375);
             this.btnExitPOKain.Name = "btnExitPOKain";
             this.btnExitPOKain.Size = new System.Drawing.Size(93, 47);

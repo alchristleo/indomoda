@@ -127,6 +127,8 @@
     <EntitySetMapping Name="DetailPOes">
       <EntityTypeMapping TypeName="indomodaModel.DetailPO">
         <MappingFragment StoreEntitySet="DetailPO">
+          <ScalarProperty Name="tempPemotongan" ColumnName="tempPemotongan" />
+          <ScalarProperty Name="noPemotonganKain" ColumnName="noPemotonganKain" />
           <ScalarProperty Name="statusFaktur" ColumnName="statusFaktur" />
           <ScalarProperty Name="DetailStatus" ColumnName="DetailStatus" />
           <ScalarProperty Name="DetailTotal" ColumnName="DetailTotal" />

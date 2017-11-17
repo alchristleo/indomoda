@@ -40,16 +40,17 @@
             this.txtNoSeriTukangPotong = new MetroFramework.Controls.MetroTextBox();
             this.txtModelTukangPotong = new MetroFramework.Controls.MetroTextBox();
             this.cboWarna = new MetroFramework.Controls.MetroComboBox();
+            this.colorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtMerkTukangPotong = new MetroFramework.Controls.MetroTextBox();
             this.txtUkuranTukangPotong = new MetroFramework.Controls.MetroTextBox();
             this.txtQtyTukangPotong = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
-            this.colorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btnExitAddPenerimaanTukangPotong
             // 
+            this.btnExitAddPenerimaanTukangPotong.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnExitAddPenerimaanTukangPotong.Location = new System.Drawing.Point(136, 296);
             this.btnExitAddPenerimaanTukangPotong.Name = "btnExitAddPenerimaanTukangPotong";
             this.btnExitAddPenerimaanTukangPotong.Size = new System.Drawing.Size(93, 47);
@@ -60,6 +61,7 @@
             // 
             // btnSaveAddPenerimaanTukangPotong
             // 
+            this.btnSaveAddPenerimaanTukangPotong.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSaveAddPenerimaanTukangPotong.Location = new System.Drawing.Point(294, 296);
             this.btnSaveAddPenerimaanTukangPotong.Name = "btnSaveAddPenerimaanTukangPotong";
             this.btnSaveAddPenerimaanTukangPotong.Size = new System.Drawing.Size(93, 47);
@@ -195,6 +197,10 @@
             this.cboWarna.UseSelectable = true;
             this.cboWarna.ValueMember = "ColorID";
             // 
+            // colorBindingSource
+            // 
+            this.colorBindingSource.DataSource = typeof(Project.Color);
+            // 
             // txtMerkTukangPotong
             // 
             // 
@@ -293,10 +299,6 @@
             this.metroLabel7.Size = new System.Drawing.Size(28, 19);
             this.metroLabel7.TabIndex = 18;
             this.metroLabel7.Text = "pcs";
-            // 
-            // colorBindingSource
-            // 
-            this.colorBindingSource.DataSource = typeof(Project.Color);
             // 
             // AddPenerimaanTukangPotong
             // 

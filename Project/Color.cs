@@ -17,8 +17,8 @@ namespace Project
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Color()
         {
-            this.DetailPOes = new HashSet<DetailPO>();
             this.ListPenerimaanTukangPotongs = new HashSet<ListPenerimaanTukangPotong>();
+            this.DetailPOes = new HashSet<DetailPO>();
         }
     
         public int ColorID { get; set; }
@@ -26,8 +26,8 @@ namespace Project
         public string ColorName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DetailPO> DetailPOes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ListPenerimaanTukangPotong> ListPenerimaanTukangPotongs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DetailPO> DetailPOes { get; set; }
     }
 }

@@ -62,9 +62,22 @@ namespace Project
                     var db = GenericQuery.SqlQuerySingle<PemotonganKainModel>("select pk.idPemotonganKain, pk.noPemotonganKain, pk.NoFaktur, pk.PONumber, pk.EmployeeID, pk.status, e.EmployeeCode, e.EmployeeName from DetailPemotonganKain pk JOIN Employees e on pk.EmployeeID = e.EmployeeID WHERE pk.status = '" + 0 + "' AND pk.noPemotonganKain = '" + noPemotonganKain + "'");
                     txtPICCode.Text = db.EmployeeCode.ToString();
                     txtPICName.Text = db.EmployeeName.ToString();
+
+                    List<DetailPO> detailPO = GenericQuery.SqlQuery<DetailPO>("SELECT df.DetailPOID, df.PONumber, df.MaterialID, df.ColorID, df.DetailQty, df.DetailPrice, df.DetailTotal, df.DetailStatus, df.statusFaktur, df.noPemotonganKain, df.tempPemotongan FROM DetailPO df WHERE df.noPemotonganKain = '"+noPemotonganKain+"' AND df.tempPemotongan = '"+2+"'");
+                    detailPOBindingSource.DataSource = detailPO.ToList();
+                    dataGridView2.Visible = true;
+
+                    int rowCount = dataGridView2.Rows.Count;
+                    for (int i = 0; i < rowCount; i++)
+                    {
+                        dataGridView2.Columns[0].ValueType = typeof(int);
+                        dataGridView2.Rows[i].Cells[0].Value = i + 1;
+                        dataGridView2.UpdateCellValue(0, i);
+                    }
+                    dataGridView2.Refresh();
                 }
             }
-            catch (NullReferenceException ex)
+            catch (Exception ex)
             {
                 MetroFramework.MetroMessageBox.Show(this, ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -85,15 +98,17 @@ namespace Project
             {
                 MetroFramework.MetroMessageBox.Show(this, "You need to add list penerimaan tukang potong first!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            else
+            {
+                EditPenerimaanTukangPotong editPTP = new EditPenerimaanTukangPotong();
+                int currentIDPTP = Convert.ToInt32(dataGridView1[7, dataGridView1.CurrentRow.Index].Value.ToString());
 
-            EditPenerimaanTukangPotong editPTP = new EditPenerimaanTukangPotong();
-            int currentIDPTP = Convert.ToInt32(dataGridView1[0, dataGridView1.CurrentRow.Index].Value.ToString());
-
-            listPO = GenericQuery.SqlQuery<ListPTPModel>("SELECT lp.idListPTP, lp.idPenerimaanTukangPotong, lp.noSeri, lp.model, lp.ColorID, lp.merk, lp.ukuran, lp.quantity, c.ColorName FROM ListPenerimaanTukangPotong lp JOIN Colors c ON lp.ColorID = c.ColorID  WHERE idListPTP = '" + currentIDPTP + "'");
-            editPTP.setDPO(ref listPO);
-            editPTP.setDGV(ref dataGridView1);
-            editPTP.setBS(ref listPenerimaanTukangPotongBindingSource);
-            editPTP.Show();
+                listPO = GenericQuery.SqlQuery<ListPTPModel>("SELECT lp.idListPTP, lp.idPenerimaanTukangPotong, lp.noSeri, lp.model, lp.ColorID, lp.merk, lp.ukuran, lp.quantity, c.ColorName FROM ListPenerimaanTukangPotong lp JOIN Colors c ON lp.ColorID = c.ColorID  WHERE idListPTP = '" + currentIDPTP + "'");
+                editPTP.setDPO(ref listPO);
+                editPTP.setDGV(ref dataGridView1);
+                editPTP.setBS(ref listPenerimaanTukangPotongBindingSource);
+                editPTP.Show();
+            }
         }
 
         private void btnDeletePenerimaanTukangPotong_Click(object sender, EventArgs e)
@@ -111,10 +126,18 @@ namespace Project
                         try
                         {
                             int currentRow = dataGridView1.CurrentRow.Index;
-                            int currentIDPTP = Convert.ToInt32(dataGridView1[0, dataGridView1.CurrentRow.Index].Value.ToString());
+                            int currentIDPTP = Convert.ToInt32(dataGridView1[7, dataGridView1.CurrentRow.Index].Value.ToString());
                             int b = GenericQuery.ExecSQLCommand("DELETE FROM ListPenerimaanTukangPotong WHERE idListPTP = '" + currentIDPTP + "'");
                             db.SaveChangesAsync().Wait();
                             dataGridView1.Rows.RemoveAt(currentRow);
+
+                            int rowCount = dataGridView1.Rows.Count;
+                            for (int i = 0; i < rowCount; i++)
+                            {
+                                dataGridView1.Columns[0].ValueType = typeof(int);
+                                dataGridView1.Rows[i].Cells[0].Value = i + 1;
+                                dataGridView1.UpdateCellValue(0, i);
+                            }
                             dataGridView1.Refresh();
                             listPenerimaanTukangPotongBindingSource.EndEdit();
 
@@ -138,6 +161,7 @@ namespace Project
                 List<PemotonganKainModel> cboPK = GenericQuery.SqlQuery<PemotonganKainModel>("select pk.idPemotonganKain, pk.noPemotonganKain, pk.NoFaktur, pk.PONumber, pk.EmployeeID, pk.status, e.EmployeeCode, e.EmployeeName from DetailPemotonganKain pk JOIN Employees e on pk.EmployeeID = e.EmployeeID WHERE pk.status = '" + 0 + "'");
                 detailPemotonganKainBindingSourceCbo.DataSource = cboPK.ToList();
                 colorBindingSource.DataSource = db.Colors.ToList();
+                materialBindingSource.DataSource = db.Materials.ToList();
             }
         }
 

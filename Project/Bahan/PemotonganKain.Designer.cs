@@ -29,17 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pONumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.materialIDDataGridViewComboBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.materialBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.colorIDDataGridViewComboBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.colorBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.detailQtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusFakturDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.detailPOIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.detailPOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
@@ -62,6 +55,14 @@
             this.txtPONumber = new MetroFramework.Controls.MetroTextBox();
             this.btnUpdateStatusPemotongan = new MetroFramework.Controls.MetroTile();
             this.btnDeleteFaktur = new MetroFramework.Controls.MetroTile();
+            this.NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pONumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.materialIDDataGridViewComboBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.colorIDDataGridViewComboBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.detailQtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusFaktur = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.detailPOIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tempPK = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.materialBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).BeginInit();
@@ -76,14 +77,14 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Menu;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Bisque;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Bisque;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeight = 30;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NO,
@@ -91,8 +92,9 @@
             this.materialIDDataGridViewComboBoxColumn,
             this.colorIDDataGridViewComboBoxColumn,
             this.detailQtyDataGridViewTextBoxColumn,
-            this.statusFakturDataGridViewCheckBoxColumn,
-            this.detailPOIDDataGridViewTextBoxColumn});
+            this.statusFaktur,
+            this.detailPOIDDataGridViewTextBoxColumn,
+            this.tempPK});
             this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dataGridView1.DataSource = this.detailPOBindingSource;
             this.dataGridView1.EnableHeadersVisualStyles = false;
@@ -105,83 +107,13 @@
             this.dataGridView1.Size = new System.Drawing.Size(721, 240);
             this.dataGridView1.TabIndex = 4;
             // 
-            // NO
-            // 
-            this.NO.HeaderText = "No.";
-            this.NO.Name = "NO";
-            this.NO.ReadOnly = true;
-            this.NO.Width = 60;
-            // 
-            // pONumberDataGridViewTextBoxColumn
-            // 
-            this.pONumberDataGridViewTextBoxColumn.DataPropertyName = "PONumber";
-            this.pONumberDataGridViewTextBoxColumn.HeaderText = "PONumber";
-            this.pONumberDataGridViewTextBoxColumn.Name = "pONumberDataGridViewTextBoxColumn";
-            this.pONumberDataGridViewTextBoxColumn.ReadOnly = true;
-            this.pONumberDataGridViewTextBoxColumn.Width = 130;
-            // 
-            // materialIDDataGridViewComboBoxColumn
-            // 
-            this.materialIDDataGridViewComboBoxColumn.DataPropertyName = "MaterialID";
-            this.materialIDDataGridViewComboBoxColumn.DataSource = this.materialBindingSource;
-            this.materialIDDataGridViewComboBoxColumn.DisplayMember = "MaterialName";
-            this.materialIDDataGridViewComboBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.materialIDDataGridViewComboBoxColumn.HeaderText = "Material Name";
-            this.materialIDDataGridViewComboBoxColumn.Name = "materialIDDataGridViewComboBoxColumn";
-            this.materialIDDataGridViewComboBoxColumn.ReadOnly = true;
-            this.materialIDDataGridViewComboBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.materialIDDataGridViewComboBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.materialIDDataGridViewComboBoxColumn.ValueMember = "MaterialID";
-            this.materialIDDataGridViewComboBoxColumn.Width = 130;
-            // 
             // materialBindingSource
             // 
             this.materialBindingSource.DataSource = typeof(Project.Material);
             // 
-            // colorIDDataGridViewComboBoxColumn
-            // 
-            this.colorIDDataGridViewComboBoxColumn.DataPropertyName = "ColorID";
-            this.colorIDDataGridViewComboBoxColumn.DataSource = this.colorBindingSource;
-            this.colorIDDataGridViewComboBoxColumn.DisplayMember = "ColorName";
-            this.colorIDDataGridViewComboBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.colorIDDataGridViewComboBoxColumn.HeaderText = "Color Name";
-            this.colorIDDataGridViewComboBoxColumn.Name = "colorIDDataGridViewComboBoxColumn";
-            this.colorIDDataGridViewComboBoxColumn.ReadOnly = true;
-            this.colorIDDataGridViewComboBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colorIDDataGridViewComboBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.colorIDDataGridViewComboBoxColumn.ValueMember = "ColorID";
-            this.colorIDDataGridViewComboBoxColumn.Width = 135;
-            // 
             // colorBindingSource
             // 
             this.colorBindingSource.DataSource = typeof(Project.Color);
-            // 
-            // detailQtyDataGridViewTextBoxColumn
-            // 
-            this.detailQtyDataGridViewTextBoxColumn.DataPropertyName = "DetailQty";
-            this.detailQtyDataGridViewTextBoxColumn.HeaderText = "Quantity (kg)";
-            this.detailQtyDataGridViewTextBoxColumn.Name = "detailQtyDataGridViewTextBoxColumn";
-            this.detailQtyDataGridViewTextBoxColumn.ReadOnly = true;
-            this.detailQtyDataGridViewTextBoxColumn.Width = 120;
-            // 
-            // statusFakturDataGridViewCheckBoxColumn
-            // 
-            this.statusFakturDataGridViewCheckBoxColumn.DataPropertyName = "statusFaktur";
-            this.statusFakturDataGridViewCheckBoxColumn.FalseValue = "false";
-            this.statusFakturDataGridViewCheckBoxColumn.HeaderText = "Status Pemotongan";
-            this.statusFakturDataGridViewCheckBoxColumn.Name = "statusFakturDataGridViewCheckBoxColumn";
-            this.statusFakturDataGridViewCheckBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.statusFakturDataGridViewCheckBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.statusFakturDataGridViewCheckBoxColumn.TrueValue = "true";
-            this.statusFakturDataGridViewCheckBoxColumn.Width = 140;
-            // 
-            // detailPOIDDataGridViewTextBoxColumn
-            // 
-            this.detailPOIDDataGridViewTextBoxColumn.DataPropertyName = "DetailPOID";
-            this.detailPOIDDataGridViewTextBoxColumn.HeaderText = "DetailPOID";
-            this.detailPOIDDataGridViewTextBoxColumn.Name = "detailPOIDDataGridViewTextBoxColumn";
-            this.detailPOIDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.detailPOIDDataGridViewTextBoxColumn.Visible = false;
             // 
             // detailPOBindingSource
             // 
@@ -504,6 +436,74 @@
             this.btnDeleteFaktur.UseTileImage = true;
             this.btnDeleteFaktur.Click += new System.EventHandler(this.btnDeleteFaktur_Click);
             // 
+            // NO
+            // 
+            this.NO.HeaderText = "No.";
+            this.NO.Name = "NO";
+            this.NO.ReadOnly = true;
+            this.NO.Width = 60;
+            // 
+            // pONumberDataGridViewTextBoxColumn
+            // 
+            this.pONumberDataGridViewTextBoxColumn.DataPropertyName = "PONumber";
+            this.pONumberDataGridViewTextBoxColumn.HeaderText = "No. PO";
+            this.pONumberDataGridViewTextBoxColumn.Name = "pONumberDataGridViewTextBoxColumn";
+            this.pONumberDataGridViewTextBoxColumn.Width = 130;
+            // 
+            // materialIDDataGridViewComboBoxColumn
+            // 
+            this.materialIDDataGridViewComboBoxColumn.DataPropertyName = "MaterialID";
+            this.materialIDDataGridViewComboBoxColumn.DataSource = this.materialBindingSource;
+            this.materialIDDataGridViewComboBoxColumn.DisplayMember = "MaterialName";
+            this.materialIDDataGridViewComboBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.materialIDDataGridViewComboBoxColumn.HeaderText = "Material Name";
+            this.materialIDDataGridViewComboBoxColumn.Name = "materialIDDataGridViewComboBoxColumn";
+            this.materialIDDataGridViewComboBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.materialIDDataGridViewComboBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.materialIDDataGridViewComboBoxColumn.ValueMember = "MaterialID";
+            this.materialIDDataGridViewComboBoxColumn.Width = 130;
+            // 
+            // colorIDDataGridViewComboBoxColumn
+            // 
+            this.colorIDDataGridViewComboBoxColumn.DataPropertyName = "ColorID";
+            this.colorIDDataGridViewComboBoxColumn.DataSource = this.colorBindingSource;
+            this.colorIDDataGridViewComboBoxColumn.DisplayMember = "ColorName";
+            this.colorIDDataGridViewComboBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.colorIDDataGridViewComboBoxColumn.HeaderText = "Color Name";
+            this.colorIDDataGridViewComboBoxColumn.Name = "colorIDDataGridViewComboBoxColumn";
+            this.colorIDDataGridViewComboBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colorIDDataGridViewComboBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.colorIDDataGridViewComboBoxColumn.ValueMember = "ColorID";
+            this.colorIDDataGridViewComboBoxColumn.Width = 135;
+            // 
+            // detailQtyDataGridViewTextBoxColumn
+            // 
+            this.detailQtyDataGridViewTextBoxColumn.DataPropertyName = "DetailQty";
+            this.detailQtyDataGridViewTextBoxColumn.HeaderText = "Quantity (kg)";
+            this.detailQtyDataGridViewTextBoxColumn.Name = "detailQtyDataGridViewTextBoxColumn";
+            this.detailQtyDataGridViewTextBoxColumn.Width = 120;
+            // 
+            // statusFaktur
+            // 
+            this.statusFaktur.DataPropertyName = "statusFaktur";
+            this.statusFaktur.HeaderText = "Status Pemotongan";
+            this.statusFaktur.Name = "statusFaktur";
+            this.statusFaktur.Width = 140;
+            // 
+            // detailPOIDDataGridViewTextBoxColumn
+            // 
+            this.detailPOIDDataGridViewTextBoxColumn.DataPropertyName = "DetailPOID";
+            this.detailPOIDDataGridViewTextBoxColumn.HeaderText = "DetailPOID";
+            this.detailPOIDDataGridViewTextBoxColumn.Name = "detailPOIDDataGridViewTextBoxColumn";
+            this.detailPOIDDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // tempPK
+            // 
+            this.tempPK.DataPropertyName = "tempPemotongan";
+            this.tempPK.HeaderText = "tempPK";
+            this.tempPK.Name = "tempPK";
+            this.tempPK.Visible = false;
+            // 
             // PemotonganKain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -574,7 +574,8 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn materialIDDataGridViewComboBoxColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn colorIDDataGridViewComboBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn detailQtyDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn statusFakturDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn statusFaktur;
         private System.Windows.Forms.DataGridViewTextBoxColumn detailPOIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tempPK;
     }
 }
