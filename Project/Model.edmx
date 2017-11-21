@@ -33,6 +33,20 @@
           <Property Name="Date_time" Type="datetime" Nullable="false" />
           <Property Name="status" Type="bit" Nullable="false" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'indomoda.dbo.DetailLogs' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="DetailLogs">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="Datetime" />
+            <PropertyRef Name="activity" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="Datetime" Type="datetime" Nullable="false" />
+          <Property Name="activity" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
         <EntityType Name="DetailPemotonganKain">
           <Key>
             <PropertyRef Name="noPemotonganKain" />
@@ -254,6 +268,14 @@
           <EntitySet Name="Materials" EntityType="Self.Materials" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PreOrderKains" EntityType="Self.PreOrderKains" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetailLogs" EntityType="Self.DetailLogs" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [DetailLogs].[id] AS [id], 
+    [DetailLogs].[UserID] AS [UserID], 
+    [DetailLogs].[Datetime] AS [Datetime], 
+    [DetailLogs].[activity] AS [activity]
+    FROM [dbo].[DetailLogs] AS [DetailLogs]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_DetailPemotonganKain_DetailFaktur" Association="Self.FK_DetailPemotonganKain_DetailFaktur">
             <End Role="DetailFaktur" EntitySet="DetailFaktur" />
             <End Role="DetailPemotonganKain" EntitySet="DetailPemotonganKain" />
@@ -383,6 +405,7 @@
             <End Role="Material" EntitySet="Materials" />
             <End Role="DetailPO" EntitySet="DetailPOes" />
           </AssociationSet>
+          <EntitySet Name="DetailLogs" EntityType="indomodaModel.DetailLog" />
           </EntityContainer>
         <EntityType Name="DetailFaktur">
           <Key>
@@ -599,6 +622,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="DetailLog">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="Datetime" />
+            <PropertyRef Name="activity" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="Datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="activity" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -742,6 +777,16 @@
                 <ScalarProperty Name="MaterialID" ColumnName="MaterialID" />
                 <ScalarProperty Name="PONumber" ColumnName="PONumber" />
                 <ScalarProperty Name="DetailPOID" ColumnName="DetailPOID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetailLogs">
+            <EntityTypeMapping TypeName="indomodaModel.DetailLog">
+              <MappingFragment StoreEntitySet="DetailLogs">
+                <ScalarProperty Name="activity" ColumnName="activity" />
+                <ScalarProperty Name="Datetime" ColumnName="Datetime" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

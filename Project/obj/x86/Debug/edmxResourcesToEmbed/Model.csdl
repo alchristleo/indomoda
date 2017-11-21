@@ -88,6 +88,7 @@
       <End Role="Material" EntitySet="Materials" />
       <End Role="DetailPO" EntitySet="DetailPOes" />
     </AssociationSet>
+    <EntitySet Name="DetailLogs" EntityType="indomodaModel.DetailLog" />
   </EntityContainer>
   <EntityType Name="DetailFaktur">
     <Key>
@@ -304,4 +305,16 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="DetailLog">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="Datetime" />
+      <PropertyRef Name="activity" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="Datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="activity" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>

@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
+using Project.Helpers;
+using System.Data.SqlClient;
 
 namespace Project
 {
@@ -16,13 +20,16 @@ namespace Project
             InitializeComponent();
         }
 
+        string path = Environment.CurrentDirectory + "/" + "temp.txt";
+
         private void MainMenu_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            this.FormClosed += new FormClosedEventHandler(MainMenu_FormClosed);
             Close();
         }
 
@@ -114,6 +121,51 @@ namespace Project
         {
             PenerimaanCMT penerimaanCmt = new PenerimaanCMT();
             penerimaanCmt.Show();
+        }
+
+        private void logsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DetailLogForm logForm = new DetailLogForm();
+            logForm.Show();
+        }
+
+        private void MainMenu_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            
+        }
+
+        private void MainMenu_FormClosed_1(object sender, FormClosedEventArgs e)
+        {
+            using (indomodaEntities db = new indomodaEntities())
+            {
+                try
+                {
+                    using (StreamReader streamReader = new StreamReader("temp.txt"))
+                    {
+                        string decryptText = EncryptDecrypt.Decrypt(streamReader.ReadLine());
+                        var dba = GenericQuery.SqlQuerySingle<User>("SELECT u.UserID, u.UserName, u.UserPassword, u.UserRole FROM Users u WHERE u.UserName = '" + decryptText + "'");
+                        string logAct = dba.UserRole.ToString() + " is logged out";
+                        string uName = decryptText;
+                        int uID = Convert.ToInt32(dba.UserID.ToString());
+                        int a = GenericQuery.ExecSQLCommand("INSERT INTO DetailLogs (id, UserID, Datetime, activity) VALUES(@id, @UserID, @Datetime, @activity)", new[] {
+                                new SqlParameter("@id", db.DetailLogs.AsEnumerable().LastOrDefault() == null ? 1 : db.DetailLogs.AsEnumerable().LastOrDefault().id + 1),
+                                new SqlParameter("@UserID", uID),
+                                new SqlParameter("@Datetime", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")),
+                                new SqlParameter("@activity", logAct)
+                            });
+                        db.SaveChangesAsync().Wait();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MetroFramework.MetroMessageBox.Show(this, ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+            }
         }
     }
 }

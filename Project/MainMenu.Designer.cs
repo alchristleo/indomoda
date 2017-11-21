@@ -30,6 +30,7 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.logsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.masterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.supplierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,6 +62,7 @@
             this.sablonToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.bordirToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.cMTToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.metroDateTime1 = new MetroFramework.Controls.MetroDateTime();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -76,22 +78,30 @@
             this.laporanToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(20, 60);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(442, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(758, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.logsToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
+            // logsToolStripMenuItem
+            // 
+            this.logsToolStripMenuItem.Name = "logsToolStripMenuItem";
+            this.logsToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
+            this.logsToolStripMenuItem.Text = "Logs";
+            this.logsToolStripMenuItem.Click += new System.EventHandler(this.logsToolStripMenuItem_Click);
+            // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -110,35 +120,35 @@
             // supplierToolStripMenuItem
             // 
             this.supplierToolStripMenuItem.Name = "supplierToolStripMenuItem";
-            this.supplierToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.supplierToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.supplierToolStripMenuItem.Text = "Supplier";
             this.supplierToolStripMenuItem.Click += new System.EventHandler(this.supplierToolStripMenuItem_Click);
             // 
             // pembeliToolStripMenuItem
             // 
             this.pembeliToolStripMenuItem.Name = "pembeliToolStripMenuItem";
-            this.pembeliToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pembeliToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.pembeliToolStripMenuItem.Text = "Customer";
             this.pembeliToolStripMenuItem.Click += new System.EventHandler(this.pembeliToolStripMenuItem_Click);
             // 
             // masterBahanToolStripMenuItem
             // 
             this.masterBahanToolStripMenuItem.Name = "masterBahanToolStripMenuItem";
-            this.masterBahanToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.masterBahanToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.masterBahanToolStripMenuItem.Text = "Master Bahan";
             this.masterBahanToolStripMenuItem.Click += new System.EventHandler(this.masterBahanToolStripMenuItem_Click);
             // 
             // warnaToolStripMenuItem
             // 
             this.warnaToolStripMenuItem.Name = "warnaToolStripMenuItem";
-            this.warnaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.warnaToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.warnaToolStripMenuItem.Text = "Warna";
             this.warnaToolStripMenuItem.Click += new System.EventHandler(this.warnaToolStripMenuItem_Click);
             // 
             // karyawanToolStripMenuItem
             // 
             this.karyawanToolStripMenuItem.Name = "karyawanToolStripMenuItem";
-            this.karyawanToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.karyawanToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.karyawanToolStripMenuItem.Text = "Karyawan";
             this.karyawanToolStripMenuItem.Click += new System.EventHandler(this.karyawanToolStripMenuItem_Click);
             // 
@@ -322,15 +332,26 @@
             this.cMTToolStripMenuItem1.Size = new System.Drawing.Size(169, 22);
             this.cMTToolStripMenuItem1.Text = "CMT";
             // 
+            // metroDateTime1
+            // 
+            this.metroDateTime1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.metroDateTime1.Location = new System.Drawing.Point(534, 84);
+            this.metroDateTime1.MinimumSize = new System.Drawing.Size(0, 29);
+            this.metroDateTime1.Name = "metroDateTime1";
+            this.metroDateTime1.Size = new System.Drawing.Size(244, 29);
+            this.metroDateTime1.TabIndex = 1;
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(482, 262);
+            this.ClientSize = new System.Drawing.Size(798, 424);
+            this.Controls.Add(this.metroDateTime1);
             this.Controls.Add(this.menuStrip1);
             this.Name = "MainMenu";
             this.Text = "Main Menu";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainMenu_FormClosed_1);
             this.Load += new System.EventHandler(this.MainMenu_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -374,6 +395,7 @@
         private System.Windows.Forms.ToolStripMenuItem sablonToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem bordirToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem cMTToolStripMenuItem1;
-
+        private MetroFramework.Controls.MetroDateTime metroDateTime1;
+        private System.Windows.Forms.ToolStripMenuItem logsToolStripMenuItem;
     }
 }

@@ -104,6 +104,18 @@
     <Compile Include="DetailFaktur.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="DetailLog.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DetailLogs\DetailLogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DetailLogs\DetailLogForm.Designer.cs">
+      <DependentUpon>DetailLogForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DetailLogs\Logs.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="DetailPemotonganKain.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -118,6 +130,7 @@
     </Compile>
     <Compile Include="EmployeeModel.cs" />
     <Compile Include="ExtensionAttribute.cs" />
+    <Compile Include="Helpers\EncryptDecrypt.cs" />
     <Compile Include="Helpers\GenericQuery.cs" />
     <Compile Include="IndomodaSupplier.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -325,6 +338,12 @@
     <EmbeddedResource Include="Bahan\EditPOKain.resx">
       <DependentUpon>EditPOKain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DetailLogs\DetailLogForm.resx">
+      <DependentUpon>DetailLogForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DetailLogs\Logs.resx">
+      <DependentUpon>Logs.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Master\AddEditEmployee.resx">
       <DependentUpon>AddEditEmployee.cs</DependentUpon>
     </EmbeddedResource>
@@ -426,6 +445,7 @@
     </None>
     <None Include="Properties\DataSources\Color.datasource" />
     <None Include="Properties\DataSources\DetailFaktur.datasource" />
+    <None Include="Properties\DataSources\DetailLog.datasource" />
     <None Include="Properties\DataSources\DetailPemotonganKain.datasource" />
     <None Include="Properties\DataSources\DetailPO.datasource" />
     <None Include="Properties\DataSources\Employee.datasource" />
@@ -435,6 +455,7 @@
     <None Include="Properties\DataSources\PemotonganKain.datasource" />
     <None Include="Properties\DataSources\POKain.datasource" />
     <None Include="Properties\DataSources\PreOrderKain.datasource" />
+    <None Include="Properties\DataSources\User.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

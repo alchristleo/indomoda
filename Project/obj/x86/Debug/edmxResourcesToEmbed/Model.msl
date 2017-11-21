@@ -141,5 +141,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="DetailLogs">
+      <EntityTypeMapping TypeName="indomodaModel.DetailLog">
+        <MappingFragment StoreEntitySet="DetailLogs">
+          <ScalarProperty Name="activity" ColumnName="activity" />
+          <ScalarProperty Name="Datetime" ColumnName="Datetime" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>
