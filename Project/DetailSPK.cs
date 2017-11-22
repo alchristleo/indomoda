@@ -12,22 +12,23 @@ namespace Project
     using System;
     using System.Collections.Generic;
     
-    public partial class Color
+    public partial class DetailSPK
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Color()
+        public DetailSPK()
         {
-            this.DetailPOes = new HashSet<DetailPO>();
-            this.ListPenerimaanTukangPotongs = new HashSet<ListPenerimaanTukangPotong>();
+            this.PenerimaanSBCs = new HashSet<PenerimaanSBC>();
         }
     
-        public int ColorID { get; set; }
-        public string ColorCode { get; set; }
-        public string ColorName { get; set; }
+        public int idSPK { get; set; }
+        public string noSPK { get; set; }
+        public int EmployeeID { get; set; }
+        public System.DateTime Datetime { get; set; }
+        public string type { get; set; }
+        public int status { get; set; }
     
+        public virtual Employee Employee { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DetailPO> DetailPOes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ListPenerimaanTukangPotong> ListPenerimaanTukangPotongs { get; set; }
+        public virtual ICollection<PenerimaanSBC> PenerimaanSBCs { get; set; }
     }
 }

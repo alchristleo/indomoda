@@ -85,6 +85,37 @@ warning 6002: The table/view 'indomoda.dbo.DetailLogs' does not have a primary k
           <Property Name="noPemotonganKain" Type="varchar" MaxLength="50" />
           <Property Name="tempPemotongan" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="DetailSPK">
+          <Key>
+            <PropertyRef Name="noSPK" />
+          </Key>
+          <Property Name="idSPK" Type="int" Nullable="false" />
+          <Property Name="noSPK" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="Datetime" Type="datetime" Nullable="false" />
+          <Property Name="type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DetailSPKBordir">
+          <Key>
+            <PropertyRef Name="noSPKBordir" />
+          </Key>
+          <Property Name="idSPKBordir" Type="int" Nullable="false" />
+          <Property Name="noSPKBordir" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmployeeiD" Type="int" Nullable="false" />
+          <Property Name="Datetime" Type="datetime" Nullable="false" />
+          <Property Name="status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DetailSPKCMT">
+          <Key>
+            <PropertyRef Name="noSPKCMT" />
+          </Key>
+          <Property Name="idSPKCMT" Type="int" Nullable="false" />
+          <Property Name="noSPKCMT" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="Datetime" Type="datetime" Nullable="false" />
+          <Property Name="status" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Employees">
           <Key>
             <PropertyRef Name="EmployeeID" />
@@ -108,16 +139,23 @@ warning 6002: The table/view 'indomoda.dbo.DetailLogs' does not have a primary k
         </EntityType>
         <EntityType Name="ListPenerimaanTukangPotong">
           <Key>
-            <PropertyRef Name="idListPTP" />
+            <PropertyRef Name="noSeri" />
           </Key>
           <Property Name="idListPTP" Type="int" Nullable="false" />
-          <Property Name="idPenerimaanTukangPotong" Type="int" />
+          <Property Name="idPenerimaanTukangPotong" Type="int" Nullable="false" />
           <Property Name="noSeri" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="model" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ColorID" Type="int" Nullable="false" />
           <Property Name="merk" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ukuran" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="quantity" Type="int" Nullable="false" />
+          <Property Name="quantity" Type="float" Nullable="false" />
+          <Property Name="statusSPKSablon" Type="bit" />
+          <Property Name="statusSPKBordir" Type="bit" />
+          <Property Name="statusSPKCMT" Type="bit" />
+          <Property Name="statusNoSeri" Type="int" />
+          <Property Name="idSPKSablon" Type="int" />
+          <Property Name="idSPKBordir" Type="int" />
+          <Property Name="idSPKCMT" Type="int" />
         </EntityType>
         <EntityType Name="Materials">
           <Key>
@@ -126,6 +164,17 @@ warning 6002: The table/view 'indomoda.dbo.DetailLogs' does not have a primary k
           <Property Name="MaterialID" Type="int" Nullable="false" />
           <Property Name="MaterialCode" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="MaterialName" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PenerimaanSBC">
+          <Key>
+            <PropertyRef Name="noPenerimaan" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="noPenerimaan" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="noSPK" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="Datetime" Type="datetime" Nullable="false" />
+          <Property Name="status" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="PreOrderKains">
           <Key>
@@ -137,6 +186,25 @@ warning 6002: The table/view 'indomoda.dbo.DetailLogs' does not have a primary k
           <Property Name="GrandTotal" Type="bigint" Nullable="false" />
           <Property Name="Date_time" Type="datetime" Nullable="false" />
           <Property Name="status" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'indomoda.dbo.QuantityRecord' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="QuantityRecord">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="noSeri" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="noSeri" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="qtyAwalSablon" Type="float" />
+          <Property Name="qtySablonBS" Type="float" />
+          <Property Name="qtySablonHilang" Type="float" />
+          <Property Name="qtyAwalBordir" Type="float" />
+          <Property Name="qtyBordirBS" Type="float" />
+          <Property Name="qtyBordirHilang" Type="float" />
+          <Property Name="qtyAwalCMT" Type="float" />
+          <Property Name="qtyCMTBS" Type="float" />
+          <Property Name="qtyCMTHilang" Type="float" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -219,6 +287,42 @@ warning 6002: The table/view 'indomoda.dbo.DetailLogs' does not have a primary k
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_DetailSPKBordir_Employees">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="DetailSPKBordir" Type="Self.DetailSPKBordir" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="DetailSPKBordir">
+              <PropertyRef Name="EmployeeiD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetailSPKCMT_Employees">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="DetailSPKCMT" Type="Self.DetailSPKCMT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="DetailSPKCMT">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetailSPKSablon_Employees">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="DetailSPK" Type="Self.DetailSPK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="DetailSPK">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ListPenerimaanTukangPotong_Colors">
           <End Role="Colors" Type="Self.Colors" Multiplicity="1" />
           <End Role="ListPenerimaanTukangPotong" Type="Self.ListPenerimaanTukangPotong" Multiplicity="*" />
@@ -228,6 +332,18 @@ warning 6002: The table/view 'indomoda.dbo.DetailLogs' does not have a primary k
             </Principal>
             <Dependent Role="ListPenerimaanTukangPotong">
               <PropertyRef Name="ColorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PenerimaanSBC_DetailSPK">
+          <End Role="DetailSPK" Type="Self.DetailSPK" Multiplicity="1" />
+          <End Role="PenerimaanSBC" Type="Self.PenerimaanSBC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DetailSPK">
+              <PropertyRef Name="noSPK" />
+            </Principal>
+            <Dependent Role="PenerimaanSBC">
+              <PropertyRef Name="noSPK" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -262,10 +378,14 @@ warning 6002: The table/view 'indomoda.dbo.DetailLogs' does not have a primary k
           <EntitySet Name="DetailPemotonganKain" EntityType="Self.DetailPemotonganKain" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DetailPenerimaanTukangPotong" EntityType="Self.DetailPenerimaanTukangPotong" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DetailPO" EntityType="Self.DetailPO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetailSPK" EntityType="Self.DetailSPK" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetailSPKBordir" EntityType="Self.DetailSPKBordir" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetailSPKCMT" EntityType="Self.DetailSPKCMT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="IndomodaSuppliers" EntityType="Self.IndomodaSuppliers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ListPenerimaanTukangPotong" EntityType="Self.ListPenerimaanTukangPotong" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Materials" EntityType="Self.Materials" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PenerimaanSBC" EntityType="Self.PenerimaanSBC" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PreOrderKains" EntityType="Self.PreOrderKains" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DetailLogs" EntityType="Self.DetailLogs" store:Type="Tables" store:Schema="dbo">
@@ -275,6 +395,21 @@ warning 6002: The table/view 'indomoda.dbo.DetailLogs' does not have a primary k
     [DetailLogs].[Datetime] AS [Datetime], 
     [DetailLogs].[activity] AS [activity]
     FROM [dbo].[DetailLogs] AS [DetailLogs]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="QuantityRecord" EntityType="Self.QuantityRecord" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [QuantityRecord].[id] AS [id], 
+    [QuantityRecord].[noSeri] AS [noSeri], 
+    [QuantityRecord].[qtyAwalSablon] AS [qtyAwalSablon], 
+    [QuantityRecord].[qtySablonBS] AS [qtySablonBS], 
+    [QuantityRecord].[qtySablonHilang] AS [qtySablonHilang], 
+    [QuantityRecord].[qtyAwalBordir] AS [qtyAwalBordir], 
+    [QuantityRecord].[qtyBordirBS] AS [qtyBordirBS], 
+    [QuantityRecord].[qtyBordirHilang] AS [qtyBordirHilang], 
+    [QuantityRecord].[qtyAwalCMT] AS [qtyAwalCMT], 
+    [QuantityRecord].[qtyCMTBS] AS [qtyCMTBS], 
+    [QuantityRecord].[qtyCMTHilang] AS [qtyCMTHilang]
+    FROM [dbo].[QuantityRecord] AS [QuantityRecord]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_DetailPemotonganKain_DetailFaktur" Association="Self.FK_DetailPemotonganKain_DetailFaktur">
             <End Role="DetailFaktur" EntitySet="DetailFaktur" />
@@ -300,9 +435,25 @@ warning 6002: The table/view 'indomoda.dbo.DetailLogs' does not have a primary k
             <End Role="Materials" EntitySet="Materials" />
             <End Role="DetailPO" EntitySet="DetailPO" />
           </AssociationSet>
+          <AssociationSet Name="FK_DetailSPKBordir_Employees" Association="Self.FK_DetailSPKBordir_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="DetailSPKBordir" EntitySet="DetailSPKBordir" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetailSPKCMT_Employees" Association="Self.FK_DetailSPKCMT_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="DetailSPKCMT" EntitySet="DetailSPKCMT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetailSPKSablon_Employees" Association="Self.FK_DetailSPKSablon_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="DetailSPK" EntitySet="DetailSPK" />
+          </AssociationSet>
           <AssociationSet Name="FK_ListPenerimaanTukangPotong_Colors" Association="Self.FK_ListPenerimaanTukangPotong_Colors">
             <End Role="Colors" EntitySet="Colors" />
             <End Role="ListPenerimaanTukangPotong" EntitySet="ListPenerimaanTukangPotong" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PenerimaanSBC_DetailSPK" Association="Self.FK_PenerimaanSBC_DetailSPK">
+            <End Role="DetailSPK" EntitySet="DetailSPK" />
+            <End Role="PenerimaanSBC" EntitySet="PenerimaanSBC" />
           </AssociationSet>
           <AssociationSet Name="FK_POKain_PenerimaanKain" Association="Self.FK_POKain_PenerimaanKain">
             <End Role="PreOrderKains" EntitySet="PreOrderKains" />
@@ -390,12 +541,7 @@ warning 6002: The table/view 'indomoda.dbo.DetailLogs' does not have a primary k
             <End Role="DetailPemotonganKain" EntitySet="DetailPemotonganKains" />
             <End Role="DetailPenerimaanTukangPotong" EntitySet="DetailPenerimaanTukangPotongs" />
           </AssociationSet>
-          <EntitySet Name="ListPenerimaanTukangPotongs" EntityType="indomodaModel.ListPenerimaanTukangPotong" />
           <EntitySet Name="Colors" EntityType="indomodaModel.Color" />
-          <AssociationSet Name="FK_ListPenerimaanTukangPotong_Colors" Association="indomodaModel.FK_ListPenerimaanTukangPotong_Colors">
-            <End Role="Color" EntitySet="Colors" />
-            <End Role="ListPenerimaanTukangPotong" EntitySet="ListPenerimaanTukangPotongs" />
-          </AssociationSet>
           <EntitySet Name="DetailPOes" EntityType="indomodaModel.DetailPO" />
           <AssociationSet Name="FK_DetailPO_Colors" Association="indomodaModel.FK_DetailPO_Colors">
             <End Role="Color" EntitySet="Colors" />
@@ -406,6 +552,32 @@ warning 6002: The table/view 'indomoda.dbo.DetailLogs' does not have a primary k
             <End Role="DetailPO" EntitySet="DetailPOes" />
           </AssociationSet>
           <EntitySet Name="DetailLogs" EntityType="indomodaModel.DetailLog" />
+          <EntitySet Name="DetailSPKs" EntityType="indomodaModel.DetailSPK" />
+          <EntitySet Name="DetailSPKBordirs" EntityType="indomodaModel.DetailSPKBordir" />
+          <EntitySet Name="DetailSPKCMTs" EntityType="indomodaModel.DetailSPKCMT" />
+          <EntitySet Name="ListPenerimaanTukangPotongs" EntityType="indomodaModel.ListPenerimaanTukangPotong" />
+          <EntitySet Name="PenerimaanSBCs" EntityType="indomodaModel.PenerimaanSBC" />
+          <EntitySet Name="QuantityRecords" EntityType="indomodaModel.QuantityRecord" />
+          <AssociationSet Name="FK_ListPenerimaanTukangPotong_Colors" Association="indomodaModel.FK_ListPenerimaanTukangPotong_Colors">
+            <End Role="Color" EntitySet="Colors" />
+            <End Role="ListPenerimaanTukangPotong" EntitySet="ListPenerimaanTukangPotongs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetailSPKSablon_Employees" Association="indomodaModel.FK_DetailSPKSablon_Employees">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="DetailSPK" EntitySet="DetailSPKs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PenerimaanSBC_DetailSPK" Association="indomodaModel.FK_PenerimaanSBC_DetailSPK">
+            <End Role="DetailSPK" EntitySet="DetailSPKs" />
+            <End Role="PenerimaanSBC" EntitySet="PenerimaanSBCs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetailSPKBordir_Employees" Association="indomodaModel.FK_DetailSPKBordir_Employees">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="DetailSPKBordir" EntitySet="DetailSPKBordirs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetailSPKCMT_Employees" Association="indomodaModel.FK_DetailSPKCMT_Employees">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="DetailSPKCMT" EntitySet="DetailSPKCMTs" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="DetailFaktur">
           <Key>
@@ -430,6 +602,9 @@ warning 6002: The table/view 'indomoda.dbo.DetailLogs' does not have a primary k
           <Property Name="EmployeePhone" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="EmployeePosition" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="DetailPemotonganKains" Relationship="indomodaModel.FK_DetailPemotonganKain_Employee" FromRole="Employee" ToRole="DetailPemotonganKain" />
+          <NavigationProperty Name="DetailSPKs" Relationship="indomodaModel.FK_DetailSPKSablon_Employees" FromRole="Employee" ToRole="DetailSPK" />
+          <NavigationProperty Name="DetailSPKBordirs" Relationship="indomodaModel.FK_DetailSPKBordir_Employees" FromRole="Employee" ToRole="DetailSPKBordir" />
+          <NavigationProperty Name="DetailSPKCMTs" Relationship="indomodaModel.FK_DetailSPKCMT_Employees" FromRole="Employee" ToRole="DetailSPKCMT" />
         </EntityType>
         <EntityType Name="PreOrderKain">
           <Key>
@@ -544,20 +719,6 @@ warning 6002: The table/view 'indomoda.dbo.DetailLogs' does not have a primary k
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="ListPenerimaanTukangPotong">
-          <Key>
-            <PropertyRef Name="idListPTP" />
-          </Key>
-          <Property Name="idListPTP" Type="Int32" Nullable="false" />
-          <Property Name="idPenerimaanTukangPotong" Type="Int32" />
-          <Property Name="noSeri" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="model" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ColorID" Type="Int32" Nullable="false" />
-          <Property Name="merk" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ukuran" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="quantity" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Color" Relationship="indomodaModel.FK_ListPenerimaanTukangPotong_Colors" FromRole="ListPenerimaanTukangPotong" ToRole="Color" />
-        </EntityType>
         <EntityType Name="Color">
           <Key>
             <PropertyRef Name="ColorID" />
@@ -565,21 +726,9 @@ warning 6002: The table/view 'indomoda.dbo.DetailLogs' does not have a primary k
           <Property Name="ColorID" Type="Int32" Nullable="false" />
           <Property Name="ColorCode" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="ColorName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="ListPenerimaanTukangPotongs" Relationship="indomodaModel.FK_ListPenerimaanTukangPotong_Colors" FromRole="Color" ToRole="ListPenerimaanTukangPotong" />
           <NavigationProperty Name="DetailPOes" Relationship="indomodaModel.FK_DetailPO_Colors" FromRole="Color" ToRole="DetailPO" />
+          <NavigationProperty Name="ListPenerimaanTukangPotongs" Relationship="indomodaModel.FK_ListPenerimaanTukangPotong_Colors" FromRole="Color" ToRole="ListPenerimaanTukangPotong" />
         </EntityType>
-        <Association Name="FK_ListPenerimaanTukangPotong_Colors">
-          <End Type="indomodaModel.Color" Role="Color" Multiplicity="1" />
-          <End Type="indomodaModel.ListPenerimaanTukangPotong" Role="ListPenerimaanTukangPotong" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Color">
-              <PropertyRef Name="ColorID" />
-            </Principal>
-            <Dependent Role="ListPenerimaanTukangPotong">
-              <PropertyRef Name="ColorID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="DetailPO">
           <Key>
             <PropertyRef Name="DetailPOID" />
@@ -634,6 +783,151 @@ warning 6002: The table/view 'indomoda.dbo.DetailLogs' does not have a primary k
           <Property Name="Datetime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="activity" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="DetailSPK">
+          <Key>
+            <PropertyRef Name="noSPK" />
+          </Key>
+          <Property Name="idSPK" Type="Int32" Nullable="false" />
+          <Property Name="noSPK" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="Datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="indomodaModel.FK_DetailSPKSablon_Employees" FromRole="DetailSPK" ToRole="Employee" />
+          <NavigationProperty Name="PenerimaanSBCs" Relationship="indomodaModel.FK_PenerimaanSBC_DetailSPK" FromRole="DetailSPK" ToRole="PenerimaanSBC" />
+        </EntityType>
+        <EntityType Name="DetailSPKBordir">
+          <Key>
+            <PropertyRef Name="noSPKBordir" />
+          </Key>
+          <Property Name="idSPKBordir" Type="Int32" Nullable="false" />
+          <Property Name="noSPKBordir" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeiD" Type="Int32" Nullable="false" />
+          <Property Name="Datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="indomodaModel.FK_DetailSPKBordir_Employees" FromRole="DetailSPKBordir" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="DetailSPKCMT">
+          <Key>
+            <PropertyRef Name="noSPKCMT" />
+          </Key>
+          <Property Name="idSPKCMT" Type="Int32" Nullable="false" />
+          <Property Name="noSPKCMT" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="Datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="indomodaModel.FK_DetailSPKCMT_Employees" FromRole="DetailSPKCMT" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="ListPenerimaanTukangPotong">
+          <Key>
+            <PropertyRef Name="noSeri" />
+          </Key>
+          <Property Name="idListPTP" Type="Int32" Nullable="false" />
+          <Property Name="idPenerimaanTukangPotong" Type="Int32" Nullable="false" />
+          <Property Name="noSeri" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="model" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ColorID" Type="Int32" Nullable="false" />
+          <Property Name="merk" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ukuran" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="quantity" Type="Double" Nullable="false" />
+          <Property Name="statusSPKSablon" Type="Boolean" />
+          <Property Name="statusSPKBordir" Type="Boolean" />
+          <Property Name="statusSPKCMT" Type="Boolean" />
+          <Property Name="statusNoSeri" Type="Int32" />
+          <Property Name="idSPKSablon" Type="Int32" />
+          <Property Name="idSPKBordir" Type="Int32" />
+          <Property Name="idSPKCMT" Type="Int32" />
+          <NavigationProperty Name="Color" Relationship="indomodaModel.FK_ListPenerimaanTukangPotong_Colors" FromRole="ListPenerimaanTukangPotong" ToRole="Color" />
+        </EntityType>
+        <EntityType Name="PenerimaanSBC">
+          <Key>
+            <PropertyRef Name="noPenerimaan" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="noPenerimaan" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="noSPK" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="Datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DetailSPK" Relationship="indomodaModel.FK_PenerimaanSBC_DetailSPK" FromRole="PenerimaanSBC" ToRole="DetailSPK" />
+        </EntityType>
+        <EntityType Name="QuantityRecord">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="noSeri" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="noSeri" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="qtyAwalSablon" Type="Double" />
+          <Property Name="qtySablonBS" Type="Double" />
+          <Property Name="qtySablonHilang" Type="Double" />
+          <Property Name="qtyAwalBordir" Type="Double" />
+          <Property Name="qtyBordirBS" Type="Double" />
+          <Property Name="qtyBordirHilang" Type="Double" />
+          <Property Name="qtyAwalCMT" Type="Double" />
+          <Property Name="qtyCMTBS" Type="Double" />
+          <Property Name="qtyCMTHilang" Type="Double" />
+        </EntityType>
+        <Association Name="FK_ListPenerimaanTukangPotong_Colors">
+          <End Type="indomodaModel.Color" Role="Color" Multiplicity="1" />
+          <End Type="indomodaModel.ListPenerimaanTukangPotong" Role="ListPenerimaanTukangPotong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Color">
+              <PropertyRef Name="ColorID" />
+            </Principal>
+            <Dependent Role="ListPenerimaanTukangPotong">
+              <PropertyRef Name="ColorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetailSPKSablon_Employees">
+          <End Type="indomodaModel.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="indomodaModel.DetailSPK" Role="DetailSPK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="DetailSPK">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PenerimaanSBC_DetailSPK">
+          <End Type="indomodaModel.DetailSPK" Role="DetailSPK" Multiplicity="1" />
+          <End Type="indomodaModel.PenerimaanSBC" Role="PenerimaanSBC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DetailSPK">
+              <PropertyRef Name="noSPK" />
+            </Principal>
+            <Dependent Role="PenerimaanSBC">
+              <PropertyRef Name="noSPK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetailSPKBordir_Employees">
+          <End Type="indomodaModel.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="indomodaModel.DetailSPKBordir" Role="DetailSPKBordir" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="DetailSPKBordir">
+              <PropertyRef Name="EmployeeiD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetailSPKCMT_Employees">
+          <End Type="indomodaModel.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="indomodaModel.DetailSPKCMT" Role="DetailSPKCMT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="DetailSPKCMT">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -740,20 +1034,6 @@ warning 6002: The table/view 'indomoda.dbo.DetailLogs' does not have a primary k
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ListPenerimaanTukangPotongs">
-            <EntityTypeMapping TypeName="indomodaModel.ListPenerimaanTukangPotong">
-              <MappingFragment StoreEntitySet="ListPenerimaanTukangPotong">
-                <ScalarProperty Name="quantity" ColumnName="quantity" />
-                <ScalarProperty Name="ukuran" ColumnName="ukuran" />
-                <ScalarProperty Name="merk" ColumnName="merk" />
-                <ScalarProperty Name="ColorID" ColumnName="ColorID" />
-                <ScalarProperty Name="model" ColumnName="model" />
-                <ScalarProperty Name="noSeri" ColumnName="noSeri" />
-                <ScalarProperty Name="idPenerimaanTukangPotong" ColumnName="idPenerimaanTukangPotong" />
-                <ScalarProperty Name="idListPTP" ColumnName="idListPTP" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Colors">
             <EntityTypeMapping TypeName="indomodaModel.Color">
               <MappingFragment StoreEntitySet="Colors">
@@ -786,6 +1066,90 @@ warning 6002: The table/view 'indomoda.dbo.DetailLogs' does not have a primary k
                 <ScalarProperty Name="activity" ColumnName="activity" />
                 <ScalarProperty Name="Datetime" ColumnName="Datetime" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetailSPKs">
+            <EntityTypeMapping TypeName="indomodaModel.DetailSPK">
+              <MappingFragment StoreEntitySet="DetailSPK">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="Datetime" ColumnName="Datetime" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="noSPK" ColumnName="noSPK" />
+                <ScalarProperty Name="idSPK" ColumnName="idSPK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetailSPKBordirs">
+            <EntityTypeMapping TypeName="indomodaModel.DetailSPKBordir">
+              <MappingFragment StoreEntitySet="DetailSPKBordir">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="Datetime" ColumnName="Datetime" />
+                <ScalarProperty Name="EmployeeiD" ColumnName="EmployeeiD" />
+                <ScalarProperty Name="noSPKBordir" ColumnName="noSPKBordir" />
+                <ScalarProperty Name="idSPKBordir" ColumnName="idSPKBordir" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetailSPKCMTs">
+            <EntityTypeMapping TypeName="indomodaModel.DetailSPKCMT">
+              <MappingFragment StoreEntitySet="DetailSPKCMT">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="Datetime" ColumnName="Datetime" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="noSPKCMT" ColumnName="noSPKCMT" />
+                <ScalarProperty Name="idSPKCMT" ColumnName="idSPKCMT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListPenerimaanTukangPotongs">
+            <EntityTypeMapping TypeName="indomodaModel.ListPenerimaanTukangPotong">
+              <MappingFragment StoreEntitySet="ListPenerimaanTukangPotong">
+                <ScalarProperty Name="idSPKCMT" ColumnName="idSPKCMT" />
+                <ScalarProperty Name="idSPKBordir" ColumnName="idSPKBordir" />
+                <ScalarProperty Name="idSPKSablon" ColumnName="idSPKSablon" />
+                <ScalarProperty Name="statusNoSeri" ColumnName="statusNoSeri" />
+                <ScalarProperty Name="statusSPKCMT" ColumnName="statusSPKCMT" />
+                <ScalarProperty Name="statusSPKBordir" ColumnName="statusSPKBordir" />
+                <ScalarProperty Name="statusSPKSablon" ColumnName="statusSPKSablon" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="ukuran" ColumnName="ukuran" />
+                <ScalarProperty Name="merk" ColumnName="merk" />
+                <ScalarProperty Name="ColorID" ColumnName="ColorID" />
+                <ScalarProperty Name="model" ColumnName="model" />
+                <ScalarProperty Name="noSeri" ColumnName="noSeri" />
+                <ScalarProperty Name="idPenerimaanTukangPotong" ColumnName="idPenerimaanTukangPotong" />
+                <ScalarProperty Name="idListPTP" ColumnName="idListPTP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PenerimaanSBCs">
+            <EntityTypeMapping TypeName="indomodaModel.PenerimaanSBC">
+              <MappingFragment StoreEntitySet="PenerimaanSBC">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="Datetime" ColumnName="Datetime" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="noSPK" ColumnName="noSPK" />
+                <ScalarProperty Name="noPenerimaan" ColumnName="noPenerimaan" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuantityRecords">
+            <EntityTypeMapping TypeName="indomodaModel.QuantityRecord">
+              <MappingFragment StoreEntitySet="QuantityRecord">
+                <ScalarProperty Name="qtyCMTHilang" ColumnName="qtyCMTHilang" />
+                <ScalarProperty Name="qtyCMTBS" ColumnName="qtyCMTBS" />
+                <ScalarProperty Name="qtyAwalCMT" ColumnName="qtyAwalCMT" />
+                <ScalarProperty Name="qtyBordirHilang" ColumnName="qtyBordirHilang" />
+                <ScalarProperty Name="qtyBordirBS" ColumnName="qtyBordirBS" />
+                <ScalarProperty Name="qtyAwalBordir" ColumnName="qtyAwalBordir" />
+                <ScalarProperty Name="qtySablonHilang" ColumnName="qtySablonHilang" />
+                <ScalarProperty Name="qtySablonBS" ColumnName="qtySablonBS" />
+                <ScalarProperty Name="qtyAwalSablon" ColumnName="qtyAwalSablon" />
+                <ScalarProperty Name="noSeri" ColumnName="noSeri" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

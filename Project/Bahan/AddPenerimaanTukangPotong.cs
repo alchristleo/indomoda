@@ -107,13 +107,13 @@ namespace Project
                 txtQtyTukangPotong.Focus();
                 return;
             }
-            else if (!IsDigitsOnly(txtQtyTukangPotong.Text))
-            {
-                MetroFramework.MetroMessageBox.Show(this, "Quantity must be numeric!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtQtyTukangPotong.Clear();
-                txtQtyTukangPotong.Focus();
-                return;
-            }
+            //else if (!IsDigitsOnly(txtQtyTukangPotong.Text))
+            //{
+            //    MetroFramework.MetroMessageBox.Show(this, "Quantity must be numeric!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    txtQtyTukangPotong.Clear();
+            //    txtQtyTukangPotong.Focus();
+            //    return;
+            //}
             using (indomodaEntities db = new indomodaEntities())
             {
                 int setIDListPTP = db.ListPenerimaanTukangPotongs.AsEnumerable().LastOrDefault() == null ? 1 : db.ListPenerimaanTukangPotongs.AsEnumerable().LastOrDefault().idListPTP + 1;
@@ -123,13 +123,13 @@ namespace Project
                 int getColorID = Convert.ToInt32(cboWarna.SelectedValue.ToString());
                 string getMerk = txtMerkTukangPotong.Text;
                 string getUkuran = txtUkuranTukangPotong.Text;
-                int getQty = Convert.ToInt32(txtQtyTukangPotong.Text.ToString());
+                double getQty = Convert.ToDouble(txtQtyTukangPotong.Text.ToString());
 
                 if (MetroFramework.MetroMessageBox.Show(this, "Do you want to save this List penerimaan tukang potong to database?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     try
                     {
-                        int a = GenericQuery.ExecSQLCommand("INSERT INTO ListPenerimaanTukangPotong (idListPTP, idPenerimaanTukangPotong, noSeri, model, ColorID, merk, ukuran, quantity) VALUES(@idListPTP, @idPenerimaanTukangPotong, @noSeri, @model, @ColorID, @merk, @ukuran, @quantity)", new[] {
+                        int a = GenericQuery.ExecSQLCommand("INSERT INTO ListPenerimaanTukangPotong (idListPTP, idPenerimaanTukangPotong, noSeri, model, ColorID, merk, ukuran, quantity, statusSPKSablon, statusSPKBordir, statusSPKCMT, statusNoSeri, idSPKSablon, idSPKBordir, idSPKCMT) VALUES(@idListPTP, @idPenerimaanTukangPotong, @noSeri, @model, @ColorID, @merk, @ukuran, @quantity, @statusSPKSablon, @statusSPKBordir, @statusSPKCMT, @statusNoSeri, @idSPKSablon, @idSPKBordir, @idSPKCMT)", new[] {
                                 new SqlParameter("@idListPTP", setIDListPTP),
                                 new SqlParameter("@idPenerimaanTukangPotong", getIDPTP),
                                 new SqlParameter("@noSeri", getNoSeri),
@@ -137,7 +137,14 @@ namespace Project
                                 new SqlParameter("@ColorID", getColorID),
                                 new SqlParameter("@merk", getMerk),
                                 new SqlParameter("@ukuran", getUkuran),
-                                new SqlParameter("@quantity", getQty)
+                                new SqlParameter("@quantity", getQty),
+                                new SqlParameter("@statusSPKSablon", ""),
+                                new SqlParameter("@statusSPKBordir", ""),
+                                new SqlParameter("@statusSPKCMT", ""),
+                                new SqlParameter("@statusNoSeri", ""),
+                                new SqlParameter("@idSPKSablon", ""),
+                                new SqlParameter("@idSPKBordir", ""),
+                                new SqlParameter("@idSPKCMT", "")
                             });
                         db.SaveChangesAsync().Wait();
 
@@ -155,7 +162,14 @@ namespace Project
                             ColorID = getColorID,
                             merk = getMerk,
                             ukuran = getUkuran,
-                            quantity = getQty
+                            quantity = getQty,
+                            statusSPKSablon = null,
+                            statusSPKBordir = null,
+                            statusSPKCMT = null,
+                            statusNoSeri = null,
+                            idSPKSablon = null,
+                            idSPKBordir = null,
+                            idSPKCMT = null 
                         });
 
                         _dv.Refresh();

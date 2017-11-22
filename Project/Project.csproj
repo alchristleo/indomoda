@@ -113,9 +113,6 @@
     <Compile Include="DetailLogs\DetailLogForm.Designer.cs">
       <DependentUpon>DetailLogForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DetailLogs\Logs.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="DetailPemotonganKain.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -123,6 +120,15 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="DetailPO.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DetailSPK.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DetailSPKBordir.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DetailSPKCMT.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Employee.cs">
@@ -211,6 +217,9 @@
     <Compile Include="Models\PemotonganKainModel.cs" />
     <Compile Include="Models\POKainModel.cs" />
     <Compile Include="Models\SupplierModel.cs" />
+    <Compile Include="PenerimaanSBC.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Penerimaan\PenerimaanCMT.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -230,6 +239,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="QuantityRecord.cs">
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="SPK\AddSpkCmt.cs">
       <SubType>Form</SubType>
@@ -340,9 +352,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DetailLogs\DetailLogForm.resx">
       <DependentUpon>DetailLogForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DetailLogs\Logs.resx">
-      <DependentUpon>Logs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Master\AddEditEmployee.resx">
       <DependentUpon>AddEditEmployee.cs</DependentUpon>

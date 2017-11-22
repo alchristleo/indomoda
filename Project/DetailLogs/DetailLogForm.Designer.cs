@@ -31,15 +31,16 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.detailLogBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.userBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.detailLogBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.userIDDataGridViewComboBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.datetimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.activityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.detailLogBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.detailLogBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -58,10 +59,11 @@
             this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeight = 30;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
+            this.NO,
             this.userIDDataGridViewComboBoxColumn,
             this.datetimeDataGridViewTextBoxColumn,
-            this.activityDataGridViewTextBoxColumn});
+            this.activityDataGridViewTextBoxColumn,
+            this.idDataGridViewTextBoxColumn});
             this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dataGridView1.DataSource = this.detailLogBindingSource;
             this.dataGridView1.EnableHeadersVisualStyles = false;
@@ -76,21 +78,20 @@
             this.dataGridView1.Size = new System.Drawing.Size(624, 350);
             this.dataGridView1.TabIndex = 1;
             // 
-            // detailLogBindingSource
-            // 
-            this.detailLogBindingSource.DataSource = typeof(Project.DetailLog);
-            // 
             // userBindingSource
             // 
             this.userBindingSource.DataSource = typeof(Project.User);
             // 
-            // idDataGridViewTextBoxColumn
+            // detailLogBindingSource
             // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "No.";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idDataGridViewTextBoxColumn.Width = 60;
+            this.detailLogBindingSource.DataSource = typeof(Project.DetailLog);
+            // 
+            // NO
+            // 
+            this.NO.HeaderText = "No.";
+            this.NO.Name = "NO";
+            this.NO.ReadOnly = true;
+            this.NO.Width = 60;
             // 
             // userIDDataGridViewComboBoxColumn
             // 
@@ -122,6 +123,15 @@
             this.activityDataGridViewTextBoxColumn.ReadOnly = true;
             this.activityDataGridViewTextBoxColumn.Width = 200;
             // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.Visible = false;
+            this.idDataGridViewTextBoxColumn.Width = 60;
+            // 
             // DetailLogForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -132,8 +142,8 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.DetailLogForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.detailLogBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.detailLogBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -141,11 +151,12 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn userIDDataGridViewComboBoxColumn;
         private System.Windows.Forms.BindingSource userBindingSource;
+        private System.Windows.Forms.BindingSource detailLogBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NO;
+        private System.Windows.Forms.DataGridViewComboBoxColumn userIDDataGridViewComboBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn datetimeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn activityDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource detailLogBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
     }
 }

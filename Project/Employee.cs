@@ -18,6 +18,9 @@ namespace Project
         public Employee()
         {
             this.DetailPemotonganKains = new HashSet<DetailPemotonganKain>();
+            this.DetailSPKs = new HashSet<DetailSPK>();
+            this.DetailSPKBordirs = new HashSet<DetailSPKBordir>();
+            this.DetailSPKCMTs = new HashSet<DetailSPKCMT>();
         }
     
         public int EmployeeID { get; set; }
@@ -29,5 +32,11 @@ namespace Project
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DetailPemotonganKain> DetailPemotonganKains { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DetailSPK> DetailSPKs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DetailSPKBordir> DetailSPKBordirs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DetailSPKCMT> DetailSPKCMTs { get; set; }
     }
 }

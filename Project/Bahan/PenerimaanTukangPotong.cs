@@ -85,11 +85,19 @@ namespace Project
 
         private void btnAddPenerimaanTukangPotong_Click(object sender, EventArgs e)
         {
-            idPenerimaanTukangPotong = Convert.ToInt32(txtIDPenerimaanTukangPotong.Text.ToString());
-            AddPenerimaanTukangPotong addPenerimaanTukangPotong = new AddPenerimaanTukangPotong();
-            addPenerimaanTukangPotong.setDGV(ref dataGridView1);
-            addPenerimaanTukangPotong.setBS(ref listPenerimaanTukangPotongBindingSource);
-            addPenerimaanTukangPotong.Show();
+            if (cboNoPemotonganKain.Items.Count > 0 && txtPICCode.Text == "" && txtPICName.Text == "")
+            {
+                MetroFramework.MetroMessageBox.Show(this, "You must select No pemotongan kain first!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cboNoPemotonganKain.Focus();
+            }
+            else
+            {
+                idPenerimaanTukangPotong = Convert.ToInt32(txtIDPenerimaanTukangPotong.Text.ToString());
+                AddPenerimaanTukangPotong addPenerimaanTukangPotong = new AddPenerimaanTukangPotong();
+                addPenerimaanTukangPotong.setDGV(ref dataGridView1);
+                addPenerimaanTukangPotong.setBS(ref listPenerimaanTukangPotongBindingSource);
+                addPenerimaanTukangPotong.Show();
+            }
         }
 
         private void btnEditPenerimaanTukangPotong_Click(object sender, EventArgs e)
@@ -115,7 +123,7 @@ namespace Project
         {
             if (dataGridView1.RowCount < 1)
             {
-                MetroFramework.MetroMessageBox.Show(this, "You need to add detail PO first!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MetroFramework.MetroMessageBox.Show(this, "You need to add List penerimaan tukang potong first!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {

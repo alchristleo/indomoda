@@ -5,10 +5,10 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="79611bb975a5473386628d438f8c5e5e" Name="Diagram1" ZoomLevel="83">
-        <EntityTypeShape EntityType="indomodaModel.Customer" Width="1.5" PointX="5" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="indomodaModel.Customer" Width="1.5" PointX="12.875" PointY="5.875" IsExpanded="true" />
         <EntityTypeShape EntityType="indomodaModel.IndomodaSupplier" Width="1.5" PointX="0.5" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="indomodaModel.Material" Width="1.5" PointX="2.75" PointY="8.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="indomodaModel.User" Width="1.5" PointX="7.5" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="indomodaModel.User" Width="1.5" PointX="12.5" PointY="3.625" IsExpanded="true" />
         <EntityTypeShape EntityType="indomodaModel.DetailFaktur" Width="1.5" PointX="8.5" PointY="0.625" />
         <EntityTypeShape EntityType="indomodaModel.Employee" Width="1.5" PointX="5.125" PointY="5.125" />
         <EntityTypeShape EntityType="indomodaModel.PreOrderKain" Width="1.5" PointX="3" PointY="0.625" />
@@ -20,13 +20,22 @@
         <AssociationConnector Association="indomodaModel.FK_DetailPemotonganKain_Employee" />
         <AssociationConnector Association="indomodaModel.FK_DetailPemotonganKain_PreOrderKain" />
         <AssociationConnector Association="indomodaModel.FK_DetailPenerimaanTukangPotong_DetailPemotonganKain" />
-        <EntityTypeShape EntityType="indomodaModel.ListPenerimaanTukangPotong" Width="1.5" PointX="0.5" PointY="7.25" />
         <EntityTypeShape EntityType="indomodaModel.Color" Width="1.5" PointX="0.5" PointY="4.625" />
-        <AssociationConnector Association="indomodaModel.FK_ListPenerimaanTukangPotong_Colors" />
         <EntityTypeShape EntityType="indomodaModel.DetailPO" Width="1.5" PointX="2.875" PointY="4" />
         <AssociationConnector Association="indomodaModel.FK_DetailPO_Colors" />
         <AssociationConnector Association="indomodaModel.FK_DetailPO_Materials" />
         <EntityTypeShape EntityType="indomodaModel.DetailLog" Width="1.5" PointX="10.375" PointY="3.75" />
+        <EntityTypeShape EntityType="indomodaModel.DetailSPK" Width="1.5" PointX="8.375" PointY="10.75" />
+        <EntityTypeShape EntityType="indomodaModel.DetailSPKBordir" Width="1.5" PointX="8" PointY="7.5" />
+        <EntityTypeShape EntityType="indomodaModel.DetailSPKCMT" Width="1.5" PointX="6.125" PointY="8.875" />
+        <EntityTypeShape EntityType="indomodaModel.ListPenerimaanTukangPotong" Width="1.5" PointX="0.5" PointY="7.75" />
+        <EntityTypeShape EntityType="indomodaModel.PenerimaanSBC" Width="1.5" PointX="10.5" PointY="8.125" />
+        <EntityTypeShape EntityType="indomodaModel.QuantityRecord" Width="1.5" PointX="13.125" PointY="8.25" />
+        <AssociationConnector Association="indomodaModel.FK_ListPenerimaanTukangPotong_Colors" />
+        <AssociationConnector Association="indomodaModel.FK_DetailSPKSablon_Employees" />
+        <AssociationConnector Association="indomodaModel.FK_PenerimaanSBC_DetailSPK" />
+        <AssociationConnector Association="indomodaModel.FK_DetailSPKBordir_Employees" />
+        <AssociationConnector Association="indomodaModel.FK_DetailSPKCMT_Employees" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -35,10 +35,15 @@ namespace Project
         public virtual DbSet<PreOrderKain> PreOrderKains { get; set; }
         public virtual DbSet<DetailPemotonganKain> DetailPemotonganKains { get; set; }
         public virtual DbSet<DetailPenerimaanTukangPotong> DetailPenerimaanTukangPotongs { get; set; }
-        public virtual DbSet<ListPenerimaanTukangPotong> ListPenerimaanTukangPotongs { get; set; }
         public virtual DbSet<Color> Colors { get; set; }
         public virtual DbSet<DetailPO> DetailPOes { get; set; }
         public virtual DbSet<DetailLog> DetailLogs { get; set; }
+        public virtual DbSet<DetailSPK> DetailSPKs { get; set; }
+        public virtual DbSet<DetailSPKBordir> DetailSPKBordirs { get; set; }
+        public virtual DbSet<DetailSPKCMT> DetailSPKCMTs { get; set; }
+        public virtual DbSet<ListPenerimaanTukangPotong> ListPenerimaanTukangPotongs { get; set; }
+        public virtual DbSet<PenerimaanSBC> PenerimaanSBCs { get; set; }
+        public virtual DbSet<QuantityRecord> QuantityRecords { get; set; }
 
         internal Task<int> SaveChangesAsync()
         {

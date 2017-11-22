@@ -73,12 +73,7 @@
       <End Role="DetailPemotonganKain" EntitySet="DetailPemotonganKains" />
       <End Role="DetailPenerimaanTukangPotong" EntitySet="DetailPenerimaanTukangPotongs" />
     </AssociationSet>
-    <EntitySet Name="ListPenerimaanTukangPotongs" EntityType="indomodaModel.ListPenerimaanTukangPotong" />
     <EntitySet Name="Colors" EntityType="indomodaModel.Color" />
-    <AssociationSet Name="FK_ListPenerimaanTukangPotong_Colors" Association="indomodaModel.FK_ListPenerimaanTukangPotong_Colors">
-      <End Role="Color" EntitySet="Colors" />
-      <End Role="ListPenerimaanTukangPotong" EntitySet="ListPenerimaanTukangPotongs" />
-    </AssociationSet>
     <EntitySet Name="DetailPOes" EntityType="indomodaModel.DetailPO" />
     <AssociationSet Name="FK_DetailPO_Colors" Association="indomodaModel.FK_DetailPO_Colors">
       <End Role="Color" EntitySet="Colors" />
@@ -89,6 +84,32 @@
       <End Role="DetailPO" EntitySet="DetailPOes" />
     </AssociationSet>
     <EntitySet Name="DetailLogs" EntityType="indomodaModel.DetailLog" />
+    <EntitySet Name="DetailSPKs" EntityType="indomodaModel.DetailSPK" />
+    <EntitySet Name="DetailSPKBordirs" EntityType="indomodaModel.DetailSPKBordir" />
+    <EntitySet Name="DetailSPKCMTs" EntityType="indomodaModel.DetailSPKCMT" />
+    <EntitySet Name="ListPenerimaanTukangPotongs" EntityType="indomodaModel.ListPenerimaanTukangPotong" />
+    <EntitySet Name="PenerimaanSBCs" EntityType="indomodaModel.PenerimaanSBC" />
+    <EntitySet Name="QuantityRecords" EntityType="indomodaModel.QuantityRecord" />
+    <AssociationSet Name="FK_ListPenerimaanTukangPotong_Colors" Association="indomodaModel.FK_ListPenerimaanTukangPotong_Colors">
+      <End Role="Color" EntitySet="Colors" />
+      <End Role="ListPenerimaanTukangPotong" EntitySet="ListPenerimaanTukangPotongs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetailSPKSablon_Employees" Association="indomodaModel.FK_DetailSPKSablon_Employees">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="DetailSPK" EntitySet="DetailSPKs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PenerimaanSBC_DetailSPK" Association="indomodaModel.FK_PenerimaanSBC_DetailSPK">
+      <End Role="DetailSPK" EntitySet="DetailSPKs" />
+      <End Role="PenerimaanSBC" EntitySet="PenerimaanSBCs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetailSPKBordir_Employees" Association="indomodaModel.FK_DetailSPKBordir_Employees">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="DetailSPKBordir" EntitySet="DetailSPKBordirs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetailSPKCMT_Employees" Association="indomodaModel.FK_DetailSPKCMT_Employees">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="DetailSPKCMT" EntitySet="DetailSPKCMTs" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="DetailFaktur">
     <Key>
@@ -113,6 +134,9 @@
     <Property Name="EmployeePhone" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="EmployeePosition" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="DetailPemotonganKains" Relationship="indomodaModel.FK_DetailPemotonganKain_Employee" FromRole="Employee" ToRole="DetailPemotonganKain" />
+    <NavigationProperty Name="DetailSPKs" Relationship="indomodaModel.FK_DetailSPKSablon_Employees" FromRole="Employee" ToRole="DetailSPK" />
+    <NavigationProperty Name="DetailSPKBordirs" Relationship="indomodaModel.FK_DetailSPKBordir_Employees" FromRole="Employee" ToRole="DetailSPKBordir" />
+    <NavigationProperty Name="DetailSPKCMTs" Relationship="indomodaModel.FK_DetailSPKCMT_Employees" FromRole="Employee" ToRole="DetailSPKCMT" />
   </EntityType>
   <EntityType Name="PreOrderKain">
     <Key>
@@ -227,20 +251,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityType Name="ListPenerimaanTukangPotong">
-    <Key>
-      <PropertyRef Name="idListPTP" />
-    </Key>
-    <Property Name="idListPTP" Type="Int32" Nullable="false" />
-    <Property Name="idPenerimaanTukangPotong" Type="Int32" />
-    <Property Name="noSeri" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="model" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="ColorID" Type="Int32" Nullable="false" />
-    <Property Name="merk" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="ukuran" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="quantity" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Color" Relationship="indomodaModel.FK_ListPenerimaanTukangPotong_Colors" FromRole="ListPenerimaanTukangPotong" ToRole="Color" />
-  </EntityType>
   <EntityType Name="Color">
     <Key>
       <PropertyRef Name="ColorID" />
@@ -248,21 +258,9 @@
     <Property Name="ColorID" Type="Int32" Nullable="false" />
     <Property Name="ColorCode" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="ColorName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="ListPenerimaanTukangPotongs" Relationship="indomodaModel.FK_ListPenerimaanTukangPotong_Colors" FromRole="Color" ToRole="ListPenerimaanTukangPotong" />
     <NavigationProperty Name="DetailPOes" Relationship="indomodaModel.FK_DetailPO_Colors" FromRole="Color" ToRole="DetailPO" />
+    <NavigationProperty Name="ListPenerimaanTukangPotongs" Relationship="indomodaModel.FK_ListPenerimaanTukangPotong_Colors" FromRole="Color" ToRole="ListPenerimaanTukangPotong" />
   </EntityType>
-  <Association Name="FK_ListPenerimaanTukangPotong_Colors">
-    <End Type="indomodaModel.Color" Role="Color" Multiplicity="1" />
-    <End Type="indomodaModel.ListPenerimaanTukangPotong" Role="ListPenerimaanTukangPotong" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Color">
-        <PropertyRef Name="ColorID" />
-      </Principal>
-      <Dependent Role="ListPenerimaanTukangPotong">
-        <PropertyRef Name="ColorID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityType Name="DetailPO">
     <Key>
       <PropertyRef Name="DetailPOID" />
@@ -317,4 +315,149 @@
     <Property Name="Datetime" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="activity" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
   </EntityType>
+  <EntityType Name="DetailSPK">
+    <Key>
+      <PropertyRef Name="noSPK" />
+    </Key>
+    <Property Name="idSPK" Type="Int32" Nullable="false" />
+    <Property Name="noSPK" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+    <Property Name="Datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Employee" Relationship="indomodaModel.FK_DetailSPKSablon_Employees" FromRole="DetailSPK" ToRole="Employee" />
+    <NavigationProperty Name="PenerimaanSBCs" Relationship="indomodaModel.FK_PenerimaanSBC_DetailSPK" FromRole="DetailSPK" ToRole="PenerimaanSBC" />
+  </EntityType>
+  <EntityType Name="DetailSPKBordir">
+    <Key>
+      <PropertyRef Name="noSPKBordir" />
+    </Key>
+    <Property Name="idSPKBordir" Type="Int32" Nullable="false" />
+    <Property Name="noSPKBordir" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EmployeeiD" Type="Int32" Nullable="false" />
+    <Property Name="Datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Employee" Relationship="indomodaModel.FK_DetailSPKBordir_Employees" FromRole="DetailSPKBordir" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="DetailSPKCMT">
+    <Key>
+      <PropertyRef Name="noSPKCMT" />
+    </Key>
+    <Property Name="idSPKCMT" Type="Int32" Nullable="false" />
+    <Property Name="noSPKCMT" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+    <Property Name="Datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Employee" Relationship="indomodaModel.FK_DetailSPKCMT_Employees" FromRole="DetailSPKCMT" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="ListPenerimaanTukangPotong">
+    <Key>
+      <PropertyRef Name="noSeri" />
+    </Key>
+    <Property Name="idListPTP" Type="Int32" Nullable="false" />
+    <Property Name="idPenerimaanTukangPotong" Type="Int32" Nullable="false" />
+    <Property Name="noSeri" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="model" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ColorID" Type="Int32" Nullable="false" />
+    <Property Name="merk" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ukuran" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="quantity" Type="Double" Nullable="false" />
+    <Property Name="statusSPKSablon" Type="Boolean" />
+    <Property Name="statusSPKBordir" Type="Boolean" />
+    <Property Name="statusSPKCMT" Type="Boolean" />
+    <Property Name="statusNoSeri" Type="Int32" />
+    <Property Name="idSPKSablon" Type="Int32" />
+    <Property Name="idSPKBordir" Type="Int32" />
+    <Property Name="idSPKCMT" Type="Int32" />
+    <NavigationProperty Name="Color" Relationship="indomodaModel.FK_ListPenerimaanTukangPotong_Colors" FromRole="ListPenerimaanTukangPotong" ToRole="Color" />
+  </EntityType>
+  <EntityType Name="PenerimaanSBC">
+    <Key>
+      <PropertyRef Name="noPenerimaan" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="noPenerimaan" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="noSPK" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+    <Property Name="Datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="DetailSPK" Relationship="indomodaModel.FK_PenerimaanSBC_DetailSPK" FromRole="PenerimaanSBC" ToRole="DetailSPK" />
+  </EntityType>
+  <EntityType Name="QuantityRecord">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="noSeri" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="noSeri" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="qtyAwalSablon" Type="Double" />
+    <Property Name="qtySablonBS" Type="Double" />
+    <Property Name="qtySablonHilang" Type="Double" />
+    <Property Name="qtyAwalBordir" Type="Double" />
+    <Property Name="qtyBordirBS" Type="Double" />
+    <Property Name="qtyBordirHilang" Type="Double" />
+    <Property Name="qtyAwalCMT" Type="Double" />
+    <Property Name="qtyCMTBS" Type="Double" />
+    <Property Name="qtyCMTHilang" Type="Double" />
+  </EntityType>
+  <Association Name="FK_ListPenerimaanTukangPotong_Colors">
+    <End Type="indomodaModel.Color" Role="Color" Multiplicity="1" />
+    <End Type="indomodaModel.ListPenerimaanTukangPotong" Role="ListPenerimaanTukangPotong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Color">
+        <PropertyRef Name="ColorID" />
+      </Principal>
+      <Dependent Role="ListPenerimaanTukangPotong">
+        <PropertyRef Name="ColorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetailSPKSablon_Employees">
+    <End Type="indomodaModel.Employee" Role="Employee" Multiplicity="1" />
+    <End Type="indomodaModel.DetailSPK" Role="DetailSPK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="DetailSPK">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PenerimaanSBC_DetailSPK">
+    <End Type="indomodaModel.DetailSPK" Role="DetailSPK" Multiplicity="1" />
+    <End Type="indomodaModel.PenerimaanSBC" Role="PenerimaanSBC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DetailSPK">
+        <PropertyRef Name="noSPK" />
+      </Principal>
+      <Dependent Role="PenerimaanSBC">
+        <PropertyRef Name="noSPK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetailSPKBordir_Employees">
+    <End Type="indomodaModel.Employee" Role="Employee" Multiplicity="1" />
+    <End Type="indomodaModel.DetailSPKBordir" Role="DetailSPKBordir" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="DetailSPKBordir">
+        <PropertyRef Name="EmployeeiD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetailSPKCMT_Employees">
+    <End Type="indomodaModel.Employee" Role="Employee" Multiplicity="1" />
+    <End Type="indomodaModel.DetailSPKCMT" Role="DetailSPKCMT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="DetailSPKCMT">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

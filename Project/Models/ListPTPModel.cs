@@ -14,7 +14,7 @@ namespace Project.Models
         public int ColorID { get; set; }
         public string merk { get; set; }
         public string ukuran { get; set; }
-        public int quantity { get; set; }
+        public double quantity { get; set; }
 
         public virtual Color Color { get; set; }
     }

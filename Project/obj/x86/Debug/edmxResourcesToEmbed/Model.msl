@@ -101,20 +101,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ListPenerimaanTukangPotongs">
-      <EntityTypeMapping TypeName="indomodaModel.ListPenerimaanTukangPotong">
-        <MappingFragment StoreEntitySet="ListPenerimaanTukangPotong">
-          <ScalarProperty Name="quantity" ColumnName="quantity" />
-          <ScalarProperty Name="ukuran" ColumnName="ukuran" />
-          <ScalarProperty Name="merk" ColumnName="merk" />
-          <ScalarProperty Name="ColorID" ColumnName="ColorID" />
-          <ScalarProperty Name="model" ColumnName="model" />
-          <ScalarProperty Name="noSeri" ColumnName="noSeri" />
-          <ScalarProperty Name="idPenerimaanTukangPotong" ColumnName="idPenerimaanTukangPotong" />
-          <ScalarProperty Name="idListPTP" ColumnName="idListPTP" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Colors">
       <EntityTypeMapping TypeName="indomodaModel.Color">
         <MappingFragment StoreEntitySet="Colors">
@@ -147,6 +133,90 @@
           <ScalarProperty Name="activity" ColumnName="activity" />
           <ScalarProperty Name="Datetime" ColumnName="Datetime" />
           <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetailSPKs">
+      <EntityTypeMapping TypeName="indomodaModel.DetailSPK">
+        <MappingFragment StoreEntitySet="DetailSPK">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="Datetime" ColumnName="Datetime" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="noSPK" ColumnName="noSPK" />
+          <ScalarProperty Name="idSPK" ColumnName="idSPK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetailSPKBordirs">
+      <EntityTypeMapping TypeName="indomodaModel.DetailSPKBordir">
+        <MappingFragment StoreEntitySet="DetailSPKBordir">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="Datetime" ColumnName="Datetime" />
+          <ScalarProperty Name="EmployeeiD" ColumnName="EmployeeiD" />
+          <ScalarProperty Name="noSPKBordir" ColumnName="noSPKBordir" />
+          <ScalarProperty Name="idSPKBordir" ColumnName="idSPKBordir" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetailSPKCMTs">
+      <EntityTypeMapping TypeName="indomodaModel.DetailSPKCMT">
+        <MappingFragment StoreEntitySet="DetailSPKCMT">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="Datetime" ColumnName="Datetime" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="noSPKCMT" ColumnName="noSPKCMT" />
+          <ScalarProperty Name="idSPKCMT" ColumnName="idSPKCMT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ListPenerimaanTukangPotongs">
+      <EntityTypeMapping TypeName="indomodaModel.ListPenerimaanTukangPotong">
+        <MappingFragment StoreEntitySet="ListPenerimaanTukangPotong">
+          <ScalarProperty Name="idSPKCMT" ColumnName="idSPKCMT" />
+          <ScalarProperty Name="idSPKBordir" ColumnName="idSPKBordir" />
+          <ScalarProperty Name="idSPKSablon" ColumnName="idSPKSablon" />
+          <ScalarProperty Name="statusNoSeri" ColumnName="statusNoSeri" />
+          <ScalarProperty Name="statusSPKCMT" ColumnName="statusSPKCMT" />
+          <ScalarProperty Name="statusSPKBordir" ColumnName="statusSPKBordir" />
+          <ScalarProperty Name="statusSPKSablon" ColumnName="statusSPKSablon" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="ukuran" ColumnName="ukuran" />
+          <ScalarProperty Name="merk" ColumnName="merk" />
+          <ScalarProperty Name="ColorID" ColumnName="ColorID" />
+          <ScalarProperty Name="model" ColumnName="model" />
+          <ScalarProperty Name="noSeri" ColumnName="noSeri" />
+          <ScalarProperty Name="idPenerimaanTukangPotong" ColumnName="idPenerimaanTukangPotong" />
+          <ScalarProperty Name="idListPTP" ColumnName="idListPTP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PenerimaanSBCs">
+      <EntityTypeMapping TypeName="indomodaModel.PenerimaanSBC">
+        <MappingFragment StoreEntitySet="PenerimaanSBC">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="Datetime" ColumnName="Datetime" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="noSPK" ColumnName="noSPK" />
+          <ScalarProperty Name="noPenerimaan" ColumnName="noPenerimaan" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QuantityRecords">
+      <EntityTypeMapping TypeName="indomodaModel.QuantityRecord">
+        <MappingFragment StoreEntitySet="QuantityRecord">
+          <ScalarProperty Name="qtyCMTHilang" ColumnName="qtyCMTHilang" />
+          <ScalarProperty Name="qtyCMTBS" ColumnName="qtyCMTBS" />
+          <ScalarProperty Name="qtyAwalCMT" ColumnName="qtyAwalCMT" />
+          <ScalarProperty Name="qtyBordirHilang" ColumnName="qtyBordirHilang" />
+          <ScalarProperty Name="qtyBordirBS" ColumnName="qtyBordirBS" />
+          <ScalarProperty Name="qtyAwalBordir" ColumnName="qtyAwalBordir" />
+          <ScalarProperty Name="qtySablonHilang" ColumnName="qtySablonHilang" />
+          <ScalarProperty Name="qtySablonBS" ColumnName="qtySablonBS" />
+          <ScalarProperty Name="qtyAwalSablon" ColumnName="qtyAwalSablon" />
+          <ScalarProperty Name="noSeri" ColumnName="noSeri" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
