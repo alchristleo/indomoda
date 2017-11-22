@@ -21,6 +21,10 @@ namespace Project
         }
 
         string path = Environment.CurrentDirectory + "/" + "temp.txt";
+        string a = EncryptDecrypt.Decrypt("sctO0FZzAhxvUNDOt9Uh0Ir61idWtENbWOyR/+XY33E=");
+        string b = EncryptDecrypt.Decrypt("lxtwZ8VbPKj9t3n7FdVdq4ROv0B0n78O5Emo17ah5l0=");
+        string c = EncryptDecrypt.Decrypt("gTViqhlEMV6d8r2vAVqgIPnqk1P7YtXXF+IKYy/PDKo=");
+        string d = EncryptDecrypt.Decrypt("STbMPl+2rk9nfpdVQZ0b9kXzi33u8yRVI5cTYmImFgI=");
 
         private void MainMenu_Load(object sender, EventArgs e)
         {
@@ -36,91 +40,256 @@ namespace Project
         private void supplierToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Supplier supplier = new Supplier();
-            supplier.Show();
+            using (StreamReader streamReader = new StreamReader("temp.txt"))
+            {
+                string decryptText = EncryptDecrypt.Decrypt(streamReader.ReadLine());
+                if (decryptText != a && decryptText != c)
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "Sorry you can not access this menu, please contact administrator for more info", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    supplier.Show();
+                }
+            }
         }
 
         private void pembeliToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Pembeli pembeli = new Pembeli();
-            pembeli.Show();
+            using (StreamReader streamReader = new StreamReader("temp.txt"))
+            {
+                string decryptText = EncryptDecrypt.Decrypt(streamReader.ReadLine());
+                if (decryptText != a && decryptText != c)
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "Sorry you can not access this menu, please contact administrator for more info", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    pembeli.Show();
+                }
+            }
         }
 
         private void masterBahanToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MasterBahan bahan = new MasterBahan();
-            bahan.Show();
+            using (StreamReader streamReader = new StreamReader("temp.txt"))
+            {
+                string decryptText = EncryptDecrypt.Decrypt(streamReader.ReadLine());
+                if (decryptText != a && decryptText != c)
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "Sorry you can not access this menu, please contact administrator for more info", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    bahan.Show();
+                }
+            }
         }
 
         private void warnaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Warna warna = new Warna();
-            warna.Show();
+            using (StreamReader streamReader = new StreamReader("temp.txt"))
+            {
+                string decryptText = EncryptDecrypt.Decrypt(streamReader.ReadLine());
+                if (decryptText != a && decryptText != c)
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "Sorry you can not access this menu, please contact administrator for more info", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    warna.Show();
+                }
+            }
         }
 
         private void karyawanToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Karyawan karyawan = new Karyawan();
-            karyawan.Show();
+            using (StreamReader streamReader = new StreamReader("temp.txt"))
+            {
+                string decryptText = EncryptDecrypt.Decrypt(streamReader.ReadLine());
+                if (decryptText != a && decryptText != c)
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "Sorry you can not access this menu, please contact administrator for more info", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    karyawan.Show();
+                }
+            }
         }
 
         private void pOKainToolStripMenuItem_Click(object sender, EventArgs e)
         {
             poKain poKain = new poKain();
-            poKain.Show();
+            using (StreamReader streamReader = new StreamReader("temp.txt"))
+            {
+                string decryptText = EncryptDecrypt.Decrypt(streamReader.ReadLine());
+                if (decryptText != a && decryptText != c)
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "Sorry you can not access this menu, please contact administrator for more info", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    poKain.Show();
+                }
+            }
         }
 
         private void penerimaanKainToolStripMenuItem_Click(object sender, EventArgs e)
         {
             PenerimaanKain penerimaanKain = new PenerimaanKain();
-            penerimaanKain.Show();
+            using (StreamReader streamReader = new StreamReader("temp.txt"))
+            {
+                string decryptText = EncryptDecrypt.Decrypt(streamReader.ReadLine());
+                if (decryptText != a && decryptText != b && decryptText != c)
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "Sorry you can not access this menu, please contact administrator for more info", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    penerimaanKain.Show();
+                }
+            }
         }
 
         private void pemotonganKainToolStripMenuItem_Click(object sender, EventArgs e)
         {
             PemotonganKain pemotonganKain = new PemotonganKain();
-            pemotonganKain.Show();
+            using (StreamReader streamReader = new StreamReader("temp.txt"))
+            {
+                string decryptText = EncryptDecrypt.Decrypt(streamReader.ReadLine());
+                if (decryptText != a && decryptText != c)
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "Sorry you can not access this menu, please contact administrator for more info", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    pemotonganKain.Show();
+                }
+            }
         }
 
         private void penerimaanTukangPotongToolStripMenuItem_Click(object sender, EventArgs e)
         {
             PenerimaanTukangPotong penerimaanTukangPotong = new PenerimaanTukangPotong();
-            penerimaanTukangPotong.Show();
+            using (StreamReader streamReader = new StreamReader("temp.txt"))
+            {
+                string decryptText = EncryptDecrypt.Decrypt(streamReader.ReadLine());
+                if (decryptText != a && decryptText != c)
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "Sorry you can not access this menu, please contact administrator for more info", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    penerimaanTukangPotong.Show();
+                }
+            }
         }
 
         private void sPKSablonToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SPKSablon spkSablon = new SPKSablon();
-            spkSablon.Show();
+            using (StreamReader streamReader = new StreamReader("temp.txt"))
+            {
+                string decryptText = EncryptDecrypt.Decrypt(streamReader.ReadLine());
+                if (decryptText != a && decryptText != c)
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "Sorry you can not access this menu, please contact administrator for more info", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    spkSablon.Show();
+                }
+            }
         }
 
         private void sPKBordirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SPKBordir spkBordir = new SPKBordir();
-            spkBordir.Show();
+            using (StreamReader streamReader = new StreamReader("temp.txt"))
+            {
+                string decryptText = EncryptDecrypt.Decrypt(streamReader.ReadLine());
+                if (decryptText != a && decryptText != c)
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "Sorry you can not access this menu, please contact administrator for more info", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    spkBordir.Show();
+                }
+            }
         }
 
         private void sPKCMTToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SPKCmt spkCmt = new SPKCmt();
-            spkCmt.Show();
+            using (StreamReader streamReader = new StreamReader("temp.txt"))
+            {
+                string decryptText = EncryptDecrypt.Decrypt(streamReader.ReadLine());
+                if (decryptText != a && decryptText != c)
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "Sorry you can not access this menu, please contact administrator for more info", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    spkCmt.Show();
+                }
+            }
         }
 
         private void sablonToolStripMenuItem_Click(object sender, EventArgs e)
         {
             PenerimaanSablon penerimaanSablon = new PenerimaanSablon();
-            penerimaanSablon.Show();
+            using (StreamReader streamReader = new StreamReader("temp.txt"))
+            {
+                string decryptText = EncryptDecrypt.Decrypt(streamReader.ReadLine());
+                if (decryptText != a && decryptText != c)
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "Sorry you can not access this menu, please contact administrator for more info", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    penerimaanSablon.Show();
+                }
+            }
         }
 
         private void bordirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             PenerimaanBordir penerimaanBordir = new PenerimaanBordir();
-            penerimaanBordir.Show();
+            using (StreamReader streamReader = new StreamReader("temp.txt"))
+            {
+                string decryptText = EncryptDecrypt.Decrypt(streamReader.ReadLine());
+                if (decryptText != a && decryptText != c)
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "Sorry you can not access this menu, please contact administrator for more info", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    penerimaanBordir.Show();
+                }
+            }
         }
 
         private void cMTToolStripMenuItem_Click(object sender, EventArgs e)
         {
             PenerimaanCMT penerimaanCmt = new PenerimaanCMT();
-            penerimaanCmt.Show();
+            using (StreamReader streamReader = new StreamReader("temp.txt"))
+            {
+                string decryptText = EncryptDecrypt.Decrypt(streamReader.ReadLine());
+                if (decryptText != a && decryptText != c)
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "Sorry you can not access this menu, please contact administrator for more info", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    penerimaanCmt.Show();
+                }
+            }
         }
 
         private void logsToolStripMenuItem_Click(object sender, EventArgs e)
