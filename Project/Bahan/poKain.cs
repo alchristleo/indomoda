@@ -109,7 +109,7 @@ namespace Project
 
                             btnCountGrandTotal.PerformClick();
 
-                            MetroFramework.MetroMessageBox.Show(this, "Success! This Detail PO has been deleted to the database", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                            MetroFramework.MetroMessageBox.Show(this, "Success! This Detail PO has been deleted from database", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
                         }
                         catch (Exception ex)
                         {

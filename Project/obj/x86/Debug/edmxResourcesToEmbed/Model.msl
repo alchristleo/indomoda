@@ -149,28 +149,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="DetailSPKBordirs">
-      <EntityTypeMapping TypeName="indomodaModel.DetailSPKBordir">
-        <MappingFragment StoreEntitySet="DetailSPKBordir">
-          <ScalarProperty Name="status" ColumnName="status" />
-          <ScalarProperty Name="Datetime" ColumnName="Datetime" />
-          <ScalarProperty Name="EmployeeiD" ColumnName="EmployeeiD" />
-          <ScalarProperty Name="noSPKBordir" ColumnName="noSPKBordir" />
-          <ScalarProperty Name="idSPKBordir" ColumnName="idSPKBordir" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="DetailSPKCMTs">
-      <EntityTypeMapping TypeName="indomodaModel.DetailSPKCMT">
-        <MappingFragment StoreEntitySet="DetailSPKCMT">
-          <ScalarProperty Name="status" ColumnName="status" />
-          <ScalarProperty Name="Datetime" ColumnName="Datetime" />
-          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
-          <ScalarProperty Name="noSPKCMT" ColumnName="noSPKCMT" />
-          <ScalarProperty Name="idSPKCMT" ColumnName="idSPKCMT" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="ListPenerimaanTukangPotongs">
       <EntityTypeMapping TypeName="indomodaModel.ListPenerimaanTukangPotong">
         <MappingFragment StoreEntitySet="ListPenerimaanTukangPotong">

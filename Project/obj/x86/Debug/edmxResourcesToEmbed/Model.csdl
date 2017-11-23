@@ -85,8 +85,6 @@
     </AssociationSet>
     <EntitySet Name="DetailLogs" EntityType="indomodaModel.DetailLog" />
     <EntitySet Name="DetailSPKs" EntityType="indomodaModel.DetailSPK" />
-    <EntitySet Name="DetailSPKBordirs" EntityType="indomodaModel.DetailSPKBordir" />
-    <EntitySet Name="DetailSPKCMTs" EntityType="indomodaModel.DetailSPKCMT" />
     <EntitySet Name="ListPenerimaanTukangPotongs" EntityType="indomodaModel.ListPenerimaanTukangPotong" />
     <EntitySet Name="PenerimaanSBCs" EntityType="indomodaModel.PenerimaanSBC" />
     <EntitySet Name="QuantityRecords" EntityType="indomodaModel.QuantityRecord" />
@@ -101,14 +99,6 @@
     <AssociationSet Name="FK_PenerimaanSBC_DetailSPK" Association="indomodaModel.FK_PenerimaanSBC_DetailSPK">
       <End Role="DetailSPK" EntitySet="DetailSPKs" />
       <End Role="PenerimaanSBC" EntitySet="PenerimaanSBCs" />
-    </AssociationSet>
-    <AssociationSet Name="FK_DetailSPKBordir_Employees" Association="indomodaModel.FK_DetailSPKBordir_Employees">
-      <End Role="Employee" EntitySet="Employees" />
-      <End Role="DetailSPKBordir" EntitySet="DetailSPKBordirs" />
-    </AssociationSet>
-    <AssociationSet Name="FK_DetailSPKCMT_Employees" Association="indomodaModel.FK_DetailSPKCMT_Employees">
-      <End Role="Employee" EntitySet="Employees" />
-      <End Role="DetailSPKCMT" EntitySet="DetailSPKCMTs" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="DetailFaktur">
@@ -135,8 +125,6 @@
     <Property Name="EmployeePosition" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="DetailPemotonganKains" Relationship="indomodaModel.FK_DetailPemotonganKain_Employee" FromRole="Employee" ToRole="DetailPemotonganKain" />
     <NavigationProperty Name="DetailSPKs" Relationship="indomodaModel.FK_DetailSPKSablon_Employees" FromRole="Employee" ToRole="DetailSPK" />
-    <NavigationProperty Name="DetailSPKBordirs" Relationship="indomodaModel.FK_DetailSPKBordir_Employees" FromRole="Employee" ToRole="DetailSPKBordir" />
-    <NavigationProperty Name="DetailSPKCMTs" Relationship="indomodaModel.FK_DetailSPKCMT_Employees" FromRole="Employee" ToRole="DetailSPKCMT" />
   </EntityType>
   <EntityType Name="PreOrderKain">
     <Key>
@@ -328,28 +316,6 @@
     <NavigationProperty Name="Employee" Relationship="indomodaModel.FK_DetailSPKSablon_Employees" FromRole="DetailSPK" ToRole="Employee" />
     <NavigationProperty Name="PenerimaanSBCs" Relationship="indomodaModel.FK_PenerimaanSBC_DetailSPK" FromRole="DetailSPK" ToRole="PenerimaanSBC" />
   </EntityType>
-  <EntityType Name="DetailSPKBordir">
-    <Key>
-      <PropertyRef Name="noSPKBordir" />
-    </Key>
-    <Property Name="idSPKBordir" Type="Int32" Nullable="false" />
-    <Property Name="noSPKBordir" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="EmployeeiD" Type="Int32" Nullable="false" />
-    <Property Name="Datetime" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="status" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Employee" Relationship="indomodaModel.FK_DetailSPKBordir_Employees" FromRole="DetailSPKBordir" ToRole="Employee" />
-  </EntityType>
-  <EntityType Name="DetailSPKCMT">
-    <Key>
-      <PropertyRef Name="noSPKCMT" />
-    </Key>
-    <Property Name="idSPKCMT" Type="Int32" Nullable="false" />
-    <Property Name="noSPKCMT" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="EmployeeID" Type="Int32" Nullable="false" />
-    <Property Name="Datetime" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="status" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Employee" Relationship="indomodaModel.FK_DetailSPKCMT_Employees" FromRole="DetailSPKCMT" ToRole="Employee" />
-  </EntityType>
   <EntityType Name="ListPenerimaanTukangPotong">
     <Key>
       <PropertyRef Name="noSeri" />
@@ -433,30 +399,6 @@
       </Principal>
       <Dependent Role="PenerimaanSBC">
         <PropertyRef Name="noSPK" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_DetailSPKBordir_Employees">
-    <End Type="indomodaModel.Employee" Role="Employee" Multiplicity="1" />
-    <End Type="indomodaModel.DetailSPKBordir" Role="DetailSPKBordir" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Employee">
-        <PropertyRef Name="EmployeeID" />
-      </Principal>
-      <Dependent Role="DetailSPKBordir">
-        <PropertyRef Name="EmployeeiD" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_DetailSPKCMT_Employees">
-    <End Type="indomodaModel.Employee" Role="Employee" Multiplicity="1" />
-    <End Type="indomodaModel.DetailSPKCMT" Role="DetailSPKCMT" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Employee">
-        <PropertyRef Name="EmployeeID" />
-      </Principal>
-      <Dependent Role="DetailSPKCMT">
-        <PropertyRef Name="EmployeeID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

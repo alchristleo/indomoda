@@ -149,7 +149,7 @@ namespace Project
                             dataGridView1.Refresh();
                             listPenerimaanTukangPotongBindingSource.EndEdit();
 
-                            MetroFramework.MetroMessageBox.Show(this, "Success! This List penerimaan tukang potong has been deleted to the database", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                            MetroFramework.MetroMessageBox.Show(this, "Success! This List penerimaan tukang potong has been deleted from database", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
                         }
                         catch (Exception ex)
                         {

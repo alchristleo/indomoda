@@ -25,17 +25,13 @@
         <AssociationConnector Association="indomodaModel.FK_DetailPO_Colors" />
         <AssociationConnector Association="indomodaModel.FK_DetailPO_Materials" />
         <EntityTypeShape EntityType="indomodaModel.DetailLog" Width="1.5" PointX="10.375" PointY="3.75" />
-        <EntityTypeShape EntityType="indomodaModel.DetailSPK" Width="1.5" PointX="8.375" PointY="10.75" />
-        <EntityTypeShape EntityType="indomodaModel.DetailSPKBordir" Width="1.5" PointX="8" PointY="7.5" />
-        <EntityTypeShape EntityType="indomodaModel.DetailSPKCMT" Width="1.5" PointX="6.125" PointY="8.875" />
+        <EntityTypeShape EntityType="indomodaModel.DetailSPK" Width="1.5" PointX="7.375" PointY="8" />
         <EntityTypeShape EntityType="indomodaModel.ListPenerimaanTukangPotong" Width="1.5" PointX="0.5" PointY="7.75" />
         <EntityTypeShape EntityType="indomodaModel.PenerimaanSBC" Width="1.5" PointX="10.5" PointY="8.125" />
         <EntityTypeShape EntityType="indomodaModel.QuantityRecord" Width="1.5" PointX="13.125" PointY="8.25" />
         <AssociationConnector Association="indomodaModel.FK_ListPenerimaanTukangPotong_Colors" />
         <AssociationConnector Association="indomodaModel.FK_DetailSPKSablon_Employees" />
         <AssociationConnector Association="indomodaModel.FK_PenerimaanSBC_DetailSPK" />
-        <AssociationConnector Association="indomodaModel.FK_DetailSPKBordir_Employees" />
-        <AssociationConnector Association="indomodaModel.FK_DetailSPKCMT_Employees" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -125,12 +125,6 @@
     <Compile Include="DetailSPK.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="DetailSPKBordir.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DetailSPKCMT.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="Employee.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -211,6 +205,7 @@
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\DetailPOModel.cs" />
+    <Compile Include="Models\DetailSPKModel.cs" />
     <Compile Include="Models\FakturDetailPO.cs" />
     <Compile Include="Models\FakturKainModel.cs" />
     <Compile Include="Models\ListPTPModel.cs" />
