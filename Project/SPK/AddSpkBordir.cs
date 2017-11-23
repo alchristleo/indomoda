@@ -55,7 +55,7 @@ namespace Project
             using (indomodaEntities db = new indomodaEntities())
             {
                 colorBindingSource.DataSource = db.Colors.ToList();
-                List<ListPenerimaanTukangPotong> listPTP = GenericQuery.SqlQuery<ListPenerimaanTukangPotong>("SELECT lp.idListPTP, lp.idPenerimaanTukangPotong, lp.noSeri, lp.model, lp.ColorID, lp.merk, lp.ukuran, lp.quantity, lp.statusSPKSablon, lp.statusSPKBordir, lp.statusSPKCMT, lp.statusNoSeri, lp.idSPKSablon, lp.idSPKBordir, lp.idSPKCMT  FROM ListPenerimaanTukangPotong lp");
+                List<ListPenerimaanTukangPotong> listPTP = GenericQuery.SqlQuery<ListPenerimaanTukangPotong>("SELECT lp.idListPTP, lp.idPenerimaanTukangPotong, lp.noSeri, lp.model, lp.ColorID, lp.merk, lp.ukuran, lp.quantity, lp.statusSPKSablon, lp.statusSPKBordir, lp.statusSPKCMT, lp.statusNoSeri, lp.idSPKSablon, lp.idSPKBordir, lp.idSPKCMT  FROM ListPenerimaanTukangPotong lp ORDER BY lp.statusSPKBordir ASC");
                 listPenerimaanTukangPotongBindingSource.DataSource = listPTP.ToList();
 
                 int rowCount = dataGridView1.Rows.Count;
@@ -133,6 +133,8 @@ namespace Project
 
         private void btnSaveAddSpkBordir_Click(object sender, EventArgs e)
         {
+            int currentIDPTP = Convert.ToInt32(dataGridView1[17, dataGridView1.CurrentRow.Index].Value.ToString());
+            var dba = GenericQuery.SqlQuerySingle<ListPenerimaanTukangPotong>("SELECT lp.idListPTP, lp.idPenerimaanTukangPotong, lp.noSeri, lp.model, lp.ColorID, lp.merk, lp.ukuran, lp.quantity, lp.statusSPKSablon, lp.statusSPKBordir, lp.statusSPKCMT, lp.statusNoSeri, lp.idSPKSablon, lp.idSPKBordir, lp.idSPKCMT  FROM ListPenerimaanTukangPotong lp WHERE lp.idListPTP = '" + currentIDPTP + "'");
             if (String.IsNullOrEmpty(txtNoSeriBordir.Text))
             {
                 MetroFramework.MetroMessageBox.Show(this, "No. Seri can't be empty!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -163,17 +165,15 @@ namespace Project
                 txtQtyBordir.Focus();
                 return;
             }
-            //else if (!IsDigitsOnly(txtQtyTukangPotong.Text))
-            //{
-            //    MetroFramework.MetroMessageBox.Show(this, "Quantity must be numeric!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    txtQtyTukangPotong.Clear();
-            //    txtQtyTukangPotong.Focus();
-            //    return;
-            //}
+            else if (dba.statusSPKBordir.ToString() == "True")
+            {
+                MetroFramework.MetroMessageBox.Show(this, "You can't add this List penerimaan tukang potong to the SPK Bordir again!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dataGridView1.Focus();
+                return;
+            }
             using (indomodaEntities db = new indomodaEntities())
             {
                 int getIDSPK = Convert.ToInt32(SPKBordir.idSPK);
-                int currentIDPTP = Convert.ToInt32(dataGridView1[17, dataGridView1.CurrentRow.Index].Value.ToString());
                 bool setStatusBordir = true;
 
                 if (MetroFramework.MetroMessageBox.Show(this, "Do you want to update this List penerimaan tukang potong?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -181,8 +181,8 @@ namespace Project
                     try
                     {
                         int a = GenericQuery.ExecSQLCommand("UPDATE ListPenerimaanTukangPotong SET statusSPKBordir = @statusSPKBordir, idSPKBordir = @idSPKBordir WHERE idListPTP = '"+currentIDPTP+"'", new[] {
-                                new SqlParameter("@statusSPKBordir", getIDSPK),
-                                new SqlParameter("@idSPKBordir", setStatusBordir)
+                                new SqlParameter("@statusSPKBordir", setStatusBordir),
+                                new SqlParameter("@idSPKBordir", getIDSPK)
                             });
                         db.SaveChangesAsync().Wait();
 

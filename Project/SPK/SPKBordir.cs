@@ -99,6 +99,10 @@ namespace Project
                 MetroFramework.MetroMessageBox.Show(this, "Select the PIC Bordir first!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 cboPICBordir.Focus();
             }
+            else if (dataGridView1.Rows.Count < 1)
+            {
+                MetroFramework.MetroMessageBox.Show(this, "You need to add list penerimaan tukang potong to the table first!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             else
             {
                 try
@@ -124,7 +128,7 @@ namespace Project
                         this.Close();
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MetroFramework.MetroMessageBox.Show(this, ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -139,15 +143,20 @@ namespace Project
             }
             else
             {
-                if (MetroFramework.MetroMessageBox.Show(this, "Do you want to delete this data?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
+                if (MetroFramework.MetroMessageBox.Show(this, "Do you want to delete this List penerimaan tukang potong from table?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
                 {
                     using (indomodaEntities db = new indomodaEntities())
                     {
                         try
                         {
                             int currentRow = dataGridView1.CurrentRow.Index;
-                            int currentIDPTP = Convert.ToInt32(dataGridView1[18, dataGridView1.CurrentRow.Index].Value.ToString());
-                            //int b = GenericQuery.ExecSQLCommand("DELETE FROM ListPenerimaanTukangPotong WHERE idListPTP = '" + currentIDPTP + "'");
+                            int currentIDPTP = Convert.ToInt32(dataGridView1[17, dataGridView1.CurrentRow.Index].Value.ToString());
+                            int setIDSPK = 0;
+                            bool setStatusBordir = false;
+                            int a = GenericQuery.ExecSQLCommand("UPDATE ListPenerimaanTukangPotong SET statusSPKBordir = @statusSPKBordir, idSPKBordir = @idSPKBordir WHERE idListPTP = '" + currentIDPTP + "'", new[] {
+                                new SqlParameter("@statusSPKBordir", setStatusBordir),
+                                new SqlParameter("@idSPKBordir", setIDSPK)
+                            });
                             db.SaveChangesAsync().Wait();
                             dataGridView1.Rows.RemoveAt(currentRow);
 
