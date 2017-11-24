@@ -20,7 +20,7 @@
   </EntityType>
   <EntityType Name="DetailFaktur">
     <Key>
-      <PropertyRef Name="NoFaktur" />
+      <PropertyRef Name="idFaktur" />
     </Key>
     <Property Name="idFaktur" Type="int" Nullable="false" />
     <Property Name="NoFaktur" Type="varchar" MaxLength="11" Nullable="false" />
@@ -28,14 +28,9 @@
     <Property Name="Date_time" Type="datetime" Nullable="false" />
     <Property Name="status" Type="bit" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'indomoda.dbo.DetailLogs' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="DetailLogs">
     <Key>
       <PropertyRef Name="id" />
-      <PropertyRef Name="UserID" />
-      <PropertyRef Name="Datetime" />
-      <PropertyRef Name="activity" />
     </Key>
     <Property Name="id" Type="int" Nullable="false" />
     <Property Name="UserID" Type="int" Nullable="false" />
@@ -44,7 +39,7 @@ warning 6002: The table/view 'indomoda.dbo.DetailLogs' does not have a primary k
   </EntityType>
   <EntityType Name="DetailPemotonganKain">
     <Key>
-      <PropertyRef Name="noPemotonganKain" />
+      <PropertyRef Name="idPemotonganKain" />
     </Key>
     <Property Name="idPemotonganKain" Type="int" Nullable="false" />
     <Property Name="noPemotonganKain" Type="varchar" MaxLength="50" Nullable="false" />
@@ -82,7 +77,7 @@ warning 6002: The table/view 'indomoda.dbo.DetailLogs' does not have a primary k
   </EntityType>
   <EntityType Name="DetailSPK">
     <Key>
-      <PropertyRef Name="noSPK" />
+      <PropertyRef Name="idSPK" />
     </Key>
     <Property Name="idSPK" Type="int" Nullable="false" />
     <Property Name="noSPK" Type="varchar" MaxLength="50" Nullable="false" />
@@ -114,7 +109,7 @@ warning 6002: The table/view 'indomoda.dbo.DetailLogs' does not have a primary k
   </EntityType>
   <EntityType Name="ListPenerimaanTukangPotong">
     <Key>
-      <PropertyRef Name="noSeri" />
+      <PropertyRef Name="idListPTP" />
     </Key>
     <Property Name="idListPTP" Type="int" Nullable="false" />
     <Property Name="idPenerimaanTukangPotong" Type="int" Nullable="false" />
@@ -142,7 +137,7 @@ warning 6002: The table/view 'indomoda.dbo.DetailLogs' does not have a primary k
   </EntityType>
   <EntityType Name="PenerimaanSBC">
     <Key>
-      <PropertyRef Name="noPenerimaan" />
+      <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" Nullable="false" />
     <Property Name="noPenerimaan" Type="varchar" MaxLength="50" Nullable="false" />
@@ -153,7 +148,7 @@ warning 6002: The table/view 'indomoda.dbo.DetailLogs' does not have a primary k
   </EntityType>
   <EntityType Name="PreOrderKains">
     <Key>
-      <PropertyRef Name="PONumber" />
+      <PropertyRef Name="idPOKain" />
     </Key>
     <Property Name="idPOKain" Type="int" Nullable="false" />
     <Property Name="PONumber" Type="bigint" Nullable="false" />
@@ -162,12 +157,9 @@ warning 6002: The table/view 'indomoda.dbo.DetailLogs' does not have a primary k
     <Property Name="Date_time" Type="datetime" Nullable="false" />
     <Property Name="status" Type="bit" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'indomoda.dbo.QuantityRecord' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="QuantityRecord">
     <Key>
       <PropertyRef Name="id" />
-      <PropertyRef Name="noSeri" />
     </Key>
     <Property Name="id" Type="int" Nullable="false" />
     <Property Name="noSeri" Type="varchar" MaxLength="50" Nullable="false" />
@@ -190,18 +182,6 @@ warning 6002: The table/view 'indomoda.dbo.QuantityRecord' does not have a prima
     <Property Name="UserPassword" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="UserRole" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
-  <Association Name="FK_DetailPemotonganKain_DetailFaktur">
-    <End Role="DetailFaktur" Type="Self.DetailFaktur" Multiplicity="1" />
-    <End Role="DetailPemotonganKain" Type="Self.DetailPemotonganKain" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="DetailFaktur">
-        <PropertyRef Name="NoFaktur" />
-      </Principal>
-      <Dependent Role="DetailPemotonganKain">
-        <PropertyRef Name="NoFaktur" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_DetailPemotonganKain_Employee">
     <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
     <End Role="DetailPemotonganKain" Type="Self.DetailPemotonganKain" Multiplicity="*" />
@@ -211,30 +191,6 @@ warning 6002: The table/view 'indomoda.dbo.QuantityRecord' does not have a prima
       </Principal>
       <Dependent Role="DetailPemotonganKain">
         <PropertyRef Name="EmployeeID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_DetailPemotonganKain_PreOrderKain">
-    <End Role="PreOrderKains" Type="Self.PreOrderKains" Multiplicity="1" />
-    <End Role="DetailPemotonganKain" Type="Self.DetailPemotonganKain" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="PreOrderKains">
-        <PropertyRef Name="PONumber" />
-      </Principal>
-      <Dependent Role="DetailPemotonganKain">
-        <PropertyRef Name="PONumber" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_DetailPenerimaanTukangPotong_DetailPemotonganKain">
-    <End Role="DetailPemotonganKain" Type="Self.DetailPemotonganKain" Multiplicity="1" />
-    <End Role="DetailPenerimaanTukangPotong" Type="Self.DetailPenerimaanTukangPotong" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="DetailPemotonganKain">
-        <PropertyRef Name="noPemotonganKain" />
-      </Principal>
-      <Dependent Role="DetailPenerimaanTukangPotong">
-        <PropertyRef Name="noPemotonganKain" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -286,30 +242,6 @@ warning 6002: The table/view 'indomoda.dbo.QuantityRecord' does not have a prima
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_PenerimaanSBC_DetailSPK">
-    <End Role="DetailSPK" Type="Self.DetailSPK" Multiplicity="1" />
-    <End Role="PenerimaanSBC" Type="Self.PenerimaanSBC" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="DetailSPK">
-        <PropertyRef Name="noSPK" />
-      </Principal>
-      <Dependent Role="PenerimaanSBC">
-        <PropertyRef Name="noSPK" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_POKain_PenerimaanKain">
-    <End Role="PreOrderKains" Type="Self.PreOrderKains" Multiplicity="1" />
-    <End Role="DetailFaktur" Type="Self.DetailFaktur" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="PreOrderKains">
-        <PropertyRef Name="PONumber" />
-      </Principal>
-      <Dependent Role="DetailFaktur">
-        <PropertyRef Name="PONumber" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_POKain_Suppliers">
     <End Role="IndomodaSuppliers" Type="Self.IndomodaSuppliers" Multiplicity="1" />
     <End Role="PreOrderKains" Type="Self.PreOrderKains" Multiplicity="*" />
@@ -326,6 +258,7 @@ warning 6002: The table/view 'indomoda.dbo.QuantityRecord' does not have a prima
     <EntitySet Name="Colors" EntityType="Self.Colors" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DetailFaktur" EntityType="Self.DetailFaktur" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DetailLogs" EntityType="Self.DetailLogs" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DetailPemotonganKain" EntityType="Self.DetailPemotonganKain" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DetailPenerimaanTukangPotong" EntityType="Self.DetailPenerimaanTukangPotong" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DetailPO" EntityType="Self.DetailPO" Schema="dbo" store:Type="Tables" />
@@ -336,45 +269,11 @@ warning 6002: The table/view 'indomoda.dbo.QuantityRecord' does not have a prima
     <EntitySet Name="Materials" EntityType="Self.Materials" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PenerimaanSBC" EntityType="Self.PenerimaanSBC" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PreOrderKains" EntityType="Self.PreOrderKains" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QuantityRecord" EntityType="Self.QuantityRecord" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="DetailLogs" EntityType="Self.DetailLogs" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [DetailLogs].[id] AS [id], 
-    [DetailLogs].[UserID] AS [UserID], 
-    [DetailLogs].[Datetime] AS [Datetime], 
-    [DetailLogs].[activity] AS [activity]
-    FROM [dbo].[DetailLogs] AS [DetailLogs]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="QuantityRecord" EntityType="Self.QuantityRecord" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [QuantityRecord].[id] AS [id], 
-    [QuantityRecord].[noSeri] AS [noSeri], 
-    [QuantityRecord].[qtyAwalSablon] AS [qtyAwalSablon], 
-    [QuantityRecord].[qtySablonBS] AS [qtySablonBS], 
-    [QuantityRecord].[qtySablonHilang] AS [qtySablonHilang], 
-    [QuantityRecord].[qtyAwalBordir] AS [qtyAwalBordir], 
-    [QuantityRecord].[qtyBordirBS] AS [qtyBordirBS], 
-    [QuantityRecord].[qtyBordirHilang] AS [qtyBordirHilang], 
-    [QuantityRecord].[qtyAwalCMT] AS [qtyAwalCMT], 
-    [QuantityRecord].[qtyCMTBS] AS [qtyCMTBS], 
-    [QuantityRecord].[qtyCMTHilang] AS [qtyCMTHilang]
-    FROM [dbo].[QuantityRecord] AS [QuantityRecord]</DefiningQuery>
-    </EntitySet>
-    <AssociationSet Name="FK_DetailPemotonganKain_DetailFaktur" Association="Self.FK_DetailPemotonganKain_DetailFaktur">
-      <End Role="DetailFaktur" EntitySet="DetailFaktur" />
-      <End Role="DetailPemotonganKain" EntitySet="DetailPemotonganKain" />
-    </AssociationSet>
     <AssociationSet Name="FK_DetailPemotonganKain_Employee" Association="Self.FK_DetailPemotonganKain_Employee">
       <End Role="Employees" EntitySet="Employees" />
       <End Role="DetailPemotonganKain" EntitySet="DetailPemotonganKain" />
-    </AssociationSet>
-    <AssociationSet Name="FK_DetailPemotonganKain_PreOrderKain" Association="Self.FK_DetailPemotonganKain_PreOrderKain">
-      <End Role="PreOrderKains" EntitySet="PreOrderKains" />
-      <End Role="DetailPemotonganKain" EntitySet="DetailPemotonganKain" />
-    </AssociationSet>
-    <AssociationSet Name="FK_DetailPenerimaanTukangPotong_DetailPemotonganKain" Association="Self.FK_DetailPenerimaanTukangPotong_DetailPemotonganKain">
-      <End Role="DetailPemotonganKain" EntitySet="DetailPemotonganKain" />
-      <End Role="DetailPenerimaanTukangPotong" EntitySet="DetailPenerimaanTukangPotong" />
     </AssociationSet>
     <AssociationSet Name="FK_DetailPO_Colors" Association="Self.FK_DetailPO_Colors">
       <End Role="Colors" EntitySet="Colors" />
@@ -391,14 +290,6 @@ warning 6002: The table/view 'indomoda.dbo.QuantityRecord' does not have a prima
     <AssociationSet Name="FK_ListPenerimaanTukangPotong_Colors" Association="Self.FK_ListPenerimaanTukangPotong_Colors">
       <End Role="Colors" EntitySet="Colors" />
       <End Role="ListPenerimaanTukangPotong" EntitySet="ListPenerimaanTukangPotong" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PenerimaanSBC_DetailSPK" Association="Self.FK_PenerimaanSBC_DetailSPK">
-      <End Role="DetailSPK" EntitySet="DetailSPK" />
-      <End Role="PenerimaanSBC" EntitySet="PenerimaanSBC" />
-    </AssociationSet>
-    <AssociationSet Name="FK_POKain_PenerimaanKain" Association="Self.FK_POKain_PenerimaanKain">
-      <End Role="PreOrderKains" EntitySet="PreOrderKains" />
-      <End Role="DetailFaktur" EntitySet="DetailFaktur" />
     </AssociationSet>
     <AssociationSet Name="FK_POKain_Suppliers" Association="Self.FK_POKain_Suppliers">
       <End Role="IndomodaSuppliers" EntitySet="IndomodaSuppliers" />

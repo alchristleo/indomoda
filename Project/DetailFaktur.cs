@@ -14,20 +14,10 @@ namespace Project
     
     public partial class DetailFaktur
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public DetailFaktur()
-        {
-            this.DetailPemotonganKains = new HashSet<DetailPemotonganKain>();
-        }
-    
         public int idFaktur { get; set; }
         public string NoFaktur { get; set; }
         public long PONumber { get; set; }
         public System.DateTime Date_time { get; set; }
         public bool status { get; set; }
-    
-        public virtual PreOrderKain PreOrderKain { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DetailPemotonganKain> DetailPemotonganKains { get; set; }
     }
 }

@@ -20,7 +20,5 @@ namespace Project
         public int EmployeeID { get; set; }
         public System.DateTime Datetime { get; set; }
         public int status { get; set; }
-    
-        public virtual DetailSPK DetailSPK { get; set; }
     }
 }

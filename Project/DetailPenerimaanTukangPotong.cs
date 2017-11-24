@@ -19,7 +19,5 @@ namespace Project
         public string noPemotonganKain { get; set; }
         public System.DateTime Date_time { get; set; }
         public int status { get; set; }
-    
-        public virtual DetailPemotonganKain DetailPemotonganKain { get; set; }
     }
 }

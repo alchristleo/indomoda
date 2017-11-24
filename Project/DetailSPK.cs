@@ -14,12 +14,6 @@ namespace Project
     
     public partial class DetailSPK
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public DetailSPK()
-        {
-            this.PenerimaanSBCs = new HashSet<PenerimaanSBC>();
-        }
-    
         public int idSPK { get; set; }
         public string noSPK { get; set; }
         public int EmployeeID { get; set; }
@@ -28,7 +22,5 @@ namespace Project
         public int status { get; set; }
     
         public virtual Employee Employee { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PenerimaanSBC> PenerimaanSBCs { get; set; }
     }
 }

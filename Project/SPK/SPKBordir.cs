@@ -115,7 +115,7 @@ namespace Project
                         int setStatus = 0;
                         int a = GenericQuery.ExecSQLCommand("INSERT INTO DetailSPK (idSPK, noSPK, EmployeeID, Datetime, type, status) VALUES(@idSPK, @noSPK, @EmployeeID, @Datetime, @type, @status)", new[] {
                             new SqlParameter("@idSPK", setIDSPK),
-                            new SqlParameter("@noSPK", txtIDSPK.Text.ToString()),
+                            new SqlParameter("@noSPK", txtNoSpkBordir.Text.ToString()),
                             new SqlParameter("@EmployeeID", setEID),
                             new SqlParameter("@Datetime", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")),
                             new SqlParameter("@type", setType),

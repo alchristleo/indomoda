@@ -14,12 +14,6 @@ namespace Project
     
     public partial class DetailPemotonganKain
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public DetailPemotonganKain()
-        {
-            this.DetailPenerimaanTukangPotongs = new HashSet<DetailPenerimaanTukangPotong>();
-        }
-    
         public int idPemotonganKain { get; set; }
         public string noPemotonganKain { get; set; }
         public string NoFaktur { get; set; }
@@ -28,10 +22,6 @@ namespace Project
         public System.DateTime Date_time { get; set; }
         public int status { get; set; }
     
-        public virtual DetailFaktur DetailFaktur { get; set; }
         public virtual Employee Employee { get; set; }
-        public virtual PreOrderKain PreOrderKain { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DetailPenerimaanTukangPotong> DetailPenerimaanTukangPotongs { get; set; }
     }
 }

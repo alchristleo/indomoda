@@ -47,9 +47,6 @@
             this.btnExitAddSpkBordir = new MetroFramework.Controls.MetroButton();
             this.btnSaveAddSpkBordir = new MetroFramework.Controls.MetroButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.listPenerimaanTukangPotongBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
-            this.txtNoPTP = new MetroFramework.Controls.MetroTextBox();
             this.NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.noSeriDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -68,6 +65,9 @@
             this.idSPKBordirDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idSPKCMTDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idListPTPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.listPenerimaanTukangPotongBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
+            this.txtNoPTP = new MetroFramework.Controls.MetroTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.listPenerimaanTukangPotongBindingSource)).BeginInit();
@@ -372,51 +372,6 @@
             this.dataGridView1.TabIndex = 49;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
-            // listPenerimaanTukangPotongBindingSource
-            // 
-            this.listPenerimaanTukangPotongBindingSource.DataSource = typeof(Project.ListPenerimaanTukangPotong);
-            // 
-            // metroLabel7
-            // 
-            this.metroLabel7.AutoSize = true;
-            this.metroLabel7.Location = new System.Drawing.Point(37, 74);
-            this.metroLabel7.Name = "metroLabel7";
-            this.metroLabel7.Size = new System.Drawing.Size(91, 19);
-            this.metroLabel7.TabIndex = 50;
-            this.metroLabel7.Text = "Select No Seri";
-            // 
-            // txtNoPTP
-            // 
-            // 
-            // 
-            // 
-            this.txtNoPTP.CustomButton.Image = null;
-            this.txtNoPTP.CustomButton.Location = new System.Drawing.Point(162, 1);
-            this.txtNoPTP.CustomButton.Name = "";
-            this.txtNoPTP.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.txtNoPTP.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txtNoPTP.CustomButton.TabIndex = 1;
-            this.txtNoPTP.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txtNoPTP.CustomButton.UseSelectable = true;
-            this.txtNoPTP.CustomButton.Visible = false;
-            this.txtNoPTP.Lines = new string[0];
-            this.txtNoPTP.Location = new System.Drawing.Point(179, 74);
-            this.txtNoPTP.MaxLength = 32767;
-            this.txtNoPTP.Name = "txtNoPTP";
-            this.txtNoPTP.PasswordChar = '\0';
-            this.txtNoPTP.ReadOnly = true;
-            this.txtNoPTP.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtNoPTP.SelectedText = "";
-            this.txtNoPTP.SelectionLength = 0;
-            this.txtNoPTP.SelectionStart = 0;
-            this.txtNoPTP.ShortcutsEnabled = true;
-            this.txtNoPTP.Size = new System.Drawing.Size(184, 23);
-            this.txtNoPTP.TabIndex = 51;
-            this.txtNoPTP.UseSelectable = true;
-            this.txtNoPTP.Visible = false;
-            this.txtNoPTP.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txtNoPTP.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
             // NO
             // 
             this.NO.HeaderText = "No.";
@@ -479,6 +434,7 @@
             this.SPKSablonStatus.Name = "SPKSablonStatus";
             this.SPKSablonStatus.ReadOnly = true;
             this.SPKSablonStatus.Width = 120;
+            this.SPKSablonStatus.DefaultCellStyle.BackColor = System.Drawing.Color.Thistle;
             // 
             // SPKBordirStatus
             // 
@@ -495,6 +451,7 @@
             this.SPKCMTStatus.Name = "SPKCMTStatus";
             this.SPKCMTStatus.ReadOnly = true;
             this.SPKCMTStatus.Width = 120;
+            this.SPKCMTStatus.DefaultCellStyle.BackColor = System.Drawing.Color.LightSteelBlue;
             // 
             // statusSPKSablonDataGridViewTextBoxColumn
             // 
@@ -563,11 +520,56 @@
             this.idListPTPDataGridViewTextBoxColumn.ReadOnly = true;
             this.idListPTPDataGridViewTextBoxColumn.Visible = false;
             // 
+            // listPenerimaanTukangPotongBindingSource
+            // 
+            this.listPenerimaanTukangPotongBindingSource.DataSource = typeof(Project.ListPenerimaanTukangPotong);
+            // 
+            // metroLabel7
+            // 
+            this.metroLabel7.AutoSize = true;
+            this.metroLabel7.Location = new System.Drawing.Point(37, 74);
+            this.metroLabel7.Name = "metroLabel7";
+            this.metroLabel7.Size = new System.Drawing.Size(91, 19);
+            this.metroLabel7.TabIndex = 50;
+            this.metroLabel7.Text = "Select No Seri";
+            // 
+            // txtNoPTP
+            // 
+            // 
+            // 
+            // 
+            this.txtNoPTP.CustomButton.Image = null;
+            this.txtNoPTP.CustomButton.Location = new System.Drawing.Point(162, 1);
+            this.txtNoPTP.CustomButton.Name = "";
+            this.txtNoPTP.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.txtNoPTP.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtNoPTP.CustomButton.TabIndex = 1;
+            this.txtNoPTP.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtNoPTP.CustomButton.UseSelectable = true;
+            this.txtNoPTP.CustomButton.Visible = false;
+            this.txtNoPTP.Lines = new string[0];
+            this.txtNoPTP.Location = new System.Drawing.Point(179, 74);
+            this.txtNoPTP.MaxLength = 32767;
+            this.txtNoPTP.Name = "txtNoPTP";
+            this.txtNoPTP.PasswordChar = '\0';
+            this.txtNoPTP.ReadOnly = true;
+            this.txtNoPTP.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtNoPTP.SelectedText = "";
+            this.txtNoPTP.SelectionLength = 0;
+            this.txtNoPTP.SelectionStart = 0;
+            this.txtNoPTP.ShortcutsEnabled = true;
+            this.txtNoPTP.Size = new System.Drawing.Size(184, 23);
+            this.txtNoPTP.TabIndex = 51;
+            this.txtNoPTP.UseSelectable = true;
+            this.txtNoPTP.Visible = false;
+            this.txtNoPTP.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtNoPTP.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
             // AddSpkBordir
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1090, 610);
+            this.ClientSize = new System.Drawing.Size(1094, 610);
             this.Controls.Add(this.txtNoPTP);
             this.Controls.Add(this.metroLabel7);
             this.Controls.Add(this.dataGridView1);

@@ -400,6 +400,7 @@
             this.SPKSablonStatus.Name = "SPKSablonStatus";
             this.SPKSablonStatus.ReadOnly = true;
             this.SPKSablonStatus.Width = 120;
+            this.SPKSablonStatus.DefaultCellStyle.BackColor = System.Drawing.Color.Thistle;
             // 
             // SPKBordirStatus
             // 
@@ -415,6 +416,7 @@
             this.SPKCMTStatus.Name = "SPKCMTStatus";
             this.SPKCMTStatus.ReadOnly = true;
             this.SPKCMTStatus.Width = 120;
+            this.SPKCMTStatus.DefaultCellStyle.BackColor = System.Drawing.Color.LightSteelBlue;
             // 
             // statusSPKSablonDataGridViewTextBoxColumn
             // 

@@ -55,7 +55,7 @@ namespace Project
             using (indomodaEntities db = new indomodaEntities())
             {
                 colorBindingSource.DataSource = db.Colors.ToList();
-                List<ListPenerimaanTukangPotong> listPTP = GenericQuery.SqlQuery<ListPenerimaanTukangPotong>("SELECT lp.idListPTP, lp.idPenerimaanTukangPotong, lp.noSeri, lp.model, lp.ColorID, lp.merk, lp.ukuran, lp.quantity, lp.statusSPKSablon, lp.statusSPKBordir, lp.statusSPKCMT, lp.statusNoSeri, lp.idSPKSablon, lp.idSPKBordir, lp.idSPKCMT  FROM ListPenerimaanTukangPotong lp ORDER BY lp.statusSPKBordir ASC");
+                List<ListPenerimaanTukangPotong> listPTP = GenericQuery.SqlQuery<ListPenerimaanTukangPotong>("SELECT lp.idListPTP, lp.idPenerimaanTukangPotong, lp.noSeri, lp.model, lp.ColorID, lp.merk, lp.ukuran, lp.quantity, lp.statusSPKSablon, lp.statusSPKBordir, lp.statusSPKCMT, lp.statusNoSeri, lp.idSPKSablon, lp.idSPKBordir, lp.idSPKCMT  FROM ListPenerimaanTukangPotong lp WHERE lp.statusNoSeri  = '"+0+"' ORDER BY lp.statusSPKBordir ASC");
                 listPenerimaanTukangPotongBindingSource.DataSource = listPTP.ToList();
 
                 int rowCount = dataGridView1.Rows.Count;
@@ -175,7 +175,10 @@ namespace Project
             {
                 int getIDSPK = Convert.ToInt32(SPKBordir.idSPK);
                 bool setStatusBordir = true;
-
+                bool setStatusSablon = Convert.ToBoolean(dba.statusSPKSablon.ToString());
+                bool setStatusCMT = Convert.ToBoolean(dba.statusSPKCMT.ToString());
+                int setIDSPKSablon = Convert.ToInt32(dba.idSPKSablon.ToString());
+                int setIDSPKCMT = Convert.ToInt32(dba.idSPKCMT.ToString());
                 if (MetroFramework.MetroMessageBox.Show(this, "Do you want to update this List penerimaan tukang potong?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     try
@@ -201,13 +204,13 @@ namespace Project
                             merk = txtMerkBordir.Text,
                             ukuran = txtUkuranBordir.Text,
                             quantity = Convert.ToDouble(txtQtyBordir.Text.ToString()),
-                            statusSPKSablon = false,
+                            statusSPKSablon = setStatusSablon,
                             statusSPKBordir = setStatusBordir,
-                            statusSPKCMT = false,
+                            statusSPKCMT = setStatusCMT,
                             statusNoSeri = 0,
-                            idSPKSablon = 0,
+                            idSPKSablon = setIDSPKSablon,
                             idSPKBordir = getIDSPK,
-                            idSPKCMT = 0
+                            idSPKCMT = setIDSPKCMT
                         });
 
                         _dv.Refresh();
