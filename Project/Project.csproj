@@ -128,7 +128,6 @@
     <Compile Include="Employee.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="EmployeeModel.cs" />
     <Compile Include="ExtensionAttribute.cs" />
     <Compile Include="Helpers\EncryptDecrypt.cs" />
     <Compile Include="Helpers\GenericQuery.cs" />
@@ -211,6 +210,7 @@
     <Compile Include="Models\ListPTPModel.cs" />
     <Compile Include="Models\PemotonganKainModel.cs" />
     <Compile Include="Models\POKainModel.cs" />
+    <Compile Include="Models\QuantityRecordPTPModel.cs" />
     <Compile Include="Models\SupplierModel.cs" />
     <Compile Include="PenerimaanSBC.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -226,6 +226,12 @@
     </Compile>
     <Compile Include="Penerimaan\PenerimaanBordir.Designer.cs">
       <DependentUpon>PenerimaanBordir.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Penerimaan\UpdateQuantity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Penerimaan\UpdateQuantity.Designer.cs">
+      <DependentUpon>UpdateQuantity.cs</DependentUpon>
     </Compile>
     <Compile Include="PreOrderKain.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -381,6 +387,9 @@
     <EmbeddedResource Include="Penerimaan\PenerimaanBordir.resx">
       <DependentUpon>PenerimaanBordir.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Penerimaan\UpdateQuantity.resx">
+      <DependentUpon>UpdateQuantity.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SPK\AddSpkCmt.resx">
       <DependentUpon>AddSpkCmt.cs</DependentUpon>
     </EmbeddedResource>
@@ -452,6 +461,7 @@
     <None Include="Properties\DataSources\DetailLog.datasource" />
     <None Include="Properties\DataSources\DetailPemotonganKain.datasource" />
     <None Include="Properties\DataSources\DetailPO.datasource" />
+    <None Include="Properties\DataSources\DetailSPK.datasource" />
     <None Include="Properties\DataSources\Employee.datasource" />
     <None Include="Properties\DataSources\IndomodaSupplier.datasource" />
     <None Include="Properties\DataSources\ListPenerimaanTukangPotong.datasource" />

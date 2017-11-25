@@ -148,6 +148,23 @@ namespace Project
                             });
                         db.SaveChangesAsync().Wait();
 
+                        int setIDQR = db.QuantityRecords.AsEnumerable().LastOrDefault() == null ? 1 : db.QuantityRecords.AsEnumerable().LastOrDefault().id + 1;
+                        string noSeri = txtNoSeriTukangPotong.Text;
+                        int b = GenericQuery.ExecSQLCommand("INSERT INTO QuantityRecord (id, noSeri, qtyAwalSablon, qtySablonBS, qtySablonHilang, qtyAwalBordir, qtyBordirBS, qtyBordirHilang, qtyAwalCMT, qtyCMTBS, qtyCMTHilang) VALUES(@id, @noSeri, @qtyAwalSablon, @qtySablonBS, @qtySablonHilang, @qtyAwalBordir, @qtyBordirBS, @qtyBordirHilang, @qtyAwalCMT, @qtyCMTBS, @qtyCMTHilang)", new[] {
+                                new SqlParameter("@id", setIDQR),
+                                new SqlParameter("@noSeri", noSeri),
+                                new SqlParameter("@qtyAwalSablon", 0),
+                                new SqlParameter("@qtySablonBS", 0),
+                                new SqlParameter("@qtySablonHilang", 0),
+                                new SqlParameter("@qtyAwalBordir", 0),
+                                new SqlParameter("@qtyBordirBS", 0),
+                                new SqlParameter("@qtyBordirHilang", 0),
+                                new SqlParameter("@qtyAwalCMT", 0),
+                                new SqlParameter("@qtyCMTBS", 0),
+                                new SqlParameter("@qtyCMTHilang", 0)
+                            });
+                        db.SaveChangesAsync().Wait();
+
                         if (_bs == null)
                         {
                             _bs = new BindingSource();

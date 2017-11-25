@@ -32,7 +32,7 @@ namespace Project
                     txtSupplierCode.Text = db.SupplierCode.ToString();
                     txtSupplierName.Text = db.SupplierName.ToString();
                     txtPONumber.Text = db.PONumber.ToString();
-                    List<FakturDetailPO> listFakturDetail = GenericQuery.SqlQuery<FakturDetailPO>("select df.idFaktur, df.NoFaktur, df.PONumber, df.status, dp.DetailPOID, dp.MaterialID, dp.ColorID, dp.DetailQty, dp.DetailStatus, dp.statusFaktur, dp.noPemotonganKain, dp.tempPemotongan from DetailFaktur df JOIN DetailPO dp on df.PONumber = dp.PONumber WHERE df.PONumber = '" + poNumber + "'");
+                    List<FakturDetailPO> listFakturDetail = GenericQuery.SqlQuery<FakturDetailPO>("SELECT df.idFaktur, df.NoFaktur, df.PONumber, df.status, dp.DetailPOID, dp.MaterialID, dp.ColorID, dp.DetailQty, dp.DetailStatus, dp.statusFaktur, dp.noPemotonganKain, dp.tempPemotongan from DetailFaktur df JOIN DetailPO dp on df.PONumber = dp.PONumber WHERE df.PONumber = '" + poNumber + "'");
                     detailPOBindingSource.DataSource = listFakturDetail.ToList();
 
                     int rowCount = dataGridView1.Rows.Count;

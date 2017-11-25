@@ -92,7 +92,7 @@ namespace Project
             }
             else
             {
-                idPenerimaanTukangPotong = Convert.ToInt32(txtIDPenerimaanTukangPotong.Text.ToString());
+                idPenerimaanTukangPotong = Convert.ToInt32(txtIDPenerimaanTukangPotong.Text);
                 AddPenerimaanTukangPotong addPenerimaanTukangPotong = new AddPenerimaanTukangPotong();
                 addPenerimaanTukangPotong.setDGV(ref dataGridView1);
                 addPenerimaanTukangPotong.setBS(ref listPenerimaanTukangPotongBindingSource);
@@ -204,12 +204,12 @@ namespace Project
                         string setNoPK = cboNoPemotonganKain.SelectedValue.ToString();
                         bool setStatusPTK = false;
                         int a = GenericQuery.ExecSQLCommand("INSERT INTO DetailPenerimaanTukangPotong (idPenerimaanTukangPotong, noPenerimaanTukangPotong, noPemotonganKain, Date_time, status) VALUES(@idPenerimaanTukangPotong, @noPenerimaanTukangPotong, @noPemotonganKain, @Date_time, @status)", new[] {
-                                new SqlParameter("@idPenerimaanTukangPotong", setIDPTK),
-                                new SqlParameter("@noPenerimaanTukangPotong", noPTK),
-                                new SqlParameter("@noPemotonganKain", setNoPK),
-                                new SqlParameter("@Date_time", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")),
-                                new SqlParameter("@status", setStatusPTK)
-                            });
+                            new SqlParameter("@idPenerimaanTukangPotong", setIDPTK),
+                            new SqlParameter("@noPenerimaanTukangPotong", noPTK),
+                            new SqlParameter("@noPemotonganKain", setNoPK),
+                            new SqlParameter("@Date_time", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")),
+                            new SqlParameter("@status", setStatusPTK)
+                        });
 
                         db.SaveChangesAsync().Wait();
 

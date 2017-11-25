@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Project.Helpers;
+using Project.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,11 +11,109 @@ using System.Windows.Forms;
 
 namespace Project
 {
-    public partial class PenerimaanSablon : Form
+    public partial class PenerimaanSablon : MetroFramework.Forms.MetroForm
     {
         public PenerimaanSablon()
         {
             InitializeComponent();
+        }
+
+        private void cboPicPenerimaanSablon_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboPicPenerimaanSablon.Items.Count > 0 && cboPicPenerimaanSablon.Text != "")
+            {
+                int eID = Convert.ToInt32(cboPicPenerimaanSablon.SelectedValue.ToString());
+                var dba = GenericQuery.SqlQuerySingle<Employee>("SELECT e.EmployeeID, e.EmployeeName, e.EmployeeCode, e.EmployeeEmail, e.EmployeePhone, e.EmployeePosition from Employees e WHERE e.EmployeeID = '" + eID + "'");
+                txtPICCodePenerimaan.Text = dba.EmployeeCode.ToString();
+            }
+        }
+
+        private void cboNoSpkSablonPenerimaan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboNoSpkSablonPenerimaan.Items.Count > 0 && cboNoSpkSablonPenerimaan.Text != "")
+            {
+                cboNoSpkSablonPenerimaan.Refresh();
+                int idSPK = Convert.ToInt32(cboNoSpkSablonPenerimaan.SelectedValue.ToString());
+                List<QuantityRecordPTPModel> listPTP = GenericQuery.SqlQuery<QuantityRecordPTPModel>("SELECT df.idListPTP, df.idPenerimaanTukangPotong, df.noSeri, df.model, df.ColorID, df.merk, df.ukuran, df.quantity, df.statusSPKSablon, df.statusSPKBordir, df.statusSPKCMT, df.statusNoSeri, df.idSPKSablon, df.idSPKBordir, df.idSPKCMT, qr.id, qr.qtyAwalSablon, qr.qtySablonBS, qr.qtySablonHilang, qr.qtyAwalBordir, qr.qtyBordirBS, qr.qtyBordirHilang, qr.qtyAwalCMT, qr.qtyCMTBS, qr.qtyCMTHilang FROM ListPenerimaanTukangPotong df JOIN QuantityRecord qr on df.noSeri = qr.noSeri WHERE df.idSPKSablon = '" + idSPK + "' AND df.statusNoSeri = '" + 0 + "'");
+                listPenerimaanTukangPotongBindingSource.DataSource = listPTP.ToList();
+
+                int rowCount = dataGridView1.Rows.Count;
+                for (int i = 0; i < rowCount; i++)
+                {
+                    string sablon = dataGridView1.Rows[i].Cells[12].Value.ToString();
+                    string bordir = dataGridView1.Rows[i].Cells[13].Value.ToString();
+                    string cmt = dataGridView1.Rows[i].Cells[14].Value.ToString();
+
+                    if (sablon == "True")
+                    {
+                        dataGridView1.Columns[9].ValueType = typeof(String);
+                        dataGridView1.Rows[i].Cells[9].Value = "Sudah di sablon";
+                        dataGridView1.UpdateCellValue(9, i);
+                    }
+                    else
+                    {
+
+                        dataGridView1.Columns[9].ValueType = typeof(String);
+                        dataGridView1.Rows[i].Cells[9].Value = "-";
+                        dataGridView1.UpdateCellValue(9, i);
+                    }
+
+                    if (bordir == "True")
+                    {
+                        dataGridView1.Columns[10].ValueType = typeof(String);
+                        dataGridView1.Rows[i].Cells[10].Value = "Sudah di bordir";
+                        dataGridView1.UpdateCellValue(10, i);
+                    }
+                    else
+                    {
+
+                        dataGridView1.Columns[10].ValueType = typeof(String);
+                        dataGridView1.Rows[i].Cells[10].Value = "-";
+                        dataGridView1.UpdateCellValue(10, i);
+                    }
+
+                    if (cmt == "True")
+                    {
+                        dataGridView1.Columns[11].ValueType = typeof(String);
+                        dataGridView1.Rows[i].Cells[11].Value = "Sudah di sablon";
+                        dataGridView1.UpdateCellValue(11, i);
+                    }
+                    else
+                    {
+
+                        dataGridView1.Columns[11].ValueType = typeof(String);
+                        dataGridView1.Rows[i].Cells[11].Value = "-";
+                        dataGridView1.UpdateCellValue(11, i);
+                    }
+
+                    dataGridView1.Columns[0].ValueType = typeof(int);
+                    dataGridView1.Rows[i].Cells[0].Value = i + 1;
+                    dataGridView1.UpdateCellValue(0, i);
+                }
+                dataGridView1.Refresh();
+            }
+        }
+
+        private void PenerimaanSablon_Load(object sender, EventArgs e)
+        {
+            using (indomodaEntities db = new indomodaEntities())
+            {
+                string type = "sablon";
+                employeeBindingSource.DataSource = db.Employees.ToList();
+                colorBindingSource.DataSource = db.Colors.ToList();
+                List<DetailSPK> cboPK = GenericQuery.SqlQuery<DetailSPK>("select sp.idSPK, sp.noSPK, sp.EmployeeID, sp.Datetime, sp.type, sp.status FROM DetailSPK sp WHERE sp.type = '" + type +"'");
+                detailSPKBindingSource.DataSource = cboPK.ToList();
+            }
+        }
+
+        private void btnUpdateStatusPemotongan_Click(object sender, EventArgs e)
+        {
+            int currentIDPTP = Convert.ToInt32(dataGridView1[7, dataGridView1.CurrentRow.Index].Value.ToString());
+        }
+
+        private void btnSavePenerimaanSablon_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void btnExitPenerimaanSablon_Click(object sender, EventArgs e)
