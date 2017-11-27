@@ -23,6 +23,20 @@
           <Property Name="CustomerAddress" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="CustomerPhone" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'indomoda.dbo.DatetimeNotification' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="DatetimeNotification">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="noSeri" />
+            <PropertyRef Name="Date_insert" />
+            <PropertyRef Name="NotifyStatus" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="noSeri" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Date_insert" Type="datetime" Nullable="false" />
+          <Property Name="NotifyStatus" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="DetailFaktur">
           <Key>
             <PropertyRef Name="idFaktur" />
@@ -276,6 +290,14 @@
           <EntitySet Name="PreOrderKains" EntityType="Self.PreOrderKains" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="QuantityRecord" EntityType="Self.QuantityRecord" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DatetimeNotification" EntityType="Self.DatetimeNotification" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [DatetimeNotification].[id] AS [id], 
+    [DatetimeNotification].[noSeri] AS [noSeri], 
+    [DatetimeNotification].[Date_insert] AS [Date_insert], 
+    [DatetimeNotification].[NotifyStatus] AS [NotifyStatus]
+    FROM [dbo].[DatetimeNotification] AS [DatetimeNotification]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_DetailPemotonganKain_Employee" Association="Self.FK_DetailPemotonganKain_Employee">
             <End Role="Employees" EntitySet="Employees" />
             <End Role="DetailPemotonganKain" EntitySet="DetailPemotonganKain" />
@@ -385,6 +407,7 @@
             <End Role="IndomodaSupplier" EntitySet="IndomodaSuppliers" />
             <End Role="PreOrderKain" EntitySet="PreOrderKains" />
           </AssociationSet>
+          <EntitySet Name="DatetimeNotifications" EntityType="indomodaModel.DatetimeNotification" />
           </EntityContainer>
         <EntityType Name="Employee">
           <Key>
@@ -613,6 +636,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="DatetimeNotification">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="noSeri" />
+            <PropertyRef Name="Date_insert" />
+            <PropertyRef Name="NotifyStatus" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="noSeri" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Date_insert" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NotifyStatus" Type="Boolean" Nullable="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -812,6 +847,16 @@
                 <ScalarProperty Name="qtySablonHilang" ColumnName="qtySablonHilang" />
                 <ScalarProperty Name="qtySablonBS" ColumnName="qtySablonBS" />
                 <ScalarProperty Name="qtyAwalSablon" ColumnName="qtyAwalSablon" />
+                <ScalarProperty Name="noSeri" ColumnName="noSeri" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DatetimeNotifications">
+            <EntityTypeMapping TypeName="indomodaModel.DatetimeNotification">
+              <MappingFragment StoreEntitySet="DatetimeNotification">
+                <ScalarProperty Name="NotifyStatus" ColumnName="NotifyStatus" />
+                <ScalarProperty Name="Date_insert" ColumnName="Date_insert" />
                 <ScalarProperty Name="noSeri" ColumnName="noSeri" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>

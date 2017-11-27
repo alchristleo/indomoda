@@ -42,7 +42,7 @@ namespace Project
         public virtual DbSet<PenerimaanSBC> PenerimaanSBCs { get; set; }
         public virtual DbSet<PreOrderKain> PreOrderKains { get; set; }
         public virtual DbSet<QuantityRecord> QuantityRecords { get; set; }
-
+        public virtual DbSet<DatetimeNotification> DatetimeNotifications { get; set; }
         internal Task<int> SaveChangesAsync()
         {
             return Task.Factory.StartNew(() => base.SaveChanges());

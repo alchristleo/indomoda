@@ -101,6 +101,9 @@
     <Compile Include="Customer.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="DatetimeNotification.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="DetailFaktur.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>

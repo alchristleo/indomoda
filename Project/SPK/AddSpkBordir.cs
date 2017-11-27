@@ -96,7 +96,7 @@ namespace Project
                     if (cmt == "True")
                     {
                         dataGridView1.Columns[9].ValueType = typeof(String);
-                        dataGridView1.Rows[i].Cells[9].Value = "Sudah di sablon";
+                        dataGridView1.Rows[i].Cells[9].Value = "Sudah di CMT";
                         dataGridView1.UpdateCellValue(9, i);
                     }
                     else

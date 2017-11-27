@@ -27,6 +27,7 @@
         <AssociationConnector Association="indomodaModel.FK_DetailPemotonganKain_Employee" />
         <AssociationConnector Association="indomodaModel.FK_DetailSPKSablon_Employees" />
         <AssociationConnector Association="indomodaModel.FK_POKain_Suppliers" />
+        <EntityTypeShape EntityType="indomodaModel.DatetimeNotification" Width="1.5" PointX="10.125" PointY="4.25" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

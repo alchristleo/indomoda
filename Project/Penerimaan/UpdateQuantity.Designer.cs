@@ -1,4 +1,4 @@
-﻿namespace Project.Penerimaan
+﻿namespace Project
 {
     partial class UpdateQuantity
     {
@@ -72,6 +72,7 @@
             // 
             // btnExitUpdate
             // 
+            this.btnExitUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnExitUpdate.Location = new System.Drawing.Point(148, 302);
             this.btnExitUpdate.Name = "btnExitUpdate";
             this.btnExitUpdate.Size = new System.Drawing.Size(89, 56);
@@ -82,6 +83,7 @@
             // 
             // btnSaveUpdate
             // 
+            this.btnSaveUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSaveUpdate.Location = new System.Drawing.Point(303, 302);
             this.btnSaveUpdate.Name = "btnSaveUpdate";
             this.btnSaveUpdate.Size = new System.Drawing.Size(89, 56);
@@ -236,6 +238,7 @@
             this.txtQuantityAwal.MaxLength = 32767;
             this.txtQuantityAwal.Name = "txtQuantityAwal";
             this.txtQuantityAwal.PasswordChar = '\0';
+            this.txtQuantityAwal.ReadOnly = true;
             this.txtQuantityAwal.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtQuantityAwal.SelectedText = "";
             this.txtQuantityAwal.SelectionLength = 0;

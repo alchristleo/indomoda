@@ -150,19 +150,30 @@ namespace Project
 
                         int setIDQR = db.QuantityRecords.AsEnumerable().LastOrDefault() == null ? 1 : db.QuantityRecords.AsEnumerable().LastOrDefault().id + 1;
                         string noSeri = txtNoSeriTukangPotong.Text;
+                        double qty = 0;
                         int b = GenericQuery.ExecSQLCommand("INSERT INTO QuantityRecord (id, noSeri, qtyAwalSablon, qtySablonBS, qtySablonHilang, qtyAwalBordir, qtyBordirBS, qtyBordirHilang, qtyAwalCMT, qtyCMTBS, qtyCMTHilang) VALUES(@id, @noSeri, @qtyAwalSablon, @qtySablonBS, @qtySablonHilang, @qtyAwalBordir, @qtyBordirBS, @qtyBordirHilang, @qtyAwalCMT, @qtyCMTBS, @qtyCMTHilang)", new[] {
                                 new SqlParameter("@id", setIDQR),
                                 new SqlParameter("@noSeri", noSeri),
-                                new SqlParameter("@qtyAwalSablon", 0),
-                                new SqlParameter("@qtySablonBS", 0),
-                                new SqlParameter("@qtySablonHilang", 0),
-                                new SqlParameter("@qtyAwalBordir", 0),
-                                new SqlParameter("@qtyBordirBS", 0),
-                                new SqlParameter("@qtyBordirHilang", 0),
-                                new SqlParameter("@qtyAwalCMT", 0),
-                                new SqlParameter("@qtyCMTBS", 0),
-                                new SqlParameter("@qtyCMTHilang", 0)
+                                new SqlParameter("@qtyAwalSablon", qty),
+                                new SqlParameter("@qtySablonBS", qty),
+                                new SqlParameter("@qtySablonHilang", qty),
+                                new SqlParameter("@qtyAwalBordir", qty),
+                                new SqlParameter("@qtyBordirBS", qty),
+                                new SqlParameter("@qtyBordirHilang", qty),
+                                new SqlParameter("@qtyAwalCMT", qty),
+                                new SqlParameter("@qtyCMTBS", qty),
+                                new SqlParameter("@qtyCMTHilang", qty)
                             });
+                        db.SaveChangesAsync().Wait();
+
+                        int setIDN = db.DatetimeNotifications.AsEnumerable().LastOrDefault() == null ? 1 : db.DatetimeNotifications.AsEnumerable().LastOrDefault().id + 1;
+                        bool nStatus = true;
+                        int c = GenericQuery.ExecSQLCommand("INSERT INTO DatetimeNotification (id, noSeri, Date_insert, NotifyStatus) VALUES(@id, @noSeri, @Date_insert, @NotifyStatus)", new[] {
+                                new SqlParameter("@id", setIDN),
+                                new SqlParameter("@noSeri", noSeri),
+                                new SqlParameter("@Date_insert", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")),
+                                new SqlParameter("@NotifyStatus", nStatus),
+                        });
                         db.SaveChangesAsync().Wait();
 
                         if (_bs == null)

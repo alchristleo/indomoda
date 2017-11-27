@@ -80,6 +80,7 @@
       <End Role="IndomodaSupplier" EntitySet="IndomodaSuppliers" />
       <End Role="PreOrderKain" EntitySet="PreOrderKains" />
     </AssociationSet>
+    <EntitySet Name="DatetimeNotifications" EntityType="indomodaModel.DatetimeNotification" />
   </EntityContainer>
   <EntityType Name="Employee">
     <Key>
@@ -308,4 +309,16 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="DatetimeNotification">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="noSeri" />
+      <PropertyRef Name="Date_insert" />
+      <PropertyRef Name="NotifyStatus" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="noSeri" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Date_insert" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="NotifyStatus" Type="Boolean" Nullable="false" />
+  </EntityType>
 </Schema>

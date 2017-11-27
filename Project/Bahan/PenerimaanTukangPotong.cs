@@ -85,7 +85,7 @@ namespace Project
 
         private void btnAddPenerimaanTukangPotong_Click(object sender, EventArgs e)
         {
-            if (cboNoPemotonganKain.Items.Count > 0 && txtPICCode.Text == "" && txtPICName.Text == "")
+            if (cboNoPemotonganKain.Items.Count < 1 && txtPICCode.Text == "" && txtPICName.Text == "")
             {
                 MetroFramework.MetroMessageBox.Show(this, "You must select No pemotongan kain first!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 cboNoPemotonganKain.Focus();
@@ -135,9 +135,16 @@ namespace Project
                         {
                             int currentRow = dataGridView1.CurrentRow.Index;
                             int currentIDPTP = Convert.ToInt32(dataGridView1[7, dataGridView1.CurrentRow.Index].Value.ToString());
+                            string noSeri = dataGridView1[1, dataGridView1.CurrentRow.Index].Value.ToString();
                             int b = GenericQuery.ExecSQLCommand("DELETE FROM ListPenerimaanTukangPotong WHERE idListPTP = '" + currentIDPTP + "'");
                             db.SaveChangesAsync().Wait();
                             dataGridView1.Rows.RemoveAt(currentRow);
+
+                            int c = GenericQuery.ExecSQLCommand("DELETE FROM QuantityRecord WHERE noSeri = '" + noSeri + "'");
+                            db.SaveChangesAsync().Wait();
+
+                            int d = GenericQuery.ExecSQLCommand("DELETE FROM DatetimeNotification WHERE noSeri = '"+noSeri+"'");
+                            db.SaveChangesAsync().Wait();
 
                             int rowCount = dataGridView1.Rows.Count;
                             for (int i = 0; i < rowCount; i++)
