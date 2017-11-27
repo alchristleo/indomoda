@@ -81,6 +81,7 @@
     </AssociationSet>
     <EntitySet Name="DatetimeNotifications" EntityType="indomodaModel.DatetimeNotification" />
     <EntitySet Name="PenerimaanSBCs" EntityType="indomodaModel.PenerimaanSBC" />
+    <EntitySet Name="DetailPenerimaanSBCs" EntityType="indomodaModel.DetailPenerimaanSBC" />
   </EntityContainer>
   <EntityType Name="Employee">
     <Key>
@@ -321,5 +322,16 @@
     <Property Name="Datetime" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="status" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DetailPenerimaanSBC">
+    <Key>
+      <PropertyRef Name="idDetail" />
+    </Key>
+    <Property Name="idDetail" Type="Int32" Nullable="false" />
+    <Property Name="noPenerimaan" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="noSPK" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="noSeri" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tempStatus" Type="Int32" Nullable="false" />
   </EntityType>
 </Schema>

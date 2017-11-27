@@ -68,6 +68,19 @@ warning 6002: The table/view 'indomoda.dbo.DatetimeNotification' does not have a
           <Property Name="Date_time" Type="datetime" Nullable="false" />
           <Property Name="status" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="DetailPenerimaanSBC">
+          <Key>
+            <PropertyRef Name="idDetail" />
+          </Key>
+          <Property Name="idDetail" Type="int" Nullable="false" />
+          <Property Name="noPenerimaan" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="noSPK" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="noSeri" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="tempSablon" Type="int" Nullable="false" />
+          <Property Name="tempBordir" Type="int" Nullable="false" />
+          <Property Name="tempCMT" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="DetailPenerimaanTukangPotong">
           <Key>
             <PropertyRef Name="idPenerimaanTukangPotong" />
@@ -202,6 +215,18 @@ warning 6002: The table/view 'indomoda.dbo.DatetimeNotification' does not have a
           <Property Name="UserPassword" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="UserRole" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <Association Name="FK_DetailLogs_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="DetailLogs" Type="Self.DetailLogs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="DetailLogs">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_DetailPemotonganKain_Employee">
           <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
           <End Role="DetailPemotonganKain" Type="Self.DetailPemotonganKain" Multiplicity="*" />
@@ -280,6 +305,7 @@ warning 6002: The table/view 'indomoda.dbo.DatetimeNotification' does not have a
           <EntitySet Name="DetailFaktur" EntityType="Self.DetailFaktur" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DetailLogs" EntityType="Self.DetailLogs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DetailPemotonganKain" EntityType="Self.DetailPemotonganKain" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetailPenerimaanSBC" EntityType="Self.DetailPenerimaanSBC" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DetailPenerimaanTukangPotong" EntityType="Self.DetailPenerimaanTukangPotong" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DetailPO" EntityType="Self.DetailPO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DetailSPK" EntityType="Self.DetailSPK" Schema="dbo" store:Type="Tables" />
@@ -299,6 +325,10 @@ warning 6002: The table/view 'indomoda.dbo.DatetimeNotification' does not have a
     [DatetimeNotification].[NotifyStatus] AS [NotifyStatus]
     FROM [dbo].[DatetimeNotification] AS [DatetimeNotification]</DefiningQuery>
           </EntitySet>
+          <AssociationSet Name="FK_DetailLogs_Users" Association="Self.FK_DetailLogs_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="DetailLogs" EntitySet="DetailLogs" />
+          </AssociationSet>
           <AssociationSet Name="FK_DetailPemotonganKain_Employee" Association="Self.FK_DetailPemotonganKain_Employee">
             <End Role="Employees" EntitySet="Employees" />
             <End Role="DetailPemotonganKain" EntitySet="DetailPemotonganKain" />
@@ -358,20 +388,10 @@ warning 6002: The table/view 'indomoda.dbo.DatetimeNotification' does not have a
           <Property Name="MaterialName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="DetailPOes" Relationship="indomodaModel.FK_DetailPO_Materials" FromRole="Material" ToRole="DetailPO" />
         </EntityType>
-        <EntityType Name="User">
-          <Key>
-            <PropertyRef Name="UserID" />
-          </Key>
-          <Property Name="UserID" Type="Int32" Nullable="false" />
-          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="UserPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="UserRole" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-        </EntityType>
         <EntityContainer Name="indomodaEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Customers" EntityType="Self.Customer" />
           <EntitySet Name="IndomodaSuppliers" EntityType="Self.IndomodaSupplier" />
           <EntitySet Name="Materials" EntityType="Self.Material" />
-          <EntitySet Name="Users" EntityType="Self.User" />
           <EntitySet Name="Employees" EntityType="indomodaModel.Employee" />
           <EntitySet Name="DetailPenerimaanTukangPotongs" EntityType="indomodaModel.DetailPenerimaanTukangPotong" />
           <EntitySet Name="Colors" EntityType="indomodaModel.Color" />
@@ -385,7 +405,6 @@ warning 6002: The table/view 'indomoda.dbo.DatetimeNotification' does not have a
             <End Role="DetailPO" EntitySet="DetailPOes" />
           </AssociationSet>
           <EntitySet Name="DetailFakturs" EntityType="indomodaModel.DetailFaktur" />
-          <EntitySet Name="DetailLogs" EntityType="indomodaModel.DetailLog" />
           <EntitySet Name="DetailPemotonganKains" EntityType="indomodaModel.DetailPemotonganKain" />
           <EntitySet Name="DetailSPKs" EntityType="indomodaModel.DetailSPK" />
           <EntitySet Name="ListPenerimaanTukangPotongs" EntityType="indomodaModel.ListPenerimaanTukangPotong" />
@@ -409,6 +428,13 @@ warning 6002: The table/view 'indomoda.dbo.DatetimeNotification' does not have a
           </AssociationSet>
           <EntitySet Name="DatetimeNotifications" EntityType="indomodaModel.DatetimeNotification" />
           <EntitySet Name="PenerimaanSBCs" EntityType="indomodaModel.PenerimaanSBC" />
+          <EntitySet Name="DetailPenerimaanSBCs" EntityType="indomodaModel.DetailPenerimaanSBC" />
+          <EntitySet Name="DetailLogs" EntityType="indomodaModel.DetailLog" />
+          <EntitySet Name="Users" EntityType="indomodaModel.User" />
+          <AssociationSet Name="FK_DetailLogs_Users" Association="indomodaModel.FK_DetailLogs_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="DetailLog" EntitySet="DetailLogs" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="Employee">
           <Key>
@@ -494,15 +520,6 @@ warning 6002: The table/view 'indomoda.dbo.DatetimeNotification' does not have a
           <Property Name="PONumber" Type="Int64" Nullable="false" />
           <Property Name="Date_time" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="status" Type="Boolean" Nullable="false" />
-        </EntityType>
-        <EntityType Name="DetailLog">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="UserID" Type="Int32" Nullable="false" />
-          <Property Name="Datetime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="activity" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="DetailPemotonganKain">
           <Key>
@@ -650,6 +667,51 @@ warning 6002: The table/view 'indomoda.dbo.DatetimeNotification' does not have a
           <Property Name="type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="status" Type="Int32" Nullable="false" />
         </EntityType>
+        <EntityType Name="DetailPenerimaanSBC">
+          <Key>
+            <PropertyRef Name="idDetail" />
+          </Key>
+          <Property Name="idDetail" Type="Int32" Nullable="false" />
+          <Property Name="noPenerimaan" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="noSPK" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="noSeri" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tempSablon" Type="Int32" Nullable="false" />
+          <Property Name="tempBordir" Type="Int32" Nullable="false" />
+          <Property Name="tempCMT" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DetailLog">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="Datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="activity" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="User" Relationship="indomodaModel.FK_DetailLogs_Users" FromRole="DetailLog" ToRole="User" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserPassword" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserRole" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DetailLogs" Relationship="indomodaModel.FK_DetailLogs_Users" FromRole="User" ToRole="DetailLog" />
+        </EntityType>
+        <Association Name="FK_DetailLogs_Users">
+          <End Type="indomodaModel.User" Role="User" Multiplicity="1" />
+          <End Type="indomodaModel.DetailLog" Role="DetailLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="DetailLog">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -684,16 +746,6 @@ warning 6002: The table/view 'indomoda.dbo.DatetimeNotification' does not have a
                 <ScalarProperty Name="MaterialID" ColumnName="MaterialID" />
                 <ScalarProperty Name="MaterialCode" ColumnName="MaterialCode" />
                 <ScalarProperty Name="MaterialName" ColumnName="MaterialName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="indomodaModel.User">
-              <MappingFragment StoreEntitySet="Users">
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
-                <ScalarProperty Name="UserRole" ColumnName="UserRole" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -754,16 +806,6 @@ warning 6002: The table/view 'indomoda.dbo.DatetimeNotification' does not have a
                 <ScalarProperty Name="PONumber" ColumnName="PONumber" />
                 <ScalarProperty Name="NoFaktur" ColumnName="NoFaktur" />
                 <ScalarProperty Name="idFaktur" ColumnName="idFaktur" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DetailLogs">
-            <EntityTypeMapping TypeName="indomodaModel.DetailLog">
-              <MappingFragment StoreEntitySet="DetailLogs">
-                <ScalarProperty Name="activity" ColumnName="activity" />
-                <ScalarProperty Name="Datetime" ColumnName="Datetime" />
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -862,6 +904,40 @@ warning 6002: The table/view 'indomoda.dbo.DatetimeNotification' does not have a
                 <ScalarProperty Name="noSPK" ColumnName="noSPK" />
                 <ScalarProperty Name="noPenerimaan" ColumnName="noPenerimaan" />
                 <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetailPenerimaanSBCs">
+            <EntityTypeMapping TypeName="indomodaModel.DetailPenerimaanSBC">
+              <MappingFragment StoreEntitySet="DetailPenerimaanSBC">
+                <ScalarProperty Name="tempCMT" ColumnName="tempCMT" />
+                <ScalarProperty Name="tempBordir" ColumnName="tempBordir" />
+                <ScalarProperty Name="tempSablon" ColumnName="tempSablon" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="noSeri" ColumnName="noSeri" />
+                <ScalarProperty Name="noSPK" ColumnName="noSPK" />
+                <ScalarProperty Name="noPenerimaan" ColumnName="noPenerimaan" />
+                <ScalarProperty Name="idDetail" ColumnName="idDetail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetailLogs">
+            <EntityTypeMapping TypeName="indomodaModel.DetailLog">
+              <MappingFragment StoreEntitySet="DetailLogs">
+                <ScalarProperty Name="activity" ColumnName="activity" />
+                <ScalarProperty Name="Datetime" ColumnName="Datetime" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="indomodaModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserRole" ColumnName="UserRole" />
+                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

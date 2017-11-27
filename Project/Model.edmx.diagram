@@ -8,7 +8,6 @@
         <EntityTypeShape EntityType="indomodaModel.Customer" Width="1.5" PointX="12.875" PointY="5.875" IsExpanded="true" />
         <EntityTypeShape EntityType="indomodaModel.IndomodaSupplier" Width="1.5" PointX="0.5" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="indomodaModel.Material" Width="1.5" PointX="2.75" PointY="8.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="indomodaModel.User" Width="1.5" PointX="12.5" PointY="3.625" IsExpanded="true" />
         <EntityTypeShape EntityType="indomodaModel.Employee" Width="1.5" PointX="5.125" PointY="5.125" />
         <EntityTypeShape EntityType="indomodaModel.DetailPenerimaanTukangPotong" Width="1.5" PointX="8" PointY="4.625" />
         <EntityTypeShape EntityType="indomodaModel.Color" Width="1.5" PointX="0.5" PointY="4.625" />
@@ -16,18 +15,21 @@
         <AssociationConnector Association="indomodaModel.FK_DetailPO_Colors" />
         <AssociationConnector Association="indomodaModel.FK_DetailPO_Materials" />
         <EntityTypeShape EntityType="indomodaModel.DetailFaktur" Width="1.5" PointX="9.375" PointY="0.875" />
-        <EntityTypeShape EntityType="indomodaModel.DetailLog" Width="1.5" PointX="9.375" PointY="7.875" />
         <EntityTypeShape EntityType="indomodaModel.DetailPemotonganKain" Width="1.5" PointX="7.375" PointY="7.875" />
         <EntityTypeShape EntityType="indomodaModel.DetailSPK" Width="1.5" PointX="7.375" PointY="0.75" />
         <EntityTypeShape EntityType="indomodaModel.ListPenerimaanTukangPotong" Width="1.5" PointX="0.625" PointY="7.75" />
         <EntityTypeShape EntityType="indomodaModel.PreOrderKain" Width="1.5" PointX="2.75" PointY="1" />
-        <EntityTypeShape EntityType="indomodaModel.QuantityRecord" Width="1.5" PointX="5.5" PointY="9.25" />
+        <EntityTypeShape EntityType="indomodaModel.QuantityRecord" Width="1.5" PointX="5.25" PointY="8.625" />
         <AssociationConnector Association="indomodaModel.FK_ListPenerimaanTukangPotong_Colors" />
         <AssociationConnector Association="indomodaModel.FK_DetailPemotonganKain_Employee" />
         <AssociationConnector Association="indomodaModel.FK_DetailSPKSablon_Employees" />
         <AssociationConnector Association="indomodaModel.FK_POKain_Suppliers" />
         <EntityTypeShape EntityType="indomodaModel.DatetimeNotification" Width="1.5" PointX="10.125" PointY="4.25" />
         <EntityTypeShape EntityType="indomodaModel.PenerimaanSBC" Width="1.5" PointX="9.375" PointY="10.75" />
+        <EntityTypeShape EntityType="indomodaModel.DetailPenerimaanSBC" Width="1.5" PointX="11.875" PointY="9.5" />
+        <EntityTypeShape EntityType="indomodaModel.DetailLog" Width="1.5" PointX="13.625" PointY="0.875" />
+        <EntityTypeShape EntityType="indomodaModel.User" Width="1.5" PointX="11.375" PointY="0.875" />
+        <AssociationConnector Association="indomodaModel.FK_DetailLogs_Users" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

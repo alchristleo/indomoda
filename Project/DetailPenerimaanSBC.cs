@@ -12,13 +12,15 @@ namespace Project
     using System;
     using System.Collections.Generic;
     
-    public partial class DetailLog
+    public partial class DetailPenerimaanSBC
     {
-        public int id { get; set; }
-        public int UserID { get; set; }
-        public System.DateTime Datetime { get; set; }
-        public string activity { get; set; }
-    
-        public virtual User User { get; set; }
+        public int idDetail { get; set; }
+        public string noPenerimaan { get; set; }
+        public string noSPK { get; set; }
+        public string noSeri { get; set; }
+        public string type { get; set; }
+        public int tempSablon { get; set; }
+        public int tempBordir { get; set; }
+        public int tempCMT { get; set; }
     }
 }

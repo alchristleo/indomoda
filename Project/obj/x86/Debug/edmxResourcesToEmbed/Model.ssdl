@@ -63,6 +63,17 @@ warning 6002: The table/view 'indomoda.dbo.DatetimeNotification' does not have a
     <Property Name="Date_time" Type="datetime" Nullable="false" />
     <Property Name="status" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="DetailPenerimaanSBC">
+    <Key>
+      <PropertyRef Name="idDetail" />
+    </Key>
+    <Property Name="idDetail" Type="int" Nullable="false" />
+    <Property Name="noPenerimaan" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="noSPK" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="noSeri" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="type" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="tempStatus" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="DetailPenerimaanTukangPotong">
     <Key>
       <PropertyRef Name="idPenerimaanTukangPotong" />
@@ -275,6 +286,7 @@ warning 6002: The table/view 'indomoda.dbo.DatetimeNotification' does not have a
     <EntitySet Name="DetailFaktur" EntityType="Self.DetailFaktur" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DetailLogs" EntityType="Self.DetailLogs" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DetailPemotonganKain" EntityType="Self.DetailPemotonganKain" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DetailPenerimaanSBC" EntityType="Self.DetailPenerimaanSBC" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DetailPenerimaanTukangPotong" EntityType="Self.DetailPenerimaanTukangPotong" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DetailPO" EntityType="Self.DetailPO" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DetailSPK" EntityType="Self.DetailSPK" Schema="dbo" store:Type="Tables" />

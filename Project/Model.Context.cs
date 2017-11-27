@@ -29,13 +29,11 @@ namespace Project
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<IndomodaSupplier> IndomodaSuppliers { get; set; }
         public virtual DbSet<Material> Materials { get; set; }
-        public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<DetailPenerimaanTukangPotong> DetailPenerimaanTukangPotongs { get; set; }
         public virtual DbSet<Color> Colors { get; set; }
         public virtual DbSet<DetailPO> DetailPOes { get; set; }
         public virtual DbSet<DetailFaktur> DetailFakturs { get; set; }
-        public virtual DbSet<DetailLog> DetailLogs { get; set; }
         public virtual DbSet<DetailPemotonganKain> DetailPemotonganKains { get; set; }
         public virtual DbSet<DetailSPK> DetailSPKs { get; set; }
         public virtual DbSet<ListPenerimaanTukangPotong> ListPenerimaanTukangPotongs { get; set; }
@@ -43,6 +41,10 @@ namespace Project
         public virtual DbSet<QuantityRecord> QuantityRecords { get; set; }
         public virtual DbSet<DatetimeNotification> DatetimeNotifications { get; set; }
         public virtual DbSet<PenerimaanSBC> PenerimaanSBCs { get; set; }
+        public virtual DbSet<DetailPenerimaanSBC> DetailPenerimaanSBCs { get; set; }
+        public virtual DbSet<DetailLog> DetailLogs { get; set; }
+        public virtual DbSet<User> Users { get; set; }
+
         internal Task<int> SaveChangesAsync()
         {
             return Task.Factory.StartNew(() => base.SaveChanges());

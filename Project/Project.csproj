@@ -119,6 +119,9 @@
     <Compile Include="DetailPemotonganKain.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="DetailPenerimaanSBC.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="DetailPenerimaanTukangPotong.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
