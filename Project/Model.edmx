@@ -163,6 +163,7 @@ warning 6002: The table/view 'indomoda.dbo.DatetimeNotification' does not have a
           <Property Name="noSPK" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="EmployeeID" Type="int" Nullable="false" />
           <Property Name="Datetime" Type="datetime" Nullable="false" />
+          <Property Name="type" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="status" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="PreOrderKains">
@@ -388,7 +389,6 @@ warning 6002: The table/view 'indomoda.dbo.DatetimeNotification' does not have a
           <EntitySet Name="DetailPemotonganKains" EntityType="indomodaModel.DetailPemotonganKain" />
           <EntitySet Name="DetailSPKs" EntityType="indomodaModel.DetailSPK" />
           <EntitySet Name="ListPenerimaanTukangPotongs" EntityType="indomodaModel.ListPenerimaanTukangPotong" />
-          <EntitySet Name="PenerimaanSBCs" EntityType="indomodaModel.PenerimaanSBC" />
           <EntitySet Name="PreOrderKains" EntityType="indomodaModel.PreOrderKain" />
           <EntitySet Name="QuantityRecords" EntityType="indomodaModel.QuantityRecord" />
           <AssociationSet Name="FK_ListPenerimaanTukangPotong_Colors" Association="indomodaModel.FK_ListPenerimaanTukangPotong_Colors">
@@ -408,6 +408,7 @@ warning 6002: The table/view 'indomoda.dbo.DatetimeNotification' does not have a
             <End Role="PreOrderKain" EntitySet="PreOrderKains" />
           </AssociationSet>
           <EntitySet Name="DatetimeNotifications" EntityType="indomodaModel.DatetimeNotification" />
+          <EntitySet Name="PenerimaanSBCs" EntityType="indomodaModel.PenerimaanSBC" />
           </EntityContainer>
         <EntityType Name="Employee">
           <Key>
@@ -549,17 +550,6 @@ warning 6002: The table/view 'indomoda.dbo.DatetimeNotification' does not have a
           <Property Name="idSPKCMT" Type="Int32" />
           <NavigationProperty Name="Color" Relationship="indomodaModel.FK_ListPenerimaanTukangPotong_Colors" FromRole="ListPenerimaanTukangPotong" ToRole="Color" />
         </EntityType>
-        <EntityType Name="PenerimaanSBC">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="noPenerimaan" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="noSPK" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
-          <Property Name="Datetime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="status" Type="Int32" Nullable="false" />
-        </EntityType>
         <EntityType Name="PreOrderKain">
           <Key>
             <PropertyRef Name="idPOKain" />
@@ -647,6 +637,18 @@ warning 6002: The table/view 'indomoda.dbo.DatetimeNotification' does not have a
           <Property Name="noSeri" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Date_insert" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="NotifyStatus" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PenerimaanSBC">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="noPenerimaan" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="noSPK" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="Datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Int32" Nullable="false" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -811,18 +813,6 @@ warning 6002: The table/view 'indomoda.dbo.DatetimeNotification' does not have a
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PenerimaanSBCs">
-            <EntityTypeMapping TypeName="indomodaModel.PenerimaanSBC">
-              <MappingFragment StoreEntitySet="PenerimaanSBC">
-                <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="Datetime" ColumnName="Datetime" />
-                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
-                <ScalarProperty Name="noSPK" ColumnName="noSPK" />
-                <ScalarProperty Name="noPenerimaan" ColumnName="noPenerimaan" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="PreOrderKains">
             <EntityTypeMapping TypeName="indomodaModel.PreOrderKain">
               <MappingFragment StoreEntitySet="PreOrderKains">
@@ -858,6 +848,19 @@ warning 6002: The table/view 'indomoda.dbo.DatetimeNotification' does not have a
                 <ScalarProperty Name="NotifyStatus" ColumnName="NotifyStatus" />
                 <ScalarProperty Name="Date_insert" ColumnName="Date_insert" />
                 <ScalarProperty Name="noSeri" ColumnName="noSeri" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PenerimaanSBCs">
+            <EntityTypeMapping TypeName="indomodaModel.PenerimaanSBC">
+              <MappingFragment StoreEntitySet="PenerimaanSBC">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="Datetime" ColumnName="Datetime" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="noSPK" ColumnName="noSPK" />
+                <ScalarProperty Name="noPenerimaan" ColumnName="noPenerimaan" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

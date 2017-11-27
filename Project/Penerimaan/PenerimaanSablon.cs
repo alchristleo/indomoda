@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace Project
 {
@@ -72,10 +73,13 @@ namespace Project
                     string cmt = dataGridView1.Rows[i].Cells[15].Value.ToString();
                     string noSeri = dataGridView1.Rows[i].Cells[1].Value.ToString();
                     var dba = GenericQuery.SqlQuerySingle<QuantityRecord>("SELECT qr.id, qr.noSeri, qr.qtyAwalSablon, qr.qtySablonBS, qr.qtySablonHilang, qr.qtyAwalBordir, qr.qtyBordirBS, qr.qtyBordirHilang, qr.qtyAwalCMT, qr.qtyCMTBS, qr.qtyCMTHilang FROM QuantityRecord qr WHERE qr.noSeri = '" + noSeri + "'");
-                    double qtyAwal = Convert.ToDouble(dba.qtyAwalSablon.ToString());
-                    double qtyHilang = Convert.ToDouble(dba.qtySablonHilang.ToString());
-                    double qtyBS = Convert.ToDouble(dba.qtySablonBS.ToString());
-                    double qtyAkhir = qtyAwal - (qtyHilang + qtyBS);
+                    double? x = dba.qtyAwalSablon;
+                    double? y = dba.qtySablonHilang;
+                    double? z = dba.qtySablonBS;
+                    var qtyAwal = x ?? x;
+                    var qtyHilang = y ?? y;
+                    var qtyBS = z ?? z;
+                    var qtyAkhir = qtyAwal - (qtyHilang + qtyBS);
 
                     if (sablon == "True")
                     {
@@ -119,7 +123,7 @@ namespace Project
                         dataGridView1.UpdateCellValue(12, i);
                     }
 
-                    if (qtyHilang != 0 && qtyBS != 0)
+                    if (!String.IsNullOrEmpty(qtyAwal.ToString()))
                     {
                         dataGridView1.Columns[6].ValueType = typeof(double);
                         dataGridView1.Rows[i].Cells[6].Value = qtyAwal;
@@ -130,15 +134,33 @@ namespace Project
                     dataGridView1.Rows[i].Cells[0].Value = i + 1;
                     dataGridView1.UpdateCellValue(0, i);
 
-                    dataGridView1.Columns[7].ValueType = typeof(double);
-                    dataGridView1.Rows[i].Cells[7].Value = qtyHilang;
-                    dataGridView1.UpdateCellValue(7, i);
+                    if (qtyHilang == null)
+                    {
+                        dataGridView1.Columns[7].ValueType = typeof(string);
+                        dataGridView1.Rows[i].Cells[7].Value = "-";
+                        dataGridView1.UpdateCellValue(7, i);
+                    }
+                    else
+                    {
+                        dataGridView1.Columns[7].ValueType = typeof(double);
+                        dataGridView1.Rows[i].Cells[7].Value = qtyHilang;
+                        dataGridView1.UpdateCellValue(7, i);
+                    }
 
-                    dataGridView1.Columns[8].ValueType = typeof(double);
-                    dataGridView1.Rows[i].Cells[8].Value = qtyBS;
-                    dataGridView1.UpdateCellValue(8, i);
+                    if (qtyBS == null)
+                    {
+                        dataGridView1.Columns[8].ValueType = typeof(string);
+                        dataGridView1.Rows[i].Cells[8].Value = "-";
+                        dataGridView1.UpdateCellValue(8, i);
+                    }
+                    else
+                    {
+                        dataGridView1.Columns[8].ValueType = typeof(double);
+                        dataGridView1.Rows[i].Cells[8].Value = qtyBS;
+                        dataGridView1.UpdateCellValue(8, i);
+                    }
 
-                    if (qtyAkhir < 1)
+                    if (qtyAkhir == null)
                     {
                         dataGridView1.Columns[9].ValueType = typeof(string);
                         dataGridView1.Rows[i].Cells[9].Value = "-";
@@ -162,7 +184,7 @@ namespace Project
                 string type = "sablon";
                 employeeBindingSource.DataSource = db.Employees.ToList();
                 colorBindingSource.DataSource = db.Colors.ToList();
-                List<DetailSPK> cboPK = GenericQuery.SqlQuery<DetailSPK>("select sp.idSPK, sp.noSPK, sp.EmployeeID, sp.Datetime, sp.type, sp.status FROM DetailSPK sp WHERE sp.type = '" + type +"'");
+                List<DetailSPK> cboPK = GenericQuery.SqlQuery<DetailSPK>("select sp.idSPK, sp.noSPK, sp.EmployeeID, sp.Datetime, sp.type, sp.status FROM DetailSPK sp WHERE sp.type = '" + type + "'");
                 detailSPKBindingSource.DataSource = cboPK.ToList();
             }
         }
@@ -186,9 +208,131 @@ namespace Project
             }
         }
 
+        private void btnResetPenerimaanSablon_Click(object sender, EventArgs e)
+        {
+            string noSeri = dataGridView1[1, dataGridView1.CurrentRow.Index].Value.ToString();
+            var dba = GenericQuery.SqlQuerySingle<QuantityRecord>("SELECT qr.id, qr.noSeri, qr.qtyAwalSablon, qr.qtySablonBS, qr.qtySablonHilang, qr.qtyAwalBordir, qr.qtyBordirBS, qr.qtyBordirHilang, qr.qtyAwalCMT, qr.qtyCMTBS, qr.qtyCMTHilang FROM QuantityRecord qr WHERE qr.noSeri = '" + noSeri + "'");
+
+            if (dataGridView1.Rows.Count < 1)
+            {
+                MetroFramework.MetroMessageBox.Show(this, "List penerimaan tukang potong is empty!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (dataGridView1.Rows.Count > 0 && (dba.qtySablonBS == null && dba.qtySablonHilang == null))
+            {
+                MetroFramework.MetroMessageBox.Show(this, "You can't reset this quantity, quantity havent been updated", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                if (MetroFramework.MetroMessageBox.Show(this, "Are you sure want to reset this quantity?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
+                {
+                    using (indomodaEntities db = new indomodaEntities())
+                    {
+                        try
+                        {
+                            int currentIDPTP = Convert.ToInt32(dataGridView1[17, dataGridView1.CurrentRow.Index].Value.ToString());
+                            int a = GenericQuery.ExecSQLCommand("UPDATE QuantityRecord SET qtyAwalSablon = @qtyAwalSablon, qtySablonBS = @qtySablonBS, qtySablonHilang = @qtySablonHilang WHERE noSeri = '" + noSeri + "'", new[] {
+                                new SqlParameter("@qtyAwalSablon", DBNull.Value),
+                                new SqlParameter("@qtySablonBS", DBNull.Value),
+                                new SqlParameter("@qtySablonHilang", DBNull.Value)
+                            });
+                            db.SaveChangesAsync().Wait();
+
+                            double quantity = Convert.ToDouble(dba.qtyAwalSablon.ToString());
+                            int b = GenericQuery.ExecSQLCommand("UPDATE ListPenerimaanTukangPotong SET quantity = @quantity WHERE noSeri = '" + noSeri + "'", new[] {
+                                new SqlParameter("@quantity", quantity)
+                            });
+                            db.SaveChangesAsync().Wait();
+
+                            dataGridView1.Refresh();
+                            dataGridView1.Columns[7].ValueType = typeof(string);
+                            dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[7].Value = "-";
+                            dataGridView1.UpdateCellValue(7, dataGridView1.CurrentRow.Index);
+
+                            dataGridView1.Columns[8].ValueType = typeof(string);
+                            dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[8].Value = "-";
+                            dataGridView1.UpdateCellValue(8, dataGridView1.CurrentRow.Index);
+
+                            dataGridView1.Columns[9].ValueType = typeof(string);
+                            dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[9].Value = "-";
+                            dataGridView1.UpdateCellValue(9, dataGridView1.CurrentRow.Index);
+                            dataGridView1.Refresh();
+                            MetroFramework.MetroMessageBox.Show(this, "Success! This quantity has been reset", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                        }
+                        catch (Exception ex)
+                        {
+                            MetroFramework.MetroMessageBox.Show(this, ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
+        }
+
         private void btnSavePenerimaanSablon_Click(object sender, EventArgs e)
         {
+            if (txtNoPenerimaanSablon.Text == "")
+            {
+                MetroFramework.MetroMessageBox.Show(this, "You must fill no penerimaan sablon first!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtNoPenerimaanSablon.Focus();
+            }
+            else if (txtPICCodePenerimaan.Text == "")
+            {
+                MetroFramework.MetroMessageBox.Show(this, "You must select PIC  penerimaan Sablon first!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cboPicPenerimaanSablon.Focus();
+            }
+            else if (cboNoSpkSablonPenerimaan.Items.Count < 1)
+            {
+                MetroFramework.MetroMessageBox.Show(this, "List no SPK Sablon is empty!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                if (MetroFramework.MetroMessageBox.Show(this, "Do you want to save this data to database?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    using (indomodaEntities db = new indomodaEntities())
+                    {
+                        try
+                        {
+                            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                            {
+                                var x = dataGridView1.Rows[i].Cells[9].Value.ToString();
+                                string noSeri = dataGridView1.Rows[i].Cells[1].Value.ToString();
+                                if (x != "-")
+                                {
+                                    double qtyUpdate = Convert.ToDouble(x);
+                                    int a = GenericQuery.ExecSQLCommand("UPDATE ListPenerimaanTukangPotong SET quantity = @quantity WHERE noSeri = '" + noSeri + "'", new[] {
+                                        new SqlParameter("@quantity", qtyUpdate)
+                                    });
+                                    db.SaveChangesAsync().Wait();
+                                }
+                            }
 
+                            int idPS = db.PenerimaanSBCs.AsEnumerable().LastOrDefault() == null ? 1 : db.PenerimaanSBCs.AsEnumerable().LastOrDefault().id + 1;
+                            string noPS = txtNoPenerimaanSablon.Text;
+                            int idSPK = Convert.ToInt32(cboNoSpkSablonPenerimaan.SelectedValue.ToString());
+                            var dba = GenericQuery.SqlQuerySingle<DetailSPK>("SELECT sp.idSPK, sp.noSPK, sp.EmployeeID, sp.Datetime, sp.type, sp.status FROM DetailSPK sp WHERE sp.idSPK = '" + idSPK + "'");
+                            string noSPK = dba.noSPK;
+                            string setType = "sablon";
+                            int eID = Convert.ToInt32(cboPicPenerimaanSablon.SelectedValue.ToString());
+                            int status = 0;
+                            int b = GenericQuery.ExecSQLCommand("INSERT INTO PenerimaanSBC (id, noPenerimaan, noSPK, EmployeeID, Datetime, type, status) VALUES(@id, @noPenerimaan, @noSPK, @EmployeeID, @Datetime, @type, @status)", new[]{
+                                new SqlParameter("@id", idPS),
+                                new SqlParameter("@noPenerimaan", noPS),
+                                new SqlParameter("@noSPK", noSPK),
+                                new SqlParameter("@EmployeeID", eID),
+                                new SqlParameter("@Datetime", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")),
+                                new SqlParameter("@type", setType),
+                                new SqlParameter("@status", status)
+                            });
+                            db.SaveChangesAsync().Wait();
+
+                            MetroFramework.MetroMessageBox.Show(this, "Success! Penerimaan Sablon for this data has been created", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                        }
+                        catch (Exception ex)
+                        {
+                            MetroFramework.MetroMessageBox.Show(this, ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
         }
 
         private void btnExitPenerimaanSablon_Click(object sender, EventArgs e)

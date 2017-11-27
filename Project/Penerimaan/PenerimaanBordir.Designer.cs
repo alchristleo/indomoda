@@ -28,161 +28,484 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnExitPenerimaanBordir = new System.Windows.Forms.Button();
-            this.btnSavePenerimaanBordir = new System.Windows.Forms.Button();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.btnResetPenerimaanBordir = new MetroFramework.Controls.MetroTile();
+            this.btnUpdateStatusPemotongan = new MetroFramework.Controls.MetroTile();
+            this.btnSavePenerimaanBordir = new MetroFramework.Controls.MetroButton();
+            this.btnExitPenerimaanBordir = new MetroFramework.Controls.MetroButton();
+            this.metroDateTime1 = new MetroFramework.Controls.MetroDateTime();
+            this.txtPICCodePenerimaan = new MetroFramework.Controls.MetroTextBox();
+            this.cboPicPenerimaanBordir = new MetroFramework.Controls.MetroComboBox();
+            this.cboNoSpkBordirPenerimaan = new MetroFramework.Controls.MetroComboBox();
+            this.txtNoPenerimaanBordir = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnToNoSpkBordir = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtPicNamePenerimaanBordir = new System.Windows.Forms.TextBox();
-            this.txtPicCodePenerimaanBordir = new System.Windows.Forms.TextBox();
-            this.txtNoSpkBordirPenerimaan = new System.Windows.Forms.TextBox();
-            this.txtNoPenerimaanBordir = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.listPenerimaanTukangPotongBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.colorBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.noSeriDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.modelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colorIDDataGridViewComboBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.merkDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ukuranDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtyRusak = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtyBS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtyAkhir = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SPKSablonStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SPKBordirStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SPKCMTStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusSPKSablonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusSPKBordirDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusSPKCMTDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusNoSeriDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idListPTPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.detailSPKBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listPenerimaanTukangPotongBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.detailSPKBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnExitPenerimaanBordir
+            // btnResetPenerimaanBordir
             // 
-            this.btnExitPenerimaanBordir.Location = new System.Drawing.Point(357, 397);
-            this.btnExitPenerimaanBordir.Name = "btnExitPenerimaanBordir";
-            this.btnExitPenerimaanBordir.Size = new System.Drawing.Size(83, 43);
-            this.btnExitPenerimaanBordir.TabIndex = 19;
-            this.btnExitPenerimaanBordir.Text = "Exit";
-            this.btnExitPenerimaanBordir.UseVisualStyleBackColor = true;
-            this.btnExitPenerimaanBordir.Click += new System.EventHandler(this.btnExitPenerimaanBordir_Click);
+            this.btnResetPenerimaanBordir.ActiveControl = null;
+            this.btnResetPenerimaanBordir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnResetPenerimaanBordir.Location = new System.Drawing.Point(256, 488);
+            this.btnResetPenerimaanBordir.Name = "btnResetPenerimaanBordir";
+            this.btnResetPenerimaanBordir.Size = new System.Drawing.Size(100, 67);
+            this.btnResetPenerimaanBordir.TabIndex = 58;
+            this.btnResetPenerimaanBordir.Text = "RESET DATA";
+            this.btnResetPenerimaanBordir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnResetPenerimaanBordir.TileImage = global::Project.Properties.Resources.btn_reset;
+            this.btnResetPenerimaanBordir.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnResetPenerimaanBordir.UseSelectable = true;
+            this.btnResetPenerimaanBordir.UseTileImage = true;
+            this.btnResetPenerimaanBordir.Click += new System.EventHandler(this.btnResetPenerimaanBordir_Click);
+            // 
+            // btnUpdateStatusPemotongan
+            // 
+            this.btnUpdateStatusPemotongan.ActiveControl = null;
+            this.btnUpdateStatusPemotongan.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnUpdateStatusPemotongan.Location = new System.Drawing.Point(23, 488);
+            this.btnUpdateStatusPemotongan.Name = "btnUpdateStatusPemotongan";
+            this.btnUpdateStatusPemotongan.Size = new System.Drawing.Size(217, 67);
+            this.btnUpdateStatusPemotongan.TabIndex = 57;
+            this.btnUpdateStatusPemotongan.Text = "UPDATE QUANTITY BARANG";
+            this.btnUpdateStatusPemotongan.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnUpdateStatusPemotongan.TileImage = global::Project.Properties.Resources.btn_save;
+            this.btnUpdateStatusPemotongan.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnUpdateStatusPemotongan.UseSelectable = true;
+            this.btnUpdateStatusPemotongan.UseTileImage = true;
+            this.btnUpdateStatusPemotongan.Click += new System.EventHandler(this.btnUpdateStatusPemotongan_Click);
             // 
             // btnSavePenerimaanBordir
             // 
-            this.btnSavePenerimaanBordir.Location = new System.Drawing.Point(250, 397);
+            this.btnSavePenerimaanBordir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSavePenerimaanBordir.Location = new System.Drawing.Point(756, 578);
             this.btnSavePenerimaanBordir.Name = "btnSavePenerimaanBordir";
-            this.btnSavePenerimaanBordir.Size = new System.Drawing.Size(83, 43);
-            this.btnSavePenerimaanBordir.TabIndex = 20;
-            this.btnSavePenerimaanBordir.Text = "Save";
-            this.btnSavePenerimaanBordir.UseVisualStyleBackColor = true;
+            this.btnSavePenerimaanBordir.Size = new System.Drawing.Size(96, 43);
+            this.btnSavePenerimaanBordir.TabIndex = 56;
+            this.btnSavePenerimaanBordir.Text = "SAVE";
+            this.btnSavePenerimaanBordir.UseSelectable = true;
+            this.btnSavePenerimaanBordir.Click += new System.EventHandler(this.btnSavePenerimaanBordir_Click);
             // 
-            // dataGridView1
+            // btnExitPenerimaanBordir
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 152);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(690, 227);
-            this.dataGridView1.TabIndex = 18;
+            this.btnExitPenerimaanBordir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExitPenerimaanBordir.Location = new System.Drawing.Point(514, 578);
+            this.btnExitPenerimaanBordir.Name = "btnExitPenerimaanBordir";
+            this.btnExitPenerimaanBordir.Size = new System.Drawing.Size(100, 43);
+            this.btnExitPenerimaanBordir.TabIndex = 55;
+            this.btnExitPenerimaanBordir.Text = "EXIT";
+            this.btnExitPenerimaanBordir.UseSelectable = true;
+            this.btnExitPenerimaanBordir.Click += new System.EventHandler(this.btnExitPenerimaanBordir_Click);
             // 
-            // btnToNoSpkBordir
+            // metroDateTime1
             // 
-            this.btnToNoSpkBordir.Location = new System.Drawing.Point(293, 61);
-            this.btnToNoSpkBordir.Name = "btnToNoSpkBordir";
-            this.btnToNoSpkBordir.Size = new System.Drawing.Size(21, 21);
-            this.btnToNoSpkBordir.TabIndex = 17;
-            this.btnToNoSpkBordir.Text = "...";
-            this.btnToNoSpkBordir.UseVisualStyleBackColor = true;
+            this.metroDateTime1.Location = new System.Drawing.Point(1047, 40);
+            this.metroDateTime1.MinimumSize = new System.Drawing.Size(0, 29);
+            this.metroDateTime1.Name = "metroDateTime1";
+            this.metroDateTime1.Size = new System.Drawing.Size(219, 29);
+            this.metroDateTime1.TabIndex = 54;
             // 
-            // dateTimePicker1
+            // txtPICCodePenerimaan
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(502, 12);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 16;
             // 
-            // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(466, 15);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(30, 13);
-            this.label5.TabIndex = 15;
-            this.label5.Text = "Date";
             // 
-            // txtPicNamePenerimaanBordir
+            this.txtPICCodePenerimaan.CustomButton.Image = null;
+            this.txtPICCodePenerimaan.CustomButton.Location = new System.Drawing.Point(148, 1);
+            this.txtPICCodePenerimaan.CustomButton.Name = "";
+            this.txtPICCodePenerimaan.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.txtPICCodePenerimaan.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtPICCodePenerimaan.CustomButton.TabIndex = 1;
+            this.txtPICCodePenerimaan.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtPICCodePenerimaan.CustomButton.UseSelectable = true;
+            this.txtPICCodePenerimaan.CustomButton.Visible = false;
+            this.txtPICCodePenerimaan.Lines = new string[0];
+            this.txtPICCodePenerimaan.Location = new System.Drawing.Point(176, 185);
+            this.txtPICCodePenerimaan.MaxLength = 32767;
+            this.txtPICCodePenerimaan.Name = "txtPICCodePenerimaan";
+            this.txtPICCodePenerimaan.PasswordChar = '\0';
+            this.txtPICCodePenerimaan.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtPICCodePenerimaan.SelectedText = "";
+            this.txtPICCodePenerimaan.SelectionLength = 0;
+            this.txtPICCodePenerimaan.SelectionStart = 0;
+            this.txtPICCodePenerimaan.ShortcutsEnabled = true;
+            this.txtPICCodePenerimaan.Size = new System.Drawing.Size(170, 23);
+            this.txtPICCodePenerimaan.TabIndex = 53;
+            this.txtPICCodePenerimaan.UseSelectable = true;
+            this.txtPICCodePenerimaan.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtPICCodePenerimaan.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            this.txtPicNamePenerimaanBordir.Location = new System.Drawing.Point(151, 113);
-            this.txtPicNamePenerimaanBordir.Name = "txtPicNamePenerimaanBordir";
-            this.txtPicNamePenerimaanBordir.Size = new System.Drawing.Size(136, 20);
-            this.txtPicNamePenerimaanBordir.TabIndex = 14;
+            // cboPicPenerimaanBordir
             // 
-            // txtPicCodePenerimaanBordir
+            this.cboPicPenerimaanBordir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cboPicPenerimaanBordir.DataSource = this.employeeBindingSource;
+            this.cboPicPenerimaanBordir.DisplayMember = "EmployeeName";
+            this.cboPicPenerimaanBordir.FormattingEnabled = true;
+            this.cboPicPenerimaanBordir.ItemHeight = 23;
+            this.cboPicPenerimaanBordir.Location = new System.Drawing.Point(176, 145);
+            this.cboPicPenerimaanBordir.Name = "cboPicPenerimaanBordir";
+            this.cboPicPenerimaanBordir.Size = new System.Drawing.Size(170, 29);
+            this.cboPicPenerimaanBordir.TabIndex = 52;
+            this.cboPicPenerimaanBordir.UseSelectable = true;
+            this.cboPicPenerimaanBordir.ValueMember = "EmployeeID";
             // 
-            this.txtPicCodePenerimaanBordir.Location = new System.Drawing.Point(151, 87);
-            this.txtPicCodePenerimaanBordir.Name = "txtPicCodePenerimaanBordir";
-            this.txtPicCodePenerimaanBordir.Size = new System.Drawing.Size(136, 20);
-            this.txtPicCodePenerimaanBordir.TabIndex = 11;
+            // cboNoSpkBordirPenerimaan
             // 
-            // txtNoSpkBordirPenerimaan
-            // 
-            this.txtNoSpkBordirPenerimaan.Location = new System.Drawing.Point(151, 61);
-            this.txtNoSpkBordirPenerimaan.Name = "txtNoSpkBordirPenerimaan";
-            this.txtNoSpkBordirPenerimaan.Size = new System.Drawing.Size(136, 20);
-            this.txtNoSpkBordirPenerimaan.TabIndex = 12;
+            this.cboNoSpkBordirPenerimaan.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cboNoSpkBordirPenerimaan.DataSource = this.detailSPKBindingSource;
+            this.cboNoSpkBordirPenerimaan.DisplayMember = "noSPK";
+            this.cboNoSpkBordirPenerimaan.FormattingEnabled = true;
+            this.cboNoSpkBordirPenerimaan.ItemHeight = 23;
+            this.cboNoSpkBordirPenerimaan.Location = new System.Drawing.Point(176, 107);
+            this.cboNoSpkBordirPenerimaan.Name = "cboNoSpkBordirPenerimaan";
+            this.cboNoSpkBordirPenerimaan.Size = new System.Drawing.Size(170, 29);
+            this.cboNoSpkBordirPenerimaan.TabIndex = 51;
+            this.cboNoSpkBordirPenerimaan.UseSelectable = true;
+            this.cboNoSpkBordirPenerimaan.ValueMember = "idSPK";
             // 
             // txtNoPenerimaanBordir
             // 
-            this.txtNoPenerimaanBordir.Location = new System.Drawing.Point(151, 35);
+            // 
+            // 
+            // 
+            this.txtNoPenerimaanBordir.CustomButton.Image = null;
+            this.txtNoPenerimaanBordir.CustomButton.Location = new System.Drawing.Point(148, 1);
+            this.txtNoPenerimaanBordir.CustomButton.Name = "";
+            this.txtNoPenerimaanBordir.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.txtNoPenerimaanBordir.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtNoPenerimaanBordir.CustomButton.TabIndex = 1;
+            this.txtNoPenerimaanBordir.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtNoPenerimaanBordir.CustomButton.UseSelectable = true;
+            this.txtNoPenerimaanBordir.CustomButton.Visible = false;
+            this.txtNoPenerimaanBordir.Lines = new string[0];
+            this.txtNoPenerimaanBordir.Location = new System.Drawing.Point(176, 74);
+            this.txtNoPenerimaanBordir.MaxLength = 32767;
             this.txtNoPenerimaanBordir.Name = "txtNoPenerimaanBordir";
-            this.txtNoPenerimaanBordir.Size = new System.Drawing.Size(136, 20);
-            this.txtNoPenerimaanBordir.TabIndex = 13;
+            this.txtNoPenerimaanBordir.PasswordChar = '\0';
+            this.txtNoPenerimaanBordir.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtNoPenerimaanBordir.SelectedText = "";
+            this.txtNoPenerimaanBordir.SelectionLength = 0;
+            this.txtNoPenerimaanBordir.SelectionStart = 0;
+            this.txtNoPenerimaanBordir.ShortcutsEnabled = true;
+            this.txtNoPenerimaanBordir.Size = new System.Drawing.Size(170, 23);
+            this.txtNoPenerimaanBordir.TabIndex = 50;
+            this.txtNoPenerimaanBordir.UseSelectable = true;
+            this.txtNoPenerimaanBordir.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtNoPenerimaanBordir.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // label4
+            // metroLabel5
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(26, 116);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(54, 13);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "PIC Bordir";
+            this.metroLabel5.AutoSize = true;
+            this.metroLabel5.Location = new System.Drawing.Point(992, 47);
+            this.metroLabel5.Name = "metroLabel5";
+            this.metroLabel5.Size = new System.Drawing.Size(36, 19);
+            this.metroLabel5.TabIndex = 49;
+            this.metroLabel5.Text = "Date";
             // 
-            // label3
+            // metroLabel4
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(26, 90);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(52, 13);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "PIC Code";
+            this.metroLabel4.AutoSize = true;
+            this.metroLabel4.Location = new System.Drawing.Point(23, 145);
+            this.metroLabel4.Name = "metroLabel4";
+            this.metroLabel4.Size = new System.Drawing.Size(70, 19);
+            this.metroLabel4.TabIndex = 48;
+            this.metroLabel4.Text = "PIC Bordir";
             // 
-            // label2
+            // metroLabel3
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(26, 64);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(78, 13);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "No. SPK Bordir";
+            this.metroLabel3.AutoSize = true;
+            this.metroLabel3.Location = new System.Drawing.Point(23, 185);
+            this.metroLabel3.Name = "metroLabel3";
+            this.metroLabel3.Size = new System.Drawing.Size(65, 19);
+            this.metroLabel3.TabIndex = 47;
+            this.metroLabel3.Text = "PIC Code";
             // 
-            // label1
+            // metroLabel2
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(26, 38);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(113, 13);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "No. Penerimaan Bordir";
+            this.metroLabel2.AutoSize = true;
+            this.metroLabel2.Location = new System.Drawing.Point(23, 110);
+            this.metroLabel2.Name = "metroLabel2";
+            this.metroLabel2.Size = new System.Drawing.Size(97, 19);
+            this.metroLabel2.TabIndex = 46;
+            this.metroLabel2.Text = "No. SPK Bordir";
+            // 
+            // metroLabel1
+            // 
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.Location = new System.Drawing.Point(23, 74);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(144, 19);
+            this.metroLabel1.TabIndex = 45;
+            this.metroLabel1.Text = "No. Penerimaan Bordir";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Menu;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle21.BackColor = System.Drawing.Color.Bisque;
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle21;
+            this.dataGridView1.ColumnHeadersHeight = 30;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.NO,
+            this.noSeriDataGridViewTextBoxColumn,
+            this.modelDataGridViewTextBoxColumn,
+            this.colorIDDataGridViewComboBoxColumn,
+            this.merkDataGridViewTextBoxColumn,
+            this.ukuranDataGridViewTextBoxColumn,
+            this.quantityDataGridViewTextBoxColumn,
+            this.qtyRusak,
+            this.qtyBS,
+            this.qtyAkhir,
+            this.SPKSablonStatus,
+            this.SPKBordirStatus,
+            this.SPKCMTStatus,
+            this.statusSPKSablonDataGridViewTextBoxColumn,
+            this.statusSPKBordirDataGridViewTextBoxColumn,
+            this.statusSPKCMTDataGridViewTextBoxColumn,
+            this.statusNoSeriDataGridViewTextBoxColumn,
+            this.idListPTPDataGridViewTextBoxColumn});
+            this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dataGridView1.DataSource = this.listPenerimaanTukangPotongBindingSource;
+            this.dataGridView1.EnableHeadersVisualStyles = false;
+            this.dataGridView1.GridColor = System.Drawing.SystemColors.ScrollBar;
+            this.dataGridView1.Location = new System.Drawing.Point(23, 227);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.RowTemplate.Height = 30;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(1306, 255);
+            this.dataGridView1.TabIndex = 44;
+            // 
+            // listPenerimaanTukangPotongBindingSource
+            // 
+            this.listPenerimaanTukangPotongBindingSource.DataSource = typeof(Project.ListPenerimaanTukangPotong);
+            // 
+            // colorBindingSource
+            // 
+            this.colorBindingSource.DataSource = typeof(Project.Color);
+            // 
+            // NO
+            // 
+            this.NO.HeaderText = "No.";
+            this.NO.Name = "NO";
+            this.NO.ReadOnly = true;
+            this.NO.Width = 40;
+            // 
+            // noSeriDataGridViewTextBoxColumn
+            // 
+            this.noSeriDataGridViewTextBoxColumn.DataPropertyName = "noSeri";
+            this.noSeriDataGridViewTextBoxColumn.HeaderText = "No Seri";
+            this.noSeriDataGridViewTextBoxColumn.Name = "noSeriDataGridViewTextBoxColumn";
+            this.noSeriDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // modelDataGridViewTextBoxColumn
+            // 
+            this.modelDataGridViewTextBoxColumn.DataPropertyName = "model";
+            this.modelDataGridViewTextBoxColumn.HeaderText = "Model";
+            this.modelDataGridViewTextBoxColumn.Name = "modelDataGridViewTextBoxColumn";
+            this.modelDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // colorIDDataGridViewComboBoxColumn
+            // 
+            this.colorIDDataGridViewComboBoxColumn.DataPropertyName = "ColorID";
+            this.colorIDDataGridViewComboBoxColumn.DataSource = this.colorBindingSource;
+            this.colorIDDataGridViewComboBoxColumn.DisplayMember = "ColorName";
+            this.colorIDDataGridViewComboBoxColumn.HeaderText = "Color Name";
+            this.colorIDDataGridViewComboBoxColumn.Name = "colorIDDataGridViewComboBoxColumn";
+            this.colorIDDataGridViewComboBoxColumn.ReadOnly = true;
+            this.colorIDDataGridViewComboBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colorIDDataGridViewComboBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.colorIDDataGridViewComboBoxColumn.ValueMember = "ColorID";
+            // 
+            // merkDataGridViewTextBoxColumn
+            // 
+            this.merkDataGridViewTextBoxColumn.DataPropertyName = "merk";
+            this.merkDataGridViewTextBoxColumn.HeaderText = "Merk";
+            this.merkDataGridViewTextBoxColumn.Name = "merkDataGridViewTextBoxColumn";
+            this.merkDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // ukuranDataGridViewTextBoxColumn
+            // 
+            this.ukuranDataGridViewTextBoxColumn.DataPropertyName = "ukuran";
+            this.ukuranDataGridViewTextBoxColumn.HeaderText = "Ukuran";
+            this.ukuranDataGridViewTextBoxColumn.Name = "ukuranDataGridViewTextBoxColumn";
+            this.ukuranDataGridViewTextBoxColumn.ReadOnly = true;
+            this.ukuranDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // quantityDataGridViewTextBoxColumn
+            // 
+            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "quantity";
+            this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity Awal (pcs)";
+            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
+            this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
+            this.quantityDataGridViewTextBoxColumn.Width = 130;
+            // 
+            // qtyRusak
+            // 
+            this.qtyRusak.HeaderText = "Barang Rusak (pcs)";
+            this.qtyRusak.Name = "qtyRusak";
+            this.qtyRusak.ReadOnly = true;
+            this.qtyRusak.Width = 120;
+            this.qtyRusak.DefaultCellStyle.BackColor = System.Drawing.Color.Pink;
+            // 
+            // qtyBS
+            // 
+            this.qtyBS.HeaderText = "Barang BS (pcs) ";
+            this.qtyBS.Name = "qtyBS";
+            this.qtyBS.ReadOnly = true;
+            this.qtyBS.Width = 120;
+            this.qtyBS.DefaultCellStyle.BackColor = System.Drawing.Color.LightPink;
+            // 
+            // qtyAkhir
+            // 
+            this.qtyAkhir.HeaderText = "Quantity Akhir (pcs)";
+            this.qtyAkhir.Name = "qtyAkhir";
+            this.qtyAkhir.ReadOnly = true;
+            this.qtyAkhir.Width = 120;
+            this.qtyAkhir.DefaultCellStyle.BackColor = System.Drawing.Color.Plum;
+            // 
+            // SPKSablonStatus
+            // 
+            dataGridViewCellStyle22.BackColor = System.Drawing.Color.Thistle;
+            this.SPKSablonStatus.DefaultCellStyle = dataGridViewCellStyle22;
+            this.SPKSablonStatus.HeaderText = "SPK Sablon";
+            this.SPKSablonStatus.Name = "SPKSablonStatus";
+            this.SPKSablonStatus.ReadOnly = true;
+            // 
+            // SPKBordirStatus
+            // 
+            dataGridViewCellStyle23.BackColor = System.Drawing.Color.LightGreen;
+            this.SPKBordirStatus.DefaultCellStyle = dataGridViewCellStyle23;
+            this.SPKBordirStatus.HeaderText = "SPK Bordir";
+            this.SPKBordirStatus.Name = "SPKBordirStatus";
+            this.SPKBordirStatus.ReadOnly = true;
+            // 
+            // SPKCMTStatus
+            // 
+            dataGridViewCellStyle24.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.SPKCMTStatus.DefaultCellStyle = dataGridViewCellStyle24;
+            this.SPKCMTStatus.HeaderText = "SPK CMT";
+            this.SPKCMTStatus.Name = "SPKCMTStatus";
+            this.SPKCMTStatus.ReadOnly = true;
+            // 
+            // statusSPKSablonDataGridViewTextBoxColumn
+            // 
+            this.statusSPKSablonDataGridViewTextBoxColumn.DataPropertyName = "statusSPKSablon";
+            this.statusSPKSablonDataGridViewTextBoxColumn.HeaderText = "statusSPKSablon";
+            this.statusSPKSablonDataGridViewTextBoxColumn.Name = "statusSPKSablonDataGridViewTextBoxColumn";
+            this.statusSPKSablonDataGridViewTextBoxColumn.ReadOnly = true;
+            this.statusSPKSablonDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // statusSPKBordirDataGridViewTextBoxColumn
+            // 
+            this.statusSPKBordirDataGridViewTextBoxColumn.DataPropertyName = "statusSPKBordir";
+            this.statusSPKBordirDataGridViewTextBoxColumn.HeaderText = "statusSPKBordir";
+            this.statusSPKBordirDataGridViewTextBoxColumn.Name = "statusSPKBordirDataGridViewTextBoxColumn";
+            this.statusSPKBordirDataGridViewTextBoxColumn.ReadOnly = true;
+            this.statusSPKBordirDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // statusSPKCMTDataGridViewTextBoxColumn
+            // 
+            this.statusSPKCMTDataGridViewTextBoxColumn.DataPropertyName = "statusSPKCMT";
+            this.statusSPKCMTDataGridViewTextBoxColumn.HeaderText = "statusSPKCMT";
+            this.statusSPKCMTDataGridViewTextBoxColumn.Name = "statusSPKCMTDataGridViewTextBoxColumn";
+            this.statusSPKCMTDataGridViewTextBoxColumn.ReadOnly = true;
+            this.statusSPKCMTDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // statusNoSeriDataGridViewTextBoxColumn
+            // 
+            this.statusNoSeriDataGridViewTextBoxColumn.DataPropertyName = "statusNoSeri";
+            this.statusNoSeriDataGridViewTextBoxColumn.HeaderText = "statusNoSeri";
+            this.statusNoSeriDataGridViewTextBoxColumn.Name = "statusNoSeriDataGridViewTextBoxColumn";
+            this.statusNoSeriDataGridViewTextBoxColumn.ReadOnly = true;
+            this.statusNoSeriDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // idListPTPDataGridViewTextBoxColumn
+            // 
+            this.idListPTPDataGridViewTextBoxColumn.DataPropertyName = "idListPTP";
+            this.idListPTPDataGridViewTextBoxColumn.HeaderText = "idListPTP";
+            this.idListPTPDataGridViewTextBoxColumn.Name = "idListPTPDataGridViewTextBoxColumn";
+            this.idListPTPDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idListPTPDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // detailSPKBindingSource
+            // 
+            this.detailSPKBindingSource.DataSource = typeof(Project.DetailSPK);
+            // 
+            // employeeBindingSource
+            // 
+            this.employeeBindingSource.DataSource = typeof(Project.Employee);
             // 
             // PenerimaanBordir
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(714, 459);
-            this.Controls.Add(this.btnExitPenerimaanBordir);
+            this.ClientSize = new System.Drawing.Size(1354, 643);
+            this.Controls.Add(this.btnResetPenerimaanBordir);
+            this.Controls.Add(this.btnUpdateStatusPemotongan);
             this.Controls.Add(this.btnSavePenerimaanBordir);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.btnToNoSpkBordir);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.txtPicNamePenerimaanBordir);
-            this.Controls.Add(this.txtPicCodePenerimaanBordir);
-            this.Controls.Add(this.txtNoSpkBordirPenerimaan);
+            this.Controls.Add(this.btnExitPenerimaanBordir);
+            this.Controls.Add(this.metroDateTime1);
+            this.Controls.Add(this.txtPICCodePenerimaan);
+            this.Controls.Add(this.cboPicPenerimaanBordir);
+            this.Controls.Add(this.cboNoSpkBordirPenerimaan);
             this.Controls.Add(this.txtNoPenerimaanBordir);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.metroLabel5);
+            this.Controls.Add(this.metroLabel4);
+            this.Controls.Add(this.metroLabel3);
+            this.Controls.Add(this.metroLabel2);
+            this.Controls.Add(this.metroLabel1);
+            this.Controls.Add(this.dataGridView1);
             this.Name = "PenerimaanBordir";
-            this.Text = "PenerimaanBordir";
+            this.Text = "Penerimaan Bordir";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listPenerimaanTukangPotongBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.detailSPKBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -190,19 +513,42 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnExitPenerimaanBordir;
-        private System.Windows.Forms.Button btnSavePenerimaanBordir;
+        private MetroFramework.Controls.MetroTile btnResetPenerimaanBordir;
+        private MetroFramework.Controls.MetroTile btnUpdateStatusPemotongan;
+        private MetroFramework.Controls.MetroButton btnSavePenerimaanBordir;
+        private MetroFramework.Controls.MetroButton btnExitPenerimaanBordir;
+        private MetroFramework.Controls.MetroDateTime metroDateTime1;
+        private MetroFramework.Controls.MetroTextBox txtPICCodePenerimaan;
+        private MetroFramework.Controls.MetroComboBox cboPicPenerimaanBordir;
+        private MetroFramework.Controls.MetroComboBox cboNoSpkBordirPenerimaan;
+        private MetroFramework.Controls.MetroTextBox txtNoPenerimaanBordir;
+        private MetroFramework.Controls.MetroLabel metroLabel5;
+        private MetroFramework.Controls.MetroLabel metroLabel4;
+        private MetroFramework.Controls.MetroLabel metroLabel3;
+        private MetroFramework.Controls.MetroLabel metroLabel2;
+        private MetroFramework.Controls.MetroLabel metroLabel1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button btnToNoSpkBordir;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtPicNamePenerimaanBordir;
-        private System.Windows.Forms.TextBox txtPicCodePenerimaanBordir;
-        private System.Windows.Forms.TextBox txtNoSpkBordirPenerimaan;
-        private System.Windows.Forms.TextBox txtNoPenerimaanBordir;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.BindingSource listPenerimaanTukangPotongBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn noSeriDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn modelDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn colorIDDataGridViewComboBoxColumn;
+        private System.Windows.Forms.BindingSource colorBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn merkDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ukuranDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qtyRusak;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qtyBS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qtyAkhir;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SPKSablonStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SPKBordirStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SPKCMTStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn statusSPKSablonDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn statusSPKBordirDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn statusSPKCMTDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn statusNoSeriDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idListPTPDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource employeeBindingSource;
+        private System.Windows.Forms.BindingSource detailSPKBindingSource;
     }
 }

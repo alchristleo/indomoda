@@ -9,16 +9,31 @@ using System.Windows.Forms;
 
 namespace Project
 {
-    public partial class PenerimaanCMT : Form
+    public partial class PenerimaanCMT : MetroFramework.Forms.MetroForm
     {
         public PenerimaanCMT()
         {
             InitializeComponent();
         }
 
+        private void btnUpdateStatusPemotongan_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnResetPenerimaanCMT_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void btnExitPenerimaanCMT_Click(object sender, EventArgs e)
         {
-            Close();
+
+        }
+
+        private void btnSavePenerimaanCMT_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

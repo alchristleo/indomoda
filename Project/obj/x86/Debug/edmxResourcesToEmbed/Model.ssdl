@@ -158,6 +158,7 @@ warning 6002: The table/view 'indomoda.dbo.DatetimeNotification' does not have a
     <Property Name="noSPK" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="EmployeeID" Type="int" Nullable="false" />
     <Property Name="Datetime" Type="datetime" Nullable="false" />
+    <Property Name="type" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="status" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="PreOrderKains">

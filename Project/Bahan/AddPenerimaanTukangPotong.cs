@@ -154,15 +154,15 @@ namespace Project
                         int b = GenericQuery.ExecSQLCommand("INSERT INTO QuantityRecord (id, noSeri, qtyAwalSablon, qtySablonBS, qtySablonHilang, qtyAwalBordir, qtyBordirBS, qtyBordirHilang, qtyAwalCMT, qtyCMTBS, qtyCMTHilang) VALUES(@id, @noSeri, @qtyAwalSablon, @qtySablonBS, @qtySablonHilang, @qtyAwalBordir, @qtyBordirBS, @qtyBordirHilang, @qtyAwalCMT, @qtyCMTBS, @qtyCMTHilang)", new[] {
                                 new SqlParameter("@id", setIDQR),
                                 new SqlParameter("@noSeri", noSeri),
-                                new SqlParameter("@qtyAwalSablon", qty),
-                                new SqlParameter("@qtySablonBS", qty),
-                                new SqlParameter("@qtySablonHilang", qty),
-                                new SqlParameter("@qtyAwalBordir", qty),
-                                new SqlParameter("@qtyBordirBS", qty),
-                                new SqlParameter("@qtyBordirHilang", qty),
-                                new SqlParameter("@qtyAwalCMT", qty),
-                                new SqlParameter("@qtyCMTBS", qty),
-                                new SqlParameter("@qtyCMTHilang", qty)
+                                new SqlParameter("@qtyAwalSablon", DBNull.Value),
+                                new SqlParameter("@qtySablonBS", DBNull.Value),
+                                new SqlParameter("@qtySablonHilang", DBNull.Value),
+                                new SqlParameter("@qtyAwalBordir", DBNull.Value),
+                                new SqlParameter("@qtyBordirBS", DBNull.Value),
+                                new SqlParameter("@qtyBordirHilang", DBNull.Value),
+                                new SqlParameter("@qtyAwalCMT", DBNull.Value),
+                                new SqlParameter("@qtyCMTBS", DBNull.Value),
+                                new SqlParameter("@qtyCMTHilang", DBNull.Value)
                             });
                         db.SaveChangesAsync().Wait();
 

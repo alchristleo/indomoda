@@ -61,7 +61,6 @@
     <EntitySet Name="DetailPemotonganKains" EntityType="indomodaModel.DetailPemotonganKain" />
     <EntitySet Name="DetailSPKs" EntityType="indomodaModel.DetailSPK" />
     <EntitySet Name="ListPenerimaanTukangPotongs" EntityType="indomodaModel.ListPenerimaanTukangPotong" />
-    <EntitySet Name="PenerimaanSBCs" EntityType="indomodaModel.PenerimaanSBC" />
     <EntitySet Name="PreOrderKains" EntityType="indomodaModel.PreOrderKain" />
     <EntitySet Name="QuantityRecords" EntityType="indomodaModel.QuantityRecord" />
     <AssociationSet Name="FK_ListPenerimaanTukangPotong_Colors" Association="indomodaModel.FK_ListPenerimaanTukangPotong_Colors">
@@ -81,6 +80,7 @@
       <End Role="PreOrderKain" EntitySet="PreOrderKains" />
     </AssociationSet>
     <EntitySet Name="DatetimeNotifications" EntityType="indomodaModel.DatetimeNotification" />
+    <EntitySet Name="PenerimaanSBCs" EntityType="indomodaModel.PenerimaanSBC" />
   </EntityContainer>
   <EntityType Name="Employee">
     <Key>
@@ -222,17 +222,6 @@
     <Property Name="idSPKCMT" Type="Int32" />
     <NavigationProperty Name="Color" Relationship="indomodaModel.FK_ListPenerimaanTukangPotong_Colors" FromRole="ListPenerimaanTukangPotong" ToRole="Color" />
   </EntityType>
-  <EntityType Name="PenerimaanSBC">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" />
-    <Property Name="noPenerimaan" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="noSPK" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="EmployeeID" Type="Int32" Nullable="false" />
-    <Property Name="Datetime" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="status" Type="Int32" Nullable="false" />
-  </EntityType>
   <EntityType Name="PreOrderKain">
     <Key>
       <PropertyRef Name="idPOKain" />
@@ -320,5 +309,17 @@
     <Property Name="noSeri" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Date_insert" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="NotifyStatus" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PenerimaanSBC">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="noPenerimaan" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="noSPK" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+    <Property Name="Datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="Int32" Nullable="false" />
   </EntityType>
 </Schema>

@@ -19,6 +19,7 @@ namespace Project
         public string noSPK { get; set; }
         public int EmployeeID { get; set; }
         public System.DateTime Datetime { get; set; }
+        public string type { get; set; }
         public int status { get; set; }
     }
 }

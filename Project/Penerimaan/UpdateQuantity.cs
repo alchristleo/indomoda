@@ -54,7 +54,7 @@ namespace Project
             {
                 txtNoSeri.Text = list[0].noSeri;
                 var dba = GenericQuery.SqlQuerySingle<QuantityRecord>("SELECT qr.id, qr.noSeri, qr.qtyAwalSablon, qr.qtySablonBS, qr.qtySablonHilang, qr.qtyAwalBordir, qr.qtyBordirBS, qr.qtyBordirHilang, qr.qtyAwalCMT, qr.qtyCMTBS, qr.qtyCMTHilang FROM QuantityRecord qr WHERE qr.noSeri = '" + txtNoSeri.Text + "'");
-                if (dba.qtySablonHilang != 0 && dba.qtySablonBS != 0)
+                if (dba.qtySablonHilang != null && dba.qtySablonBS != null)
                 {
                     txtQuantityAwal.Text = dba.qtyAwalSablon.ToString();
                 }
@@ -62,8 +62,8 @@ namespace Project
                 {
                     txtQuantityAwal.Text = list[0].quantity.ToString();
                 }
-                if (list[0].qtySablonHilang != 0) { txtBarangHilang.Text = list[0].qtySablonHilang.ToString(); }
-                if (list[0].qtySablonBS != 0) { txtBarangBS.Text = list[0].qtySablonBS.ToString(); }
+                if (list[0].qtySablonHilang != null) { txtBarangHilang.Text = list[0].qtySablonHilang.ToString(); }
+                if (list[0].qtySablonBS != null) { txtBarangBS.Text = list[0].qtySablonBS.ToString(); }
             }
             txtBarangHilang.Focus();
         }

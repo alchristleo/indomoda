@@ -9,16 +9,31 @@ using System.Windows.Forms;
 
 namespace Project
 {
-    public partial class PenerimaanBordir : Form
+    public partial class PenerimaanBordir : MetroFramework.Forms.MetroForm
     {
         public PenerimaanBordir()
         {
             InitializeComponent();
         }
 
+        private void btnUpdateStatusPemotongan_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnResetPenerimaanBordir_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void btnExitPenerimaanBordir_Click(object sender, EventArgs e)
         {
-            Close();
+
+        }
+
+        private void btnSavePenerimaanBordir_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

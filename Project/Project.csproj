@@ -505,6 +505,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\btn-calculator.png" />
+    <None Include="Assets\btn-reset.png" />
     <Content Include="Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>

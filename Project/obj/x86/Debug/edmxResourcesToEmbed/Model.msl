@@ -158,18 +158,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="PenerimaanSBCs">
-      <EntityTypeMapping TypeName="indomodaModel.PenerimaanSBC">
-        <MappingFragment StoreEntitySet="PenerimaanSBC">
-          <ScalarProperty Name="status" ColumnName="status" />
-          <ScalarProperty Name="Datetime" ColumnName="Datetime" />
-          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
-          <ScalarProperty Name="noSPK" ColumnName="noSPK" />
-          <ScalarProperty Name="noPenerimaan" ColumnName="noPenerimaan" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="PreOrderKains">
       <EntityTypeMapping TypeName="indomodaModel.PreOrderKain">
         <MappingFragment StoreEntitySet="PreOrderKains">
@@ -205,6 +193,19 @@
           <ScalarProperty Name="NotifyStatus" ColumnName="NotifyStatus" />
           <ScalarProperty Name="Date_insert" ColumnName="Date_insert" />
           <ScalarProperty Name="noSeri" ColumnName="noSeri" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PenerimaanSBCs">
+      <EntityTypeMapping TypeName="indomodaModel.PenerimaanSBC">
+        <MappingFragment StoreEntitySet="PenerimaanSBC">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="Datetime" ColumnName="Datetime" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="noSPK" ColumnName="noSPK" />
+          <ScalarProperty Name="noPenerimaan" ColumnName="noPenerimaan" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
