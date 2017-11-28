@@ -105,6 +105,27 @@ namespace Project
                             });
                             db.SaveChangesAsync().Wait();
 
+                            List<DetailPenerimaanSBC> tempList = GenericQuery.SqlQuery<DetailPenerimaanSBC>("SELECT p.idDetail, p.noPenerimaan, p.noSPK, p.noSeri, p.type, p.tempSablon, p.tempBordir, p.tempCMT FROM DetailPenerimaanSBC p WHERE p.noSeri = '"+noSeri+"'");
+                            if (tempList.Count < 1)
+                            {
+                                int idDetail = db.DetailPenerimaanSBCs.AsEnumerable().LastOrDefault() == null ? 1 : db.DetailPenerimaanSBCs.AsEnumerable().LastOrDefault().idDetail + 1;
+                                string noSPK = PenerimaanSablon.CS;
+                                string setType = "sablon";
+                                int setStatusSablon = 1;
+                                int temp = 0;
+                                int b = GenericQuery.ExecSQLCommand("INSERT INTO DetailPenerimaanSBC (idDetail, noPenerimaan, noSPK, noSeri, type, tempSablon, tempBordir, tempCMT) VALUES(@idDetail, @noPenerimaan, @noSPK, @noSeri, @type, @tempSablon, @tempBordir, @tempCMT)", new[] {
+                                    new SqlParameter("@idDetail", idDetail),
+                                    new SqlParameter("@noPenerimaan", DBNull.Value),
+                                    new SqlParameter("@noSPK", noSPK),
+                                    new SqlParameter("@noSeri", noSeri),
+                                    new SqlParameter("@type", setType),
+                                    new SqlParameter("@tempSablon", setStatusSablon),
+                                    new SqlParameter("@tempBordir", temp),
+                                    new SqlParameter("@tempCMT", temp)
+                                });
+                                db.SaveChangesAsync().Wait();
+                            }
+                          
                             int crIdx = PenerimaanSablon.CR;
                             _dv.Columns[7].ValueType = typeof(double);
                             _dv.Rows[crIdx].Cells[7].Value = barangHilang;

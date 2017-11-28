@@ -15,6 +15,7 @@ namespace Project
     public partial class PenerimaanSablon : MetroFramework.Forms.MetroForm
     {
         public static int CR;
+        public static string CS;
         private BindingSource _bs = null;
         private DataGridView _dv = null;
         private Form _form = null;
@@ -197,6 +198,10 @@ namespace Project
             }
             else
             {
+                int idSPK = Convert.ToInt32(cboNoSpkSablonPenerimaan.SelectedValue.ToString());
+                var dba = GenericQuery.SqlQuerySingle<DetailSPK>("SELECT sp.idSPK, sp.noSPK, sp.EmployeeID, sp.Datetime, sp.type, sp.status FROM DetailSPK sp WHERE sp.idSPK = '" + idSPK + "'");
+                string noSPK = dba.noSPK;
+                CS = noSPK;
                 CR = dataGridView1.CurrentRow.Index;
                 UpdateQuantity uq = new UpdateQuantity();
                 int currentIDPTP = Convert.ToInt32(dataGridView1[17, dataGridView1.CurrentRow.Index].Value.ToString());
@@ -241,6 +246,10 @@ namespace Project
                             int b = GenericQuery.ExecSQLCommand("UPDATE ListPenerimaanTukangPotong SET quantity = @quantity WHERE noSeri = '" + noSeri + "'", new[] {
                                 new SqlParameter("@quantity", quantity)
                             });
+                            db.SaveChangesAsync().Wait();
+                            
+                            string setType = "sablon";
+                            int c = GenericQuery.ExecSQLCommand("DELETE FROM DetailPenerimaanSBC WHERE noSeri = '"+noSeri+"' AND type = '"+setType+"'");
                             db.SaveChangesAsync().Wait();
 
                             dataGridView1.Refresh();
@@ -300,45 +309,41 @@ namespace Project
                             {
                                 var x = dataGridView1.Rows[i].Cells[9].Value.ToString();
                                 string noSeri = dataGridView1.Rows[i].Cells[1].Value.ToString();
+                                int idDetail = db.DetailPenerimaanSBCs.AsEnumerable().LastOrDefault() == null ? 1 : db.DetailPenerimaanSBCs.AsEnumerable().LastOrDefault().idDetail + 1;
+                                int newTempSablon = 2;
+
                                 if (x != "-")
                                 {
+                                    var dbb = GenericQuery.SqlQuerySingle<ListPenerimaanTukangPotong>("SELECT lp.idListPTP, lp.idPenerimaanTukangPotong, lp.noSeri, lp.model, lp.ColorID, lp.merk, lp.ukuran, lp.quantity, lp.statusSPKSablon, lp.statusSPKBordir, lp.statusSPKCMT, lp.statusNoSeri, lp.idSPKSablon, lp.idSPKBordir, lp.idSPKCMT  FROM ListPenerimaanTukangPotong lp WHERE lp.noSeri = '" + noSeri + "'");
+                                    var z = dbb.quantity.ToString();
                                     double qtyUpdate = Convert.ToDouble(x);
-                                    int a = GenericQuery.ExecSQLCommand("UPDATE ListPenerimaanTukangPotong SET quantity = @quantity WHERE noSeri = '" + noSeri + "'", new[] {
-                                        new SqlParameter("@quantity", qtyUpdate)
-                                    });
-                                    db.SaveChangesAsync().Wait();
 
-                                    int idDetail = db.DetailPenerimaanSBCs.AsEnumerable().LastOrDefault() == null ? 1 : db.DetailPenerimaanSBCs.AsEnumerable().LastOrDefault().idDetail + 1;
-                                    int tempSablon = 1;
-                                    int tempBordir = 0;
-                                    int tempCMT = 0;
-                                    int b = GenericQuery.ExecSQLCommand("INSERT INTO DetailPenerimaanSBC (idDetail, noPenerimaan, noSPK, noSeri, type, tempSablon, tempBordir, tempCMT) VALUES(@idDetail, @noPenerimaan, @noSPK, @noSeri, @type, @tempSablon, @tempBordir, @tempCMT)", new[] {
-                                        new SqlParameter("@idDetail", idDetail),
-                                        new SqlParameter("@noPenerimaan", txtNoPenerimaanSablon.Text),
-                                        new SqlParameter("@noSPK", noSPK),
-                                        new SqlParameter("@noSeri", noSeri),
-                                        new SqlParameter("@type", setType),
-                                        new SqlParameter("@tempStatus", tempSablon),
-                                        new SqlParameter("@tempBordir", tempBordir),
-                                        new SqlParameter("@tempCMT", tempCMT)
-                                    });
-                                    db.SaveChangesAsync().Wait();
-
+                                    if (x != z)
+                                    {
+                                        int a = GenericQuery.ExecSQLCommand("UPDATE ListPenerimaanTukangPotong SET quantity = @quantity WHERE noSeri = '" + noSeri + "'", new[] {
+                                            new SqlParameter("@quantity", qtyUpdate)
+                                        });
+                                        db.SaveChangesAsync().Wait();
+                                    }
+                                    
+                                    List<DetailPenerimaanSBC> tempList = GenericQuery.SqlQuery<DetailPenerimaanSBC>("SELECT p.idDetail, p.noPenerimaan, p.noSPK, p.noSeri, p.type, p.tempSablon, p.tempBordir, p.tempCMT FROM DetailPenerimaanSBC p WHERE p.noSeri = '" + noSeri + "' AND p.type = '"+setType+"' AND p.tempSablon = '"+1+"'");
+                                    if (tempList.Count != 0)
+                                    {
+                                        int b = GenericQuery.ExecSQLCommand("UPDATE DetailPenerimaanSBC SET noPenerimaan = @noPenerimaan, tempSablon = @tempSablon WHERE noSeri = '" + noSeri + "' AND type = '" + setType + "'", new[] {
+                                            new SqlParameter("@noPenerimaan", txtNoPenerimaanSablon.Text),
+                                            new SqlParameter("@tempSablon", newTempSablon)
+                                        });
+                                        db.SaveChangesAsync().Wait();
+                                    }
                                     count++;
                                 }
-
-                                int newTempSablon = 2;
-                                int f = GenericQuery.ExecSQLCommand("UPDATE DetailPenerimaanSBC SET tempSablon = @tempSablon WHERE noPenerimaan = '"+txtNoPenerimaanSablon.Text+"'", new[] {
-                                    new SqlParameter("@tempSablon", newTempSablon)
-                                });
-                                db.SaveChangesAsync().Wait();
                             }
 
                             if (count == dataGridView1.Rows.Count)
                             {
                                 int setStatusSPK = 1;
                                 string type = "sablon";
-                                int c = GenericQuery.ExecSQLCommand("UPDATE DetailSPK SET status = @status WHERE status = '" + Convert.ToInt32(cboNoSpkSablonPenerimaan.SelectedValue.ToString()) + "'", new[] {
+                                int c = GenericQuery.ExecSQLCommand("UPDATE DetailSPK SET status = @status WHERE idSPK = '" + Convert.ToInt32(cboNoSpkSablonPenerimaan.SelectedValue.ToString()) + "'", new[] {
                                         new SqlParameter("@status", setStatusSPK)
                                     });
                                 db.SaveChangesAsync().Wait();

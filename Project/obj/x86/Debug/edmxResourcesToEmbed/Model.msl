@@ -32,16 +32,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Users">
-      <EntityTypeMapping TypeName="indomodaModel.User">
-        <MappingFragment StoreEntitySet="Users">
-          <ScalarProperty Name="UserID" ColumnName="UserID" />
-          <ScalarProperty Name="UserName" ColumnName="UserName" />
-          <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
-          <ScalarProperty Name="UserRole" ColumnName="UserRole" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Employees">
       <EntityTypeMapping TypeName="indomodaModel.Employee">
         <MappingFragment StoreEntitySet="Employees">
@@ -99,16 +89,6 @@
           <ScalarProperty Name="PONumber" ColumnName="PONumber" />
           <ScalarProperty Name="NoFaktur" ColumnName="NoFaktur" />
           <ScalarProperty Name="idFaktur" ColumnName="idFaktur" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="DetailLogs">
-      <EntityTypeMapping TypeName="indomodaModel.DetailLog">
-        <MappingFragment StoreEntitySet="DetailLogs">
-          <ScalarProperty Name="activity" ColumnName="activity" />
-          <ScalarProperty Name="Datetime" ColumnName="Datetime" />
-          <ScalarProperty Name="UserID" ColumnName="UserID" />
-          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -197,6 +177,26 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="DetailLogs">
+      <EntityTypeMapping TypeName="indomodaModel.DetailLog">
+        <MappingFragment StoreEntitySet="DetailLogs">
+          <ScalarProperty Name="activity" ColumnName="activity" />
+          <ScalarProperty Name="Datetime" ColumnName="Datetime" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="indomodaModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="UserRole" ColumnName="UserRole" />
+          <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="PenerimaanSBCs">
       <EntityTypeMapping TypeName="indomodaModel.PenerimaanSBC">
         <MappingFragment StoreEntitySet="PenerimaanSBC">
@@ -213,7 +213,9 @@
     <EntitySetMapping Name="DetailPenerimaanSBCs">
       <EntityTypeMapping TypeName="indomodaModel.DetailPenerimaanSBC">
         <MappingFragment StoreEntitySet="DetailPenerimaanSBC">
-          <ScalarProperty Name="tempStatus" ColumnName="tempStatus" />
+          <ScalarProperty Name="tempCMT" ColumnName="tempCMT" />
+          <ScalarProperty Name="tempBordir" ColumnName="tempBordir" />
+          <ScalarProperty Name="tempSablon" ColumnName="tempSablon" />
           <ScalarProperty Name="type" ColumnName="type" />
           <ScalarProperty Name="noSeri" ColumnName="noSeri" />
           <ScalarProperty Name="noSPK" ColumnName="noSPK" />

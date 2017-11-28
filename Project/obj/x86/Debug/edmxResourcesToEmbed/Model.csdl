@@ -30,20 +30,10 @@
     <Property Name="MaterialName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="DetailPOes" Relationship="indomodaModel.FK_DetailPO_Materials" FromRole="Material" ToRole="DetailPO" />
   </EntityType>
-  <EntityType Name="User">
-    <Key>
-      <PropertyRef Name="UserID" />
-    </Key>
-    <Property Name="UserID" Type="Int32" Nullable="false" />
-    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="UserPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="UserRole" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-  </EntityType>
   <EntityContainer Name="indomodaEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Customers" EntityType="Self.Customer" />
     <EntitySet Name="IndomodaSuppliers" EntityType="Self.IndomodaSupplier" />
     <EntitySet Name="Materials" EntityType="Self.Material" />
-    <EntitySet Name="Users" EntityType="Self.User" />
     <EntitySet Name="Employees" EntityType="indomodaModel.Employee" />
     <EntitySet Name="DetailPenerimaanTukangPotongs" EntityType="indomodaModel.DetailPenerimaanTukangPotong" />
     <EntitySet Name="Colors" EntityType="indomodaModel.Color" />
@@ -57,7 +47,6 @@
       <End Role="DetailPO" EntitySet="DetailPOes" />
     </AssociationSet>
     <EntitySet Name="DetailFakturs" EntityType="indomodaModel.DetailFaktur" />
-    <EntitySet Name="DetailLogs" EntityType="indomodaModel.DetailLog" />
     <EntitySet Name="DetailPemotonganKains" EntityType="indomodaModel.DetailPemotonganKain" />
     <EntitySet Name="DetailSPKs" EntityType="indomodaModel.DetailSPK" />
     <EntitySet Name="ListPenerimaanTukangPotongs" EntityType="indomodaModel.ListPenerimaanTukangPotong" />
@@ -80,6 +69,12 @@
       <End Role="PreOrderKain" EntitySet="PreOrderKains" />
     </AssociationSet>
     <EntitySet Name="DatetimeNotifications" EntityType="indomodaModel.DatetimeNotification" />
+    <EntitySet Name="DetailLogs" EntityType="indomodaModel.DetailLog" />
+    <EntitySet Name="Users" EntityType="indomodaModel.User" />
+    <AssociationSet Name="FK_DetailLogs_Users" Association="indomodaModel.FK_DetailLogs_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="DetailLog" EntitySet="DetailLogs" />
+    </AssociationSet>
     <EntitySet Name="PenerimaanSBCs" EntityType="indomodaModel.PenerimaanSBC" />
     <EntitySet Name="DetailPenerimaanSBCs" EntityType="indomodaModel.DetailPenerimaanSBC" />
   </EntityContainer>
@@ -167,15 +162,6 @@
     <Property Name="PONumber" Type="Int64" Nullable="false" />
     <Property Name="Date_time" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="status" Type="Boolean" Nullable="false" />
-  </EntityType>
-  <EntityType Name="DetailLog">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" />
-    <Property Name="UserID" Type="Int32" Nullable="false" />
-    <Property Name="Datetime" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="activity" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="DetailPemotonganKain">
     <Key>
@@ -311,6 +297,38 @@
     <Property Name="Date_insert" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="NotifyStatus" Type="Boolean" Nullable="false" />
   </EntityType>
+  <EntityType Name="DetailLog">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="Datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="activity" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="User" Relationship="indomodaModel.FK_DetailLogs_Users" FromRole="DetailLog" ToRole="User" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserPassword" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserRole" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="DetailLogs" Relationship="indomodaModel.FK_DetailLogs_Users" FromRole="User" ToRole="DetailLog" />
+  </EntityType>
+  <Association Name="FK_DetailLogs_Users">
+    <End Type="indomodaModel.User" Role="User" Multiplicity="1" />
+    <End Type="indomodaModel.DetailLog" Role="DetailLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="DetailLog">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityType Name="PenerimaanSBC">
     <Key>
       <PropertyRef Name="id" />
@@ -328,10 +346,12 @@
       <PropertyRef Name="idDetail" />
     </Key>
     <Property Name="idDetail" Type="Int32" Nullable="false" />
-    <Property Name="noPenerimaan" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="noPenerimaan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="noSPK" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="noSeri" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="tempStatus" Type="Int32" Nullable="false" />
+    <Property Name="tempSablon" Type="Int32" Nullable="false" />
+    <Property Name="tempBordir" Type="Int32" Nullable="false" />
+    <Property Name="tempCMT" Type="Int32" Nullable="false" />
   </EntityType>
 </Schema>

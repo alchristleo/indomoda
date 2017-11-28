@@ -73,7 +73,7 @@ warning 6002: The table/view 'indomoda.dbo.DatetimeNotification' does not have a
             <PropertyRef Name="idDetail" />
           </Key>
           <Property Name="idDetail" Type="int" Nullable="false" />
-          <Property Name="noPenerimaan" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="noPenerimaan" Type="varchar" MaxLength="50" />
           <Property Name="noSPK" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="noSeri" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="type" Type="varchar" MaxLength="50" Nullable="false" />
@@ -427,14 +427,14 @@ warning 6002: The table/view 'indomoda.dbo.DatetimeNotification' does not have a
             <End Role="PreOrderKain" EntitySet="PreOrderKains" />
           </AssociationSet>
           <EntitySet Name="DatetimeNotifications" EntityType="indomodaModel.DatetimeNotification" />
-          <EntitySet Name="PenerimaanSBCs" EntityType="indomodaModel.PenerimaanSBC" />
-          <EntitySet Name="DetailPenerimaanSBCs" EntityType="indomodaModel.DetailPenerimaanSBC" />
           <EntitySet Name="DetailLogs" EntityType="indomodaModel.DetailLog" />
           <EntitySet Name="Users" EntityType="indomodaModel.User" />
           <AssociationSet Name="FK_DetailLogs_Users" Association="indomodaModel.FK_DetailLogs_Users">
             <End Role="User" EntitySet="Users" />
             <End Role="DetailLog" EntitySet="DetailLogs" />
           </AssociationSet>
+          <EntitySet Name="PenerimaanSBCs" EntityType="indomodaModel.PenerimaanSBC" />
+          <EntitySet Name="DetailPenerimaanSBCs" EntityType="indomodaModel.DetailPenerimaanSBC" />
           </EntityContainer>
         <EntityType Name="Employee">
           <Key>
@@ -655,31 +655,6 @@ warning 6002: The table/view 'indomoda.dbo.DatetimeNotification' does not have a
           <Property Name="Date_insert" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="NotifyStatus" Type="Boolean" Nullable="false" />
         </EntityType>
-        <EntityType Name="PenerimaanSBC">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="noPenerimaan" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="noSPK" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
-          <Property Name="Datetime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="status" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="DetailPenerimaanSBC">
-          <Key>
-            <PropertyRef Name="idDetail" />
-          </Key>
-          <Property Name="idDetail" Type="Int32" Nullable="false" />
-          <Property Name="noPenerimaan" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="noSPK" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="noSeri" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="tempSablon" Type="Int32" Nullable="false" />
-          <Property Name="tempBordir" Type="Int32" Nullable="false" />
-          <Property Name="tempCMT" Type="Int32" Nullable="false" />
-        </EntityType>
         <EntityType Name="DetailLog">
           <Key>
             <PropertyRef Name="id" />
@@ -712,6 +687,31 @@ warning 6002: The table/view 'indomoda.dbo.DatetimeNotification' does not have a
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="PenerimaanSBC">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="noPenerimaan" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="noSPK" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="Datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DetailPenerimaanSBC">
+          <Key>
+            <PropertyRef Name="idDetail" />
+          </Key>
+          <Property Name="idDetail" Type="Int32" Nullable="false" />
+          <Property Name="noPenerimaan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="noSPK" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="noSeri" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tempSablon" Type="Int32" Nullable="false" />
+          <Property Name="tempBordir" Type="Int32" Nullable="false" />
+          <Property Name="tempCMT" Type="Int32" Nullable="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -894,6 +894,26 @@ warning 6002: The table/view 'indomoda.dbo.DatetimeNotification' does not have a
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="DetailLogs">
+            <EntityTypeMapping TypeName="indomodaModel.DetailLog">
+              <MappingFragment StoreEntitySet="DetailLogs">
+                <ScalarProperty Name="activity" ColumnName="activity" />
+                <ScalarProperty Name="Datetime" ColumnName="Datetime" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="indomodaModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserRole" ColumnName="UserRole" />
+                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="PenerimaanSBCs">
             <EntityTypeMapping TypeName="indomodaModel.PenerimaanSBC">
               <MappingFragment StoreEntitySet="PenerimaanSBC">
@@ -918,26 +938,6 @@ warning 6002: The table/view 'indomoda.dbo.DatetimeNotification' does not have a
                 <ScalarProperty Name="noSPK" ColumnName="noSPK" />
                 <ScalarProperty Name="noPenerimaan" ColumnName="noPenerimaan" />
                 <ScalarProperty Name="idDetail" ColumnName="idDetail" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DetailLogs">
-            <EntityTypeMapping TypeName="indomodaModel.DetailLog">
-              <MappingFragment StoreEntitySet="DetailLogs">
-                <ScalarProperty Name="activity" ColumnName="activity" />
-                <ScalarProperty Name="Datetime" ColumnName="Datetime" />
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="indomodaModel.User">
-              <MappingFragment StoreEntitySet="Users">
-                <ScalarProperty Name="UserRole" ColumnName="UserRole" />
-                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

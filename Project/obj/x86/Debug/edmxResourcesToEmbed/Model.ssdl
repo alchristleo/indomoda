@@ -68,11 +68,13 @@ warning 6002: The table/view 'indomoda.dbo.DatetimeNotification' does not have a
       <PropertyRef Name="idDetail" />
     </Key>
     <Property Name="idDetail" Type="int" Nullable="false" />
-    <Property Name="noPenerimaan" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="noPenerimaan" Type="varchar" MaxLength="50" />
     <Property Name="noSPK" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="noSeri" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="type" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="tempStatus" Type="int" Nullable="false" />
+    <Property Name="tempSablon" Type="int" Nullable="false" />
+    <Property Name="tempBordir" Type="int" Nullable="false" />
+    <Property Name="tempCMT" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="DetailPenerimaanTukangPotong">
     <Key>
@@ -208,6 +210,18 @@ warning 6002: The table/view 'indomoda.dbo.DatetimeNotification' does not have a
     <Property Name="UserPassword" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="UserRole" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
+  <Association Name="FK_DetailLogs_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="DetailLogs" Type="Self.DetailLogs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="DetailLogs">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_DetailPemotonganKain_Employee">
     <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
     <End Role="DetailPemotonganKain" Type="Self.DetailPemotonganKain" Multiplicity="*" />
@@ -306,6 +320,10 @@ warning 6002: The table/view 'indomoda.dbo.DatetimeNotification' does not have a
     [DatetimeNotification].[NotifyStatus] AS [NotifyStatus]
     FROM [dbo].[DatetimeNotification] AS [DatetimeNotification]</DefiningQuery>
     </EntitySet>
+    <AssociationSet Name="FK_DetailLogs_Users" Association="Self.FK_DetailLogs_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="DetailLogs" EntitySet="DetailLogs" />
+    </AssociationSet>
     <AssociationSet Name="FK_DetailPemotonganKain_Employee" Association="Self.FK_DetailPemotonganKain_Employee">
       <End Role="Employees" EntitySet="Employees" />
       <End Role="DetailPemotonganKain" EntitySet="DetailPemotonganKain" />

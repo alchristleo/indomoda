@@ -40,10 +40,10 @@ namespace Project
         public virtual DbSet<PreOrderKain> PreOrderKains { get; set; }
         public virtual DbSet<QuantityRecord> QuantityRecords { get; set; }
         public virtual DbSet<DatetimeNotification> DatetimeNotifications { get; set; }
-        public virtual DbSet<PenerimaanSBC> PenerimaanSBCs { get; set; }
-        public virtual DbSet<DetailPenerimaanSBC> DetailPenerimaanSBCs { get; set; }
         public virtual DbSet<DetailLog> DetailLogs { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<PenerimaanSBC> PenerimaanSBCs { get; set; }
+        public virtual DbSet<DetailPenerimaanSBC> DetailPenerimaanSBCs { get; set; }
 
         internal Task<int> SaveChangesAsync()
         {
