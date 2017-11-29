@@ -29,10 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnResetPenerimaanBordir = new MetroFramework.Controls.MetroTile();
             this.btnUpdateStatusPemotongan = new MetroFramework.Controls.MetroTile();
             this.btnSavePenerimaanBordir = new MetroFramework.Controls.MetroButton();
@@ -40,7 +43,9 @@
             this.metroDateTime1 = new MetroFramework.Controls.MetroDateTime();
             this.txtPICCodePenerimaan = new MetroFramework.Controls.MetroTextBox();
             this.cboPicPenerimaanBordir = new MetroFramework.Controls.MetroComboBox();
+            this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cboNoSpkBordirPenerimaan = new MetroFramework.Controls.MetroComboBox();
+            this.detailSPKBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtNoPenerimaanBordir = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
@@ -48,8 +53,8 @@
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.listPenerimaanTukangPotongBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.colorBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.listPenerimaanTukangPotongBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.noSeriDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -68,13 +73,11 @@
             this.statusSPKCMTDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusNoSeriDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idListPTPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.detailSPKBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.listPenerimaanTukangPotongBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.detailSPKBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.detailSPKBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listPenerimaanTukangPotongBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btnResetPenerimaanBordir
@@ -182,6 +185,11 @@
             this.cboPicPenerimaanBordir.TabIndex = 52;
             this.cboPicPenerimaanBordir.UseSelectable = true;
             this.cboPicPenerimaanBordir.ValueMember = "EmployeeID";
+            this.cboPicPenerimaanBordir.SelectedIndexChanged += new System.EventHandler(this.cboPicPenerimaanBordir_SelectedIndexChanged);
+            // 
+            // employeeBindingSource
+            // 
+            this.employeeBindingSource.DataSource = typeof(Project.Employee);
             // 
             // cboNoSpkBordirPenerimaan
             // 
@@ -196,6 +204,11 @@
             this.cboNoSpkBordirPenerimaan.TabIndex = 51;
             this.cboNoSpkBordirPenerimaan.UseSelectable = true;
             this.cboNoSpkBordirPenerimaan.ValueMember = "idSPK";
+            this.cboNoSpkBordirPenerimaan.SelectedIndexChanged += new System.EventHandler(this.cboNoSpkBordirPenerimaan_SelectedIndexChanged);
+            // 
+            // detailSPKBindingSource
+            // 
+            this.detailSPKBindingSource.DataSource = typeof(Project.DetailSPK);
             // 
             // txtNoPenerimaanBordir
             // 
@@ -278,14 +291,14 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Menu;
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle21.BackColor = System.Drawing.Color.Bisque;
-            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Bisque;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeight = 30;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NO,
@@ -319,13 +332,13 @@
             this.dataGridView1.Size = new System.Drawing.Size(1306, 255);
             this.dataGridView1.TabIndex = 44;
             // 
-            // listPenerimaanTukangPotongBindingSource
-            // 
-            this.listPenerimaanTukangPotongBindingSource.DataSource = typeof(Project.ListPenerimaanTukangPotong);
-            // 
             // colorBindingSource
             // 
             this.colorBindingSource.DataSource = typeof(Project.Color);
+            // 
+            // listPenerimaanTukangPotongBindingSource
+            // 
+            this.listPenerimaanTukangPotongBindingSource.DataSource = typeof(Project.ListPenerimaanTukangPotong);
             // 
             // NO
             // 
@@ -353,6 +366,7 @@
             this.colorIDDataGridViewComboBoxColumn.DataPropertyName = "ColorID";
             this.colorIDDataGridViewComboBoxColumn.DataSource = this.colorBindingSource;
             this.colorIDDataGridViewComboBoxColumn.DisplayMember = "ColorName";
+            this.colorIDDataGridViewComboBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
             this.colorIDDataGridViewComboBoxColumn.HeaderText = "Color Name";
             this.colorIDDataGridViewComboBoxColumn.Name = "colorIDDataGridViewComboBoxColumn";
             this.colorIDDataGridViewComboBoxColumn.ReadOnly = true;
@@ -385,48 +399,51 @@
             // 
             // qtyRusak
             // 
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Pink;
+            this.qtyRusak.DefaultCellStyle = dataGridViewCellStyle2;
             this.qtyRusak.HeaderText = "Barang Rusak (pcs)";
             this.qtyRusak.Name = "qtyRusak";
             this.qtyRusak.ReadOnly = true;
             this.qtyRusak.Width = 120;
-            this.qtyRusak.DefaultCellStyle.BackColor = System.Drawing.Color.Pink;
             // 
             // qtyBS
             // 
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightPink;
+            this.qtyBS.DefaultCellStyle = dataGridViewCellStyle3;
             this.qtyBS.HeaderText = "Barang BS (pcs) ";
             this.qtyBS.Name = "qtyBS";
             this.qtyBS.ReadOnly = true;
             this.qtyBS.Width = 120;
-            this.qtyBS.DefaultCellStyle.BackColor = System.Drawing.Color.LightPink;
             // 
             // qtyAkhir
             // 
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Plum;
+            this.qtyAkhir.DefaultCellStyle = dataGridViewCellStyle4;
             this.qtyAkhir.HeaderText = "Quantity Akhir (pcs)";
             this.qtyAkhir.Name = "qtyAkhir";
             this.qtyAkhir.ReadOnly = true;
             this.qtyAkhir.Width = 120;
-            this.qtyAkhir.DefaultCellStyle.BackColor = System.Drawing.Color.Plum;
             // 
             // SPKSablonStatus
             // 
-            dataGridViewCellStyle22.BackColor = System.Drawing.Color.Thistle;
-            this.SPKSablonStatus.DefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Thistle;
+            this.SPKSablonStatus.DefaultCellStyle = dataGridViewCellStyle5;
             this.SPKSablonStatus.HeaderText = "SPK Sablon";
             this.SPKSablonStatus.Name = "SPKSablonStatus";
             this.SPKSablonStatus.ReadOnly = true;
             // 
             // SPKBordirStatus
             // 
-            dataGridViewCellStyle23.BackColor = System.Drawing.Color.LightGreen;
-            this.SPKBordirStatus.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.LightGreen;
+            this.SPKBordirStatus.DefaultCellStyle = dataGridViewCellStyle6;
             this.SPKBordirStatus.HeaderText = "SPK Bordir";
             this.SPKBordirStatus.Name = "SPKBordirStatus";
             this.SPKBordirStatus.ReadOnly = true;
             // 
             // SPKCMTStatus
             // 
-            dataGridViewCellStyle24.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.SPKCMTStatus.DefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.SPKCMTStatus.DefaultCellStyle = dataGridViewCellStyle7;
             this.SPKCMTStatus.HeaderText = "SPK CMT";
             this.SPKCMTStatus.Name = "SPKCMTStatus";
             this.SPKCMTStatus.ReadOnly = true;
@@ -471,14 +488,6 @@
             this.idListPTPDataGridViewTextBoxColumn.ReadOnly = true;
             this.idListPTPDataGridViewTextBoxColumn.Visible = false;
             // 
-            // detailSPKBindingSource
-            // 
-            this.detailSPKBindingSource.DataSource = typeof(Project.DetailSPK);
-            // 
-            // employeeBindingSource
-            // 
-            this.employeeBindingSource.DataSource = typeof(Project.Employee);
-            // 
             // PenerimaanBordir
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -501,11 +510,12 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "PenerimaanBordir";
             this.Text = "Penerimaan Bordir";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.listPenerimaanTukangPotongBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.detailSPKBindingSource)).EndInit();
+            this.Load += new System.EventHandler(this.PenerimaanBordir_Load);
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.detailSPKBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listPenerimaanTukangPotongBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -529,11 +539,13 @@
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.BindingSource listPenerimaanTukangPotongBindingSource;
+        private System.Windows.Forms.BindingSource colorBindingSource;
+        private System.Windows.Forms.BindingSource employeeBindingSource;
+        private System.Windows.Forms.BindingSource detailSPKBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn NO;
         private System.Windows.Forms.DataGridViewTextBoxColumn noSeriDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn modelDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn colorIDDataGridViewComboBoxColumn;
-        private System.Windows.Forms.BindingSource colorBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn merkDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ukuranDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
@@ -548,7 +560,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn statusSPKCMTDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn statusNoSeriDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idListPTPDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource employeeBindingSource;
-        private System.Windows.Forms.BindingSource detailSPKBindingSource;
     }
 }

@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace Project
 {
-    public partial class UpdateQuantity : MetroFramework.Forms.MetroForm
+    public partial class UpdateBordir : MetroFramework.Forms.MetroForm
     {
         private BindingSource _bs = null;
         private Form _form = null;
@@ -40,32 +40,9 @@ namespace Project
             _dpo = dpo;
         }
 
-        public UpdateQuantity()
+        public UpdateBordir()
         {
             InitializeComponent();
-        }
-
-        private void UpdateQuantity_Load(object sender, EventArgs e)
-        {
-
-            list = _dpo;
-
-            if (list != null && list.Count > 0)
-            {
-                txtNoSeri.Text = list[0].noSeri;
-                var dba = GenericQuery.SqlQuerySingle<QuantityRecord>("SELECT qr.id, qr.noSeri, qr.qtyAwalSablon, qr.qtySablonBS, qr.qtySablonHilang, qr.qtyAwalBordir, qr.qtyBordirBS, qr.qtyBordirHilang, qr.qtyAwalCMT, qr.qtyCMTBS, qr.qtyCMTHilang FROM QuantityRecord qr WHERE qr.noSeri = '" + txtNoSeri.Text + "'");
-                if (dba.qtySablonHilang != null && dba.qtySablonBS != null)
-                {
-                    txtQuantityAwal.Text = dba.qtyAwalSablon.ToString();
-                }
-                else
-                {
-                    txtQuantityAwal.Text = list[0].quantity.ToString();
-                }
-                if (list[0].qtySablonHilang != null) { txtBarangHilang.Text = list[0].qtySablonHilang.ToString(); }
-                if (list[0].qtySablonBS != null) { txtBarangBS.Text = list[0].qtySablonBS.ToString(); }
-            }
-            txtBarangHilang.Focus();
         }
 
         private void btnExitUpdate_Click(object sender, EventArgs e)
@@ -98,21 +75,21 @@ namespace Project
                             string noSeri = txtNoSeri.Text;
                             double qtyAwal = Convert.ToDouble(txtQuantityAwal.Text);
                             double qtyAkhir = qtyAwal - (barangHilang + barangBS);
-                            int a = GenericQuery.ExecSQLCommand("UPDATE QuantityRecord SET qtyAwalSablon = @qtyAwalSablon, qtySablonBS = @qtySablonBS, qtySablonHilang = @qtySablonHilang WHERE noSeri = '" + noSeri + "'", new[] {
-                                new SqlParameter("@qtyAwalSablon", qtyAwal),
-                                new SqlParameter("@qtySablonBS", barangBS),
-                                new SqlParameter("@qtySablonHilang", barangHilang)
+                            int a = GenericQuery.ExecSQLCommand("UPDATE QuantityRecord SET qtyAwalBordir = @qtyAwalBordir, qtyBordirBS = @qtyBordirBS, qtyBordirHilang = @qtyBordirHilang WHERE noSeri = '" + noSeri + "'", new[] {
+                                new SqlParameter("@qtyAwalBordir", qtyAwal),
+                                new SqlParameter("@qtyBordirBS", barangBS),
+                                new SqlParameter("@qtyBordirHilang", barangHilang)
                             });
                             db.SaveChangesAsync().Wait();
 
-                            string br = "sablon";
-                            List<DetailPenerimaanSBC> tempList = GenericQuery.SqlQuery<DetailPenerimaanSBC>("SELECT p.idDetail, p.noPenerimaan, p.noSPK, p.noSeri, p.type, p.tempSablon, p.tempBordir, p.tempCMT FROM DetailPenerimaanSBC p WHERE p.noSeri = '"+noSeri+"' AND p.type = '"+br+"'");
+                            string br = "bordir";
+                            List<DetailPenerimaanSBC> tempList = GenericQuery.SqlQuery<DetailPenerimaanSBC>("SELECT p.idDetail, p.noPenerimaan, p.noSPK, p.noSeri, p.type, p.tempSablon, p.tempBordir, p.tempCMT FROM DetailPenerimaanSBC p WHERE p.noSeri = '" + noSeri + "' AND p.type = '"+br+"'");
                             if (tempList.Count < 1)
                             {
                                 int idDetail = db.DetailPenerimaanSBCs.AsEnumerable().LastOrDefault() == null ? 1 : db.DetailPenerimaanSBCs.AsEnumerable().LastOrDefault().idDetail + 1;
-                                string noSPK = PenerimaanSablon.CS;
-                                string setType = "sablon";
-                                int setStatusSablon = 1;
+                                string noSPK = PenerimaanBordir.CS;
+                                string setType = "bordir";
+                                int setStatusBordir = 1;
                                 int temp = 0;
                                 int b = GenericQuery.ExecSQLCommand("INSERT INTO DetailPenerimaanSBC (idDetail, noPenerimaan, noSPK, noSeri, type, tempSablon, tempBordir, tempCMT) VALUES(@idDetail, @noPenerimaan, @noSPK, @noSeri, @type, @tempSablon, @tempBordir, @tempCMT)", new[] {
                                     new SqlParameter("@idDetail", idDetail),
@@ -120,14 +97,14 @@ namespace Project
                                     new SqlParameter("@noSPK", noSPK),
                                     new SqlParameter("@noSeri", noSeri),
                                     new SqlParameter("@type", setType),
-                                    new SqlParameter("@tempSablon", setStatusSablon),
-                                    new SqlParameter("@tempBordir", temp),
+                                    new SqlParameter("@tempSablon", temp),
+                                    new SqlParameter("@tempBordir", setStatusBordir),
                                     new SqlParameter("@tempCMT", temp)
                                 });
                                 db.SaveChangesAsync().Wait();
                             }
-                          
-                            int crIdx = PenerimaanSablon.CR;
+
+                            int crIdx = PenerimaanBordir.CR;
                             _dv.Columns[7].ValueType = typeof(double);
                             _dv.Rows[crIdx].Cells[7].Value = barangHilang;
                             _dv.UpdateCellValue(7, crIdx);
@@ -161,6 +138,28 @@ namespace Project
                 }
                 this.Close();
             }
+        }
+
+        private void UpdateBordir_Load(object sender, EventArgs e)
+        {
+            list = _dpo;
+
+            if (list != null && list.Count > 0)
+            {
+                txtNoSeri.Text = list[0].noSeri;
+                var dba = GenericQuery.SqlQuerySingle<QuantityRecord>("SELECT qr.id, qr.noSeri, qr.qtyAwalSablon, qr.qtySablonBS, qr.qtySablonHilang, qr.qtyAwalBordir, qr.qtyBordirBS, qr.qtyBordirHilang, qr.qtyAwalCMT, qr.qtyCMTBS, qr.qtyCMTHilang FROM QuantityRecord qr WHERE qr.noSeri = '" + txtNoSeri.Text + "'");
+                if (dba.qtyBordirHilang != null && dba.qtyBordirBS != null)
+                {
+                    txtQuantityAwal.Text = dba.qtyAwalSablon.ToString();
+                }
+                else
+                {
+                    txtQuantityAwal.Text = list[0].quantity.ToString();
+                }
+                if (list[0].qtyBordirHilang != null) { txtBarangHilang.Text = list[0].qtyBordirHilang.ToString(); }
+                if (list[0].qtyBordirBS != null) { txtBarangBS.Text = list[0].qtyBordirBS.ToString(); }
+            }
+            txtBarangHilang.Focus();
         }
     }
 }
