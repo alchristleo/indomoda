@@ -23,14 +23,9 @@
           <Property Name="CustomerAddress" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="CustomerPhone" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'indomoda.dbo.DatetimeNotification' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="DatetimeNotification">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="noSeri" />
-            <PropertyRef Name="Date_insert" />
-            <PropertyRef Name="NotifyStatus" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="noSeri" Type="varchar" MaxLength="50" Nullable="false" />
@@ -302,6 +297,7 @@ warning 6002: The table/view 'indomoda.dbo.DatetimeNotification' does not have a
         <EntityContainer Name="indomodaModelStoreContainer">
           <EntitySet Name="Colors" EntityType="Self.Colors" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DatetimeNotification" EntityType="Self.DatetimeNotification" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DetailFaktur" EntityType="Self.DetailFaktur" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DetailLogs" EntityType="Self.DetailLogs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DetailPemotonganKain" EntityType="Self.DetailPemotonganKain" Schema="dbo" store:Type="Tables" />
@@ -317,14 +313,6 @@ warning 6002: The table/view 'indomoda.dbo.DatetimeNotification' does not have a
           <EntitySet Name="PreOrderKains" EntityType="Self.PreOrderKains" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="QuantityRecord" EntityType="Self.QuantityRecord" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="DatetimeNotification" EntityType="Self.DatetimeNotification" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [DatetimeNotification].[id] AS [id], 
-    [DatetimeNotification].[noSeri] AS [noSeri], 
-    [DatetimeNotification].[Date_insert] AS [Date_insert], 
-    [DatetimeNotification].[NotifyStatus] AS [NotifyStatus]
-    FROM [dbo].[DatetimeNotification] AS [DatetimeNotification]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_DetailLogs_Users" Association="Self.FK_DetailLogs_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="DetailLogs" EntitySet="DetailLogs" />
@@ -426,7 +414,6 @@ warning 6002: The table/view 'indomoda.dbo.DatetimeNotification' does not have a
             <End Role="IndomodaSupplier" EntitySet="IndomodaSuppliers" />
             <End Role="PreOrderKain" EntitySet="PreOrderKains" />
           </AssociationSet>
-          <EntitySet Name="DatetimeNotifications" EntityType="indomodaModel.DatetimeNotification" />
           <EntitySet Name="DetailLogs" EntityType="indomodaModel.DetailLog" />
           <EntitySet Name="Users" EntityType="indomodaModel.User" />
           <AssociationSet Name="FK_DetailLogs_Users" Association="indomodaModel.FK_DetailLogs_Users">
@@ -435,6 +422,7 @@ warning 6002: The table/view 'indomoda.dbo.DatetimeNotification' does not have a
           </AssociationSet>
           <EntitySet Name="PenerimaanSBCs" EntityType="indomodaModel.PenerimaanSBC" />
           <EntitySet Name="DetailPenerimaanSBCs" EntityType="indomodaModel.DetailPenerimaanSBC" />
+          <EntitySet Name="DatetimeNotifications" EntityType="indomodaModel.DatetimeNotification" />
           </EntityContainer>
         <EntityType Name="Employee">
           <Key>
@@ -643,18 +631,6 @@ warning 6002: The table/view 'indomoda.dbo.DatetimeNotification' does not have a
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="DatetimeNotification">
-          <Key>
-            <PropertyRef Name="id" />
-            <PropertyRef Name="noSeri" />
-            <PropertyRef Name="Date_insert" />
-            <PropertyRef Name="NotifyStatus" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="noSeri" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Date_insert" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="NotifyStatus" Type="Boolean" Nullable="false" />
-        </EntityType>
         <EntityType Name="DetailLog">
           <Key>
             <PropertyRef Name="id" />
@@ -711,6 +687,15 @@ warning 6002: The table/view 'indomoda.dbo.DatetimeNotification' does not have a
           <Property Name="tempSablon" Type="Int32" Nullable="false" />
           <Property Name="tempBordir" Type="Int32" Nullable="false" />
           <Property Name="tempCMT" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DatetimeNotification">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="noSeri" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Date_insert" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NotifyStatus" Type="Boolean" Nullable="false" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -884,16 +869,6 @@ warning 6002: The table/view 'indomoda.dbo.DatetimeNotification' does not have a
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="DatetimeNotifications">
-            <EntityTypeMapping TypeName="indomodaModel.DatetimeNotification">
-              <MappingFragment StoreEntitySet="DatetimeNotification">
-                <ScalarProperty Name="NotifyStatus" ColumnName="NotifyStatus" />
-                <ScalarProperty Name="Date_insert" ColumnName="Date_insert" />
-                <ScalarProperty Name="noSeri" ColumnName="noSeri" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="DetailLogs">
             <EntityTypeMapping TypeName="indomodaModel.DetailLog">
               <MappingFragment StoreEntitySet="DetailLogs">
@@ -938,6 +913,16 @@ warning 6002: The table/view 'indomoda.dbo.DatetimeNotification' does not have a
                 <ScalarProperty Name="noSPK" ColumnName="noSPK" />
                 <ScalarProperty Name="noPenerimaan" ColumnName="noPenerimaan" />
                 <ScalarProperty Name="idDetail" ColumnName="idDetail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DatetimeNotifications">
+            <EntityTypeMapping TypeName="indomodaModel.DatetimeNotification">
+              <MappingFragment StoreEntitySet="DatetimeNotification">
+                <ScalarProperty Name="NotifyStatus" ColumnName="NotifyStatus" />
+                <ScalarProperty Name="Date_insert" ColumnName="Date_insert" />
+                <ScalarProperty Name="noSeri" ColumnName="noSeri" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

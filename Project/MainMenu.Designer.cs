@@ -63,6 +63,10 @@
             this.bordirToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.cMTToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.metroDateTime1 = new MetroFramework.Controls.MetroDateTime();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.labelCount = new MetroFramework.Controls.MetroLabel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,7 +82,7 @@
             this.laporanToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(20, 60);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(758, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(821, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -334,18 +338,73 @@
             // 
             // metroDateTime1
             // 
+            this.metroDateTime1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.metroDateTime1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.metroDateTime1.Location = new System.Drawing.Point(534, 84);
+            this.metroDateTime1.Location = new System.Drawing.Point(597, 84);
             this.metroDateTime1.MinimumSize = new System.Drawing.Size(0, 29);
             this.metroDateTime1.Name = "metroDateTime1";
             this.metroDateTime1.Size = new System.Drawing.Size(244, 29);
             this.metroDateTime1.TabIndex = 1;
             // 
+            // metroLabel1
+            // 
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel1.Location = new System.Drawing.Point(37, 146);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(82, 25);
+            this.metroLabel1.TabIndex = 3;
+            this.metroLabel1.Text = "You have";
+            // 
+            // metroLabel2
+            // 
+            this.metroLabel2.AutoSize = true;
+            this.metroLabel2.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel2.Location = new System.Drawing.Point(156, 146);
+            this.metroLabel2.Name = "metroLabel2";
+            this.metroLabel2.Size = new System.Drawing.Size(139, 25);
+            this.metroLabel2.TabIndex = 4;
+            this.metroLabel2.Text = "new notifications";
+            // 
+            // labelCount
+            // 
+            this.labelCount.BackColor = System.Drawing.Color.LightCoral;
+            this.labelCount.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.labelCount.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.labelCount.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.labelCount.Location = new System.Drawing.Point(119, 146);
+            this.labelCount.Name = "labelCount";
+            this.labelCount.Size = new System.Drawing.Size(36, 25);
+            this.labelCount.TabIndex = 5;
+            this.labelCount.Text = "0";
+            this.labelCount.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.labelCount.UseCustomBackColor = true;
+            this.labelCount.UseCustomForeColor = true;
+            this.labelCount.UseStyleColors = true;
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.AutoScroll = true;
+            this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel1.BackColor = System.Drawing.Color.MistyRose;
+            this.panel1.Location = new System.Drawing.Point(37, 185);
+            this.panel1.MinimumSize = new System.Drawing.Size(0, 250);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(971, 300);
+            this.panel1.TabIndex = 6;
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(798, 424);
+            this.ClientSize = new System.Drawing.Size(861, 476);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.labelCount);
+            this.Controls.Add(this.metroLabel2);
+            this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.metroDateTime1);
             this.Controls.Add(this.menuStrip1);
             this.Name = "MainMenu";
@@ -397,5 +456,9 @@
         private System.Windows.Forms.ToolStripMenuItem cMTToolStripMenuItem1;
         private MetroFramework.Controls.MetroDateTime metroDateTime1;
         private System.Windows.Forms.ToolStripMenuItem logsToolStripMenuItem;
+        private MetroFramework.Controls.MetroLabel metroLabel1;
+        private MetroFramework.Controls.MetroLabel metroLabel2;
+        private MetroFramework.Controls.MetroLabel labelCount;
+        private System.Windows.Forms.Panel panel1;
     }
 }

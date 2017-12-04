@@ -167,16 +167,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="DatetimeNotifications">
-      <EntityTypeMapping TypeName="indomodaModel.DatetimeNotification">
-        <MappingFragment StoreEntitySet="DatetimeNotification">
-          <ScalarProperty Name="NotifyStatus" ColumnName="NotifyStatus" />
-          <ScalarProperty Name="Date_insert" ColumnName="Date_insert" />
-          <ScalarProperty Name="noSeri" ColumnName="noSeri" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="DetailLogs">
       <EntityTypeMapping TypeName="indomodaModel.DetailLog">
         <MappingFragment StoreEntitySet="DetailLogs">
@@ -221,6 +211,16 @@
           <ScalarProperty Name="noSPK" ColumnName="noSPK" />
           <ScalarProperty Name="noPenerimaan" ColumnName="noPenerimaan" />
           <ScalarProperty Name="idDetail" ColumnName="idDetail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DatetimeNotifications">
+      <EntityTypeMapping TypeName="indomodaModel.DatetimeNotification">
+        <MappingFragment StoreEntitySet="DatetimeNotification">
+          <ScalarProperty Name="NotifyStatus" ColumnName="NotifyStatus" />
+          <ScalarProperty Name="Date_insert" ColumnName="Date_insert" />
+          <ScalarProperty Name="noSeri" ColumnName="noSeri" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

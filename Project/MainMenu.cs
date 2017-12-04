@@ -10,11 +10,15 @@ using System.Text;
 using System.Windows.Forms;
 using Project.Helpers;
 using System.Data.SqlClient;
+using Project.Models;
 
 namespace Project
 {
     public partial class MainMenu : MetroFramework.Forms.MetroForm
     {
+        public static string CD = null;
+        public static string NS;
+        public static string CW;
         public MainMenu()
         {
             InitializeComponent();
@@ -28,7 +32,60 @@ namespace Project
 
         private void MainMenu_Load(object sender, EventArgs e)
         {
-            
+            List<SPKNotifierModel> tempList = GenericQuery.SqlQuery<SPKNotifierModel>("SELECT p.idListPTP, p.idPenerimaanTukangPotong, p.noSeri, p.model, p.ColorID, p.merk, p.ukuran, p.quantity, p.statusSPKSablon, p.statusSPKBordir, p.statusSPKCMT, p.statusNoSeri, p.idSPKSablon, p.idSPKBordir, p.idSPKCMT, q.Date_insert, q.NotifyStatus FROM ListPenerimaanTukangPotong p JOIN DatetimeNotification q ON p.noSeri = q.noSeri WHERE (p.idSPKSablon = '" + 0 + "' AND p.idSPKBordir = '" + 0 + "') OR p.idSPKCMT = '" + 0 + "'");
+            List<MetroFramework.Controls.MetroLabel> labels = new List<MetroFramework.Controls.MetroLabel>();
+            Random r = new Random();
+            CD = tempList.Count.ToString();
+
+            labelCount.Text = CD;
+            if (tempList.Count > 0)
+            {
+                //Label[] labels = new Label[tempList.Count];
+                for (int i = 0; i < tempList.Count; i++)
+                {
+                    labels.Add(new MetroFramework.Controls.MetroLabel());
+                    System.Drawing.Point productLabelsPoint = new System.Drawing.Point(0, i * 50);
+                    (labels[i]).Location = productLabelsPoint;
+                    (labels[i]).BackColor = System.Drawing.Color.Tomato;
+                    (labels[i]).FontSize = MetroFramework.MetroLabelSize.Tall;
+                    (labels[i]).FontWeight = MetroFramework.MetroLabelWeight.Regular;
+                    (labels[i]).ForeColor = System.Drawing.SystemColors.ButtonFace;
+                    (labels[i]).Size = new System.Drawing.Size(951, 31);
+                    (labels[i]).UseCustomBackColor = true;
+                    (labels[i]).UseCustomForeColor = true;
+                    (labels[i]).Cursor = System.Windows.Forms.Cursors.Hand;
+                    panel1.Controls.Add(labels[i] as MetroFramework.Controls.MetroLabel);
+                    if (tempList[i].idSPKSablon == 0 && tempList[i].idSPKBordir == 0)
+                    {
+                        (labels[i]).Text = "No Seri: " + tempList[i].noSeri + " belum dimasukkan ke dalam SPK Sablon maupun SPK Bordir";
+                    }
+                    else
+                    {
+                        (labels[i]).Text = "No Seri: " + tempList[i].noSeri + " belum dimasukkan ke dalam SPK CMT";
+                    }
+
+                    (labels[i]).Click += new EventHandler(labels_Click);
+                }
+            }
+        }
+
+        protected void labels_Click(object sender, EventArgs e)
+        {
+            //attempt to cast the sender as a label
+            MetroFramework.Controls.MetroLabel lbl = sender as MetroFramework.Controls.MetroLabel;
+
+            //if the cast was successful (i.e. not null), show notification details
+            if (lbl != null)
+            {
+                string[] separators = { ",", ".", "!", "?", ";", ":", " " };
+                string value = lbl.ToString();
+                string[] words = value.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+                string value2 = value.Split(':')[2];
+                NotificationDetail nd = new NotificationDetail();
+                NS = words[6];
+                CW = "No Seri - "+value2;
+                nd.Show();
+            }
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
