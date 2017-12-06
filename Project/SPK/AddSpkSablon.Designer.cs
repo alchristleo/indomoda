@@ -32,6 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtNoPTP = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -244,11 +245,12 @@
             // 
             // SPKCMTStatus
             // 
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.SPKCMTStatus.DefaultCellStyle = dataGridViewCellStyle4;
             this.SPKCMTStatus.HeaderText = "SPK CMT";
             this.SPKCMTStatus.Name = "SPKCMTStatus";
             this.SPKCMTStatus.ReadOnly = true;
             this.SPKCMTStatus.Width = 120;
-            this.SPKCMTStatus.DefaultCellStyle.BackColor = System.Drawing.Color.LightSteelBlue;
             // 
             // statusSPKSablonDataGridViewTextBoxColumn
             // 
@@ -587,7 +589,7 @@
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.metroLabel1);
             this.Name = "AddSpkSablon";
-            this.Text = "AddSpkSablon";
+            this.Text = "Add SPK Sablon";
             this.Load += new System.EventHandler(this.AddSpkSablon_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).EndInit();

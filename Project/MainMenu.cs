@@ -16,9 +16,10 @@ namespace Project
 {
     public partial class MainMenu : MetroFramework.Forms.MetroForm
     {
-        public static string CD = null;
+        public static int CD;
         public static string NS;
         public static string CW;
+        public static string JS;
         public MainMenu()
         {
             InitializeComponent();
@@ -33,18 +34,24 @@ namespace Project
         private void MainMenu_Load(object sender, EventArgs e)
         {
             List<SPKNotifierModel> tempList = GenericQuery.SqlQuery<SPKNotifierModel>("SELECT p.idListPTP, p.idPenerimaanTukangPotong, p.noSeri, p.model, p.ColorID, p.merk, p.ukuran, p.quantity, p.statusSPKSablon, p.statusSPKBordir, p.statusSPKCMT, p.statusNoSeri, p.idSPKSablon, p.idSPKBordir, p.idSPKCMT, q.Date_insert, q.NotifyStatus FROM ListPenerimaanTukangPotong p JOIN DatetimeNotification q ON p.noSeri = q.noSeri WHERE (p.idSPKSablon = '" + 0 + "' AND p.idSPKBordir = '" + 0 + "') OR p.idSPKCMT = '" + 0 + "'");
+            List<QuantityRecord> tempSablon = GenericQuery.SqlQuery<QuantityRecord>("SELECT lp.id, lp.noSeri, lp.qtyAwalSablon, lp.qtySablonBS, lp.qtySablonHilang, lp.qtyAwalBordir, qtyBordirBS, lp.qtyBordirHilang, lp.qtyAwalCMT, lp.qtyCMTBS, lp.qtyCMTHilang FROM QuantityRecord lp WHERE lp.qtyAwalSablon != '"+0+"' AND (lp.qtySablonBS + lp.qtySablonHilang) > 0.02 * lp.qtyAwalSablon");
+            List<QuantityRecord> tempBordir = GenericQuery.SqlQuery<QuantityRecord>("SELECT lp.id, lp.noSeri, lp.qtyAwalSablon, lp.qtySablonBS, lp.qtySablonHilang, lp.qtyAwalBordir, qtyBordirBS, lp.qtyBordirHilang, lp.qtyAwalCMT, lp.qtyCMTBS, lp.qtyCMTHilang FROM QuantityRecord lp WHERE lp.qtyAwalBordir != '" + 0 + "' AND (lp.qtyBordirBS + lp.qtyBordirHilang) > 0.02 * lp.qtyAwalBordir");
+            List<QuantityRecord> tempCMT = GenericQuery.SqlQuery<QuantityRecord>("SELECT lp.id, lp.noSeri, lp.qtyAwalSablon, lp.qtySablonBS, lp.qtySablonHilang, lp.qtyAwalBordir, qtyBordirBS, lp.qtyBordirHilang, lp.qtyAwalCMT, lp.qtyCMTBS, lp.qtyCMTHilang FROM QuantityRecord lp WHERE lp.qtyAwalCMT != '" + 0 + "' AND (lp.qtyCMTBS + lp.qtyCMTHilang) > 0.02 * lp.qtyAwalCMT");
             List<MetroFramework.Controls.MetroLabel> labels = new List<MetroFramework.Controls.MetroLabel>();
+            List<MetroFramework.Controls.MetroLabel> labels2 = new List<MetroFramework.Controls.MetroLabel>();
+            List<MetroFramework.Controls.MetroLabel> labels3 = new List<MetroFramework.Controls.MetroLabel>();
+            List<MetroFramework.Controls.MetroLabel> labels4 = new List<MetroFramework.Controls.MetroLabel>();
             Random r = new Random();
-            CD = tempList.Count.ToString();
+            CD = tempList.Count + tempSablon.Count + tempBordir.Count + tempCMT.Count;
 
-            labelCount.Text = CD;
+            labelCount.Text = CD.ToString();
             if (tempList.Count > 0)
             {
                 //Label[] labels = new Label[tempList.Count];
                 for (int i = 0; i < tempList.Count; i++)
                 {
                     labels.Add(new MetroFramework.Controls.MetroLabel());
-                    System.Drawing.Point productLabelsPoint = new System.Drawing.Point(0, i * 50);
+                    System.Drawing.Point productLabelsPoint = new System.Drawing.Point(0, i * 40);
                     (labels[i]).Location = productLabelsPoint;
                     (labels[i]).BackColor = System.Drawing.Color.Tomato;
                     (labels[i]).FontSize = MetroFramework.MetroLabelSize.Tall;
@@ -67,6 +74,81 @@ namespace Project
                     (labels[i]).Click += new EventHandler(labels_Click);
                 }
             }
+
+            if (tempSablon.Count > 0)
+            {
+                for (int i = 0; i < tempSablon.Count; i++)
+                {
+                    labels2.Add(new MetroFramework.Controls.MetroLabel());
+                    System.Drawing.Point productLabelsPoint = new System.Drawing.Point(0, i * 40);
+                    (labels2[i]).Location = productLabelsPoint;
+                    (labels2[i]).BackColor = System.Drawing.Color.Thistle;
+                    (labels2[i]).FontSize = MetroFramework.MetroLabelSize.Tall;
+                    (labels2[i]).FontWeight = MetroFramework.MetroLabelWeight.Regular;
+                    (labels2[i]).ForeColor = System.Drawing.SystemColors.ControlText;
+                    (labels2[i]).Size = new System.Drawing.Size(951, 31);
+                    (labels2[i]).UseCustomBackColor = true;
+                    (labels2[i]).UseCustomForeColor = true;
+                    (labels2[i]).Cursor = System.Windows.Forms.Cursors.Hand;
+                    panel2.Controls.Add(labels2[i] as MetroFramework.Controls.MetroLabel);
+                    if (tempSablon[i].qtySablonBS + tempSablon[i].qtySablonHilang > 0.02 * tempSablon[i].qtyAwalSablon)
+                    {
+                        (labels2[i]).Text = "No Seri: " + tempSablon[i].noSeri + " quantity barang hilang dan BS melebihi 2% dari quantity awal Sablon";
+                    }
+
+                    (labels2[i]).Click += new EventHandler(labels2_Click);
+                }
+            }
+
+            if (tempBordir.Count > 0)
+            {
+                for (int i = 0; i < tempSablon.Count; i++)
+                {
+                    labels3.Add(new MetroFramework.Controls.MetroLabel());
+                    System.Drawing.Point productLabelsPoint = new System.Drawing.Point(0, (i * 40) + (tempSablon.Count * 40));
+                    (labels3[i]).Location = productLabelsPoint;
+                    (labels3[i]).BackColor = System.Drawing.Color.LightGreen;
+                    (labels3[i]).FontSize = MetroFramework.MetroLabelSize.Tall;
+                    (labels3[i]).FontWeight = MetroFramework.MetroLabelWeight.Regular;
+                    (labels3[i]).ForeColor = System.Drawing.SystemColors.ControlText;
+                    (labels3[i]).Size = new System.Drawing.Size(951, 31);
+                    (labels3[i]).UseCustomBackColor = true;
+                    (labels3[i]).UseCustomForeColor = true;
+                    (labels3[i]).Cursor = System.Windows.Forms.Cursors.Hand;
+                    panel2.Controls.Add(labels3[i] as MetroFramework.Controls.MetroLabel);
+                    if (tempBordir[i].qtyBordirBS + tempBordir[i].qtyBordirHilang > 0.02 * tempBordir[i].qtyAwalBordir)
+                    {
+                        (labels3[i]).Text = "No Seri: " + tempBordir[i].noSeri + " quantity barang hilang dan BS melebihi 2% dari quantity awal Bordir";
+                    }
+
+                    (labels3[i]).Click += new EventHandler(labels3_Click);
+                }
+            }
+
+            if (tempCMT.Count > 0)
+            {
+                for (int i = 0; i < tempCMT.Count; i++)
+                {
+                    labels4.Add(new MetroFramework.Controls.MetroLabel());
+                    System.Drawing.Point productLabelsPoint = new System.Drawing.Point(0, (i * 40) + (tempSablon.Count * 40) + (tempBordir.Count * 40));
+                    (labels4[i]).Location = productLabelsPoint;
+                    (labels4[i]).BackColor = System.Drawing.Color.LightSteelBlue;
+                    (labels4[i]).FontSize = MetroFramework.MetroLabelSize.Tall;
+                    (labels4[i]).FontWeight = MetroFramework.MetroLabelWeight.Regular;
+                    (labels4[i]).ForeColor = System.Drawing.SystemColors.ControlText;
+                    (labels4[i]).Size = new System.Drawing.Size(951, 31);
+                    (labels4[i]).UseCustomBackColor = true;
+                    (labels4[i]).UseCustomForeColor = true;
+                    (labels4[i]).Cursor = System.Windows.Forms.Cursors.Hand;
+                    panel2.Controls.Add(labels4[i] as MetroFramework.Controls.MetroLabel);
+                    if (tempCMT[i].qtyCMTBS + tempCMT[i].qtyCMTHilang > 0.02 * tempCMT[i].qtyAwalCMT)
+                    {
+                        (labels4[i]).Text = "No Seri: " + tempCMT[i].noSeri + " quantity barang hilang dan BS melebihi 2% dari quantity awal CMT";
+                    }
+
+                    (labels4[i]).Click += new EventHandler(labels4_Click);
+                }
+            }
         }
 
         protected void labels_Click(object sender, EventArgs e)
@@ -85,6 +167,66 @@ namespace Project
                 NS = words[6];
                 CW = "No Seri - "+value2;
                 nd.Show();
+            }
+        }
+
+        protected void labels2_Click(object sender, EventArgs e)
+        {
+            //attempt to cast the sender as a label
+            MetroFramework.Controls.MetroLabel lbl = sender as MetroFramework.Controls.MetroLabel;
+
+            //if the cast was successful (i.e. not null), show notification details
+            if (lbl != null)
+            {
+                string[] separators = { ",", ".", "!", "?", ";", ":", " " };
+                string value = lbl.ToString();
+                string[] words = value.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+                string value2 = value.Split(':')[2];
+                NotificationQuantity nq = new NotificationQuantity();
+                JS = "Sablon";
+                NS = words[6];
+                CW = "No Seri - " + value2;
+                nq.Show();
+            }
+        }
+
+        protected void labels3_Click(object sender, EventArgs e)
+        {
+            //attempt to cast the sender as a label
+            MetroFramework.Controls.MetroLabel lbl = sender as MetroFramework.Controls.MetroLabel;
+
+            //if the cast was successful (i.e. not null), show notification details
+            if (lbl != null)
+            {
+                string[] separators = { ",", ".", "!", "?", ";", ":", " " };
+                string value = lbl.ToString();
+                string[] words = value.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+                string value2 = value.Split(':')[2];
+                NotificationQuantity nq = new NotificationQuantity();
+                JS = "Bordir";
+                NS = words[6];
+                CW = "No Seri - " + value2;
+                nq.Show();
+            }
+        }
+
+        protected void labels4_Click(object sender, EventArgs e)
+        {
+            //attempt to cast the sender as a label
+            MetroFramework.Controls.MetroLabel lbl = sender as MetroFramework.Controls.MetroLabel;
+
+            //if the cast was successful (i.e. not null), show notification details
+            if (lbl != null)
+            {
+                string[] separators = { ",", ".", "!", "?", ";", ":", " " };
+                string value = lbl.ToString();
+                string[] words = value.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+                string value2 = value.Split(':')[2];
+                NotificationQuantity nq = new NotificationQuantity();
+                JS = "CMT";
+                NS = words[6];
+                CW = "No Seri - " + value2;
+                nq.Show();
             }
         }
 

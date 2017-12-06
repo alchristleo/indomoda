@@ -31,13 +31,13 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.userBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.detailLogBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.userIDDataGridViewComboBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.userBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.datetimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.activityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.detailLogBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.detailLogBindingSource)).BeginInit();
@@ -78,14 +78,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(624, 350);
             this.dataGridView1.TabIndex = 1;
             // 
-            // userBindingSource
-            // 
-            this.userBindingSource.DataSource = typeof(Project.User);
-            // 
-            // detailLogBindingSource
-            // 
-            this.detailLogBindingSource.DataSource = typeof(Project.DetailLog);
-            // 
             // NO
             // 
             this.NO.HeaderText = "No.";
@@ -106,6 +98,10 @@
             this.userIDDataGridViewComboBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.userIDDataGridViewComboBoxColumn.ValueMember = "UserID";
             this.userIDDataGridViewComboBoxColumn.Width = 160;
+            // 
+            // userBindingSource
+            // 
+            this.userBindingSource.DataSource = typeof(Project.User);
             // 
             // datetimeDataGridViewTextBoxColumn
             // 
@@ -132,6 +128,10 @@
             this.idDataGridViewTextBoxColumn.Visible = false;
             this.idDataGridViewTextBoxColumn.Width = 60;
             // 
+            // detailLogBindingSource
+            // 
+            this.detailLogBindingSource.DataSource = typeof(Project.DetailLog);
+            // 
             // DetailLogForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -139,7 +139,7 @@
             this.ClientSize = new System.Drawing.Size(707, 479);
             this.Controls.Add(this.dataGridView1);
             this.Name = "DetailLogForm";
-            this.Text = "Form1";
+            this.Text = "Logs";
             this.Load += new System.EventHandler(this.DetailLogForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).EndInit();

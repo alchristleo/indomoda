@@ -219,11 +219,17 @@
     <Compile Include="Models\QuantityRecordPTPModel.cs" />
     <Compile Include="Models\SPKNotifierModel.cs" />
     <Compile Include="Models\SupplierModel.cs" />
-    <Compile Include="NotificationDetail.cs">
+    <Compile Include="Notifications\NotificationDetail.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NotificationDetail.Designer.cs">
+    <Compile Include="Notifications\NotificationDetail.Designer.cs">
       <DependentUpon>NotificationDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Notifications\NotificationQuantity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Notifications\NotificationQuantity.Designer.cs">
+      <DependentUpon>NotificationQuantity.cs</DependentUpon>
     </Compile>
     <Compile Include="PenerimaanSBC.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -406,8 +412,11 @@
     <EmbeddedResource Include="Master\Warna.resx">
       <DependentUpon>Warna.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NotificationDetail.resx">
+    <EmbeddedResource Include="Notifications\NotificationDetail.resx">
       <DependentUpon>NotificationDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Notifications\NotificationQuantity.resx">
+      <DependentUpon>NotificationQuantity.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Penerimaan\PenerimaanCMT.resx">
       <DependentUpon>PenerimaanCMT.cs</DependentUpon>
