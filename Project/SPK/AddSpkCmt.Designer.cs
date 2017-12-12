@@ -36,11 +36,11 @@
             this.txtNoPTP = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.colorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.listPenerimaanTukangPotongBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnSaveAddSpkCMT = new MetroFramework.Controls.MetroButton();
             this.btnExitAddSpkCMT = new MetroFramework.Controls.MetroButton();
             this.cboCMTWarna = new MetroFramework.Controls.MetroComboBox();
-            this.colorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtQtyCMT = new MetroFramework.Controls.MetroTextBox();
             this.txtUkuranCMT = new MetroFramework.Controls.MetroTextBox();
             this.txtMerkCMT = new MetroFramework.Controls.MetroTextBox();
@@ -71,8 +71,8 @@
             this.idSPKCMTDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idListPTPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.listPenerimaanTukangPotongBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listPenerimaanTukangPotongBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // txtNoPTP
@@ -165,6 +165,10 @@
             this.dataGridView1.TabIndex = 66;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
+            // colorBindingSource
+            // 
+            this.colorBindingSource.DataSource = typeof(Project.Color);
+            // 
             // listPenerimaanTukangPotongBindingSource
             // 
             this.listPenerimaanTukangPotongBindingSource.DataSource = typeof(Project.ListPenerimaanTukangPotong);
@@ -178,7 +182,7 @@
             this.btnSaveAddSpkCMT.TabIndex = 58;
             this.btnSaveAddSpkCMT.Text = "SAVE";
             this.btnSaveAddSpkCMT.UseSelectable = true;
-            this.btnSaveAddSpkCMT.Click += new System.EventHandler(this.btnSaveAddSpkBordir_Click);
+            this.btnSaveAddSpkCMT.Click += new System.EventHandler(this.btnSaveAddSpkCMT_Click);
             // 
             // btnExitAddSpkCMT
             // 
@@ -189,6 +193,7 @@
             this.btnExitAddSpkCMT.TabIndex = 59;
             this.btnExitAddSpkCMT.Text = "EXIT";
             this.btnExitAddSpkCMT.UseSelectable = true;
+            this.btnExitAddSpkCMT.Click += new System.EventHandler(this.btnExitAddSpkCmt_Click);
             // 
             // cboCMTWarna
             // 
@@ -204,10 +209,6 @@
             this.cboCMTWarna.TabIndex = 54;
             this.cboCMTWarna.UseSelectable = true;
             this.cboCMTWarna.ValueMember = "ColorID";
-            // 
-            // colorBindingSource
-            // 
-            this.colorBindingSource.DataSource = typeof(Project.Color);
             // 
             // txtQtyCMT
             // 
@@ -445,6 +446,7 @@
             this.colorIDDataGridViewComboBoxColumn.DataPropertyName = "ColorID";
             this.colorIDDataGridViewComboBoxColumn.DataSource = this.colorBindingSource;
             this.colorIDDataGridViewComboBoxColumn.DisplayMember = "ColorName";
+            this.colorIDDataGridViewComboBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
             this.colorIDDataGridViewComboBoxColumn.HeaderText = "Color Name";
             this.colorIDDataGridViewComboBoxColumn.Name = "colorIDDataGridViewComboBoxColumn";
             this.colorIDDataGridViewComboBoxColumn.ReadOnly = true;
@@ -590,8 +592,8 @@
             this.Text = "Add SPK CMT";
             this.Load += new System.EventHandler(this.AddSpkCmt_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.listPenerimaanTukangPotongBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listPenerimaanTukangPotongBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

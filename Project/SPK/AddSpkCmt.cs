@@ -115,7 +115,7 @@ namespace Project
             }
         }
 
-        private void btnSaveAddSpkBordir_Click(object sender, EventArgs e)
+        private void btnSaveAddSpkCMT_Click(object sender, EventArgs e)
         {
             int currentIDPTP = Convert.ToInt32(dataGridView1[17, dataGridView1.CurrentRow.Index].Value.ToString());
             var dba = GenericQuery.SqlQuerySingle<ListPenerimaanTukangPotong>("SELECT lp.idListPTP, lp.idPenerimaanTukangPotong, lp.noSeri, lp.model, lp.ColorID, lp.merk, lp.ukuran, lp.quantity, lp.statusSPKSablon, lp.statusSPKBordir, lp.statusSPKCMT, lp.statusNoSeri, lp.idSPKSablon, lp.idSPKBordir, lp.idSPKCMT  FROM ListPenerimaanTukangPotong lp WHERE lp.idListPTP = '" + currentIDPTP + "'");
@@ -151,70 +151,78 @@ namespace Project
             }
             else if (dba.statusSPKCMT.ToString() == "True")
             {
-                MetroFramework.MetroMessageBox.Show(this, "You can't add this List penerimaan tukang potong to the SPK Bordir again!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MetroFramework.MetroMessageBox.Show(this, "You can't add this No. Seri to the SPK Bordir again!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 dataGridView1.Focus();
                 return;
             }
-            using (indomodaEntities db = new indomodaEntities())
+            else if (dba.statusSPKSablon.ToString() == "False" && dba.statusSPKBordir.ToString() == "False")
             {
-                int getIDSPK = Convert.ToInt32(SPKCmt.idSPK);
-                bool setStatusCMT = true;
-                bool setStatusSablon = Convert.ToBoolean(dba.statusSPKSablon.ToString());
-                bool setStatusBordir = Convert.ToBoolean(dba.statusSPKBordir.ToString());
-                int setIDSPKSablon = Convert.ToInt32(dba.idSPKSablon.ToString());
-                int setIDSPKBordir = Convert.ToInt32(dba.idSPKBordir.ToString());
-                if (MetroFramework.MetroMessageBox.Show(this, "Do you want to update this List penerimaan tukang potong?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                MetroFramework.MetroMessageBox.Show(this, "No. Seri ini belum dimasukkan ke dalam SPK Sablon maupun Bordir!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dataGridView1.Focus();
+            }
+            else
+            {
+                using (indomodaEntities db = new indomodaEntities())
                 {
-                    try
+                    int getIDSPK = Convert.ToInt32(SPKCmt.idSPK);
+                    bool setStatusCMT = true;
+                    bool setStatusSablon = Convert.ToBoolean(dba.statusSPKSablon.ToString());
+                    bool setStatusBordir = Convert.ToBoolean(dba.statusSPKBordir.ToString());
+                    int setIDSPKSablon = Convert.ToInt32(dba.idSPKSablon.ToString());
+                    int setIDSPKBordir = Convert.ToInt32(dba.idSPKBordir.ToString());
+                    if (MetroFramework.MetroMessageBox.Show(this, "Do you want to update this List penerimaan tukang potong?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        int a = GenericQuery.ExecSQLCommand("UPDATE ListPenerimaanTukangPotong SET statusSPKCMT = @statusSPKCMT, idSPKCMT = @idSPKCMT WHERE idListPTP = '" + currentIDPTP + "'", new[] {
+                        try
+                        {
+                            int a = GenericQuery.ExecSQLCommand("UPDATE ListPenerimaanTukangPotong SET statusSPKCMT = @statusSPKCMT, idSPKCMT = @idSPKCMT WHERE idListPTP = '" + currentIDPTP + "'", new[] {
                                 new SqlParameter("@statusSPKCMT", setStatusCMT),
                                 new SqlParameter("@idSPKCMT", getIDSPK)
                             });
-                        db.SaveChangesAsync().Wait();
+                            db.SaveChangesAsync().Wait();
 
-                        if (_bs == null)
-                        {
-                            _bs = new BindingSource();
+                            if (_bs == null)
+                            {
+                                _bs = new BindingSource();
+                            }
+
+                            _bs.Add(new ListPenerimaanTukangPotong
+                            {
+                                idListPTP = currentIDPTP,
+                                idPenerimaanTukangPotong = Convert.ToInt32(txtNoPTP.Text.ToString()),
+                                noSeri = txtNoSeriCMT.Text,
+                                model = txtModelCMT.Text,
+                                ColorID = Convert.ToInt32(cboCMTWarna.SelectedValue.ToString()),
+                                merk = txtMerkCMT.Text,
+                                ukuran = txtUkuranCMT.Text,
+                                quantity = Convert.ToDouble(txtQtyCMT.Text.ToString()),
+                                statusSPKSablon = setStatusSablon,
+                                statusSPKBordir = setStatusBordir,
+                                statusSPKCMT = setStatusCMT,
+                                statusNoSeri = 0,
+                                idSPKSablon = setIDSPKSablon,
+                                idSPKBordir = setIDSPKBordir,
+                                idSPKCMT = getIDSPK
+                            });
+
+                            _dv.Refresh();
+
+                            int rowCount = _dv.Rows.Count;
+                            for (int i = 0; i < rowCount; i++)
+                            {
+                                _dv.Columns[0].ValueType = typeof(int);
+                                _dv.Rows[i].Cells[0].Value = i + 1;
+                                _dv.UpdateCellValue(0, i);
+                            }
+                            _dv.Refresh();
+                            MetroFramework.MetroMessageBox.Show(this, "Success! This list penerimaan tukang potong has been added to SPK CMT", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
                         }
-
-                        _bs.Add(new ListPenerimaanTukangPotong
+                        catch (Exception ex)
                         {
-                            idListPTP = currentIDPTP,
-                            idPenerimaanTukangPotong = Convert.ToInt32(txtNoPTP.Text.ToString()),
-                            noSeri = txtNoSeriCMT.Text,
-                            model = txtModelCMT.Text,
-                            ColorID = Convert.ToInt32(cboCMTWarna.SelectedValue.ToString()),
-                            merk = txtMerkCMT.Text,
-                            ukuran = txtUkuranCMT.Text,
-                            quantity = Convert.ToDouble(txtQtyCMT.Text.ToString()),
-                            statusSPKSablon = setStatusSablon,
-                            statusSPKBordir = setStatusBordir,
-                            statusSPKCMT = setStatusCMT,
-                            statusNoSeri = 0,
-                            idSPKSablon = setIDSPKSablon,
-                            idSPKBordir = setIDSPKBordir,
-                            idSPKCMT = getIDSPK
-                        });
-
-                        _dv.Refresh();
-
-                        int rowCount = _dv.Rows.Count;
-                        for (int i = 0; i < rowCount; i++)
-                        {
-                            _dv.Columns[0].ValueType = typeof(int);
-                            _dv.Rows[i].Cells[0].Value = i + 1;
-                            _dv.UpdateCellValue(0, i);
+                            MetroFramework.MetroMessageBox.Show(this, ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-                        _dv.Refresh();
-                        MetroFramework.MetroMessageBox.Show(this, "Success! This list penerimaan tukang potong has been added to SPK CMT", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
-                    catch (Exception ex)
-                    {
-                        MetroFramework.MetroMessageBox.Show(this, ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    this.Close();
                 }
-                this.Close();
             }
         }
 

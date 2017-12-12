@@ -81,6 +81,24 @@
     <Property Name="Date_time" Type="datetime" Nullable="false" />
     <Property Name="status" Type="int" Nullable="false" />
   </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'indomoda.dbo.DetailPenjualanBaju' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DetailPenjualanBaju">
+    <Key>
+      <PropertyRef Name="idDPB" />
+      <PropertyRef Name="noPenjualan" />
+      <PropertyRef Name="CustomerID" />
+      <PropertyRef Name="GrandTotal" />
+      <PropertyRef Name="Datetime" />
+      <PropertyRef Name="Status" />
+    </Key>
+    <Property Name="idDPB" Type="int" Nullable="false" />
+    <Property Name="noPenjualan" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CustomerID" Type="int" Nullable="false" />
+    <Property Name="GrandTotal" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Datetime" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="DetailPO">
     <Key>
       <PropertyRef Name="DetailPOID" />
@@ -129,6 +147,26 @@
     <Property Name="SupplierAddress" Type="varchar" MaxLength="255" Nullable="false" />
     <Property Name="SupplierPhone" Type="varchar" MaxLength="255" Nullable="false" />
   </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'indomoda.dbo.ListBajuJadi' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ListBajuJadi">
+    <Key>
+      <PropertyRef Name="idBJ" />
+      <PropertyRef Name="noSeri" />
+      <PropertyRef Name="model" />
+      <PropertyRef Name="ColorID" />
+      <PropertyRef Name="merk" />
+      <PropertyRef Name="ukuran" />
+      <PropertyRef Name="stock" />
+    </Key>
+    <Property Name="idBJ" Type="int" Nullable="false" />
+    <Property Name="noSeri" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="model" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ColorID" Type="int" Nullable="false" />
+    <Property Name="merk" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ukuran" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="stock" Type="float" Nullable="false" />
+  </EntityType>
   <EntityType Name="ListPenerimaanTukangPotong">
     <Key>
       <PropertyRef Name="idListPTP" />
@@ -148,6 +186,26 @@
     <Property Name="idSPKSablon" Type="int" />
     <Property Name="idSPKBordir" Type="int" />
     <Property Name="idSPKCMT" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'indomoda.dbo.ListPenjualanBaju' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ListPenjualanBaju">
+    <Key>
+      <PropertyRef Name="idLPB" />
+      <PropertyRef Name="idDPB" />
+      <PropertyRef Name="noSeri" />
+      <PropertyRef Name="qtyLPB" />
+      <PropertyRef Name="priceLPB" />
+      <PropertyRef Name="totalLPB" />
+      <PropertyRef Name="statusLPB" />
+    </Key>
+    <Property Name="idLPB" Type="int" Nullable="false" />
+    <Property Name="idDPB" Type="int" Nullable="false" />
+    <Property Name="noSeri" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="qtyLPB" Type="float" Nullable="false" />
+    <Property Name="priceLPB" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="totalLPB" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="statusLPB" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Materials">
     <Key>
@@ -226,6 +284,18 @@
       </Principal>
       <Dependent Role="DetailPemotonganKain">
         <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetailPenjualanBaju_Customer">
+    <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
+    <End Role="DetailPenjualanBaju" Type="Self.DetailPenjualanBaju" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="DetailPenjualanBaju">
+        <PropertyRef Name="CustomerID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -308,6 +378,38 @@
     <EntitySet Name="PreOrderKains" EntityType="Self.PreOrderKains" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="QuantityRecord" EntityType="Self.QuantityRecord" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DetailPenjualanBaju" EntityType="Self.DetailPenjualanBaju" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [DetailPenjualanBaju].[idDPB] AS [idDPB], 
+    [DetailPenjualanBaju].[noPenjualan] AS [noPenjualan], 
+    [DetailPenjualanBaju].[CustomerID] AS [CustomerID], 
+    [DetailPenjualanBaju].[GrandTotal] AS [GrandTotal], 
+    [DetailPenjualanBaju].[Datetime] AS [Datetime], 
+    [DetailPenjualanBaju].[Status] AS [Status]
+    FROM [dbo].[DetailPenjualanBaju] AS [DetailPenjualanBaju]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ListBajuJadi" EntityType="Self.ListBajuJadi" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ListBajuJadi].[idBJ] AS [idBJ], 
+    [ListBajuJadi].[noSeri] AS [noSeri], 
+    [ListBajuJadi].[model] AS [model], 
+    [ListBajuJadi].[ColorID] AS [ColorID], 
+    [ListBajuJadi].[merk] AS [merk], 
+    [ListBajuJadi].[ukuran] AS [ukuran], 
+    [ListBajuJadi].[stock] AS [stock]
+    FROM [dbo].[ListBajuJadi] AS [ListBajuJadi]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ListPenjualanBaju" EntityType="Self.ListPenjualanBaju" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ListPenjualanBaju].[idLPB] AS [idLPB], 
+    [ListPenjualanBaju].[idDPB] AS [idDPB], 
+    [ListPenjualanBaju].[noSeri] AS [noSeri], 
+    [ListPenjualanBaju].[qtyLPB] AS [qtyLPB], 
+    [ListPenjualanBaju].[priceLPB] AS [priceLPB], 
+    [ListPenjualanBaju].[totalLPB] AS [totalLPB], 
+    [ListPenjualanBaju].[statusLPB] AS [statusLPB]
+    FROM [dbo].[ListPenjualanBaju] AS [ListPenjualanBaju]</DefiningQuery>
+    </EntitySet>
     <AssociationSet Name="FK_DetailLogs_Users" Association="Self.FK_DetailLogs_Users">
       <End Role="Users" EntitySet="Users" />
       <End Role="DetailLogs" EntitySet="DetailLogs" />
@@ -315,6 +417,10 @@
     <AssociationSet Name="FK_DetailPemotonganKain_Employee" Association="Self.FK_DetailPemotonganKain_Employee">
       <End Role="Employees" EntitySet="Employees" />
       <End Role="DetailPemotonganKain" EntitySet="DetailPemotonganKain" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetailPenjualanBaju_Customer" Association="Self.FK_DetailPenjualanBaju_Customer">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="DetailPenjualanBaju" EntitySet="DetailPenjualanBaju" />
     </AssociationSet>
     <AssociationSet Name="FK_DetailPO_Colors" Association="Self.FK_DetailPO_Colors">
       <End Role="Colors" EntitySet="Colors" />

@@ -271,6 +271,7 @@
             this.penjualanBajuToolStripMenuItem.Name = "penjualanBajuToolStripMenuItem";
             this.penjualanBajuToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.penjualanBajuToolStripMenuItem.Text = "Penjualan Baju";
+            this.penjualanBajuToolStripMenuItem.Click += new System.EventHandler(this.penjualanBajuToolStripMenuItem_Click);
             // 
             // laporanToolStripMenuItem
             // 

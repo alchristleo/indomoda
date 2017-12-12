@@ -199,16 +199,16 @@ namespace Project
             // metroDateTime1
             // 
             this.metroDateTime1.CausesValidation = false;
-            this.metroDateTime1.Location = new System.Drawing.Point(507, 34);
+            this.metroDateTime1.Location = new System.Drawing.Point(544, 34);
             this.metroDateTime1.MinimumSize = new System.Drawing.Size(0, 29);
             this.metroDateTime1.Name = "metroDateTime1";
-            this.metroDateTime1.Size = new System.Drawing.Size(200, 29);
+            this.metroDateTime1.Size = new System.Drawing.Size(213, 29);
             this.metroDateTime1.TabIndex = 14;
             // 
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(455, 34);
+            this.metroLabel1.Location = new System.Drawing.Point(507, 38);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(36, 19);
             this.metroLabel1.TabIndex = 15;

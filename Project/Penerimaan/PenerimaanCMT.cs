@@ -49,9 +49,16 @@ namespace Project
 
         private void btnUpdateStatusPemotongan_Click(object sender, EventArgs e)
         {
+            string f = dataGridView1[1, dataGridView1.CurrentRow.Index].Value.ToString();
+            var dbb =  GenericQuery.SqlQuerySingle<QuantityRecord>("SELECT qr.id, qr.noSeri, qr.qtyAwalSablon, qr.qtySablonBS, qr.qtySablonHilang, qr.qtyAwalBordir, qr.qtyBordirBS, qr.qtyBordirHilang, qr.qtyAwalCMT, qr.qtyCMTBS, qr.qtyCMTHilang FROM QuantityRecord qr WHERE qr.noSeri = '" + f + "'");
+
             if (dataGridView1.Rows.Count < 1)
             {
-                MetroFramework.MetroMessageBox.Show(this, "List penerimaan tukang potong is empty!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MetroFramework.MetroMessageBox.Show(this, "List No. Seri is empty!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (dbb.qtyAwalSablon == null && dbb.qtyAwalBordir == null)
+            {
+                MetroFramework.MetroMessageBox.Show(this, "No. Seri ini belum dimasukkan kedalam Penerimaan Sablon maupun Bordir!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -186,6 +193,25 @@ namespace Project
                                         int a = GenericQuery.ExecSQLCommand("UPDATE ListPenerimaanTukangPotong SET quantity = @quantity, statusNoSeri = @statusNoSeri WHERE noSeri = '" + noSeri + "'", new[] {
                                             new SqlParameter("@quantity", qtyUpdate),
                                             new SqlParameter("@statusNoSeri", statusNoSeri)
+                                        });
+                                        db.SaveChangesAsync().Wait();
+
+                                        int idBJ = db.ListBajuJadis.AsEnumerable().LastOrDefault() == null ? 1 : db.ListBajuJadis.AsEnumerable().LastOrDefault().idBJ + 1;
+                                        string ns = dataGridView1.Rows[i].Cells[1].Value.ToString();
+                                        string model = dataGridView1.Rows[i].Cells[2].Value.ToString();
+                                        int colorID = Convert.ToInt32(dataGridView1.Rows[i].Cells[3].Value.ToString());
+                                        //var dbe = GenericQuery.SqlQuerySingle<Color>("SELECT c.ColorID, c.ColorCode, c.ColorName FROM Colors c WHERE c.ColorName = '"+colorName+"'");
+                                        //int colorID = dbe.ColorID;
+                                        string merk = dataGridView1.Rows[i].Cells[4].Value.ToString();
+                                        string ukuran = dataGridView1.Rows[i].Cells[5].Value.ToString();
+                                        int f = GenericQuery.ExecSQLCommand("INSERT  INTO ListBajuJadi (idBJ, noSeri, model, ColorID, merk, ukuran, stock) VALUES(@idBJ, @noSeri, @model, @ColorID, @merk, @ukuran, @stock)", new[]{
+                                            new SqlParameter("@idBJ", idBJ),
+                                            new SqlParameter("@noSeri", ns),
+                                            new SqlParameter("@model", model),
+                                            new SqlParameter("@ColorID", colorID),
+                                            new SqlParameter("@merk", merk),
+                                            new SqlParameter("@ukuran", ukuran),
+                                            new SqlParameter("@stock", x)
                                         });
                                         db.SaveChangesAsync().Wait();
                                     }

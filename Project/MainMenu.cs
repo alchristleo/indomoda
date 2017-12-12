@@ -497,6 +497,24 @@ namespace Project
             logForm.Show();
         }
 
+
+        private void penjualanBajuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PenjualanBaju penjualanBaju = new PenjualanBaju();
+            using (StreamReader streamReader = new StreamReader("temp.txt"))
+            {
+                string decryptText = EncryptDecrypt.Decrypt(streamReader.ReadLine());
+                if (decryptText != a && decryptText != d)
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "Sorry you can not access this menu, please contact administrator for more info", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    penjualanBaju.Show();
+                }
+            }
+        }
+
         private void MainMenu_FormClosed(object sender, FormClosedEventArgs e)
         {
             

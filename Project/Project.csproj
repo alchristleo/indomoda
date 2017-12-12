@@ -125,6 +125,9 @@
     <Compile Include="DetailPenerimaanTukangPotong.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="DetailPenjualanBaju.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="DetailPO.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -140,7 +143,13 @@
     <Compile Include="IndomodaSupplier.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="ListBajuJadi.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="ListPenerimaanTukangPotong.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ListPenjualanBaju.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Master\AddEditEmployee.cs">
@@ -209,6 +218,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\ListPenjualanBajuModel.cs" />
     <Compile Include="Models\DetailPOModel.cs" />
     <Compile Include="Models\DetailSPKModel.cs" />
     <Compile Include="Models\FakturDetailPO.cs" />
@@ -251,6 +261,24 @@
     </Compile>
     <Compile Include="Penerimaan\UpdateQuantity.Designer.cs">
       <DependentUpon>UpdateQuantity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Penjualan\AddPenjualanBaju.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Penjualan\AddPenjualanBaju.Designer.cs">
+      <DependentUpon>AddPenjualanBaju.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Penjualan\EditPenjualanBaju.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Penjualan\EditPenjualanBaju.Designer.cs">
+      <DependentUpon>EditPenjualanBaju.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Penjualan\PenjualanBaju.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Penjualan\PenjualanBaju.Designer.cs">
+      <DependentUpon>PenjualanBaju.cs</DependentUpon>
     </Compile>
     <Compile Include="PreOrderKain.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -427,6 +455,15 @@
     <EmbeddedResource Include="Penerimaan\UpdateQuantity.resx">
       <DependentUpon>UpdateQuantity.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Penjualan\AddPenjualanBaju.resx">
+      <DependentUpon>AddPenjualanBaju.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Penjualan\EditPenjualanBaju.resx">
+      <DependentUpon>EditPenjualanBaju.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Penjualan\PenjualanBaju.resx">
+      <DependentUpon>PenjualanBaju.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SPK\AddSpkCmt.resx">
       <DependentUpon>AddSpkCmt.cs</DependentUpon>
     </EmbeddedResource>
@@ -500,6 +537,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\DataSources\Color.datasource" />
+    <None Include="Properties\DataSources\Customer.datasource" />
     <None Include="Properties\DataSources\DetailFaktur.datasource" />
     <None Include="Properties\DataSources\DetailLog.datasource" />
     <None Include="Properties\DataSources\DetailPemotonganKain.datasource" />
@@ -507,7 +545,9 @@
     <None Include="Properties\DataSources\DetailSPK.datasource" />
     <None Include="Properties\DataSources\Employee.datasource" />
     <None Include="Properties\DataSources\IndomodaSupplier.datasource" />
+    <None Include="Properties\DataSources\ListBajuJadi.datasource" />
     <None Include="Properties\DataSources\ListPenerimaanTukangPotong.datasource" />
+    <None Include="Properties\DataSources\ListPenjualanBaju.datasource" />
     <None Include="Properties\DataSources\Material.datasource" />
     <None Include="Properties\DataSources\PemotonganKain.datasource" />
     <None Include="Properties\DataSources\POKain.datasource" />

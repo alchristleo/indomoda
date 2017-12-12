@@ -1,4 +1,6 @@
-﻿namespace Project
+﻿using System.Drawing;
+
+namespace Project
 {
     partial class Login
     {

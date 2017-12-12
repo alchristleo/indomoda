@@ -60,9 +60,9 @@ namespace Project
                 var dbb = GenericQuery.SqlQuerySingle<DetailSPK>("SELECT d.idSPK, d.noSPK, d.EmployeeID, d.Datetime, d.type, d.status FROM DetailSPK d WHERE d.idSPK = '" + z + "'");
                 txtNoSPK.Text = dbb.noSPK.ToString();
                 txtJenisSPK.Text = y.ToString();
-                txtQtyAwal.Text = dbc.qtyAwalSablon.ToString();
-                txtQtyHilang.Text = dbc.qtySablonHilang.ToString();
-                txtQtyBS.Text = dbc.qtySablonBS.ToString();
+                txtQtyAwal.Text = dbc.qtyAwalBordir.ToString();
+                txtQtyHilang.Text = dbc.qtyBordirHilang.ToString();
+                txtQtyBS.Text = dbc.qtyBordirBS.ToString();
                 txtQtyAwal.UseCustomBackColor = true;
                 txtQtyAwal.BackColor = System.Drawing.Color.Plum;
                 txtQtyBS.UseCustomBackColor = true;
@@ -80,9 +80,9 @@ namespace Project
                 var dbb = GenericQuery.SqlQuerySingle<DetailSPK>("SELECT d.idSPK, d.noSPK, d.EmployeeID, d.Datetime, d.type, d.status FROM DetailSPK d WHERE d.idSPK = '" + z + "'");
                 txtNoSPK.Text = dbb.noSPK.ToString();
                 txtJenisSPK.Text = y.ToString();
-                txtQtyAwal.Text = dbc.qtyAwalSablon.ToString();
-                txtQtyHilang.Text = dbc.qtySablonHilang.ToString();
-                txtQtyBS.Text = dbc.qtySablonBS.ToString();
+                txtQtyAwal.Text = dbc.qtyAwalCMT.ToString();
+                txtQtyHilang.Text = dbc.qtyCMTHilang.ToString();
+                txtQtyBS.Text = dbc.qtyCMTBS.ToString();
                 txtQtyAwal.UseCustomBackColor = true;
                 txtQtyAwal.BackColor = System.Drawing.Color.Plum;
                 txtQtyBS.UseCustomBackColor = true;
