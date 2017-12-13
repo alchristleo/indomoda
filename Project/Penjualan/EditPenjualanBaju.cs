@@ -101,7 +101,7 @@ namespace Project
 
             using (indomodaEntities db = new indomodaEntities())
             {
-                if (MetroFramework.MetroMessageBox.Show(this, "Do you want to save this List baju jadi to database?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MetroFramework.MetroMessageBox.Show(this, "Do you want to update this List baju jadi to database?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     try
                     {
@@ -125,19 +125,11 @@ namespace Project
                             _bs = new BindingSource();
                         }
 
-                        foreach (var i in _bs.List.Cast<ListPenjualanBajuModel>().Where(x => x.idLPB == Convert.ToInt32(txtIDLPB.Text)))
+                        foreach (var i in _bs.List.Cast<ListPenjualanBaju>().Where(x => x.idLPB == Convert.ToInt32(txtIDLPB.Text)))
                         {
-                            i.noSeri = noSeri;
-                            i.model = model;
-                            i.ColorID = cID;
-                            i.merk = merk;
-                            i.ukuran = ukuran;
                             i.qtyLPB = qtyLPB;
                             i.priceLPB = priceLPB;
                             i.totalLPB = totalLPB;
-                            i.statusLPB = list[0].statusLPB;
-                            i.idDPB = list[0].idDPB;
-                            i.idLPB = list[0].idLPB;
                         }
                         _dv.DataSource = _bs;
                         _dv.EndEdit();
@@ -159,7 +151,7 @@ namespace Project
                     }
                 }
                 PenjualanBaju btnCount = (PenjualanBaju)Application.OpenForms["PenjualanBaju"];
-                btnCount.btnCountGrandTotal.PerformClick();
+                btnCount.btnCountGTPB.PerformClick();
                 this.Close();
             }
         }
@@ -184,6 +176,8 @@ namespace Project
                 txtHargaEdit.Text = list[0].priceLPB.ToString();
                 txtIDLPB.Text = list[0].idLPB.ToString();
             }
+
+            txtQtyEdit.Focus();
         }
     }
 }

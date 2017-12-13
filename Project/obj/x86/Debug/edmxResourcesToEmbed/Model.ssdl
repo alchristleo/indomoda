@@ -160,7 +160,7 @@ warning 6002: The table/view 'indomoda.dbo.ListBajuJadi' does not have a primary
       <PropertyRef Name="stock" />
     </Key>
     <Property Name="idBJ" Type="int" Nullable="false" />
-    <Property Name="noSeri" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="noSeri" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="model" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="ColorID" Type="int" Nullable="false" />
     <Property Name="merk" Type="varchar" MaxLength="50" Nullable="false" />
@@ -194,6 +194,10 @@ warning 6002: The table/view 'indomoda.dbo.ListPenjualanBaju' does not have a pr
       <PropertyRef Name="idLPB" />
       <PropertyRef Name="idDPB" />
       <PropertyRef Name="noSeri" />
+      <PropertyRef Name="model" />
+      <PropertyRef Name="ColorID" />
+      <PropertyRef Name="merk" />
+      <PropertyRef Name="ukuran" />
       <PropertyRef Name="qtyLPB" />
       <PropertyRef Name="priceLPB" />
       <PropertyRef Name="totalLPB" />
@@ -202,6 +206,10 @@ warning 6002: The table/view 'indomoda.dbo.ListPenjualanBaju' does not have a pr
     <Property Name="idLPB" Type="int" Nullable="false" />
     <Property Name="idDPB" Type="int" Nullable="false" />
     <Property Name="noSeri" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="model" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ColorID" Type="int" Nullable="false" />
+    <Property Name="merk" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ukuran" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="qtyLPB" Type="float" Nullable="false" />
     <Property Name="priceLPB" Type="decimal" Precision="18" Scale="0" Nullable="false" />
     <Property Name="totalLPB" Type="decimal" Precision="18" Scale="0" Nullable="false" />
@@ -404,6 +412,10 @@ warning 6002: The table/view 'indomoda.dbo.ListPenjualanBaju' does not have a pr
     [ListPenjualanBaju].[idLPB] AS [idLPB], 
     [ListPenjualanBaju].[idDPB] AS [idDPB], 
     [ListPenjualanBaju].[noSeri] AS [noSeri], 
+    [ListPenjualanBaju].[model] AS [model], 
+    [ListPenjualanBaju].[ColorID] AS [ColorID], 
+    [ListPenjualanBaju].[merk] AS [merk], 
+    [ListPenjualanBaju].[ukuran] AS [ukuran], 
     [ListPenjualanBaju].[qtyLPB] AS [qtyLPB], 
     [ListPenjualanBaju].[priceLPB] AS [priceLPB], 
     [ListPenjualanBaju].[totalLPB] AS [totalLPB], 

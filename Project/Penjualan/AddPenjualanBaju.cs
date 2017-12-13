@@ -115,10 +115,15 @@ namespace Project
                         decimal priceLPB = Convert.ToDecimal(txtHargaInput.Text.ToString());
                         decimal totalLPB = (decimal)qtyLPB * priceLPB;
                         bool statusLPB = false;
-                        int a = GenericQuery.ExecSQLCommand("INSERT INTO ListPenjualanBaju (idLPB, idDPB, noSeri, qtyLPB, priceLPB, totalLPB, statusLPB) VALUES(@idLPB, @idDPB, @noSeri, @qtyLPB, @priceLPB, @totalLPB, @statusLPB)", new[] {
+                        
+                        int a = GenericQuery.ExecSQLCommand("INSERT INTO ListPenjualanBaju (idLPB, idDPB, noSeri, model, ColorID, merk, ukuran, qtyLPB, priceLPB, totalLPB, statusLPB) VALUES(@idLPB, @idDPB, @noSeri, @model, @ColorID, @merk, @ukuran, @qtyLPB, @priceLPB, @totalLPB, @statusLPB)", new[] {
                             new SqlParameter("@idLPB", idLPB),
                             new SqlParameter("@idDPB", idDPB),
                             new SqlParameter("@noSeri", noSeri),
+                            new SqlParameter("@model", model),
+                            new SqlParameter("@ColorID", cID),
+                            new SqlParameter("@merk", merk),
+                            new SqlParameter("@ukuran", ukuran),
                             new SqlParameter("@qtyLPB", qtyLPB),
                             new SqlParameter("@priceLPB", priceLPB),
                             new SqlParameter("@totalLPB", totalLPB),
@@ -131,14 +136,14 @@ namespace Project
                             _bs = new BindingSource();
                         }
 
-                        _bs.Add(new ListPenjualanBajuModel
+                        _bs.Add(new ListPenjualanBaju
                         {
                             idLPB = idLPB,
                             idDPB = idDPB,
                             noSeri = noSeri,
-                            model = model,
-                            ColorID = cID,
                             merk = merk,
+                            ColorID = cID,
+                            model = model,
                             ukuran = ukuran,
                             qtyLPB = qtyLPB,
                             priceLPB = priceLPB,
@@ -163,7 +168,7 @@ namespace Project
                     }
                 }
                 PenjualanBaju btnCount = (PenjualanBaju)Application.OpenForms["PenjualanBaju"];
-                btnCount.btnCountGrandTotal.PerformClick();
+                btnCount.btnCountGTPB.PerformClick();
                 this.Close();
             }
         }

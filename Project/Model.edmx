@@ -199,6 +199,10 @@ warning 6002: The table/view 'indomoda.dbo.ListPenjualanBaju' does not have a pr
             <PropertyRef Name="idLPB" />
             <PropertyRef Name="idDPB" />
             <PropertyRef Name="noSeri" />
+            <PropertyRef Name="model" />
+            <PropertyRef Name="ColorID" />
+            <PropertyRef Name="merk" />
+            <PropertyRef Name="ukuran" />
             <PropertyRef Name="qtyLPB" />
             <PropertyRef Name="priceLPB" />
             <PropertyRef Name="totalLPB" />
@@ -207,6 +211,10 @@ warning 6002: The table/view 'indomoda.dbo.ListPenjualanBaju' does not have a pr
           <Property Name="idLPB" Type="int" Nullable="false" />
           <Property Name="idDPB" Type="int" Nullable="false" />
           <Property Name="noSeri" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="model" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ColorID" Type="int" Nullable="false" />
+          <Property Name="merk" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ukuran" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="qtyLPB" Type="float" Nullable="false" />
           <Property Name="priceLPB" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="totalLPB" Type="decimal" Precision="18" Scale="0" Nullable="false" />
@@ -409,6 +417,10 @@ warning 6002: The table/view 'indomoda.dbo.ListPenjualanBaju' does not have a pr
     [ListPenjualanBaju].[idLPB] AS [idLPB], 
     [ListPenjualanBaju].[idDPB] AS [idDPB], 
     [ListPenjualanBaju].[noSeri] AS [noSeri], 
+    [ListPenjualanBaju].[model] AS [model], 
+    [ListPenjualanBaju].[ColorID] AS [ColorID], 
+    [ListPenjualanBaju].[merk] AS [merk], 
+    [ListPenjualanBaju].[ukuran] AS [ukuran], 
     [ListPenjualanBaju].[qtyLPB] AS [qtyLPB], 
     [ListPenjualanBaju].[priceLPB] AS [priceLPB], 
     [ListPenjualanBaju].[totalLPB] AS [totalLPB], 
@@ -531,12 +543,12 @@ warning 6002: The table/view 'indomoda.dbo.ListPenjualanBaju' does not have a pr
           <EntitySet Name="DetailPenerimaanSBCs" EntityType="indomodaModel.DetailPenerimaanSBC" />
           <EntitySet Name="DatetimeNotifications" EntityType="indomodaModel.DatetimeNotification" />
           <EntitySet Name="DetailPenjualanBajus" EntityType="indomodaModel.DetailPenjualanBaju" />
-          <EntitySet Name="ListPenjualanBajus" EntityType="indomodaModel.ListPenjualanBaju" />
           <AssociationSet Name="FK_DetailPenjualanBaju_Customer" Association="indomodaModel.FK_DetailPenjualanBaju_Customer">
             <End Role="Customer" EntitySet="Customers" />
             <End Role="DetailPenjualanBaju" EntitySet="DetailPenjualanBajus" />
           </AssociationSet>
           <EntitySet Name="ListBajuJadis" EntityType="indomodaModel.ListBajuJadi" />
+          <EntitySet Name="ListPenjualanBajus" EntityType="indomodaModel.ListPenjualanBaju" />
           </EntityContainer>
         <EntityType Name="Employee">
           <Key>
@@ -828,24 +840,6 @@ warning 6002: The table/view 'indomoda.dbo.ListPenjualanBaju' does not have a pr
           <Property Name="Status" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Customer" Relationship="indomodaModel.FK_DetailPenjualanBaju_Customer" FromRole="DetailPenjualanBaju" ToRole="Customer" />
         </EntityType>
-        <EntityType Name="ListPenjualanBaju">
-          <Key>
-            <PropertyRef Name="idLPB" />
-            <PropertyRef Name="idDPB" />
-            <PropertyRef Name="noSeri" />
-            <PropertyRef Name="qtyLPB" />
-            <PropertyRef Name="priceLPB" />
-            <PropertyRef Name="totalLPB" />
-            <PropertyRef Name="statusLPB" />
-          </Key>
-          <Property Name="idLPB" Type="Int32" Nullable="false" />
-          <Property Name="idDPB" Type="Int32" Nullable="false" />
-          <Property Name="noSeri" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="qtyLPB" Type="Double" Nullable="false" />
-          <Property Name="priceLPB" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="totalLPB" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="statusLPB" Type="Boolean" Nullable="false" />
-        </EntityType>
         <Association Name="FK_DetailPenjualanBaju_Customer">
           <End Type="indomodaModel.Customer" Role="Customer" Multiplicity="1" />
           <End Type="indomodaModel.DetailPenjualanBaju" Role="DetailPenjualanBaju" Multiplicity="*" />
@@ -875,6 +869,32 @@ warning 6002: The table/view 'indomoda.dbo.ListPenjualanBaju' does not have a pr
           <Property Name="merk" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ukuran" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="stock" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ListPenjualanBaju">
+          <Key>
+            <PropertyRef Name="idLPB" />
+            <PropertyRef Name="idDPB" />
+            <PropertyRef Name="noSeri" />
+            <PropertyRef Name="model" />
+            <PropertyRef Name="ColorID" />
+            <PropertyRef Name="merk" />
+            <PropertyRef Name="ukuran" />
+            <PropertyRef Name="qtyLPB" />
+            <PropertyRef Name="priceLPB" />
+            <PropertyRef Name="totalLPB" />
+            <PropertyRef Name="statusLPB" />
+          </Key>
+          <Property Name="idLPB" Type="Int32" Nullable="false" />
+          <Property Name="idDPB" Type="Int32" Nullable="false" />
+          <Property Name="noSeri" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="model" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ColorID" Type="Int32" Nullable="false" />
+          <Property Name="merk" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ukuran" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="qtyLPB" Type="Double" Nullable="false" />
+          <Property Name="priceLPB" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="totalLPB" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="statusLPB" Type="Boolean" Nullable="false" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -1117,19 +1137,6 @@ warning 6002: The table/view 'indomoda.dbo.ListPenjualanBaju' does not have a pr
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ListPenjualanBajus">
-            <EntityTypeMapping TypeName="indomodaModel.ListPenjualanBaju">
-              <MappingFragment StoreEntitySet="ListPenjualanBaju">
-                <ScalarProperty Name="statusLPB" ColumnName="statusLPB" />
-                <ScalarProperty Name="totalLPB" ColumnName="totalLPB" />
-                <ScalarProperty Name="priceLPB" ColumnName="priceLPB" />
-                <ScalarProperty Name="qtyLPB" ColumnName="qtyLPB" />
-                <ScalarProperty Name="noSeri" ColumnName="noSeri" />
-                <ScalarProperty Name="idDPB" ColumnName="idDPB" />
-                <ScalarProperty Name="idLPB" ColumnName="idLPB" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="ListBajuJadis">
             <EntityTypeMapping TypeName="indomodaModel.ListBajuJadi">
               <MappingFragment StoreEntitySet="ListBajuJadi">
@@ -1140,6 +1147,23 @@ warning 6002: The table/view 'indomoda.dbo.ListPenjualanBaju' does not have a pr
                 <ScalarProperty Name="model" ColumnName="model" />
                 <ScalarProperty Name="noSeri" ColumnName="noSeri" />
                 <ScalarProperty Name="idBJ" ColumnName="idBJ" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListPenjualanBajus">
+            <EntityTypeMapping TypeName="indomodaModel.ListPenjualanBaju">
+              <MappingFragment StoreEntitySet="ListPenjualanBaju">
+                <ScalarProperty Name="statusLPB" ColumnName="statusLPB" />
+                <ScalarProperty Name="totalLPB" ColumnName="totalLPB" />
+                <ScalarProperty Name="priceLPB" ColumnName="priceLPB" />
+                <ScalarProperty Name="qtyLPB" ColumnName="qtyLPB" />
+                <ScalarProperty Name="ukuran" ColumnName="ukuran" />
+                <ScalarProperty Name="merk" ColumnName="merk" />
+                <ScalarProperty Name="ColorID" ColumnName="ColorID" />
+                <ScalarProperty Name="model" ColumnName="model" />
+                <ScalarProperty Name="noSeri" ColumnName="noSeri" />
+                <ScalarProperty Name="idDPB" ColumnName="idDPB" />
+                <ScalarProperty Name="idLPB" ColumnName="idLPB" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

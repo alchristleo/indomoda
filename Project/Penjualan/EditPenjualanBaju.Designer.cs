@@ -76,7 +76,7 @@
             this.txtHargaEdit.SelectionStart = 0;
             this.txtHargaEdit.ShortcutsEnabled = true;
             this.txtHargaEdit.Size = new System.Drawing.Size(192, 23);
-            this.txtHargaEdit.TabIndex = 82;
+            this.txtHargaEdit.TabIndex = 2;
             this.txtHargaEdit.UseSelectable = true;
             this.txtHargaEdit.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtHargaEdit.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -174,7 +174,7 @@
             this.txtQtyEdit.SelectionStart = 0;
             this.txtQtyEdit.ShortcutsEnabled = true;
             this.txtQtyEdit.Size = new System.Drawing.Size(49, 23);
-            this.txtQtyEdit.TabIndex = 73;
+            this.txtQtyEdit.TabIndex = 1;
             this.txtQtyEdit.UseSelectable = true;
             this.txtQtyEdit.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtQtyEdit.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -323,7 +323,7 @@
             this.btnSave.Location = new System.Drawing.Point(337, 422);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(113, 52);
-            this.btnSave.TabIndex = 83;
+            this.btnSave.TabIndex = 3;
             this.btnSave.Text = "SAVE";
             this.btnSave.UseSelectable = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);

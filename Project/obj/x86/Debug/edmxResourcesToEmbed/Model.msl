@@ -256,6 +256,10 @@
           <ScalarProperty Name="totalLPB" ColumnName="totalLPB" />
           <ScalarProperty Name="priceLPB" ColumnName="priceLPB" />
           <ScalarProperty Name="qtyLPB" ColumnName="qtyLPB" />
+          <ScalarProperty Name="ukuran" ColumnName="ukuran" />
+          <ScalarProperty Name="merk" ColumnName="merk" />
+          <ScalarProperty Name="ColorID" ColumnName="ColorID" />
+          <ScalarProperty Name="model" ColumnName="model" />
           <ScalarProperty Name="noSeri" ColumnName="noSeri" />
           <ScalarProperty Name="idDPB" ColumnName="idDPB" />
           <ScalarProperty Name="idLPB" ColumnName="idLPB" />

@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -57,7 +58,7 @@ namespace Project
             }
         }
 
-        private void btnAddPoKain_Click(object sender, EventArgs e)
+        private void btnAddPB_Click(object sender, EventArgs e)
         {
             AddPenjualanBaju apb = new AddPenjualanBaju();
             apb.setDGV(ref dataGridView1);
@@ -65,7 +66,7 @@ namespace Project
             apb.Show();
         }
 
-        private void btnEditPoKain_Click(object sender, EventArgs e)
+        private void btnEditPB_Click(object sender, EventArgs e)
         {
             if (dataGridView1.RowCount < 1)
             {
@@ -74,7 +75,7 @@ namespace Project
             else
             {
                 EditPenjualanBaju epb = new EditPenjualanBaju();
-                int currentID = Convert.ToInt32(dataGridView1[9, dataGridView1.CurrentRow.Index].Value.ToString());
+                int currentID = Convert.ToInt32(dataGridView1[10, dataGridView1.CurrentRow.Index].Value.ToString());
 
                 listLPB = GenericQuery.SqlQuery<ListPenjualanBajuModel>("SELECT a.idLPB, a.idDPB, a.noSeri, a.qtyLPB, a.priceLPB, a.totalLPB, a.statusLPB, b.model, b.ColorID, b.merk, b.ukuran FROM ListPenjualanBaju a JOIN ListBajuJadi b ON a.noSeri = b.noSeri WHERE a.idLPB = '"+currentID+"'");
                 epb.setDPO(ref listLPB);
@@ -84,7 +85,7 @@ namespace Project
             }
         }
 
-        private void btnDeletePoKain_Click(object sender, EventArgs e)
+        private void btnDeletePB_Click(object sender, EventArgs e)
         {
             if (dataGridView1.RowCount < 1)
             {
@@ -99,7 +100,7 @@ namespace Project
                         try
                         {
                             int currentRow = dataGridView1.CurrentRow.Index;
-                            int currentID = Convert.ToInt32(dataGridView1[9, dataGridView1.CurrentRow.Index].Value.ToString());
+                            int currentID = Convert.ToInt32(dataGridView1[10, dataGridView1.CurrentRow.Index].Value.ToString());
                             int b = GenericQuery.ExecSQLCommand("DELETE FROM ListPenjualanBaju WHERE idLPB = '" + currentID + "'");
                             db.SaveChangesAsync().Wait();
                             dataGridView1.Rows.RemoveAt(currentRow);
@@ -114,7 +115,7 @@ namespace Project
                             dataGridView1.Refresh();
                             listPenjualanBajuBindingSource.EndEdit();
 
-                            btnCountGrandTotal.PerformClick();
+                            btnCountGTPB.PerformClick();
 
                             MetroFramework.MetroMessageBox.Show(this, "Success! This List penjualan baju has been deleted from database", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
                         }
@@ -127,13 +128,13 @@ namespace Project
             }
         }
 
-        private void btnCountGrandTotal_Click(object sender, EventArgs e)
+        private void btnCountGTPB_Click(object sender, EventArgs e)
         {
             dataGridView1.Refresh();
             decimal gt = 0;
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
-                gt = gt + decimal.Parse(dataGridView1.Rows[i].Cells[6].Value.ToString());
+                gt = gt + decimal.Parse(dataGridView1.Rows[i].Cells[8].Value.ToString());
             }
             lblGrandTotal.Text = String.Format(gt.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("id-ID")));
             lblGrandTotalDB.Text = gt.ToString();
@@ -191,7 +192,7 @@ namespace Project
                                 double stockKurang = Convert.ToDouble(dataGridView1.Rows[i].Cells[6].Value.ToString());
                                 double stockAwal = dba.stock;
                                 double stockAkhir = stockAwal - stockKurang;
-                                int idLPB = Convert.ToInt32(dataGridView1.Rows[i].Cells[9].Value.ToString());
+                                int idLPB = Convert.ToInt32(dataGridView1.Rows[i].Cells[10].Value.ToString());
                                 bool statusLPB = true;
 
                                 int b = GenericQuery.ExecSQLCommand("UPDATE ListBajuJadi SET stock = @stock WHERE noSeri = '"+noSeri+"'", new[] {
@@ -225,7 +226,13 @@ namespace Project
             {
                 id = db.ListPenjualanBajus.AsEnumerable().LastOrDefault() == null ? 1 : db.ListPenjualanBajus.AsEnumerable().LastOrDefault().idDPB + 1;
                 customerBindingSource.DataSource = db.Customers.ToList();
+                colorBindingSource.DataSource = db.Colors.ToList();
             }
+
+            dataGridView1.Columns[7].DefaultCellStyle.Format = "C";
+            dataGridView1.Columns[7].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("id-ID");
+            dataGridView1.Columns[8].DefaultCellStyle.Format = "C";
+            dataGridView1.Columns[8].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("id-ID");
         }
     }
 }

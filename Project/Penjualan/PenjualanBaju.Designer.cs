@@ -31,13 +31,13 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PenjualanBaju));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.btnCountGrandTotal = new MetroFramework.Controls.MetroTile();
+            this.btnCountGTPB = new MetroFramework.Controls.MetroTile();
             this.lblGrandTotalDB = new MetroFramework.Controls.MetroTextBox();
             this.cboCustomerName = new MetroFramework.Controls.MetroComboBox();
             this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.btnDeletePoKain = new MetroFramework.Controls.MetroTile();
-            this.btnEditPoKain = new MetroFramework.Controls.MetroTile();
-            this.btnAddPoKain = new MetroFramework.Controls.MetroTile();
+            this.btnDeletePB = new MetroFramework.Controls.MetroTile();
+            this.btnEditPB = new MetroFramework.Controls.MetroTile();
+            this.btnAddPB = new MetroFramework.Controls.MetroTile();
             this.btnSave = new MetroFramework.Controls.MetroButton();
             this.btnExit = new MetroFramework.Controls.MetroButton();
             this.lblGrandTotal = new MetroFramework.Controls.MetroTextBox();
@@ -50,42 +50,43 @@
             this.lblCustomerCode = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.colorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.listPenjualanBajuBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.colorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroDateTime1 = new MetroFramework.Controls.MetroDateTime();
             this.NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.noSeriDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.model = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColorID = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.merk = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ukuran = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.modelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colorIDDataGridViewComboBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.merkDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ukuranDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.qtyLPBDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.priceLPBDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalLPBDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusLPBDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.idLPBDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idDPBDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.listPenjualanBajuBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnCountGrandTotal
+            // btnCountGTPB
             // 
-            this.btnCountGrandTotal.ActiveControl = null;
-            this.btnCountGrandTotal.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCountGrandTotal.Location = new System.Drawing.Point(344, 522);
-            this.btnCountGrandTotal.Name = "btnCountGrandTotal";
-            this.btnCountGrandTotal.Size = new System.Drawing.Size(87, 67);
-            this.btnCountGrandTotal.TabIndex = 44;
-            this.btnCountGrandTotal.Text = "COUNT";
-            this.btnCountGrandTotal.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnCountGrandTotal.TileImage = global::Project.Properties.Resources.btn_calculator;
-            this.btnCountGrandTotal.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCountGrandTotal.UseSelectable = true;
-            this.btnCountGrandTotal.UseTileImage = true;
-            this.btnCountGrandTotal.Click += new System.EventHandler(this.btnCountGrandTotal_Click);
+            this.btnCountGTPB.ActiveControl = null;
+            this.btnCountGTPB.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCountGTPB.Location = new System.Drawing.Point(344, 522);
+            this.btnCountGTPB.Name = "btnCountGTPB";
+            this.btnCountGTPB.Size = new System.Drawing.Size(87, 67);
+            this.btnCountGTPB.TabIndex = 44;
+            this.btnCountGTPB.Text = "COUNT";
+            this.btnCountGTPB.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCountGTPB.TileImage = global::Project.Properties.Resources.btn_calculator;
+            this.btnCountGTPB.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCountGTPB.UseSelectable = true;
+            this.btnCountGTPB.UseTileImage = true;
+            this.btnCountGTPB.Click += new System.EventHandler(this.btnCountGTPB_Click);
             // 
             // lblGrandTotalDB
             // 
@@ -129,7 +130,7 @@
             this.cboCustomerName.Location = new System.Drawing.Point(172, 119);
             this.cboCustomerName.Name = "cboCustomerName";
             this.cboCustomerName.Size = new System.Drawing.Size(183, 29);
-            this.cboCustomerName.TabIndex = 28;
+            this.cboCustomerName.TabIndex = 2;
             this.cboCustomerName.UseSelectable = true;
             this.cboCustomerName.ValueMember = "CustomerID";
             this.cboCustomerName.SelectedIndexChanged += new System.EventHandler(this.cboCustomerName_SelectedIndexChanged);
@@ -138,53 +139,53 @@
             // 
             this.customerBindingSource.DataSource = typeof(Project.Customer);
             // 
-            // btnDeletePoKain
+            // btnDeletePB
             // 
-            this.btnDeletePoKain.ActiveControl = null;
-            this.btnDeletePoKain.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDeletePoKain.Location = new System.Drawing.Point(242, 522);
-            this.btnDeletePoKain.Name = "btnDeletePoKain";
-            this.btnDeletePoKain.Size = new System.Drawing.Size(87, 67);
-            this.btnDeletePoKain.TabIndex = 33;
-            this.btnDeletePoKain.Text = "DELETE";
-            this.btnDeletePoKain.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnDeletePoKain.TileImage = global::Project.Properties.Resources.btn_delete;
-            this.btnDeletePoKain.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnDeletePoKain.UseSelectable = true;
-            this.btnDeletePoKain.UseTileImage = true;
-            this.btnDeletePoKain.Click += new System.EventHandler(this.btnDeletePoKain_Click);
+            this.btnDeletePB.ActiveControl = null;
+            this.btnDeletePB.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDeletePB.Location = new System.Drawing.Point(242, 522);
+            this.btnDeletePB.Name = "btnDeletePB";
+            this.btnDeletePB.Size = new System.Drawing.Size(87, 67);
+            this.btnDeletePB.TabIndex = 33;
+            this.btnDeletePB.Text = "DELETE";
+            this.btnDeletePB.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnDeletePB.TileImage = global::Project.Properties.Resources.btn_delete;
+            this.btnDeletePB.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnDeletePB.UseSelectable = true;
+            this.btnDeletePB.UseTileImage = true;
+            this.btnDeletePB.Click += new System.EventHandler(this.btnDeletePB_Click);
             // 
-            // btnEditPoKain
+            // btnEditPB
             // 
-            this.btnEditPoKain.ActiveControl = null;
-            this.btnEditPoKain.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEditPoKain.Location = new System.Drawing.Point(140, 522);
-            this.btnEditPoKain.Name = "btnEditPoKain";
-            this.btnEditPoKain.Size = new System.Drawing.Size(87, 67);
-            this.btnEditPoKain.TabIndex = 32;
-            this.btnEditPoKain.Text = "EDIT";
-            this.btnEditPoKain.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnEditPoKain.TileImage = global::Project.Properties.Resources.btn_pencil;
-            this.btnEditPoKain.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnEditPoKain.UseSelectable = true;
-            this.btnEditPoKain.UseTileImage = true;
-            this.btnEditPoKain.Click += new System.EventHandler(this.btnEditPoKain_Click);
+            this.btnEditPB.ActiveControl = null;
+            this.btnEditPB.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEditPB.Location = new System.Drawing.Point(140, 522);
+            this.btnEditPB.Name = "btnEditPB";
+            this.btnEditPB.Size = new System.Drawing.Size(87, 67);
+            this.btnEditPB.TabIndex = 32;
+            this.btnEditPB.Text = "EDIT";
+            this.btnEditPB.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnEditPB.TileImage = global::Project.Properties.Resources.btn_pencil;
+            this.btnEditPB.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnEditPB.UseSelectable = true;
+            this.btnEditPB.UseTileImage = true;
+            this.btnEditPB.Click += new System.EventHandler(this.btnEditPB_Click);
             // 
-            // btnAddPoKain
+            // btnAddPB
             // 
-            this.btnAddPoKain.ActiveControl = null;
-            this.btnAddPoKain.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAddPoKain.Location = new System.Drawing.Point(38, 522);
-            this.btnAddPoKain.Name = "btnAddPoKain";
-            this.btnAddPoKain.Size = new System.Drawing.Size(85, 67);
-            this.btnAddPoKain.TabIndex = 31;
-            this.btnAddPoKain.Text = "ADD";
-            this.btnAddPoKain.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnAddPoKain.TileImage = ((System.Drawing.Image)(resources.GetObject("btnAddPoKain.TileImage")));
-            this.btnAddPoKain.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnAddPoKain.UseSelectable = true;
-            this.btnAddPoKain.UseTileImage = true;
-            this.btnAddPoKain.Click += new System.EventHandler(this.btnAddPoKain_Click);
+            this.btnAddPB.ActiveControl = null;
+            this.btnAddPB.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddPB.Location = new System.Drawing.Point(38, 522);
+            this.btnAddPB.Name = "btnAddPB";
+            this.btnAddPB.Size = new System.Drawing.Size(85, 67);
+            this.btnAddPB.TabIndex = 31;
+            this.btnAddPB.Text = "ADD";
+            this.btnAddPB.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnAddPB.TileImage = ((System.Drawing.Image)(resources.GetObject("btnAddPB.TileImage")));
+            this.btnAddPB.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnAddPB.UseSelectable = true;
+            this.btnAddPB.UseTileImage = true;
+            this.btnAddPB.Click += new System.EventHandler(this.btnAddPB_Click);
             // 
             // btnSave
             // 
@@ -193,7 +194,7 @@
             this.btnSave.Location = new System.Drawing.Point(514, 635);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(110, 48);
-            this.btnSave.TabIndex = 36;
+            this.btnSave.TabIndex = 3;
             this.btnSave.Text = "SAVE";
             this.btnSave.UseSelectable = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -324,7 +325,7 @@
             this.txtNOTransaksi.SelectionStart = 0;
             this.txtNOTransaksi.ShortcutsEnabled = true;
             this.txtNOTransaksi.Size = new System.Drawing.Size(183, 23);
-            this.txtNOTransaksi.TabIndex = 27;
+            this.txtNOTransaksi.TabIndex = 1;
             this.txtNOTransaksi.UseSelectable = true;
             this.txtNOTransaksi.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtNOTransaksi.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -397,13 +398,14 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NO,
             this.noSeriDataGridViewTextBoxColumn,
-            this.model,
-            this.ColorID,
-            this.merk,
-            this.ukuran,
+            this.modelDataGridViewTextBoxColumn,
+            this.colorIDDataGridViewComboBoxColumn,
+            this.merkDataGridViewTextBoxColumn,
+            this.ukuranDataGridViewTextBoxColumn,
             this.qtyLPBDataGridViewTextBoxColumn,
             this.priceLPBDataGridViewTextBoxColumn,
             this.totalLPBDataGridViewTextBoxColumn,
+            this.statusLPBDataGridViewCheckBoxColumn,
             this.idLPBDataGridViewTextBoxColumn,
             this.idDPBDataGridViewTextBoxColumn});
             this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -419,13 +421,13 @@
             this.dataGridView1.Size = new System.Drawing.Size(846, 242);
             this.dataGridView1.TabIndex = 35;
             // 
-            // colorBindingSource
-            // 
-            this.colorBindingSource.DataSource = typeof(Project.Color);
-            // 
             // listPenjualanBajuBindingSource
             // 
             this.listPenjualanBajuBindingSource.DataSource = typeof(Project.ListPenjualanBaju);
+            // 
+            // colorBindingSource
+            // 
+            this.colorBindingSource.DataSource = typeof(Project.Color);
             // 
             // metroLabel1
             // 
@@ -459,43 +461,44 @@
             this.noSeriDataGridViewTextBoxColumn.Name = "noSeriDataGridViewTextBoxColumn";
             this.noSeriDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // model
+            // modelDataGridViewTextBoxColumn
             // 
-            this.model.HeaderText = "Model";
-            this.model.Name = "model";
-            this.model.ReadOnly = true;
+            this.modelDataGridViewTextBoxColumn.DataPropertyName = "model";
+            this.modelDataGridViewTextBoxColumn.HeaderText = "Model";
+            this.modelDataGridViewTextBoxColumn.Name = "modelDataGridViewTextBoxColumn";
+            this.modelDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // ColorID
+            // colorIDDataGridViewComboBoxColumn
             // 
-            this.ColorID.DataSource = this.colorBindingSource;
-            this.ColorID.DisplayMember = "ColorName";
-            this.ColorID.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.ColorID.HeaderText = "Color Name";
-            this.ColorID.Name = "ColorID";
-            this.ColorID.ReadOnly = true;
-            this.ColorID.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColorID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ColorID.ValueMember = "ColorID";
+            this.colorIDDataGridViewComboBoxColumn.DataPropertyName = "ColorID";
+            this.colorIDDataGridViewComboBoxColumn.DataSource = this.colorBindingSource;
+            this.colorIDDataGridViewComboBoxColumn.DisplayMember = "ColorName";
+            this.colorIDDataGridViewComboBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.colorIDDataGridViewComboBoxColumn.HeaderText = "Color Name";
+            this.colorIDDataGridViewComboBoxColumn.Name = "colorIDDataGridViewComboBoxColumn";
+            this.colorIDDataGridViewComboBoxColumn.ReadOnly = true;
+            this.colorIDDataGridViewComboBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colorIDDataGridViewComboBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.colorIDDataGridViewComboBoxColumn.ValueMember = "ColorID";
             // 
-            // merk
+            // merkDataGridViewTextBoxColumn
             // 
-            this.merk.DataPropertyName = "idLPB";
-            this.merk.HeaderText = "Merk";
-            this.merk.Name = "merk";
-            this.merk.ReadOnly = true;
+            this.merkDataGridViewTextBoxColumn.DataPropertyName = "merk";
+            this.merkDataGridViewTextBoxColumn.HeaderText = "Merk";
+            this.merkDataGridViewTextBoxColumn.Name = "merkDataGridViewTextBoxColumn";
+            this.merkDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // ukuran
+            // ukuranDataGridViewTextBoxColumn
             // 
-            this.ukuran.DataPropertyName = "idLPB";
-            this.ukuran.HeaderText = "Ukuran";
-            this.ukuran.Name = "ukuran";
-            this.ukuran.ReadOnly = true;
-            this.ukuran.Width = 70;
+            this.ukuranDataGridViewTextBoxColumn.DataPropertyName = "ukuran";
+            this.ukuranDataGridViewTextBoxColumn.HeaderText = "Ukuran";
+            this.ukuranDataGridViewTextBoxColumn.Name = "ukuranDataGridViewTextBoxColumn";
+            this.ukuranDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // qtyLPBDataGridViewTextBoxColumn
             // 
             this.qtyLPBDataGridViewTextBoxColumn.DataPropertyName = "qtyLPB";
-            this.qtyLPBDataGridViewTextBoxColumn.HeaderText = "Quantity (pcs)";
+            this.qtyLPBDataGridViewTextBoxColumn.HeaderText = "Quantity (pcs) ";
             this.qtyLPBDataGridViewTextBoxColumn.Name = "qtyLPBDataGridViewTextBoxColumn";
             this.qtyLPBDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -505,7 +508,6 @@
             this.priceLPBDataGridViewTextBoxColumn.HeaderText = "Harga";
             this.priceLPBDataGridViewTextBoxColumn.Name = "priceLPBDataGridViewTextBoxColumn";
             this.priceLPBDataGridViewTextBoxColumn.ReadOnly = true;
-            this.priceLPBDataGridViewTextBoxColumn.Width = 110;
             // 
             // totalLPBDataGridViewTextBoxColumn
             // 
@@ -513,7 +515,14 @@
             this.totalLPBDataGridViewTextBoxColumn.HeaderText = "Total Harga";
             this.totalLPBDataGridViewTextBoxColumn.Name = "totalLPBDataGridViewTextBoxColumn";
             this.totalLPBDataGridViewTextBoxColumn.ReadOnly = true;
-            this.totalLPBDataGridViewTextBoxColumn.Width = 120;
+            // 
+            // statusLPBDataGridViewCheckBoxColumn
+            // 
+            this.statusLPBDataGridViewCheckBoxColumn.DataPropertyName = "statusLPB";
+            this.statusLPBDataGridViewCheckBoxColumn.HeaderText = "statusLPB";
+            this.statusLPBDataGridViewCheckBoxColumn.Name = "statusLPBDataGridViewCheckBoxColumn";
+            this.statusLPBDataGridViewCheckBoxColumn.ReadOnly = true;
+            this.statusLPBDataGridViewCheckBoxColumn.Visible = false;
             // 
             // idLPBDataGridViewTextBoxColumn
             // 
@@ -538,12 +547,12 @@
             this.ClientSize = new System.Drawing.Size(924, 715);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.metroDateTime1);
-            this.Controls.Add(this.btnCountGrandTotal);
+            this.Controls.Add(this.btnCountGTPB);
             this.Controls.Add(this.lblGrandTotalDB);
             this.Controls.Add(this.cboCustomerName);
-            this.Controls.Add(this.btnDeletePoKain);
-            this.Controls.Add(this.btnEditPoKain);
-            this.Controls.Add(this.btnAddPoKain);
+            this.Controls.Add(this.btnDeletePB);
+            this.Controls.Add(this.btnEditPB);
+            this.Controls.Add(this.btnAddPB);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.lblGrandTotal);
@@ -561,8 +570,8 @@
             this.Load += new System.EventHandler(this.PenjualanBaju_Load);
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.listPenjualanBajuBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -570,12 +579,12 @@
 
         #endregion
 
-        internal MetroFramework.Controls.MetroTile btnCountGrandTotal;
+        internal MetroFramework.Controls.MetroTile btnCountGTPB;
         private MetroFramework.Controls.MetroTextBox lblGrandTotalDB;
         private MetroFramework.Controls.MetroComboBox cboCustomerName;
-        private MetroFramework.Controls.MetroTile btnDeletePoKain;
-        private MetroFramework.Controls.MetroTile btnEditPoKain;
-        private MetroFramework.Controls.MetroTile btnAddPoKain;
+        private MetroFramework.Controls.MetroTile btnDeletePB;
+        private MetroFramework.Controls.MetroTile btnEditPB;
+        private MetroFramework.Controls.MetroTile btnAddPB;
         private MetroFramework.Controls.MetroButton btnSave;
         private MetroFramework.Controls.MetroButton btnExit;
         private MetroFramework.Controls.MetroTextBox lblGrandTotal;
@@ -591,17 +600,18 @@
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroDateTime metroDateTime1;
         private System.Windows.Forms.BindingSource customerBindingSource;
-        private System.Windows.Forms.BindingSource listPenjualanBajuBindingSource;
         private System.Windows.Forms.BindingSource colorBindingSource;
+        private System.Windows.Forms.BindingSource listPenjualanBajuBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn NO;
         private System.Windows.Forms.DataGridViewTextBoxColumn noSeriDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn model;
-        private System.Windows.Forms.DataGridViewComboBoxColumn ColorID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn merk;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ukuran;
+        private System.Windows.Forms.DataGridViewTextBoxColumn modelDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn colorIDDataGridViewComboBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn merkDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ukuranDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn qtyLPBDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn priceLPBDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalLPBDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn statusLPBDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idLPBDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDPBDataGridViewTextBoxColumn;
     }
