@@ -570,5 +570,22 @@ namespace Project
                 }
             }
         }
+
+        private void stockBajuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StockBaju stockBaju = new StockBaju();
+            using (StreamReader streamReader = new StreamReader("temp.txt"))
+            {
+                string decryptText = EncryptDecrypt.Decrypt(streamReader.ReadLine());
+                if (decryptText != a && decryptText != d)
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "Sorry you can not access this menu, please contact administrator for more info", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    stockBaju.Show();
+                }
+            }
+        }
     }
 }

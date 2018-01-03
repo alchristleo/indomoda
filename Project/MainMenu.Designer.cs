@@ -301,8 +301,9 @@
             // stockBajuToolStripMenuItem
             // 
             this.stockBajuToolStripMenuItem.Name = "stockBajuToolStripMenuItem";
-            this.stockBajuToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.stockBajuToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.stockBajuToolStripMenuItem.Text = "Stock Baju";
+            this.stockBajuToolStripMenuItem.Click += new System.EventHandler(this.stockBajuToolStripMenuItem_Click);
             // 
             // laporanProduksiToolStripMenuItem
             // 
@@ -344,7 +345,7 @@
             this.metroDateTime1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.metroDateTime1.Dock = System.Windows.Forms.DockStyle.Right;
             this.metroDateTime1.Location = new System.Drawing.Point(597, 84);
-            this.metroDateTime1.MinimumSize = new System.Drawing.Size(4, 29);
+            this.metroDateTime1.MinimumSize = new System.Drawing.Size(0, 29);
             this.metroDateTime1.Name = "metroDateTime1";
             this.metroDateTime1.Size = new System.Drawing.Size(244, 29);
             this.metroDateTime1.TabIndex = 1;
