@@ -553,5 +553,22 @@ namespace Project
                 File.Delete(path);
             }
         }
+
+        private void stockKainToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StockKain stockKain = new StockKain();
+            using (StreamReader streamReader = new StreamReader("temp.txt"))
+            {
+                string decryptText = EncryptDecrypt.Decrypt(streamReader.ReadLine());
+                if (decryptText != a && decryptText != d)
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "Sorry you can not access this menu, please contact administrator for more info", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    stockKain.Show();
+                }
+            }
+        }
     }
 }
