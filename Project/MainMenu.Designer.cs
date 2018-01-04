@@ -301,7 +301,7 @@
             // stockBajuToolStripMenuItem
             // 
             this.stockBajuToolStripMenuItem.Name = "stockBajuToolStripMenuItem";
-            this.stockBajuToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.stockBajuToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
             this.stockBajuToolStripMenuItem.Text = "Stock Baju";
             this.stockBajuToolStripMenuItem.Click += new System.EventHandler(this.stockBajuToolStripMenuItem_Click);
             // 
@@ -321,6 +321,7 @@
             this.pemotonganKainToolStripMenuItem1.Name = "pemotonganKainToolStripMenuItem1";
             this.pemotonganKainToolStripMenuItem1.Size = new System.Drawing.Size(169, 22);
             this.pemotonganKainToolStripMenuItem1.Text = "Pemotongan Kain";
+            this.pemotonganKainToolStripMenuItem1.Click += new System.EventHandler(this.pemotonganKainToolStripMenuItem1_Click);
             // 
             // sablonToolStripMenuItem1
             // 

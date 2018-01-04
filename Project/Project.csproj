@@ -143,6 +143,18 @@
     <Compile Include="IndomodaSupplier.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Laporan\DetailPOPopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Laporan\DetailPOPopup.Designer.cs">
+      <DependentUpon>DetailPOPopup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Laporan\LaporanPemotonganKain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Laporan\LaporanPemotonganKain.Designer.cs">
+      <DependentUpon>LaporanPemotonganKain.cs</DependentUpon>
+    </Compile>
     <Compile Include="Laporan\StockBaju.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -425,6 +437,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DetailLogs\DetailLogForm.resx">
       <DependentUpon>DetailLogForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Laporan\DetailPOPopup.resx">
+      <DependentUpon>DetailPOPopup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Laporan\LaporanPemotonganKain.resx">
+      <DependentUpon>LaporanPemotonganKain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Laporan\StockBaju.resx">
       <DependentUpon>StockBaju.cs</DependentUpon>

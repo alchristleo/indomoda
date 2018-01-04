@@ -33,22 +33,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.no = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pONumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.materialIDDataGridViewComboBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.materialBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.colorIDDataGridViewComboBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.colorBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.detailQtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.detailPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.detailTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Date_time = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusPenerimaan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.detailStatusDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.statusFakturDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.noPemotonganKainDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tempPemotonganDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.detailPOIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.detailPOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.startDate = new MetroFramework.Controls.MetroDateTime();
             this.endDate = new MetroFramework.Controls.MetroDateTime();
             this.fetchButton = new MetroFramework.Controls.MetroButton();
@@ -59,6 +45,21 @@
             this.searchButton = new MetroFramework.Controls.MetroButton();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.btnPrint = new System.Windows.Forms.Button();
+            this.pONumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.materialIDDataGridViewComboBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.materialBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.colorIDDataGridViewComboBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.colorBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.detailQtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.detailPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.detailTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.detailStatusDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.statusFakturDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.noPemotonganKainDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tempPemotonganDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.detailPOIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.detailPOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnReset = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.materialBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).BeginInit();
@@ -107,7 +108,7 @@
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ScrollBar;
-            this.dataGridView1.Location = new System.Drawing.Point(33, 126);
+            this.dataGridView1.Location = new System.Drawing.Point(33, 151);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
@@ -124,6 +125,145 @@
             this.no.Name = "no";
             this.no.ReadOnly = true;
             this.no.Width = 40;
+            // 
+            // Date_time
+            // 
+            this.Date_time.DataPropertyName = "Date_time";
+            this.Date_time.HeaderText = "Date";
+            this.Date_time.Name = "Date_time";
+            this.Date_time.ReadOnly = true;
+            this.Date_time.Width = 140;
+            // 
+            // statusPenerimaan
+            // 
+            this.statusPenerimaan.HeaderText = "Status Penerimaan";
+            this.statusPenerimaan.Name = "statusPenerimaan";
+            this.statusPenerimaan.ReadOnly = true;
+            this.statusPenerimaan.Width = 140;
+            // 
+            // startDate
+            // 
+            this.startDate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.startDate.CustomFormat = "dd-MM-yyyy";
+            this.startDate.Location = new System.Drawing.Point(420, 110);
+            this.startDate.MinimumSize = new System.Drawing.Size(0, 29);
+            this.startDate.Name = "startDate";
+            this.startDate.Size = new System.Drawing.Size(207, 29);
+            this.startDate.TabIndex = 1;
+            // 
+            // endDate
+            // 
+            this.endDate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.endDate.CustomFormat = "dd-MM-yyyy";
+            this.endDate.Location = new System.Drawing.Point(655, 110);
+            this.endDate.MinimumSize = new System.Drawing.Size(0, 29);
+            this.endDate.Name = "endDate";
+            this.endDate.Size = new System.Drawing.Size(211, 29);
+            this.endDate.TabIndex = 2;
+            // 
+            // fetchButton
+            // 
+            this.fetchButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.fetchButton.Location = new System.Drawing.Point(872, 110);
+            this.fetchButton.Name = "fetchButton";
+            this.fetchButton.Size = new System.Drawing.Size(90, 29);
+            this.fetchButton.TabIndex = 3;
+            this.fetchButton.Text = "SHOW DATA";
+            this.fetchButton.UseSelectable = true;
+            this.fetchButton.Click += new System.EventHandler(this.fetchButton_Click);
+            // 
+            // metroLabel1
+            // 
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.Location = new System.Drawing.Point(629, 113);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(26, 19);
+            this.metroLabel1.TabIndex = 4;
+            this.metroLabel1.Text = "TO";
+            // 
+            // metroLabel2
+            // 
+            this.metroLabel2.AutoSize = true;
+            this.metroLabel2.Location = new System.Drawing.Point(369, 113);
+            this.metroLabel2.Name = "metroLabel2";
+            this.metroLabel2.Size = new System.Drawing.Size(47, 19);
+            this.metroLabel2.TabIndex = 5;
+            this.metroLabel2.Text = "FROM";
+            // 
+            // metroLabel3
+            // 
+            this.metroLabel3.AutoSize = true;
+            this.metroLabel3.Location = new System.Drawing.Point(33, 72);
+            this.metroLabel3.Name = "metroLabel3";
+            this.metroLabel3.Size = new System.Drawing.Size(101, 19);
+            this.metroLabel3.TabIndex = 6;
+            this.metroLabel3.Text = "Search NO. PO:";
+            // 
+            // txtSearch
+            // 
+            // 
+            // 
+            // 
+            this.txtSearch.CustomButton.Image = null;
+            this.txtSearch.CustomButton.Location = new System.Drawing.Point(95, 1);
+            this.txtSearch.CustomButton.Name = "";
+            this.txtSearch.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.txtSearch.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtSearch.CustomButton.TabIndex = 1;
+            this.txtSearch.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtSearch.CustomButton.UseSelectable = true;
+            this.txtSearch.CustomButton.Visible = false;
+            this.txtSearch.Lines = new string[0];
+            this.txtSearch.Location = new System.Drawing.Point(134, 72);
+            this.txtSearch.MaxLength = 32767;
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.PasswordChar = '\0';
+            this.txtSearch.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtSearch.SelectedText = "";
+            this.txtSearch.SelectionLength = 0;
+            this.txtSearch.SelectionStart = 0;
+            this.txtSearch.ShortcutsEnabled = true;
+            this.txtSearch.Size = new System.Drawing.Size(117, 23);
+            this.txtSearch.TabIndex = 7;
+            this.txtSearch.UseSelectable = true;
+            this.txtSearch.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtSearch.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // searchButton
+            // 
+            this.searchButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.searchButton.Location = new System.Drawing.Point(256, 70);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(90, 29);
+            this.searchButton.TabIndex = 8;
+            this.searchButton.Text = "SEARCH";
+            this.searchButton.UseSelectable = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
+            // 
+            // metroButton1
+            // 
+            this.metroButton1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.metroButton1.Location = new System.Drawing.Point(465, 541);
+            this.metroButton1.Name = "metroButton1";
+            this.metroButton1.Size = new System.Drawing.Size(135, 56);
+            this.metroButton1.TabIndex = 9;
+            this.metroButton1.Text = "EXIT";
+            this.metroButton1.UseSelectable = true;
+            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnPrint.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPrint.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnPrint.Image = global::Project.Properties.Resources.btn_print;
+            this.btnPrint.Location = new System.Drawing.Point(969, 108);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(61, 33);
+            this.btnPrint.TabIndex = 10;
+            this.btnPrint.UseVisualStyleBackColor = false;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            this.btnPrint.MouseHover += new System.EventHandler(this.btnPrint_MouseHover);
             // 
             // pONumberDataGridViewTextBoxColumn
             // 
@@ -189,21 +329,6 @@
             this.detailTotalDataGridViewTextBoxColumn.Name = "detailTotalDataGridViewTextBoxColumn";
             this.detailTotalDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // Date_time
-            // 
-            this.Date_time.DataPropertyName = "Date_time";
-            this.Date_time.HeaderText = "Date";
-            this.Date_time.Name = "Date_time";
-            this.Date_time.ReadOnly = true;
-            this.Date_time.Width = 140;
-            // 
-            // statusPenerimaan
-            // 
-            this.statusPenerimaan.HeaderText = "Status Penerimaan";
-            this.statusPenerimaan.Name = "statusPenerimaan";
-            this.statusPenerimaan.ReadOnly = true;
-            this.statusPenerimaan.Width = 140;
-            // 
             // detailStatusDataGridViewCheckBoxColumn
             // 
             this.detailStatusDataGridViewCheckBoxColumn.DataPropertyName = "DetailStatus";
@@ -250,134 +375,27 @@
             // 
             this.detailPOBindingSource.DataSource = typeof(Project.DetailPO);
             // 
-            // startDate
+            // btnReset
             // 
-            this.startDate.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.startDate.CustomFormat = "dd-MM-yyyy";
-            this.startDate.Location = new System.Drawing.Point(418, 81);
-            this.startDate.MinimumSize = new System.Drawing.Size(0, 29);
-            this.startDate.Name = "startDate";
-            this.startDate.Size = new System.Drawing.Size(207, 29);
-            this.startDate.TabIndex = 1;
-            // 
-            // endDate
-            // 
-            this.endDate.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.endDate.CustomFormat = "dd-MM-yyyy";
-            this.endDate.Location = new System.Drawing.Point(653, 81);
-            this.endDate.MinimumSize = new System.Drawing.Size(0, 29);
-            this.endDate.Name = "endDate";
-            this.endDate.Size = new System.Drawing.Size(211, 29);
-            this.endDate.TabIndex = 2;
-            // 
-            // fetchButton
-            // 
-            this.fetchButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.fetchButton.Location = new System.Drawing.Point(870, 81);
-            this.fetchButton.Name = "fetchButton";
-            this.fetchButton.Size = new System.Drawing.Size(90, 29);
-            this.fetchButton.TabIndex = 3;
-            this.fetchButton.Text = "SHOW DATA";
-            this.fetchButton.UseSelectable = true;
-            this.fetchButton.Click += new System.EventHandler(this.fetchButton_Click);
-            // 
-            // metroLabel1
-            // 
-            this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(627, 84);
-            this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(26, 19);
-            this.metroLabel1.TabIndex = 4;
-            this.metroLabel1.Text = "TO";
-            // 
-            // metroLabel2
-            // 
-            this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(367, 84);
-            this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(47, 19);
-            this.metroLabel2.TabIndex = 5;
-            this.metroLabel2.Text = "FROM";
-            // 
-            // metroLabel3
-            // 
-            this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(33, 81);
-            this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(101, 19);
-            this.metroLabel3.TabIndex = 6;
-            this.metroLabel3.Text = "Search NO. PO:";
-            // 
-            // txtSearch
-            // 
-            // 
-            // 
-            // 
-            this.txtSearch.CustomButton.Image = null;
-            this.txtSearch.CustomButton.Location = new System.Drawing.Point(95, 1);
-            this.txtSearch.CustomButton.Name = "";
-            this.txtSearch.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.txtSearch.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txtSearch.CustomButton.TabIndex = 1;
-            this.txtSearch.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txtSearch.CustomButton.UseSelectable = true;
-            this.txtSearch.CustomButton.Visible = false;
-            this.txtSearch.Lines = new string[0];
-            this.txtSearch.Location = new System.Drawing.Point(134, 81);
-            this.txtSearch.MaxLength = 32767;
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.PasswordChar = '\0';
-            this.txtSearch.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtSearch.SelectedText = "";
-            this.txtSearch.SelectionLength = 0;
-            this.txtSearch.SelectionStart = 0;
-            this.txtSearch.ShortcutsEnabled = true;
-            this.txtSearch.Size = new System.Drawing.Size(117, 23);
-            this.txtSearch.TabIndex = 7;
-            this.txtSearch.UseSelectable = true;
-            this.txtSearch.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txtSearch.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // searchButton
-            // 
-            this.searchButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.searchButton.Location = new System.Drawing.Point(256, 79);
-            this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(90, 29);
-            this.searchButton.TabIndex = 8;
-            this.searchButton.Text = "SEARCH";
-            this.searchButton.UseSelectable = true;
-            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
-            // 
-            // metroButton1
-            // 
-            this.metroButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.metroButton1.Location = new System.Drawing.Point(465, 519);
-            this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(135, 56);
-            this.metroButton1.TabIndex = 9;
-            this.metroButton1.Text = "EXIT";
-            this.metroButton1.UseSelectable = true;
-            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
-            // 
-            // btnPrint
-            // 
-            this.btnPrint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnPrint.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPrint.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnPrint.Image = global::Project.Properties.Resources.btn_print;
-            this.btnPrint.Location = new System.Drawing.Point(967, 79);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(61, 33);
-            this.btnPrint.TabIndex = 10;
-            this.btnPrint.UseVisualStyleBackColor = false;
-            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            this.btnReset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnReset.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnReset.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnReset.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnReset.Image = global::Project.Properties.Resources.btn_reset;
+            this.btnReset.Location = new System.Drawing.Point(352, 70);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(44, 33);
+            this.btnReset.TabIndex = 11;
+            this.btnReset.UseVisualStyleBackColor = false;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            this.btnReset.MouseHover += new System.EventHandler(this.btnReset_MouseHover);
             // 
             // StockKain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1076, 596);
+            this.ClientSize = new System.Drawing.Size(1076, 620);
+            this.Controls.Add(this.btnReset);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.metroButton1);
             this.Controls.Add(this.searchButton);
@@ -432,5 +450,6 @@
         private MetroFramework.Controls.MetroButton searchButton;
         private MetroFramework.Controls.MetroButton metroButton1;
         private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.Button btnReset;
     }
 }

@@ -25,12 +25,12 @@ namespace Project
 
             if (query == "")
             {
-                MetroFramework.MetroMessageBox.Show(this, "No PO can not be empty", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MetroFramework.MetroMessageBox.Show(this, "No Seri can not be empty", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 dataGridView1.Rows.Clear();
-                List<ListBajuJadi> lbj = GenericQuery.SqlQuery<ListBajuJadi>("SELECT a.idBJ, a.noSeri, a.model, a.ColorID, a.merk, a.ukuran, a.stock, a.Datetime FROM ListBajuJadi a WHERE a.noSeri = '" + query + "' AND a.stock != '"+0+"'");
+                List<ListBajuJadi> lbj = GenericQuery.SqlQuery<ListBajuJadi>("SELECT a.idBJ, a.noSeri, a.model, a.ColorID, a.merk, a.ukuran, a.stock, a.Datetime FROM ListBajuJadi a WHERE a.noSeri = '" + query + "'");
                 listBajuJadiBindingSource.DataSource = lbj.ToList();
 
                 int rowCount = dataGridView1.Rows.Count;
@@ -156,6 +156,40 @@ namespace Project
                 CR.Select();
                 xlWorkSheet.PasteSpecial(CR, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
             }
+        }
+
+        private void btnPrint_MouseHover(object sender, EventArgs e)
+        {
+            ToolTip ToolTip1 = new ToolTip();
+            ToolTip1.AutoPopDelay = 3000;
+            ToolTip1.InitialDelay = 1000;
+            ToolTip1.ReshowDelay = 500;
+            ToolTip1.SetToolTip(this.btnPrint, "Print current data in table");
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            txtSearch.Clear();
+            List<ListBajuJadi> lbj = GenericQuery.SqlQuery<ListBajuJadi>("SELECT a.idBJ, a.noSeri, a.model, a.ColorID, a.merk, a.ukuran, a.stock, a.Datetime FROM ListBajuJadi a");
+            listBajuJadiBindingSource.DataSource = lbj.ToList();
+
+            int rowCount = dataGridView1.Rows.Count;
+            for (int i = 0; i < rowCount; i++)
+            {
+                dataGridView1.Columns[0].ValueType = typeof(int);
+                dataGridView1.Rows[i].Cells[0].Value = i + 1;
+                dataGridView1.UpdateCellValue(0, i);
+            }
+            dataGridView1.Columns[6].DefaultCellStyle.Format = "dd-MM-yyyy HH:mm:ss tt";
+        }
+
+        private void btnReset_MouseHover(object sender, EventArgs e)
+        {
+            ToolTip ToolTip2 = new ToolTip();
+            ToolTip2.AutoPopDelay = 3000;
+            ToolTip2.InitialDelay = 1000;
+            ToolTip2.ReshowDelay = 500;
+            ToolTip2.SetToolTip(this.btnReset, "Reset search");
         }
     }
 }

@@ -56,3 +56,5 @@ C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x
 C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Debug\Project.StockKain.resources
 C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Debug\Project.csproj.ResolveComReference.cache
 C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Debug\Project.StockBaju.resources
+C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Debug\Project.LaporanPemotonganKain.resources
+C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Debug\Project.DetailPOPopup.resources
