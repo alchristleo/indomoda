@@ -158,6 +158,7 @@ warning 6002: The table/view 'indomoda.dbo.ListBajuJadi' does not have a primary
       <PropertyRef Name="merk" />
       <PropertyRef Name="ukuran" />
       <PropertyRef Name="stock" />
+      <PropertyRef Name="Datetime" />
     </Key>
     <Property Name="idBJ" Type="int" Nullable="false" />
     <Property Name="noSeri" Type="varchar" MaxLength="50" Nullable="false" />
@@ -166,6 +167,7 @@ warning 6002: The table/view 'indomoda.dbo.ListBajuJadi' does not have a primary
     <Property Name="merk" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="ukuran" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="stock" Type="float" Nullable="false" />
+    <Property Name="Datetime" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="ListPenerimaanTukangPotong">
     <Key>
@@ -404,7 +406,8 @@ warning 6002: The table/view 'indomoda.dbo.ListPenjualanBaju' does not have a pr
     [ListBajuJadi].[ColorID] AS [ColorID], 
     [ListBajuJadi].[merk] AS [merk], 
     [ListBajuJadi].[ukuran] AS [ukuran], 
-    [ListBajuJadi].[stock] AS [stock]
+    [ListBajuJadi].[stock] AS [stock], 
+    [ListBajuJadi].[Datetime] AS [Datetime]
     FROM [dbo].[ListBajuJadi] AS [ListBajuJadi]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="ListPenjualanBaju" EntityType="Self.ListPenjualanBaju" store:Type="Tables" store:Schema="dbo">

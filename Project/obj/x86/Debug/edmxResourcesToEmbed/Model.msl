@@ -236,19 +236,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ListBajuJadis">
-      <EntityTypeMapping TypeName="indomodaModel.ListBajuJadi">
-        <MappingFragment StoreEntitySet="ListBajuJadi">
-          <ScalarProperty Name="stock" ColumnName="stock" />
-          <ScalarProperty Name="ukuran" ColumnName="ukuran" />
-          <ScalarProperty Name="merk" ColumnName="merk" />
-          <ScalarProperty Name="ColorID" ColumnName="ColorID" />
-          <ScalarProperty Name="model" ColumnName="model" />
-          <ScalarProperty Name="noSeri" ColumnName="noSeri" />
-          <ScalarProperty Name="idBJ" ColumnName="idBJ" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="ListPenjualanBajus">
       <EntityTypeMapping TypeName="indomodaModel.ListPenjualanBaju">
         <MappingFragment StoreEntitySet="ListPenjualanBaju">
@@ -263,6 +250,20 @@
           <ScalarProperty Name="noSeri" ColumnName="noSeri" />
           <ScalarProperty Name="idDPB" ColumnName="idDPB" />
           <ScalarProperty Name="idLPB" ColumnName="idLPB" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ListBajuJadis">
+      <EntityTypeMapping TypeName="indomodaModel.ListBajuJadi">
+        <MappingFragment StoreEntitySet="ListBajuJadi">
+          <ScalarProperty Name="Datetime" ColumnName="Datetime" />
+          <ScalarProperty Name="stock" ColumnName="stock" />
+          <ScalarProperty Name="ukuran" ColumnName="ukuran" />
+          <ScalarProperty Name="merk" ColumnName="merk" />
+          <ScalarProperty Name="ColorID" ColumnName="ColorID" />
+          <ScalarProperty Name="model" ColumnName="model" />
+          <ScalarProperty Name="noSeri" ColumnName="noSeri" />
+          <ScalarProperty Name="idBJ" ColumnName="idBJ" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

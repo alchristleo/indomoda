@@ -53,7 +53,7 @@ namespace Project
         private void btnSave_Click(object sender, EventArgs e)
         {
             string noSeri = list[0].noSeri;
-            var dba = GenericQuery.SqlQuerySingle<ListBajuJadi>("SELECT a.idBJ, a.noSeri, a.model, a.ColorID, a.merk, a.ukuran, a.stock FROM ListBajuJadi a WHERE a.noSeri = '" + noSeri + "'");
+            var dba = GenericQuery.SqlQuerySingle<ListBajuJadi>("SELECT a.idBJ, a.noSeri, a.model, a.ColorID, a.merk, a.ukuran, a.stock, a.Datetime FROM ListBajuJadi a WHERE a.noSeri = '" + noSeri + "'");
             double currentStock = dba.stock;
 
             if (String.IsNullOrEmpty(txtNoSeri.Text))

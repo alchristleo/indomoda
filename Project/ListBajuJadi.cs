@@ -21,5 +21,6 @@ namespace Project
         public string merk { get; set; }
         public string ukuran { get; set; }
         public double stock { get; set; }
+        public System.DateTime Datetime { get; set; }
     }
 }

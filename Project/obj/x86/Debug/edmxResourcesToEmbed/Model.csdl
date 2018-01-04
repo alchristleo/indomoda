@@ -83,8 +83,8 @@
       <End Role="Customer" EntitySet="Customers" />
       <End Role="DetailPenjualanBaju" EntitySet="DetailPenjualanBajus" />
     </AssociationSet>
-    <EntitySet Name="ListBajuJadis" EntityType="indomodaModel.ListBajuJadi" />
     <EntitySet Name="ListPenjualanBajus" EntityType="indomodaModel.ListPenjualanBaju" />
+    <EntitySet Name="ListBajuJadis" EntityType="indomodaModel.ListBajuJadi" />
   </EntityContainer>
   <EntityType Name="Employee">
     <Key>
@@ -388,24 +388,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityType Name="ListBajuJadi">
-    <Key>
-      <PropertyRef Name="idBJ" />
-      <PropertyRef Name="noSeri" />
-      <PropertyRef Name="model" />
-      <PropertyRef Name="ColorID" />
-      <PropertyRef Name="merk" />
-      <PropertyRef Name="ukuran" />
-      <PropertyRef Name="stock" />
-    </Key>
-    <Property Name="idBJ" Type="Int32" Nullable="false" />
-    <Property Name="noSeri" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="model" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="ColorID" Type="Int32" Nullable="false" />
-    <Property Name="merk" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="ukuran" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="stock" Type="Double" Nullable="false" />
-  </EntityType>
   <EntityType Name="ListPenjualanBaju">
     <Key>
       <PropertyRef Name="idLPB" />
@@ -431,5 +413,25 @@
     <Property Name="priceLPB" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
     <Property Name="totalLPB" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
     <Property Name="statusLPB" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ListBajuJadi">
+    <Key>
+      <PropertyRef Name="idBJ" />
+      <PropertyRef Name="noSeri" />
+      <PropertyRef Name="model" />
+      <PropertyRef Name="ColorID" />
+      <PropertyRef Name="merk" />
+      <PropertyRef Name="ukuran" />
+      <PropertyRef Name="stock" />
+      <PropertyRef Name="Datetime" />
+    </Key>
+    <Property Name="idBJ" Type="Int32" Nullable="false" />
+    <Property Name="noSeri" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="model" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ColorID" Type="Int32" Nullable="false" />
+    <Property Name="merk" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ukuran" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="stock" Type="Double" Nullable="false" />
+    <Property Name="Datetime" Type="DateTime" Nullable="false" Precision="3" />
   </EntityType>
 </Schema>

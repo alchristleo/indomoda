@@ -204,14 +204,15 @@ namespace Project
                                         //int colorID = dbe.ColorID;
                                         string merk = dataGridView1.Rows[i].Cells[4].Value.ToString();
                                         string ukuran = dataGridView1.Rows[i].Cells[5].Value.ToString();
-                                        int f = GenericQuery.ExecSQLCommand("INSERT  INTO ListBajuJadi (idBJ, noSeri, model, ColorID, merk, ukuran, stock) VALUES(@idBJ, @noSeri, @model, @ColorID, @merk, @ukuran, @stock)", new[]{
+                                        int f = GenericQuery.ExecSQLCommand("INSERT  INTO ListBajuJadi (idBJ, noSeri, model, ColorID, merk, ukuran, stock, Datetime) VALUES(@idBJ, @noSeri, @model, @ColorID, @merk, @ukuran, @stock, @Datetime)", new[]{
                                             new SqlParameter("@idBJ", idBJ),
                                             new SqlParameter("@noSeri", ns),
                                             new SqlParameter("@model", model),
                                             new SqlParameter("@ColorID", colorID),
                                             new SqlParameter("@merk", merk),
                                             new SqlParameter("@ukuran", ukuran),
-                                            new SqlParameter("@stock", x)
+                                            new SqlParameter("@stock", x),
+                                            new SqlParameter("@Datetime", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"))
                                         });
                                         db.SaveChangesAsync().Wait();
                                     }

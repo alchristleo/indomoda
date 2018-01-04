@@ -53,7 +53,7 @@ namespace Project
         private void btnSave_Click(object sender, EventArgs e)
         {
             string noSeri = txtNoSeri.Text.ToString();
-            var dba = GenericQuery.SqlQuerySingle<ListBajuJadi>("SELECT a.idBJ, a.noSeri, a.model, a.ColorID, a.merk, a.ukuran, a.stock FROM ListBajuJadi a WHERE a.noSeri = '" + noSeri + "'");
+            var dba = GenericQuery.SqlQuerySingle<ListBajuJadi>("SELECT a.idBJ, a.noSeri, a.model, a.ColorID, a.merk, a.ukuran, a.stock, a.Datetime FROM ListBajuJadi a WHERE a.noSeri = '" + noSeri + "'");
             double currentStock = dba.stock;
 
             if (String.IsNullOrEmpty(txtNoSeri.Text))
@@ -178,7 +178,7 @@ namespace Project
             if (dataGridView1.Rows.Count > 0)
             {
                 int currentIDBJ = Convert.ToInt32(dataGridView1[7, dataGridView1.CurrentRow.Index].Value.ToString());
-                var db = GenericQuery.SqlQuerySingle<ListBajuJadi>("SELECT bj.idBJ, bj.noSeri, bj.model, bj.ColorID, bj.merk, bj.ukuran, bj.stock FROM ListBajuJadi bj WHERE bj.idBJ  = '" + currentIDBJ + "'");
+                var db = GenericQuery.SqlQuerySingle<ListBajuJadi>("SELECT bj.idBJ, bj.noSeri, bj.model, bj.ColorID, bj.merk, bj.ukuran, bj.stock, bj.Datetime FROM ListBajuJadi bj WHERE bj.idBJ  = '" + currentIDBJ + "'");
                 txtNoSeri.Text = db.noSeri.ToString();
                 txtModel.Text = db.model.ToString();
                 cboWarna.SelectedValue = db.ColorID;
@@ -192,7 +192,7 @@ namespace Project
             using (indomodaEntities db = new indomodaEntities())
             {
                 colorBindingSource.DataSource = db.Colors.ToList();
-                List<ListBajuJadi> listBJ = GenericQuery.SqlQuery<ListBajuJadi>("SELECT bj.idBJ, bj.noSeri, bj.model, bj.ColorID, bj.merk, bj.ukuran, bj.stock FROM ListBajuJadi bj WHERE bj.stock  != '" + 0 + "'");
+                List<ListBajuJadi> listBJ = GenericQuery.SqlQuery<ListBajuJadi>("SELECT bj.idBJ, bj.noSeri, bj.model, bj.ColorID, bj.merk, bj.ukuran, bj.stock, bj.Datetime FROM ListBajuJadi bj WHERE bj.stock  != '" + 0 + "'");
                 listBajuJadiBindingSource.DataSource = listBJ.ToList();
 
                 int rowCount = dataGridView1.Rows.Count;

@@ -188,7 +188,7 @@ namespace Project
                             for (int i = 0; i < dataGridView1.Rows.Count; i++)
                             {
                                 string noSeri = dataGridView1.Rows[i].Cells[1].Value.ToString();
-                                var dba = GenericQuery.SqlQuerySingle<ListBajuJadi>("SELECT a.idBJ, a.noSeri, a.model, a.ColorID, a.merk, a.ukuran, a.stock FROM ListBajuJadi a WHERE a.noSeri = '" + noSeri + "'");
+                                var dba = GenericQuery.SqlQuerySingle<ListBajuJadi>("SELECT a.idBJ, a.noSeri, a.model, a.ColorID, a.merk, a.ukuran, a.stock, a.Datetime FROM ListBajuJadi a WHERE a.noSeri = '" + noSeri + "'");
                                 double stockKurang = Convert.ToDouble(dataGridView1.Rows[i].Cells[6].Value.ToString());
                                 double stockAwal = dba.stock;
                                 double stockAkhir = stockAwal - stockKurang;

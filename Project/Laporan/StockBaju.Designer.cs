@@ -29,33 +29,39 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnExit = new MetroFramework.Controls.MetroButton();
             this.searchButton = new MetroFramework.Controls.MetroButton();
             this.txtSearch = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.listBajuJadiBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.colorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.no = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.noSeriDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colorIDDataGridViewComboBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.colorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.merkDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ukuranDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Datetime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stockDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idBJDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.listBajuJadiBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnPrint = new System.Windows.Forms.Button();
+            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.fetchButton = new MetroFramework.Controls.MetroButton();
+            this.endDate = new MetroFramework.Controls.MetroDateTime();
+            this.startDate = new MetroFramework.Controls.MetroDateTime();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.listBajuJadiBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listBajuJadiBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btnExit
             // 
             this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnExit.Location = new System.Drawing.Point(320, 518);
+            this.btnExit.Location = new System.Drawing.Point(396, 580);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(135, 56);
             this.btnExit.TabIndex = 14;
@@ -66,7 +72,7 @@
             // searchButton
             // 
             this.searchButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.searchButton.Location = new System.Drawing.Point(266, 76);
+            this.searchButton.Location = new System.Drawing.Point(266, 91);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(90, 29);
             this.searchButton.TabIndex = 13;
@@ -89,7 +95,7 @@
             this.txtSearch.CustomButton.UseSelectable = true;
             this.txtSearch.CustomButton.Visible = false;
             this.txtSearch.Lines = new string[0];
-            this.txtSearch.Location = new System.Drawing.Point(124, 78);
+            this.txtSearch.Location = new System.Drawing.Point(124, 93);
             this.txtSearch.MaxLength = 32767;
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.PasswordChar = '\0';
@@ -107,7 +113,7 @@
             // metroLabel3
             // 
             this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(23, 77);
+            this.metroLabel3.Location = new System.Drawing.Point(23, 92);
             this.metroLabel3.Name = "metroLabel3";
             this.metroLabel3.Size = new System.Drawing.Size(99, 19);
             this.metroLabel3.TabIndex = 11;
@@ -119,14 +125,14 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Menu;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Bisque;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Bisque;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeight = 30;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.no,
@@ -135,38 +141,31 @@
             this.colorIDDataGridViewComboBoxColumn,
             this.merkDataGridViewTextBoxColumn,
             this.ukuranDataGridViewTextBoxColumn,
+            this.Datetime,
             this.stockDataGridViewTextBoxColumn,
             this.idBJDataGridViewTextBoxColumn});
             this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dataGridView1.DataSource = this.listBajuJadiBindingSource;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ScrollBar;
-            this.dataGridView1.Location = new System.Drawing.Point(23, 115);
+            this.dataGridView1.Location = new System.Drawing.Point(23, 185);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.SystemColors.ControlText;
             this.dataGridView1.RowTemplate.Height = 25;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(722, 369);
+            this.dataGridView1.Size = new System.Drawing.Size(870, 369);
             this.dataGridView1.TabIndex = 10;
             this.dataGridView1.Paint += new System.Windows.Forms.PaintEventHandler(this.dataGridView1_Paint);
-            // 
-            // listBajuJadiBindingSource
-            // 
-            this.listBajuJadiBindingSource.DataSource = typeof(Project.ListBajuJadi);
-            // 
-            // colorBindingSource
-            // 
-            this.colorBindingSource.DataSource = typeof(Project.Color);
             // 
             // no
             // 
@@ -205,6 +204,10 @@
             this.colorIDDataGridViewComboBoxColumn.ValueMember = "ColorID";
             this.colorIDDataGridViewComboBoxColumn.Width = 110;
             // 
+            // colorBindingSource
+            // 
+            this.colorBindingSource.DataSource = typeof(Project.Color);
+            // 
             // merkDataGridViewTextBoxColumn
             // 
             this.merkDataGridViewTextBoxColumn.DataPropertyName = "merk";
@@ -220,6 +223,14 @@
             this.ukuranDataGridViewTextBoxColumn.Name = "ukuranDataGridViewTextBoxColumn";
             this.ukuranDataGridViewTextBoxColumn.ReadOnly = true;
             this.ukuranDataGridViewTextBoxColumn.Width = 110;
+            // 
+            // Datetime
+            // 
+            this.Datetime.DataPropertyName = "Datetime";
+            this.Datetime.HeaderText = "Date";
+            this.Datetime.Name = "Datetime";
+            this.Datetime.ReadOnly = true;
+            this.Datetime.Width = 140;
             // 
             // stockDataGridViewTextBoxColumn
             // 
@@ -237,23 +248,82 @@
             this.idBJDataGridViewTextBoxColumn.ReadOnly = true;
             this.idBJDataGridViewTextBoxColumn.Visible = false;
             // 
+            // listBajuJadiBindingSource
+            // 
+            this.listBajuJadiBindingSource.DataSource = typeof(Project.ListBajuJadi);
+            // 
             // btnPrint
             // 
             this.btnPrint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnPrint.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPrint.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnPrint.Image = global::Project.Properties.Resources.btn_print;
-            this.btnPrint.Location = new System.Drawing.Point(684, 72);
+            this.btnPrint.Location = new System.Drawing.Point(832, 141);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(61, 33);
             this.btnPrint.TabIndex = 15;
             this.btnPrint.UseVisualStyleBackColor = false;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
+            // metroLabel2
+            // 
+            this.metroLabel2.AutoSize = true;
+            this.metroLabel2.Location = new System.Drawing.Point(234, 145);
+            this.metroLabel2.Name = "metroLabel2";
+            this.metroLabel2.Size = new System.Drawing.Size(47, 19);
+            this.metroLabel2.TabIndex = 20;
+            this.metroLabel2.Text = "FROM";
+            // 
+            // metroLabel1
+            // 
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.Location = new System.Drawing.Point(493, 144);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(26, 19);
+            this.metroLabel1.TabIndex = 19;
+            this.metroLabel1.Text = "TO";
+            // 
+            // fetchButton
+            // 
+            this.fetchButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.fetchButton.Location = new System.Drawing.Point(736, 141);
+            this.fetchButton.Name = "fetchButton";
+            this.fetchButton.Size = new System.Drawing.Size(90, 29);
+            this.fetchButton.TabIndex = 18;
+            this.fetchButton.Text = "SHOW DATA";
+            this.fetchButton.UseSelectable = true;
+            this.fetchButton.Click += new System.EventHandler(this.fetchButton_Click);
+            // 
+            // endDate
+            // 
+            this.endDate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.endDate.CustomFormat = "dd-MM-yyyy";
+            this.endDate.Location = new System.Drawing.Point(519, 141);
+            this.endDate.MinimumSize = new System.Drawing.Size(0, 29);
+            this.endDate.Name = "endDate";
+            this.endDate.Size = new System.Drawing.Size(211, 29);
+            this.endDate.TabIndex = 17;
+            // 
+            // startDate
+            // 
+            this.startDate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.startDate.CustomFormat = "dd-MM-yyyy";
+            this.startDate.Location = new System.Drawing.Point(284, 141);
+            this.startDate.MinimumSize = new System.Drawing.Size(0, 29);
+            this.startDate.Name = "startDate";
+            this.startDate.Size = new System.Drawing.Size(207, 29);
+            this.startDate.TabIndex = 16;
+            // 
             // StockBaju
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(782, 597);
+            this.ClientSize = new System.Drawing.Size(930, 659);
+            this.Controls.Add(this.metroLabel2);
+            this.Controls.Add(this.metroLabel1);
+            this.Controls.Add(this.fetchButton);
+            this.Controls.Add(this.endDate);
+            this.Controls.Add(this.startDate);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.searchButton);
@@ -264,8 +334,8 @@
             this.Text = "Stock Baju";
             this.Load += new System.EventHandler(this.StockBaju_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.listBajuJadiBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listBajuJadiBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -278,16 +348,22 @@
         private MetroFramework.Controls.MetroTextBox txtSearch;
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.BindingSource listBajuJadiBindingSource;
+        private System.Windows.Forms.BindingSource colorBindingSource;
+        private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.DataGridViewTextBoxColumn no;
         private System.Windows.Forms.DataGridViewTextBoxColumn noSeriDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn modelDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn colorIDDataGridViewComboBoxColumn;
-        private System.Windows.Forms.BindingSource colorBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn merkDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ukuranDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Datetime;
         private System.Windows.Forms.DataGridViewTextBoxColumn stockDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idBJDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.BindingSource listBajuJadiBindingSource;
+        private MetroFramework.Controls.MetroLabel metroLabel2;
+        private MetroFramework.Controls.MetroLabel metroLabel1;
+        private MetroFramework.Controls.MetroButton fetchButton;
+        private MetroFramework.Controls.MetroDateTime endDate;
+        private MetroFramework.Controls.MetroDateTime startDate;
     }
 }
