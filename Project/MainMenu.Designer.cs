@@ -335,12 +335,14 @@
             this.bordirToolStripMenuItem1.Name = "bordirToolStripMenuItem1";
             this.bordirToolStripMenuItem1.Size = new System.Drawing.Size(169, 22);
             this.bordirToolStripMenuItem1.Text = "Bordir";
+            this.bordirToolStripMenuItem1.Click += new System.EventHandler(this.bordirToolStripMenuItem1_Click);
             // 
             // cMTToolStripMenuItem1
             // 
             this.cMTToolStripMenuItem1.Name = "cMTToolStripMenuItem1";
             this.cMTToolStripMenuItem1.Size = new System.Drawing.Size(169, 22);
             this.cMTToolStripMenuItem1.Text = "CMT";
+            this.cMTToolStripMenuItem1.Click += new System.EventHandler(this.cMTToolStripMenuItem1_Click);
             // 
             // metroDateTime1
             // 

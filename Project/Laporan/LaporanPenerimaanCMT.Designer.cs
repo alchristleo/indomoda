@@ -1,6 +1,6 @@
 ﻿namespace Project
 {
-    partial class LaporanPenerimaanSablon
+    partial class LaporanPenerimaanCMT
     {
         /// <summary>
         /// Required designer variable.
@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.btnExit = new MetroFramework.Controls.MetroButton();
+            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.btnReset = new System.Windows.Forms.Button();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
@@ -43,8 +45,6 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.penerimaanSBCBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
-            this.btnExit = new MetroFramework.Controls.MetroButton();
             this.no = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.noPenerimaanDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.noSPKDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,6 +58,26 @@
             ((System.ComponentModel.ISupportInitialize)(this.penerimaanSBCBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
+            // btnExit
+            // 
+            this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExit.Location = new System.Drawing.Point(394, 499);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(135, 56);
+            this.btnExit.TabIndex = 56;
+            this.btnExit.Text = "EXIT";
+            this.btnExit.UseSelectable = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // metroLabel3
+            // 
+            this.metroLabel3.AutoSize = true;
+            this.metroLabel3.Location = new System.Drawing.Point(23, 78);
+            this.metroLabel3.Name = "metroLabel3";
+            this.metroLabel3.Size = new System.Drawing.Size(187, 19);
+            this.metroLabel3.TabIndex = 55;
+            this.metroLabel3.Text = "Search No. Penerimaan Bordir";
+            // 
             // btnReset
             // 
             this.btnReset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
@@ -65,10 +85,10 @@
             this.btnReset.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnReset.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnReset.Image = global::Project.Properties.Resources.btn_reset;
-            this.btnReset.Location = new System.Drawing.Point(458, 71);
+            this.btnReset.Location = new System.Drawing.Point(458, 72);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(44, 33);
-            this.btnReset.TabIndex = 31;
+            this.btnReset.TabIndex = 54;
             this.btnReset.UseVisualStyleBackColor = false;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             this.btnReset.MouseHover += new System.EventHandler(this.btnReset_MouseHover);
@@ -76,28 +96,28 @@
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(234, 127);
+            this.metroLabel2.Location = new System.Drawing.Point(234, 128);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(47, 19);
-            this.metroLabel2.TabIndex = 30;
+            this.metroLabel2.TabIndex = 53;
             this.metroLabel2.Text = "FROM";
             // 
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(493, 126);
+            this.metroLabel1.Location = new System.Drawing.Point(493, 127);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(26, 19);
-            this.metroLabel1.TabIndex = 29;
+            this.metroLabel1.TabIndex = 52;
             this.metroLabel1.Text = "TO";
             // 
             // fetchButton
             // 
             this.fetchButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.fetchButton.Location = new System.Drawing.Point(736, 123);
+            this.fetchButton.Location = new System.Drawing.Point(736, 124);
             this.fetchButton.Name = "fetchButton";
             this.fetchButton.Size = new System.Drawing.Size(90, 29);
-            this.fetchButton.TabIndex = 28;
+            this.fetchButton.TabIndex = 51;
             this.fetchButton.Text = "SHOW DATA";
             this.fetchButton.UseSelectable = true;
             this.fetchButton.Click += new System.EventHandler(this.fetchButton_Click);
@@ -106,21 +126,21 @@
             // 
             this.endDate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.endDate.CustomFormat = "dd-MM-yyyy";
-            this.endDate.Location = new System.Drawing.Point(519, 123);
+            this.endDate.Location = new System.Drawing.Point(519, 124);
             this.endDate.MinimumSize = new System.Drawing.Size(0, 29);
             this.endDate.Name = "endDate";
             this.endDate.Size = new System.Drawing.Size(211, 29);
-            this.endDate.TabIndex = 27;
+            this.endDate.TabIndex = 50;
             // 
             // startDate
             // 
             this.startDate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.startDate.CustomFormat = "dd-MM-yyyy";
-            this.startDate.Location = new System.Drawing.Point(284, 123);
+            this.startDate.Location = new System.Drawing.Point(284, 124);
             this.startDate.MinimumSize = new System.Drawing.Size(0, 29);
             this.startDate.Name = "startDate";
             this.startDate.Size = new System.Drawing.Size(207, 29);
-            this.startDate.TabIndex = 26;
+            this.startDate.TabIndex = 49;
             // 
             // btnPrint
             // 
@@ -128,10 +148,10 @@
             this.btnPrint.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPrint.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnPrint.Image = global::Project.Properties.Resources.btn_print;
-            this.btnPrint.Location = new System.Drawing.Point(832, 123);
+            this.btnPrint.Location = new System.Drawing.Point(832, 124);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(61, 33);
-            this.btnPrint.TabIndex = 25;
+            this.btnPrint.TabIndex = 48;
             this.btnPrint.UseVisualStyleBackColor = false;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             this.btnPrint.MouseHover += new System.EventHandler(this.btnPrint_MouseHover);
@@ -139,10 +159,10 @@
             // searchButton
             // 
             this.searchButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.searchButton.Location = new System.Drawing.Point(363, 73);
+            this.searchButton.Location = new System.Drawing.Point(363, 74);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(90, 29);
-            this.searchButton.TabIndex = 24;
+            this.searchButton.TabIndex = 47;
             this.searchButton.Text = "SEARCH";
             this.searchButton.UseSelectable = true;
             this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
@@ -162,7 +182,7 @@
             this.txtSearch.CustomButton.UseSelectable = true;
             this.txtSearch.CustomButton.Visible = false;
             this.txtSearch.Lines = new string[0];
-            this.txtSearch.Location = new System.Drawing.Point(219, 75);
+            this.txtSearch.Location = new System.Drawing.Point(219, 76);
             this.txtSearch.MaxLength = 32767;
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.PasswordChar = '\0';
@@ -172,7 +192,7 @@
             this.txtSearch.SelectionStart = 0;
             this.txtSearch.ShortcutsEnabled = true;
             this.txtSearch.Size = new System.Drawing.Size(140, 23);
-            this.txtSearch.TabIndex = 23;
+            this.txtSearch.TabIndex = 46;
             this.txtSearch.UseSelectable = true;
             this.txtSearch.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtSearch.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -213,7 +233,7 @@
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ScrollBar;
-            this.dataGridView1.Location = new System.Drawing.Point(23, 167);
+            this.dataGridView1.Location = new System.Drawing.Point(23, 168);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
@@ -221,7 +241,7 @@
             this.dataGridView1.RowTemplate.Height = 25;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(870, 300);
-            this.dataGridView1.TabIndex = 22;
+            this.dataGridView1.TabIndex = 45;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.Paint += new System.Windows.Forms.PaintEventHandler(this.dataGridView1_Paint);
             // 
@@ -233,26 +253,6 @@
             // 
             this.penerimaanSBCBindingSource.DataSource = typeof(Project.PenerimaanSBC);
             // 
-            // metroLabel3
-            // 
-            this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(23, 77);
-            this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(190, 19);
-            this.metroLabel3.TabIndex = 32;
-            this.metroLabel3.Text = "Search No. Penerimaan Sablon";
-            // 
-            // btnExit
-            // 
-            this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnExit.Location = new System.Drawing.Point(394, 488);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(135, 56);
-            this.btnExit.TabIndex = 33;
-            this.btnExit.Text = "EXIT";
-            this.btnExit.UseSelectable = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            // 
             // no
             // 
             this.no.HeaderText = "No";
@@ -263,7 +263,7 @@
             // noPenerimaanDataGridViewTextBoxColumn
             // 
             this.noPenerimaanDataGridViewTextBoxColumn.DataPropertyName = "noPenerimaan";
-            this.noPenerimaanDataGridViewTextBoxColumn.HeaderText = "No. Penerimaan Sablon";
+            this.noPenerimaanDataGridViewTextBoxColumn.HeaderText = "No. Penerimaan CMT";
             this.noPenerimaanDataGridViewTextBoxColumn.Name = "noPenerimaanDataGridViewTextBoxColumn";
             this.noPenerimaanDataGridViewTextBoxColumn.ReadOnly = true;
             this.noPenerimaanDataGridViewTextBoxColumn.Width = 200;
@@ -271,7 +271,7 @@
             // noSPKDataGridViewTextBoxColumn
             // 
             this.noSPKDataGridViewTextBoxColumn.DataPropertyName = "noSPK";
-            this.noSPKDataGridViewTextBoxColumn.HeaderText = "No. SPK Sablon";
+            this.noSPKDataGridViewTextBoxColumn.HeaderText = "No. SPK CMT";
             this.noSPKDataGridViewTextBoxColumn.Name = "noSPKDataGridViewTextBoxColumn";
             this.noSPKDataGridViewTextBoxColumn.ReadOnly = true;
             this.noSPKDataGridViewTextBoxColumn.Width = 200;
@@ -322,11 +322,11 @@
             this.idDataGridViewTextBoxColumn.ReadOnly = true;
             this.idDataGridViewTextBoxColumn.Visible = false;
             // 
-            // LaporanPenerimaanSablon
+            // LaporanPenerimaanCMT
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(927, 567);
+            this.ClientSize = new System.Drawing.Size(925, 578);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.metroLabel3);
             this.Controls.Add(this.btnReset);
@@ -339,9 +339,9 @@
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.dataGridView1);
-            this.Name = "LaporanPenerimaanSablon";
-            this.Text = "Laporan Penerimaan Sablon";
-            this.Load += new System.EventHandler(this.LaporanPenerimaanSablon_Load);
+            this.Name = "LaporanPenerimaanCMT";
+            this.Text = "LaporanPenerimaanCMT";
+            this.Load += new System.EventHandler(this.LaporanPenerimaanCMT_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.penerimaanSBCBindingSource)).EndInit();
@@ -352,6 +352,8 @@
 
         #endregion
 
+        private MetroFramework.Controls.MetroButton btnExit;
+        private MetroFramework.Controls.MetroLabel metroLabel3;
         private System.Windows.Forms.Button btnReset;
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroLabel metroLabel1;
@@ -362,10 +364,8 @@
         private MetroFramework.Controls.MetroButton searchButton;
         private MetroFramework.Controls.MetroTextBox txtSearch;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private MetroFramework.Controls.MetroLabel metroLabel3;
-        private MetroFramework.Controls.MetroButton btnExit;
-        private System.Windows.Forms.BindingSource penerimaanSBCBindingSource;
         private System.Windows.Forms.BindingSource employeeBindingSource;
+        private System.Windows.Forms.BindingSource penerimaanSBCBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn no;
         private System.Windows.Forms.DataGridViewTextBoxColumn noPenerimaanDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn noSPKDataGridViewTextBoxColumn;

@@ -143,6 +143,18 @@
     <Compile Include="IndomodaSupplier.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Laporan\DetailPB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Laporan\DetailPB.Designer.cs">
+      <DependentUpon>DetailPB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Laporan\DetailPC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Laporan\DetailPC.Designer.cs">
+      <DependentUpon>DetailPC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Laporan\DetailPOPopup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -160,6 +172,18 @@
     </Compile>
     <Compile Include="Laporan\LaporanPemotonganKain.Designer.cs">
       <DependentUpon>LaporanPemotonganKain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Laporan\LaporanPenerimaanBordir.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Laporan\LaporanPenerimaanBordir.Designer.cs">
+      <DependentUpon>LaporanPenerimaanBordir.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Laporan\LaporanPenerimaanCMT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Laporan\LaporanPenerimaanCMT.Designer.cs">
+      <DependentUpon>LaporanPenerimaanCMT.cs</DependentUpon>
     </Compile>
     <Compile Include="Laporan\LaporanPenerimaanSablon.cs">
       <SubType>Form</SubType>
@@ -254,6 +278,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\LaporanPBModel.cs" />
+    <Compile Include="Models\LaporanPCModel.cs" />
     <Compile Include="Models\LaporanPSModel.cs" />
     <Compile Include="Models\LaporanStokKain.cs" />
     <Compile Include="Models\ListPenjualanBajuModel.cs" />
@@ -451,6 +477,12 @@
     <EmbeddedResource Include="DetailLogs\DetailLogForm.resx">
       <DependentUpon>DetailLogForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Laporan\DetailPB.resx">
+      <DependentUpon>DetailPB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Laporan\DetailPC.resx">
+      <DependentUpon>DetailPC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Laporan\DetailPOPopup.resx">
       <DependentUpon>DetailPOPopup.cs</DependentUpon>
     </EmbeddedResource>
@@ -459,6 +491,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Laporan\LaporanPemotonganKain.resx">
       <DependentUpon>LaporanPemotonganKain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Laporan\LaporanPenerimaanBordir.resx">
+      <DependentUpon>LaporanPenerimaanBordir.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Laporan\LaporanPenerimaanCMT.resx">
+      <DependentUpon>LaporanPenerimaanCMT.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Laporan\LaporanPenerimaanSablon.resx">
       <DependentUpon>LaporanPenerimaanSablon.cs</DependentUpon>

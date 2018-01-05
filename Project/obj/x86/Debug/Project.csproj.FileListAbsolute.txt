@@ -60,3 +60,7 @@ C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x
 C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Debug\Project.DetailPOPopup.resources
 C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Debug\Project.LaporanPenerimaanSablon.resources
 C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Debug\Project.DetailPS.resources
+C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Debug\Project.DetailPB.resources
+C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Debug\Project.LaporanPenerimaanBordir.resources
+C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Debug\Project.DetailPC.resources
+C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Debug\Project.LaporanPenerimaanCMT.resources

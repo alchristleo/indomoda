@@ -62,8 +62,10 @@
             // metroTile1
             // 
             this.metroTile1.ActiveControl = null;
+            this.metroTile1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.metroTile1.Location = new System.Drawing.Point(66, 78);
             this.metroTile1.Name = "metroTile1";
+            this.metroTile1.PaintTileCount = false;
             this.metroTile1.Size = new System.Drawing.Size(57, 57);
             this.metroTile1.Style = MetroFramework.MetroColorStyle.White;
             this.metroTile1.TabIndex = 36;
@@ -77,7 +79,7 @@
             this.metroLabel8.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel8.FontWeight = MetroFramework.MetroLabelWeight.Regular;
             this.metroLabel8.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.metroLabel8.Location = new System.Drawing.Point(118, 78);
+            this.metroLabel8.Location = new System.Drawing.Point(126, 78);
             this.metroLabel8.Name = "metroLabel8";
             this.metroLabel8.Size = new System.Drawing.Size(426, 57);
             this.metroLabel8.TabIndex = 35;
