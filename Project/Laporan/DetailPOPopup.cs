@@ -77,7 +77,7 @@ namespace Project
             ToolTip2.AutoPopDelay = 3000;
             ToolTip2.InitialDelay = 1000;
             ToolTip2.ReshowDelay = 500;
-            ToolTip2.SetToolTip(this.btnPrint, "Reset search");
+            ToolTip2.SetToolTip(this.btnPrint, "Print current data in table");
         }
     }
 }

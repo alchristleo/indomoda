@@ -604,5 +604,22 @@ namespace Project
                 }
             }
         }
+
+        private void sablonToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            LaporanPenerimaanSablon lps = new LaporanPenerimaanSablon();
+            using (StreamReader streamReader = new StreamReader("temp.txt"))
+            {
+                string decryptText = EncryptDecrypt.Decrypt(streamReader.ReadLine());
+                if (decryptText != a && decryptText != d)
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "Sorry you can not access this menu, please contact administrator for more info", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    lps.Show();
+                }
+            }
+        }
     }
 }

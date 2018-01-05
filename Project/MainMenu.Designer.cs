@@ -328,6 +328,7 @@
             this.sablonToolStripMenuItem1.Name = "sablonToolStripMenuItem1";
             this.sablonToolStripMenuItem1.Size = new System.Drawing.Size(169, 22);
             this.sablonToolStripMenuItem1.Text = "Sablon";
+            this.sablonToolStripMenuItem1.Click += new System.EventHandler(this.sablonToolStripMenuItem1_Click);
             // 
             // bordirToolStripMenuItem1
             // 

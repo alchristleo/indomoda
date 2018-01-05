@@ -149,11 +149,23 @@
     <Compile Include="Laporan\DetailPOPopup.Designer.cs">
       <DependentUpon>DetailPOPopup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Laporan\DetailPS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Laporan\DetailPS.Designer.cs">
+      <DependentUpon>DetailPS.cs</DependentUpon>
+    </Compile>
     <Compile Include="Laporan\LaporanPemotonganKain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Laporan\LaporanPemotonganKain.Designer.cs">
       <DependentUpon>LaporanPemotonganKain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Laporan\LaporanPenerimaanSablon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Laporan\LaporanPenerimaanSablon.Designer.cs">
+      <DependentUpon>LaporanPenerimaanSablon.cs</DependentUpon>
     </Compile>
     <Compile Include="Laporan\StockBaju.cs">
       <SubType>Form</SubType>
@@ -242,6 +254,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\LaporanPSModel.cs" />
     <Compile Include="Models\LaporanStokKain.cs" />
     <Compile Include="Models\ListPenjualanBajuModel.cs" />
     <Compile Include="Models\DetailPOModel.cs" />
@@ -441,8 +454,14 @@
     <EmbeddedResource Include="Laporan\DetailPOPopup.resx">
       <DependentUpon>DetailPOPopup.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Laporan\DetailPS.resx">
+      <DependentUpon>DetailPS.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Laporan\LaporanPemotonganKain.resx">
       <DependentUpon>LaporanPemotonganKain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Laporan\LaporanPenerimaanSablon.resx">
+      <DependentUpon>LaporanPenerimaanSablon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Laporan\StockBaju.resx">
       <DependentUpon>StockBaju.cs</DependentUpon>
@@ -578,6 +597,7 @@
     <None Include="Properties\DataSources\DetailFaktur.datasource" />
     <None Include="Properties\DataSources\DetailLog.datasource" />
     <None Include="Properties\DataSources\DetailPemotonganKain.datasource" />
+    <None Include="Properties\DataSources\DetailPenerimaanSBC.datasource" />
     <None Include="Properties\DataSources\DetailPO.datasource" />
     <None Include="Properties\DataSources\DetailSPK.datasource" />
     <None Include="Properties\DataSources\Employee.datasource" />
@@ -587,6 +607,7 @@
     <None Include="Properties\DataSources\ListPenjualanBaju.datasource" />
     <None Include="Properties\DataSources\Material.datasource" />
     <None Include="Properties\DataSources\PemotonganKain.datasource" />
+    <None Include="Properties\DataSources\PenerimaanSBC.datasource" />
     <None Include="Properties\DataSources\POKain.datasource" />
     <None Include="Properties\DataSources\PreOrderKain.datasource" />
     <None Include="Properties\DataSources\User.datasource" />
