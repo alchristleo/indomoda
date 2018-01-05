@@ -68,6 +68,7 @@
             this.labelCount = new MetroFramework.Controls.MetroLabel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.laporanPenjualanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -277,7 +278,8 @@
             // 
             this.laporanToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.laporanStockToolStripMenuItem,
-            this.laporanProduksiToolStripMenuItem});
+            this.laporanProduksiToolStripMenuItem,
+            this.laporanPenjualanToolStripMenuItem});
             this.laporanToolStripMenuItem.Name = "laporanToolStripMenuItem";
             this.laporanToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
             this.laporanToolStripMenuItem.Text = "Laporan";
@@ -416,6 +418,13 @@
             this.panel2.Size = new System.Drawing.Size(971, 240);
             this.panel2.TabIndex = 7;
             // 
+            // laporanPenjualanToolStripMenuItem
+            // 
+            this.laporanPenjualanToolStripMenuItem.Name = "laporanPenjualanToolStripMenuItem";
+            this.laporanPenjualanToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.laporanPenjualanToolStripMenuItem.Text = "Laporan Penjualan";
+            this.laporanPenjualanToolStripMenuItem.Click += new System.EventHandler(this.laporanPenjualanToolStripMenuItem_Click);
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -482,5 +491,6 @@
         private MetroFramework.Controls.MetroLabel labelCount;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.ToolStripMenuItem laporanPenjualanToolStripMenuItem;
     }
 }

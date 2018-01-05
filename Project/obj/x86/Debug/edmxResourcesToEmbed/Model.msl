@@ -224,15 +224,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="DetailPenjualanBajus">
-      <EntityTypeMapping TypeName="indomodaModel.DetailPenjualanBaju">
-        <MappingFragment StoreEntitySet="DetailPenjualanBaju">
-          <ScalarProperty Name="Status" ColumnName="Status" />
+    <EntitySetMapping Name="ListBajuJadis">
+      <EntityTypeMapping TypeName="indomodaModel.ListBajuJadi">
+        <MappingFragment StoreEntitySet="ListBajuJadi">
           <ScalarProperty Name="Datetime" ColumnName="Datetime" />
-          <ScalarProperty Name="GrandTotal" ColumnName="GrandTotal" />
-          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
-          <ScalarProperty Name="noPenjualan" ColumnName="noPenjualan" />
-          <ScalarProperty Name="idDPB" ColumnName="idDPB" />
+          <ScalarProperty Name="stock" ColumnName="stock" />
+          <ScalarProperty Name="ukuran" ColumnName="ukuran" />
+          <ScalarProperty Name="merk" ColumnName="merk" />
+          <ScalarProperty Name="ColorID" ColumnName="ColorID" />
+          <ScalarProperty Name="model" ColumnName="model" />
+          <ScalarProperty Name="noSeri" ColumnName="noSeri" />
+          <ScalarProperty Name="idBJ" ColumnName="idBJ" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -253,17 +255,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ListBajuJadis">
-      <EntityTypeMapping TypeName="indomodaModel.ListBajuJadi">
-        <MappingFragment StoreEntitySet="ListBajuJadi">
+    <EntitySetMapping Name="DetailPenjualanBajus">
+      <EntityTypeMapping TypeName="indomodaModel.DetailPenjualanBaju">
+        <MappingFragment StoreEntitySet="DetailPenjualanBaju">
+          <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="Datetime" ColumnName="Datetime" />
-          <ScalarProperty Name="stock" ColumnName="stock" />
-          <ScalarProperty Name="ukuran" ColumnName="ukuran" />
-          <ScalarProperty Name="merk" ColumnName="merk" />
-          <ScalarProperty Name="ColorID" ColumnName="ColorID" />
-          <ScalarProperty Name="model" ColumnName="model" />
-          <ScalarProperty Name="noSeri" ColumnName="noSeri" />
-          <ScalarProperty Name="idBJ" ColumnName="idBJ" />
+          <ScalarProperty Name="GrandTotal" ColumnName="GrandTotal" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="noPenjualan" ColumnName="noPenjualan" />
+          <ScalarProperty Name="idDPB" ColumnName="idDPB" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

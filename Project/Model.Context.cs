@@ -44,9 +44,9 @@ namespace Project
         public virtual DbSet<PenerimaanSBC> PenerimaanSBCs { get; set; }
         public virtual DbSet<DetailPenerimaanSBC> DetailPenerimaanSBCs { get; set; }
         public virtual DbSet<DatetimeNotification> DatetimeNotifications { get; set; }
-        public virtual DbSet<DetailPenjualanBaju> DetailPenjualanBajus { get; set; }
-        public virtual DbSet<ListPenjualanBaju> ListPenjualanBajus { get; set; }
         public virtual DbSet<ListBajuJadi> ListBajuJadis { get; set; }
+        public virtual DbSet<ListPenjualanBaju> ListPenjualanBajus { get; set; }
+        public virtual DbSet<DetailPenjualanBaju> DetailPenjualanBajus { get; set; }
         internal Task<int> SaveChangesAsync()
         {
             return Task.Factory.StartNew(() => base.SaveChanges());

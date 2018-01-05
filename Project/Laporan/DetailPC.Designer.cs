@@ -35,13 +35,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnExit = new MetroFramework.Controls.MetroButton();
-            this.btnPrint = new System.Windows.Forms.Button();
-            this.detailPenerimaanSBCBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.colorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.noPenerimaanDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.noSPKDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.noSeriDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.model = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColorID = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.merk = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,14 +44,20 @@
             this.qtyCMTBS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.qtyCMTHilang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.qtyAkhir = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnPrint = new System.Windows.Forms.Button();
+            this.noPenerimaanDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.noSPKDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.noSeriDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tempSablonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tempBordirDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tempCMTDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idDetailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.detailPenerimaanSBCBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.detailPenerimaanSBCBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.detailPenerimaanSBCBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -117,56 +117,12 @@
             this.btnExit.UseSelectable = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // btnPrint
-            // 
-            this.btnPrint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnPrint.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPrint.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnPrint.Image = global::Project.Properties.Resources.btn_print;
-            this.btnPrint.Location = new System.Drawing.Point(1155, 64);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(61, 33);
-            this.btnPrint.TabIndex = 28;
-            this.btnPrint.UseVisualStyleBackColor = false;
-            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
-            this.btnPrint.MouseHover += new System.EventHandler(this.btnPrint_MouseHover);
-            // 
-            // detailPenerimaanSBCBindingSource
-            // 
-            this.detailPenerimaanSBCBindingSource.DataSource = typeof(Project.DetailPenerimaanSBC);
-            // 
-            // colorBindingSource
-            // 
-            this.colorBindingSource.DataSource = typeof(Project.Color);
-            // 
             // NO
             // 
             this.NO.HeaderText = "No.";
             this.NO.Name = "NO";
             this.NO.ReadOnly = true;
             this.NO.Width = 40;
-            // 
-            // noPenerimaanDataGridViewTextBoxColumn
-            // 
-            this.noPenerimaanDataGridViewTextBoxColumn.DataPropertyName = "noPenerimaan";
-            this.noPenerimaanDataGridViewTextBoxColumn.HeaderText = "No. Penerimaan CMT";
-            this.noPenerimaanDataGridViewTextBoxColumn.Name = "noPenerimaanDataGridViewTextBoxColumn";
-            this.noPenerimaanDataGridViewTextBoxColumn.ReadOnly = true;
-            this.noPenerimaanDataGridViewTextBoxColumn.Width = 130;
-            // 
-            // noSPKDataGridViewTextBoxColumn
-            // 
-            this.noSPKDataGridViewTextBoxColumn.DataPropertyName = "noSPK";
-            this.noSPKDataGridViewTextBoxColumn.HeaderText = "No. SPK CMT";
-            this.noSPKDataGridViewTextBoxColumn.Name = "noSPKDataGridViewTextBoxColumn";
-            this.noSPKDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // noSeriDataGridViewTextBoxColumn
-            // 
-            this.noSeriDataGridViewTextBoxColumn.DataPropertyName = "noSeri";
-            this.noSeriDataGridViewTextBoxColumn.HeaderText = "No. Seri";
-            this.noSeriDataGridViewTextBoxColumn.Name = "noSeriDataGridViewTextBoxColumn";
-            this.noSeriDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // model
             // 
@@ -236,6 +192,46 @@
             this.qtyAkhir.Name = "qtyAkhir";
             this.qtyAkhir.ReadOnly = true;
             // 
+            // btnPrint
+            // 
+            this.btnPrint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnPrint.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPrint.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnPrint.Image = global::Project.Properties.Resources.btn_print;
+            this.btnPrint.Location = new System.Drawing.Point(1155, 64);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(61, 33);
+            this.btnPrint.TabIndex = 28;
+            this.btnPrint.UseVisualStyleBackColor = false;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            this.btnPrint.MouseHover += new System.EventHandler(this.btnPrint_MouseHover);
+            // 
+            // noPenerimaanDataGridViewTextBoxColumn
+            // 
+            this.noPenerimaanDataGridViewTextBoxColumn.DataPropertyName = "noPenerimaan";
+            this.noPenerimaanDataGridViewTextBoxColumn.HeaderText = "No. Penerimaan CMT";
+            this.noPenerimaanDataGridViewTextBoxColumn.Name = "noPenerimaanDataGridViewTextBoxColumn";
+            this.noPenerimaanDataGridViewTextBoxColumn.ReadOnly = true;
+            this.noPenerimaanDataGridViewTextBoxColumn.Width = 130;
+            // 
+            // noSPKDataGridViewTextBoxColumn
+            // 
+            this.noSPKDataGridViewTextBoxColumn.DataPropertyName = "noSPK";
+            this.noSPKDataGridViewTextBoxColumn.HeaderText = "No. SPK CMT";
+            this.noSPKDataGridViewTextBoxColumn.Name = "noSPKDataGridViewTextBoxColumn";
+            this.noSPKDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // noSeriDataGridViewTextBoxColumn
+            // 
+            this.noSeriDataGridViewTextBoxColumn.DataPropertyName = "noSeri";
+            this.noSeriDataGridViewTextBoxColumn.HeaderText = "No. Seri";
+            this.noSeriDataGridViewTextBoxColumn.Name = "noSeriDataGridViewTextBoxColumn";
+            this.noSeriDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // colorBindingSource
+            // 
+            this.colorBindingSource.DataSource = typeof(Project.Color);
+            // 
             // typeDataGridViewTextBoxColumn
             // 
             this.typeDataGridViewTextBoxColumn.DataPropertyName = "type";
@@ -276,6 +272,10 @@
             this.idDetailDataGridViewTextBoxColumn.ReadOnly = true;
             this.idDetailDataGridViewTextBoxColumn.Visible = false;
             // 
+            // detailPenerimaanSBCBindingSource
+            // 
+            this.detailPenerimaanSBCBindingSource.DataSource = typeof(Project.DetailPenerimaanSBC);
+            // 
             // DetailPC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -285,11 +285,11 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnExit);
             this.Name = "DetailPC";
-            this.Text = "DetailPC";
+            this.Text = "Detail Penerimaan CMT";
             this.Load += new System.EventHandler(this.DetailPC_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.detailPenerimaanSBCBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.detailPenerimaanSBCBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

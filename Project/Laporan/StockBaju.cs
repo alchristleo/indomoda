@@ -25,7 +25,26 @@ namespace Project
 
             if (query == "")
             {
-                MetroFramework.MetroMessageBox.Show(this, "No Seri can not be empty", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dataGridView1.Rows.Clear();
+                List<ListBajuJadi> lbj = GenericQuery.SqlQuery<ListBajuJadi>("SELECT a.idBJ, a.noSeri, a.model, a.ColorID, a.merk, a.ukuran, a.stock, a.Datetime FROM ListBajuJadi a");
+                listBajuJadiBindingSource.DataSource = lbj.ToList();
+
+                int rowCount = dataGridView1.Rows.Count;
+                for (int i = 0; i < rowCount; i++)
+                {
+                    double stock = Convert.ToDouble(dataGridView1.Rows[i].Cells[7].Value.ToString());
+                    dataGridView1.Columns[0].ValueType = typeof(int);
+                    dataGridView1.Rows[i].Cells[0].Value = i + 1;
+                    dataGridView1.UpdateCellValue(0, i);
+
+                    if (stock == 0)
+                    {
+                        dataGridView1.Rows[i].Cells[7].Style.BackColor = System.Drawing.Color.LightPink;
+                        dataGridView1.Rows[i].Cells[7].Value = "Stock habis";
+                        dataGridView1.UpdateCellValue(7, i);
+                    }
+                }
+                dataGridView1.Columns[6].DefaultCellStyle.Format = "dd-MM-yyyy HH:mm:ss tt";
             }
             else
             {
@@ -36,9 +55,17 @@ namespace Project
                 int rowCount = dataGridView1.Rows.Count;
                 for (int i = 0; i < rowCount; i++)
                 {
+                    double stock = Convert.ToDouble(dataGridView1.Rows[i].Cells[7].Value.ToString());
                     dataGridView1.Columns[0].ValueType = typeof(int);
                     dataGridView1.Rows[i].Cells[0].Value = i + 1;
                     dataGridView1.UpdateCellValue(0, i);
+
+                    if (stock == 0)
+                    {
+                        dataGridView1.Rows[i].Cells[7].Style.BackColor = System.Drawing.Color.LightPink;
+                        dataGridView1.Rows[i].Cells[7].Value = "Stock habis";
+                        dataGridView1.UpdateCellValue(7, i);
+                    }
                 }
                 dataGridView1.Columns[6].DefaultCellStyle.Format = "dd-MM-yyyy HH:mm:ss tt";
             }
@@ -76,9 +103,17 @@ namespace Project
                 int rowCount = dataGridView1.Rows.Count;
                 for (int i = 0; i < rowCount; i++)
                 {
+                    double stock = Convert.ToDouble(dataGridView1.Rows[i].Cells[7].Value.ToString());
                     dataGridView1.Columns[0].ValueType = typeof(int);
                     dataGridView1.Rows[i].Cells[0].Value = i + 1;
                     dataGridView1.UpdateCellValue(0, i);
+
+                    if (stock == 0)
+                    {
+                        dataGridView1.Rows[i].Cells[7].Style.BackColor = System.Drawing.Color.LightPink;
+                        dataGridView1.Rows[i].Cells[7].Value = "Stock habis";
+                        dataGridView1.UpdateCellValue(7, i);
+                    }
                 }
                 dataGridView1.Columns[6].DefaultCellStyle.Format = "dd-MM-yyyy HH:mm:ss tt";
             }
@@ -176,9 +211,17 @@ namespace Project
             int rowCount = dataGridView1.Rows.Count;
             for (int i = 0; i < rowCount; i++)
             {
+                double stock = Convert.ToDouble(dataGridView1.Rows[i].Cells[7].Value.ToString());
                 dataGridView1.Columns[0].ValueType = typeof(int);
                 dataGridView1.Rows[i].Cells[0].Value = i + 1;
                 dataGridView1.UpdateCellValue(0, i);
+
+                if (stock == 0)
+                {
+                    dataGridView1.Rows[i].Cells[7].Style.BackColor = System.Drawing.Color.LightPink;
+                    dataGridView1.Rows[i].Cells[7].Value = "Stock habis";
+                    dataGridView1.UpdateCellValue(7, i);
+                }
             }
             dataGridView1.Columns[6].DefaultCellStyle.Format = "dd-MM-yyyy HH:mm:ss tt";
         }

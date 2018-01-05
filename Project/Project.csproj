@@ -155,6 +155,12 @@
     <Compile Include="Laporan\DetailPC.Designer.cs">
       <DependentUpon>DetailPC.cs</DependentUpon>
     </Compile>
+    <Compile Include="Laporan\DetailLPB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Laporan\DetailLPB.Designer.cs">
+      <DependentUpon>DetailLPB.cs</DependentUpon>
+    </Compile>
     <Compile Include="Laporan\DetailPOPopup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -190,6 +196,12 @@
     </Compile>
     <Compile Include="Laporan\LaporanPenerimaanSablon.Designer.cs">
       <DependentUpon>LaporanPenerimaanSablon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Laporan\LaporanPenjualan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Laporan\LaporanPenjualan.Designer.cs">
+      <DependentUpon>LaporanPenjualan.cs</DependentUpon>
     </Compile>
     <Compile Include="Laporan\StockBaju.cs">
       <SubType>Form</SubType>
@@ -280,6 +292,7 @@
     </Compile>
     <Compile Include="Models\LaporanPBModel.cs" />
     <Compile Include="Models\LaporanPCModel.cs" />
+    <Compile Include="Models\LaporanPenjualanBajuModel.cs" />
     <Compile Include="Models\LaporanPSModel.cs" />
     <Compile Include="Models\LaporanStokKain.cs" />
     <Compile Include="Models\ListPenjualanBajuModel.cs" />
@@ -477,11 +490,17 @@
     <EmbeddedResource Include="DetailLogs\DetailLogForm.resx">
       <DependentUpon>DetailLogForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DetailPenjualanBaju.resx">
+      <DependentUpon>DetailPenjualanBaju.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Laporan\DetailPB.resx">
       <DependentUpon>DetailPB.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Laporan\DetailPC.resx">
       <DependentUpon>DetailPC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Laporan\DetailLPB.resx">
+      <DependentUpon>DetailLPB.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Laporan\DetailPOPopup.resx">
       <DependentUpon>DetailPOPopup.cs</DependentUpon>
@@ -500,6 +519,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Laporan\LaporanPenerimaanSablon.resx">
       <DependentUpon>LaporanPenerimaanSablon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Laporan\LaporanPenjualan.resx">
+      <DependentUpon>LaporanPenjualan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Laporan\StockBaju.resx">
       <DependentUpon>StockBaju.cs</DependentUpon>
@@ -636,6 +658,7 @@
     <None Include="Properties\DataSources\DetailLog.datasource" />
     <None Include="Properties\DataSources\DetailPemotonganKain.datasource" />
     <None Include="Properties\DataSources\DetailPenerimaanSBC.datasource" />
+    <None Include="Properties\DataSources\DetailPenjualanBaju.datasource" />
     <None Include="Properties\DataSources\DetailPO.datasource" />
     <None Include="Properties\DataSources\DetailSPK.datasource" />
     <None Include="Properties\DataSources\Employee.datasource" />

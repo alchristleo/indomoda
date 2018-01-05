@@ -64,3 +64,6 @@ C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x
 C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Debug\Project.LaporanPenerimaanBordir.resources
 C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Debug\Project.DetailPC.resources
 C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Debug\Project.LaporanPenerimaanCMT.resources
+C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Debug\Project.LaporanPenjualan.resources
+C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Debug\Project.DetailPenjualanBaju.resources
+C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Debug\Project.DetailLPB.resources

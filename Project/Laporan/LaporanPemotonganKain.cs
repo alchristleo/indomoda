@@ -26,7 +26,35 @@ namespace Project
 
             if (query == "")
             {
-                MetroFramework.MetroMessageBox.Show(this, "No Seri can not be empty", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dataGridView1.Rows.Clear();
+                using (indomodaEntities db = new indomodaEntities())
+                {
+                    detailPemotonganKainBindingSource.DataSource = db.DetailPemotonganKains.ToList();
+
+                    int rowCount = dataGridView1.Rows.Count;
+                    for (int i = 0; i < rowCount; i++)
+                    {
+                        int status = Convert.ToInt32(dataGridView1.Rows[i].Cells[7].Value.ToString());
+                        dataGridView1.Columns[0].ValueType = typeof(int);
+                        dataGridView1.Rows[i].Cells[0].Value = i + 1;
+                        dataGridView1.UpdateCellValue(0, i);
+
+                        if (status == 1)
+                        {
+                            dataGridView1.Rows[i].Cells[6].Style.BackColor = System.Drawing.Color.LightGreen;
+                            dataGridView1.Rows[i].Cells[6].Value = "Sudah diteruskan ke tukang potong";
+                            dataGridView1.UpdateCellValue(6, i);
+                        }
+                        else
+                        {
+                            dataGridView1.Rows[i].Cells[6].Style.BackColor = System.Drawing.Color.LightPink;
+                            dataGridView1.Rows[i].Cells[6].Value = "Belum diteruskan ke tukang potong";
+                            dataGridView1.UpdateCellValue(6, i);
+                        }
+                    }
+                    dataGridView1.Refresh();
+                    dataGridView1.Columns[5].DefaultCellStyle.Format = "dd-MM-yyyy HH:mm:ss tt";
+                }
             }
             else
             {

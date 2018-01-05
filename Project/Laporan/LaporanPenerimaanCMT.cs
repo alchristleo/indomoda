@@ -45,7 +45,18 @@ namespace Project
 
             if (query == "")
             {
-                MetroFramework.MetroMessageBox.Show(this, "No Penerimaan CMT can not be empty", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dataGridView1.Rows.Clear();
+                List<PenerimaanSBC> pc = GenericQuery.SqlQuery<PenerimaanSBC>("SELECT a.id, a.noPenerimaan, a.noSPK, a.EmployeeID, a.Datetime, a.type, a.status FROM PenerimaanSBC a WHERE a.type = 'cmt'");
+                penerimaanSBCBindingSource.DataSource = pc.ToList();
+
+                int rowCount = dataGridView1.Rows.Count;
+                for (int i = 0; i < rowCount; i++)
+                {
+                    dataGridView1.Columns[0].ValueType = typeof(int);
+                    dataGridView1.Rows[i].Cells[0].Value = i + 1;
+                    dataGridView1.UpdateCellValue(0, i);
+                }
+                dataGridView1.Columns[4].DefaultCellStyle.Format = "dd-MM-yyyy HH:mm:ss tt";
             }
             else
             {

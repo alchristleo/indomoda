@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -11,47 +12,13 @@ using Excel = Microsoft.Office.Interop.Excel;
 
 namespace Project
 {
-    public partial class LaporanPenerimaanSablon : MetroFramework.Forms.MetroForm
+    public partial class LaporanPenjualan : MetroFramework.Forms.MetroForm
     {
-        public static string nps;
+        public static string ntb;
 
-        public LaporanPenerimaanSablon()
+        public LaporanPenjualan()
         {
             InitializeComponent();
-        }
-
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dataGridView1.Rows.Count > 0)
-            {
-                nps = dataGridView1[1, dataGridView1.CurrentRow.Index].Value.ToString();
-                DetailPS dps = new DetailPS();
-                dps.Show();
-            }
-        }
-
-        private void LaporanPenerimaanSablon_Load(object sender, EventArgs e)
-        {
-            using (indomodaEntities db = new indomodaEntities())
-            {
-                employeeBindingSource.DataSource = db.Employees.ToList();
-                List<PenerimaanSBC> ps = GenericQuery.SqlQuery<PenerimaanSBC>("SELECT a.id, a.noPenerimaan, a.noSPK, a.EmployeeID, a.Datetime, a.type, a.status FROM PenerimaanSBC a WHERE a.type = 'sablon'");
-                penerimaanSBCBindingSource.DataSource = ps.ToList();
-
-                int rowCount = dataGridView1.Rows.Count;
-                for (int i = 0; i < rowCount; i++)
-                {
-                    dataGridView1.Columns[0].ValueType = typeof(int);
-                    dataGridView1.Rows[i].Cells[0].Value = i + 1;
-                    dataGridView1.UpdateCellValue(0, i);
-                }
-                dataGridView1.Columns[4].DefaultCellStyle.Format = "dd-MM-yyyy HH:mm:ss tt";
-            }
         }
 
         private void searchButton_Click(object sender, EventArgs e)
@@ -61,23 +28,27 @@ namespace Project
             if (query == "")
             {
                 dataGridView1.Rows.Clear();
-                List<PenerimaanSBC> ps = GenericQuery.SqlQuery<PenerimaanSBC>("SELECT a.id, a.noPenerimaan, a.noSPK, a.EmployeeID, a.Datetime, a.type, a.status FROM PenerimaanSBC a WHERE a.type = 'sablon'");
-                penerimaanSBCBindingSource.DataSource = ps.ToList();
-
-                int rowCount = dataGridView1.Rows.Count;
-                for (int i = 0; i < rowCount; i++)
+                using (indomodaEntities db = new indomodaEntities())
                 {
-                    dataGridView1.Columns[0].ValueType = typeof(int);
-                    dataGridView1.Rows[i].Cells[0].Value = i + 1;
-                    dataGridView1.UpdateCellValue(0, i);
+                    detailPenjualanBajuBindingSource.DataSource = db.DetailPenjualanBajus.ToList();
+
+                    int rowCount = dataGridView1.Rows.Count;
+                    for (int i = 0; i < rowCount; i++)
+                    {
+                        dataGridView1.Columns[0].ValueType = typeof(int);
+                        dataGridView1.Rows[i].Cells[0].Value = i + 1;
+                        dataGridView1.UpdateCellValue(0, i);
+                    }
+                    dataGridView1.Columns[3].DefaultCellStyle.Format = "C";
+                    dataGridView1.Columns[3].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("id-ID");
+                    dataGridView1.Columns[4].DefaultCellStyle.Format = "dd-MM-yyyy HH:mm:ss tt";
                 }
-                dataGridView1.Columns[4].DefaultCellStyle.Format = "dd-MM-yyyy HH:mm:ss tt";
             }
             else
             {
                 dataGridView1.Rows.Clear();
-                List<PenerimaanSBC> ps = GenericQuery.SqlQuery<PenerimaanSBC>("SELECT a.id, a.noPenerimaan, a.noSPK, a.EmployeeID, a.Datetime, a.type, a.status FROM PenerimaanSBC a WHERE a.type = 'sablon' AND a.noPenerimaan = '"+query+"'");
-                penerimaanSBCBindingSource.DataSource = ps.ToList();
+                List<DetailPenjualanBaju> sq = GenericQuery.SqlQuery<DetailPenjualanBaju>("SELECT a.idDPB, a.noPenjualan, a.CustomerID, a.GrandTotal, a.Datetime, a.Status FROM DetailPenjualanBaju a WHERE a.noPenjualan = '" + query + "'");
+                detailPenjualanBajuBindingSource.DataSource = sq.ToList();
 
                 int rowCount = dataGridView1.Rows.Count;
                 for (int i = 0; i < rowCount; i++)
@@ -86,6 +57,8 @@ namespace Project
                     dataGridView1.Rows[i].Cells[0].Value = i + 1;
                     dataGridView1.UpdateCellValue(0, i);
                 }
+                dataGridView1.Columns[3].DefaultCellStyle.Format = "C";
+                dataGridView1.Columns[3].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("id-ID");
                 dataGridView1.Columns[4].DefaultCellStyle.Format = "dd-MM-yyyy HH:mm:ss tt";
             }
         }
@@ -93,17 +66,35 @@ namespace Project
         private void btnReset_Click(object sender, EventArgs e)
         {
             txtSearch.Clear();
-            List<PenerimaanSBC> ps = GenericQuery.SqlQuery<PenerimaanSBC>("SELECT a.id, a.noPenerimaan, a.noSPK, a.EmployeeID, a.Datetime, a.type, a.status FROM PenerimaanSBC a WHERE a.type = 'sablon'");
-            penerimaanSBCBindingSource.DataSource = ps.ToList();
-
-            int rowCount = dataGridView1.Rows.Count;
-            for (int i = 0; i < rowCount; i++)
+            using (indomodaEntities db = new indomodaEntities())
             {
-                dataGridView1.Columns[0].ValueType = typeof(int);
-                dataGridView1.Rows[i].Cells[0].Value = i + 1;
-                dataGridView1.UpdateCellValue(0, i);
+                detailPenjualanBajuBindingSource.DataSource = db.DetailPenjualanBajus.ToList();
+
+                int rowCount = dataGridView1.Rows.Count;
+                for (int i = 0; i < rowCount; i++)
+                {
+                    dataGridView1.Columns[0].ValueType = typeof(int);
+                    dataGridView1.Rows[i].Cells[0].Value = i + 1;
+                    dataGridView1.UpdateCellValue(0, i);
+                }
+                dataGridView1.Columns[3].DefaultCellStyle.Format = "C";
+                dataGridView1.Columns[3].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("id-ID");
+                dataGridView1.Columns[4].DefaultCellStyle.Format = "dd-MM-yyyy HH:mm:ss tt";
             }
-            dataGridView1.Columns[4].DefaultCellStyle.Format = "dd-MM-yyyy HH:mm:ss tt";
+        }
+
+        private void btnReset_MouseHover(object sender, EventArgs e)
+        {
+            ToolTip ToolTip1 = new ToolTip();
+            ToolTip1.AutoPopDelay = 3000;
+            ToolTip1.InitialDelay = 1000;
+            ToolTip1.ReshowDelay = 500;
+            ToolTip1.SetToolTip(this.btnReset, "Reset search");
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Close();
         }
 
         private void fetchButton_Click(object sender, EventArgs e)
@@ -125,17 +116,18 @@ namespace Project
             else
             {
                 dataGridView1.Rows.Clear();
-                List<PenerimaanSBC> withRange = GenericQuery.SqlQuery<PenerimaanSBC>("SELECT a.id, a.noPenerimaan, a.noSPK, a.EmployeeID, a.Datetime, a.type, a.status FROM PenerimaanSBC a WHERE a.type = 'sablon' AND a.Datetime BETWEEN '" + date1 + "' AND '" + date2 + "'");
-                penerimaanSBCBindingSource.DataSource = withRange.ToList();
+                List<DetailPenjualanBaju> withRange = GenericQuery.SqlQuery<DetailPenjualanBaju>("SELECT a.idDPB, a.noPenjualan, a.CustomerID, a.GrandTotal, a.Datetime, a.Status FROM DetailPenjualanBaju a WHERE a.Datetime BETWEEN '" + date1 + "' AND '" + date2 + "'");
+                detailPenjualanBajuBindingSource.DataSource = withRange.ToList();
 
                 int rowCount = dataGridView1.Rows.Count;
                 for (int i = 0; i < rowCount; i++)
                 {
-                    double stock = Convert.ToDouble(dataGridView1.Rows[i].Cells[7].Value.ToString());
                     dataGridView1.Columns[0].ValueType = typeof(int);
                     dataGridView1.Rows[i].Cells[0].Value = i + 1;
                     dataGridView1.UpdateCellValue(0, i);
                 }
+                dataGridView1.Columns[3].DefaultCellStyle.Format = "C";
+                dataGridView1.Columns[3].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("id-ID");
                 dataGridView1.Columns[4].DefaultCellStyle.Format = "dd-MM-yyyy HH:mm:ss tt";
             }
         }
@@ -173,6 +165,15 @@ namespace Project
             }
         }
 
+        private void btnPrint_MouseHover(object sender, EventArgs e)
+        {
+            ToolTip ToolTip2 = new ToolTip();
+            ToolTip2.AutoPopDelay = 3000;
+            ToolTip2.InitialDelay = 1000;
+            ToolTip2.ReshowDelay = 500;
+            ToolTip2.SetToolTip(this.btnPrint, "Print current data in table");
+        }
+
         private void dataGridView1_Paint(object sender, PaintEventArgs e)
         {
             DataGridView sndr = (DataGridView)sender;
@@ -189,22 +190,34 @@ namespace Project
             }
         }
 
-        private void btnReset_MouseHover(object sender, EventArgs e)
+        private void LaporanPenjualan_Load(object sender, EventArgs e)
         {
-            ToolTip ToolTip1 = new ToolTip();
-            ToolTip1.AutoPopDelay = 3000;
-            ToolTip1.InitialDelay = 1000;
-            ToolTip1.ReshowDelay = 500;
-            ToolTip1.SetToolTip(this.btnReset, "Reset search");
+            using (indomodaEntities db = new indomodaEntities())
+            {
+                customerBindingSource.DataSource = db.Customers.ToList();
+                detailPenjualanBajuBindingSource.DataSource = db.DetailPenjualanBajus.ToList();
+
+                int rowCount = dataGridView1.Rows.Count;
+                for (int i = 0; i < rowCount; i++)
+                {
+                    dataGridView1.Columns[0].ValueType = typeof(int);
+                    dataGridView1.Rows[i].Cells[0].Value = i + 1;
+                    dataGridView1.UpdateCellValue(0, i);
+                }
+                dataGridView1.Columns[3].DefaultCellStyle.Format = "C";
+                dataGridView1.Columns[3].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("id-ID");
+                dataGridView1.Columns[4].DefaultCellStyle.Format = "dd-MM-yyyy HH:mm:ss tt";
+            }
         }
 
-        private void btnPrint_MouseHover(object sender, EventArgs e)
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            ToolTip ToolTip2 = new ToolTip();
-            ToolTip2.AutoPopDelay = 3000;
-            ToolTip2.InitialDelay = 1000;
-            ToolTip2.ReshowDelay = 500;
-            ToolTip2.SetToolTip(this.btnPrint, "Print current data in table");
+            if (dataGridView1.Rows.Count > 0)
+            {
+                ntb = dataGridView1[1, dataGridView1.CurrentRow.Index].Value.ToString();
+                DetailLPB dps = new DetailLPB();
+                dps.Show();
+            }
         }
     }
 }
