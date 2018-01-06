@@ -246,7 +246,7 @@ namespace Project
 
                             int idPS = db.PenerimaanSBCs.AsEnumerable().LastOrDefault() == null ? 1 : db.PenerimaanSBCs.AsEnumerable().LastOrDefault().id + 1;
                             string noPS = txtNoPenerimaanCMT.Text;
-                            int eID = Convert.ToInt32(cboNoSpkCMTPenerimaan.SelectedValue.ToString());
+                            int eID = Convert.ToInt32(cboPicPenerimaanCMT.SelectedValue.ToString());
                             int status = 0;
                             int d = GenericQuery.ExecSQLCommand("INSERT INTO PenerimaanSBC (id, noPenerimaan, noSPK, EmployeeID, Datetime, type, status) VALUES(@id, @noPenerimaan, @noSPK, @EmployeeID, @Datetime, @type, @status)", new[]{
                                 new SqlParameter("@id", idPS),

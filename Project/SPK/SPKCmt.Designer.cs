@@ -69,6 +69,7 @@
             this.idPenerimaanTukangPotongDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idListPTPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.listPenerimaanTukangPotongBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnPrint = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).BeginInit();
@@ -488,11 +489,24 @@
             // 
             this.listPenerimaanTukangPotongBindingSource.DataSource = typeof(Project.ListPenerimaanTukangPotong);
             // 
+            // btnPrint
+            // 
+            this.btnPrint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnPrint.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPrint.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnPrint.Image = global::Project.Properties.Resources.btn_print;
+            this.btnPrint.Location = new System.Drawing.Point(1002, 146);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(61, 33);
+            this.btnPrint.TabIndex = 63;
+            this.btnPrint.UseVisualStyleBackColor = false;
+            // 
             // SPKCmt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1101, 674);
+            this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.txtIDSPK);
             this.Controls.Add(this.btnDeleteSPKCMT);
             this.Controls.Add(this.btnAddSPKCMT);
@@ -556,5 +570,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn idSPKCMTDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idPenerimaanTukangPotongDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idListPTPDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button btnPrint;
     }
 }

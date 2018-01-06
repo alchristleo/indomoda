@@ -66,6 +66,7 @@ namespace Project
             this.cboSupplierName = new MetroFramework.Controls.MetroComboBox();
             this.lblGrandTotalDB = new MetroFramework.Controls.MetroTextBox();
             this.btnCountGrandTotal = new MetroFramework.Controls.MetroTile();
+            this.btnPrint = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.materialBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).BeginInit();
@@ -529,11 +530,24 @@ namespace Project
             this.btnCountGrandTotal.UseTileImage = true;
             this.btnCountGrandTotal.Click += new System.EventHandler(this.btnCountGrandTotal_Click);
             // 
+            // btnPrint
+            // 
+            this.btnPrint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnPrint.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPrint.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnPrint.Image = global::Project.Properties.Resources.btn_print;
+            this.btnPrint.Location = new System.Drawing.Point(697, 80);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(61, 33);
+            this.btnPrint.TabIndex = 29;
+            this.btnPrint.UseVisualStyleBackColor = false;
+            // 
             // poKain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(823, 744);
+            this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.btnCountGrandTotal);
             this.Controls.Add(this.lblGrandTotalDB);
             this.Controls.Add(this.cboSupplierName);
@@ -602,5 +616,6 @@ namespace Project
         private System.Windows.Forms.DataGridViewTextBoxColumn detailPOIDDataGridViewTextBoxColumn;
         private MetroFramework.Controls.MetroTile btnDeletePoKain;
         internal MetroFramework.Controls.MetroTile btnCountGrandTotal;
+        private System.Windows.Forms.Button btnPrint;
     }
 }

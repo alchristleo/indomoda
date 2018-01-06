@@ -285,7 +285,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnExit);
             this.Name = "DetailPB";
-            this.Text = "DetailPB";
+            this.Text = "Detail Penerimaan Bordir";
             this.Load += new System.EventHandler(this.DetailPB_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).EndInit();

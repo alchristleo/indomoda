@@ -151,7 +151,7 @@ namespace Project
             }
             else if (dba.statusSPKCMT.ToString() == "True")
             {
-                MetroFramework.MetroMessageBox.Show(this, "You can't add this No. Seri to the SPK Bordir again!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MetroFramework.MetroMessageBox.Show(this, "You can't add this No. Seri to the SPK CMT again!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 dataGridView1.Focus();
                 return;
             }

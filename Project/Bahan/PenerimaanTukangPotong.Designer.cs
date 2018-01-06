@@ -69,6 +69,7 @@
             this.detailQtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.detailPOIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.detailPOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnPrint = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.listPenerimaanTukangPotongBindingSource)).BeginInit();
@@ -266,7 +267,7 @@
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(51, 109);
+            this.metroLabel1.Location = new System.Drawing.Point(51, 125);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(193, 19);
             this.metroLabel1.TabIndex = 37;
@@ -275,7 +276,7 @@
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(51, 143);
+            this.metroLabel2.Location = new System.Drawing.Point(51, 159);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(137, 19);
             this.metroLabel2.TabIndex = 38;
@@ -284,7 +285,7 @@
             // metroLabel3
             // 
             this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(529, 153);
+            this.metroLabel3.Location = new System.Drawing.Point(529, 169);
             this.metroLabel3.Name = "metroLabel3";
             this.metroLabel3.Size = new System.Drawing.Size(65, 19);
             this.metroLabel3.TabIndex = 39;
@@ -293,7 +294,7 @@
             // metroLabel4
             // 
             this.metroLabel4.AutoSize = true;
-            this.metroLabel4.Location = new System.Drawing.Point(529, 113);
+            this.metroLabel4.Location = new System.Drawing.Point(529, 129);
             this.metroLabel4.Name = "metroLabel4";
             this.metroLabel4.Size = new System.Drawing.Size(69, 19);
             this.metroLabel4.TabIndex = 40;
@@ -314,7 +315,7 @@
             this.txtNoPenerimaanTukangPotong.CustomButton.UseSelectable = true;
             this.txtNoPenerimaanTukangPotong.CustomButton.Visible = false;
             this.txtNoPenerimaanTukangPotong.Lines = new string[0];
-            this.txtNoPenerimaanTukangPotong.Location = new System.Drawing.Point(255, 109);
+            this.txtNoPenerimaanTukangPotong.Location = new System.Drawing.Point(255, 125);
             this.txtNoPenerimaanTukangPotong.MaxLength = 32767;
             this.txtNoPenerimaanTukangPotong.Name = "txtNoPenerimaanTukangPotong";
             this.txtNoPenerimaanTukangPotong.PasswordChar = '\0';
@@ -344,7 +345,7 @@
             this.txtPICName.CustomButton.UseSelectable = true;
             this.txtPICName.CustomButton.Visible = false;
             this.txtPICName.Lines = new string[0];
-            this.txtPICName.Location = new System.Drawing.Point(625, 109);
+            this.txtPICName.Location = new System.Drawing.Point(625, 125);
             this.txtPICName.MaxLength = 32767;
             this.txtPICName.Name = "txtPICName";
             this.txtPICName.PasswordChar = '\0';
@@ -365,7 +366,7 @@
             this.cboNoPemotonganKain.DisplayMember = "noPemotonganKain";
             this.cboNoPemotonganKain.FormattingEnabled = true;
             this.cboNoPemotonganKain.ItemHeight = 23;
-            this.cboNoPemotonganKain.Location = new System.Drawing.Point(255, 143);
+            this.cboNoPemotonganKain.Location = new System.Drawing.Point(255, 159);
             this.cboNoPemotonganKain.Name = "cboNoPemotonganKain";
             this.cboNoPemotonganKain.Size = new System.Drawing.Size(156, 29);
             this.cboNoPemotonganKain.TabIndex = 2;
@@ -380,7 +381,7 @@
             // metroLabel5
             // 
             this.metroLabel5.AutoSize = true;
-            this.metroLabel5.Location = new System.Drawing.Point(538, 50);
+            this.metroLabel5.Location = new System.Drawing.Point(546, 40);
             this.metroLabel5.Name = "metroLabel5";
             this.metroLabel5.Size = new System.Drawing.Size(36, 19);
             this.metroLabel5.TabIndex = 45;
@@ -388,7 +389,7 @@
             // 
             // metroDateTime1
             // 
-            this.metroDateTime1.Location = new System.Drawing.Point(588, 50);
+            this.metroDateTime1.Location = new System.Drawing.Point(588, 35);
             this.metroDateTime1.MinimumSize = new System.Drawing.Size(0, 29);
             this.metroDateTime1.Name = "metroDateTime1";
             this.metroDateTime1.Size = new System.Drawing.Size(200, 29);
@@ -409,7 +410,7 @@
             this.txtPICCode.CustomButton.UseSelectable = true;
             this.txtPICCode.CustomButton.Visible = false;
             this.txtPICCode.Lines = new string[0];
-            this.txtPICCode.Location = new System.Drawing.Point(625, 153);
+            this.txtPICCode.Location = new System.Drawing.Point(625, 169);
             this.txtPICCode.MaxLength = 32767;
             this.txtPICCode.Name = "txtPICCode";
             this.txtPICCode.PasswordChar = '\0';
@@ -558,11 +559,24 @@
             // 
             this.detailPOBindingSource.DataSource = typeof(Project.DetailPO);
             // 
+            // btnPrint
+            // 
+            this.btnPrint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnPrint.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPrint.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnPrint.Image = global::Project.Properties.Resources.btn_print;
+            this.btnPrint.Location = new System.Drawing.Point(720, 86);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(61, 33);
+            this.btnPrint.TabIndex = 50;
+            this.btnPrint.UseVisualStyleBackColor = false;
+            // 
             // PenerimaanTukangPotong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(841, 693);
+            this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.txtIDPenerimaanTukangPotong);
             this.Controls.Add(this.txtPICCode);
@@ -634,5 +648,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ukuranDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idListPTPDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button btnPrint;
     }
 }
