@@ -23,9 +23,6 @@ namespace Project.Models
         public Nullable<int> idSPKBordir { get; set; }
         public Nullable<int> idSPKCMT { get; set; }
 
-        public System.DateTime Date_insert { get; set; }
-        public bool NotifyStatus { get; set; }
-
         public virtual Color Color { get; set; }
     }
 }

@@ -242,7 +242,8 @@ namespace Project
                 xlexcel.Visible = true;
                 xlWorkBook = xlexcel.Workbooks.Add(misValue);
                 xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
-                Excel.Range CR = (Excel.Range)xlWorkSheet.Cells[1, 1];
+                Excel.Range CR = (Excel.Range)xlWorkSheet.Cells[4, 1];
+                CR.EntireColumn.AutoFit();
                 CR.Select();
                 xlWorkSheet.PasteSpecial(CR, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
             }

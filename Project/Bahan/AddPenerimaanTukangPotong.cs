@@ -166,15 +166,15 @@ namespace Project
                             });
                         db.SaveChangesAsync().Wait();
 
-                        int setIDN = db.DatetimeNotifications.AsEnumerable().LastOrDefault() == null ? 1 : db.DatetimeNotifications.AsEnumerable().LastOrDefault().id + 1;
-                        bool nStatus = true;
-                        int c = GenericQuery.ExecSQLCommand("INSERT INTO DatetimeNotification (id, noSeri, Date_insert, NotifyStatus) VALUES(@id, @noSeri, @Date_insert, @NotifyStatus)", new[] {
-                                new SqlParameter("@id", setIDN),
-                                new SqlParameter("@noSeri", noSeri),
-                                new SqlParameter("@Date_insert", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")),
-                                new SqlParameter("@NotifyStatus", nStatus),
-                        });
-                        db.SaveChangesAsync().Wait();
+                        //int setIDN = db.DatetimeNotifications.AsEnumerable().LastOrDefault() == null ? 1 : db.DatetimeNotifications.AsEnumerable().LastOrDefault().id + 1;
+                        //bool nStatus = true;
+                        //int c = GenericQuery.ExecSQLCommand("INSERT INTO DatetimeNotification (id, noSeri, Date_insert, NotifyStatus) VALUES(@id, @noSeri, @Date_insert, @NotifyStatus)", new[] {
+                        //        new SqlParameter("@id", setIDN),
+                        //        new SqlParameter("@noSeri", noSeri),
+                        //        new SqlParameter("@Date_insert", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")),
+                        //        new SqlParameter("@NotifyStatus", nStatus),
+                        //});
+                        //db.SaveChangesAsync().Wait();
 
                         if (_bs == null)
                         {

@@ -29,7 +29,6 @@
         <AssociationConnector Association="indomodaModel.FK_DetailLogs_Users" />
         <EntityTypeShape EntityType="indomodaModel.PenerimaanSBC" Width="1.5" PointX="7.375" PointY="11.75" />
         <EntityTypeShape EntityType="indomodaModel.DetailPenerimaanSBC" Width="1.5" PointX="9.625" PointY="11.125" />
-        <EntityTypeShape EntityType="indomodaModel.DatetimeNotification" Width="1.5" PointX="9.375" PointY="7.75" />
         <EntityTypeShape EntityType="indomodaModel.ListBajuJadi" Width="1.5" PointX="0.75" PointY="12.75" />
         <EntityTypeShape EntityType="indomodaModel.ListPenjualanBaju" Width="1.5" PointX="2.75" PointY="12.75" />
         <EntityTypeShape EntityType="indomodaModel.DetailPenjualanBaju" Width="1.5" PointX="15.125" PointY="5.75" />

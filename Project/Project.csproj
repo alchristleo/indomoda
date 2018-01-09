@@ -101,9 +101,6 @@
     <Compile Include="Customer.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="DatetimeNotification.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="DetailFaktur.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -303,6 +300,7 @@
     <Compile Include="Models\ListPTPModel.cs" />
     <Compile Include="Models\PemotonganKainModel.cs" />
     <Compile Include="Models\POKainModel.cs" />
+    <Compile Include="Models\POKainSupplierModel.cs" />
     <Compile Include="Models\QuantityRecordPTPModel.cs" />
     <Compile Include="Models\SPKNotifierModel.cs" />
     <Compile Include="Models\SupplierModel.cs" />

@@ -143,8 +143,8 @@ namespace Project
                             int c = GenericQuery.ExecSQLCommand("DELETE FROM QuantityRecord WHERE noSeri = '" + noSeri + "'");
                             db.SaveChangesAsync().Wait();
 
-                            int d = GenericQuery.ExecSQLCommand("DELETE FROM DatetimeNotification WHERE noSeri = '"+noSeri+"'");
-                            db.SaveChangesAsync().Wait();
+                            //int d = GenericQuery.ExecSQLCommand("DELETE FROM DatetimeNotification WHERE noSeri = '"+noSeri+"'");
+                            //db.SaveChangesAsync().Wait();
 
                             int rowCount = dataGridView1.Rows.Count;
                             for (int i = 0; i < rowCount; i++)

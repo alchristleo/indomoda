@@ -77,7 +77,6 @@
     </AssociationSet>
     <EntitySet Name="PenerimaanSBCs" EntityType="indomodaModel.PenerimaanSBC" />
     <EntitySet Name="DetailPenerimaanSBCs" EntityType="indomodaModel.DetailPenerimaanSBC" />
-    <EntitySet Name="DatetimeNotifications" EntityType="indomodaModel.DatetimeNotification" />
     <EntitySet Name="ListBajuJadis" EntityType="indomodaModel.ListBajuJadi" />
     <EntitySet Name="ListPenjualanBajus" EntityType="indomodaModel.ListPenjualanBaju" />
     <EntitySet Name="DetailPenjualanBajus" EntityType="indomodaModel.DetailPenjualanBaju" />
@@ -349,15 +348,6 @@
     <Property Name="tempSablon" Type="Int32" Nullable="false" />
     <Property Name="tempBordir" Type="Int32" Nullable="false" />
     <Property Name="tempCMT" Type="Int32" Nullable="false" />
-  </EntityType>
-  <EntityType Name="DatetimeNotification">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" />
-    <Property Name="noSeri" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Date_insert" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="NotifyStatus" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="ListBajuJadi">
     <Key>

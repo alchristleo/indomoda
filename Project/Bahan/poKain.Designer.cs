@@ -31,7 +31,7 @@ namespace Project
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(poKain));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,12 +67,24 @@ namespace Project
             this.lblGrandTotalDB = new MetroFramework.Controls.MetroTextBox();
             this.btnCountGrandTotal = new MetroFramework.Controls.MetroTile();
             this.btnPrint = new System.Windows.Forms.Button();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.preOrderKainBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.number = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pONumberDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SupplierCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.supplierIDDataGridViewComboBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.SupplierAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.datetimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.grandTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idPOKainDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.materialBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.detailPOBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.indomodaSupplierBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourcePreOrderKain)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.preOrderKainBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -82,14 +94,14 @@ namespace Project
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Menu;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Bisque;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Bisque;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ColumnHeadersHeight = 30;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NO,
@@ -398,7 +410,7 @@ namespace Project
             // btnExitPoKain
             // 
             this.btnExitPoKain.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnExitPoKain.Location = new System.Drawing.Point(242, 632);
+            this.btnExitPoKain.Location = new System.Drawing.Point(242, 617);
             this.btnExitPoKain.Name = "btnExitPoKain";
             this.btnExitPoKain.Size = new System.Drawing.Size(110, 48);
             this.btnExitPoKain.TabIndex = 10;
@@ -410,7 +422,7 @@ namespace Project
             // 
             this.btnSavePoKain.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSavePoKain.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnSavePoKain.Location = new System.Drawing.Point(448, 632);
+            this.btnSavePoKain.Location = new System.Drawing.Point(448, 617);
             this.btnSavePoKain.Name = "btnSavePoKain";
             this.btnSavePoKain.Size = new System.Drawing.Size(110, 48);
             this.btnSavePoKain.TabIndex = 9;
@@ -541,12 +553,109 @@ namespace Project
             this.btnPrint.Size = new System.Drawing.Size(61, 33);
             this.btnPrint.TabIndex = 29;
             this.btnPrint.UseVisualStyleBackColor = false;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            this.btnPrint.MouseHover += new System.EventHandler(this.btnPrint_MouseHover);
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToDeleteRows = false;
+            this.dataGridView2.AutoGenerateColumns = false;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.number,
+            this.pONumberDataGridViewTextBoxColumn1,
+            this.SupplierCode,
+            this.supplierIDDataGridViewComboBoxColumn,
+            this.SupplierAddress,
+            this.datetimeDataGridViewTextBoxColumn,
+            this.grandTotalDataGridViewTextBoxColumn,
+            this.idPOKainDataGridViewTextBoxColumn});
+            this.dataGridView2.DataSource = this.preOrderKainBindingSource;
+            this.dataGridView2.Location = new System.Drawing.Point(62, 424);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
+            this.dataGridView2.RowHeadersVisible = false;
+            this.dataGridView2.Size = new System.Drawing.Size(697, 72);
+            this.dataGridView2.TabIndex = 30;
+            this.dataGridView2.Visible = false;
+            // 
+            // preOrderKainBindingSource
+            // 
+            this.preOrderKainBindingSource.DataSource = typeof(Project.PreOrderKain);
+            // 
+            // number
+            // 
+            this.number.HeaderText = "No.";
+            this.number.Name = "number";
+            this.number.ReadOnly = true;
+            this.number.Width = 40;
+            // 
+            // pONumberDataGridViewTextBoxColumn1
+            // 
+            this.pONumberDataGridViewTextBoxColumn1.DataPropertyName = "PONumber";
+            this.pONumberDataGridViewTextBoxColumn1.HeaderText = "No. PO";
+            this.pONumberDataGridViewTextBoxColumn1.Name = "pONumberDataGridViewTextBoxColumn1";
+            this.pONumberDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.pONumberDataGridViewTextBoxColumn1.Width = 80;
+            // 
+            // SupplierCode
+            // 
+            this.SupplierCode.DataPropertyName = "SupplierCode";
+            this.SupplierCode.HeaderText = "Supplier Code";
+            this.SupplierCode.Name = "SupplierCode";
+            this.SupplierCode.ReadOnly = true;
+            // 
+            // supplierIDDataGridViewComboBoxColumn
+            // 
+            this.supplierIDDataGridViewComboBoxColumn.DataPropertyName = "SupplierID";
+            this.supplierIDDataGridViewComboBoxColumn.DataSource = this.indomodaSupplierBindingSource;
+            this.supplierIDDataGridViewComboBoxColumn.DisplayMember = "SupplierName";
+            this.supplierIDDataGridViewComboBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.supplierIDDataGridViewComboBoxColumn.HeaderText = "Supplier Name";
+            this.supplierIDDataGridViewComboBoxColumn.Name = "supplierIDDataGridViewComboBoxColumn";
+            this.supplierIDDataGridViewComboBoxColumn.ReadOnly = true;
+            this.supplierIDDataGridViewComboBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.supplierIDDataGridViewComboBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.supplierIDDataGridViewComboBoxColumn.ValueMember = "SupplierID";
+            // 
+            // SupplierAddress
+            // 
+            this.SupplierAddress.DataPropertyName = "SupplierAddress";
+            this.SupplierAddress.HeaderText = "Supplier Address";
+            this.SupplierAddress.Name = "SupplierAddress";
+            this.SupplierAddress.ReadOnly = true;
+            this.SupplierAddress.Width = 150;
+            // 
+            // datetimeDataGridViewTextBoxColumn
+            // 
+            this.datetimeDataGridViewTextBoxColumn.DataPropertyName = "Date_time";
+            this.datetimeDataGridViewTextBoxColumn.HeaderText = "Date";
+            this.datetimeDataGridViewTextBoxColumn.Name = "datetimeDataGridViewTextBoxColumn";
+            this.datetimeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.datetimeDataGridViewTextBoxColumn.Width = 160;
+            // 
+            // grandTotalDataGridViewTextBoxColumn
+            // 
+            this.grandTotalDataGridViewTextBoxColumn.DataPropertyName = "GrandTotal";
+            this.grandTotalDataGridViewTextBoxColumn.HeaderText = "Grand Total";
+            this.grandTotalDataGridViewTextBoxColumn.Name = "grandTotalDataGridViewTextBoxColumn";
+            this.grandTotalDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // idPOKainDataGridViewTextBoxColumn
+            // 
+            this.idPOKainDataGridViewTextBoxColumn.DataPropertyName = "idPOKain";
+            this.idPOKainDataGridViewTextBoxColumn.HeaderText = "idPOKain";
+            this.idPOKainDataGridViewTextBoxColumn.Name = "idPOKainDataGridViewTextBoxColumn";
+            this.idPOKainDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idPOKainDataGridViewTextBoxColumn.Visible = false;
             // 
             // poKain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(823, 744);
+            this.ClientSize = new System.Drawing.Size(823, 689);
+            this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.btnCountGrandTotal);
             this.Controls.Add(this.lblGrandTotalDB);
@@ -577,6 +686,8 @@ namespace Project
             ((System.ComponentModel.ISupportInitialize)(this.detailPOBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.indomodaSupplierBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourcePreOrderKain)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.preOrderKainBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -617,5 +728,15 @@ namespace Project
         private MetroFramework.Controls.MetroTile btnDeletePoKain;
         internal MetroFramework.Controls.MetroTile btnCountGrandTotal;
         private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.BindingSource preOrderKainBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn number;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pONumberDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SupplierCode;
+        private System.Windows.Forms.DataGridViewComboBoxColumn supplierIDDataGridViewComboBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SupplierAddress;
+        private System.Windows.Forms.DataGridViewTextBoxColumn datetimeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn grandTotalDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idPOKainDataGridViewTextBoxColumn;
     }
 }

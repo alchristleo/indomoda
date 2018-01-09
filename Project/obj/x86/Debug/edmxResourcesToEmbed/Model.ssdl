@@ -18,15 +18,6 @@
     <Property Name="CustomerAddress" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="CustomerPhone" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
-  <EntityType Name="DatetimeNotification">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="int" Nullable="false" />
-    <Property Name="noSeri" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="Date_insert" Type="datetime" Nullable="false" />
-    <Property Name="NotifyStatus" Type="bit" Nullable="false" />
-  </EntityType>
   <EntityType Name="DetailFaktur">
     <Key>
       <PropertyRef Name="idFaktur" />
@@ -344,7 +335,6 @@
   <EntityContainer Name="indomodaModelStoreContainer">
     <EntitySet Name="Colors" EntityType="Self.Colors" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="DatetimeNotification" EntityType="Self.DatetimeNotification" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DetailFaktur" EntityType="Self.DetailFaktur" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DetailLogs" EntityType="Self.DetailLogs" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DetailPemotonganKain" EntityType="Self.DetailPemotonganKain" Schema="dbo" store:Type="Tables" />
