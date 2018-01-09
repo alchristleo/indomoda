@@ -57,18 +57,39 @@ namespace Project
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            copyAlltoClipboard();
-            Microsoft.Office.Interop.Excel.Application xlexcel;
-            Microsoft.Office.Interop.Excel.Workbook xlWorkBook;
-            Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet;
-            object misValue = System.Reflection.Missing.Value;
-            xlexcel = new Excel.Application();
-            xlexcel.Visible = true;
-            xlWorkBook = xlexcel.Workbooks.Add(misValue);
-            xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
-            Excel.Range CR = (Excel.Range)xlWorkSheet.Cells[1, 1];
-            CR.Select();
-            xlWorkSheet.PasteSpecial(CR, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
+            try
+            {
+                copyAlltoClipboard();
+                Microsoft.Office.Interop.Excel.Application xlexcel;
+                Microsoft.Office.Interop.Excel.Workbook xlWorkBook;
+                Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet;
+                object misValue = System.Reflection.Missing.Value;
+                xlexcel = new Excel.Application();
+                xlexcel.Visible = true;
+                xlWorkBook = xlexcel.Workbooks.Add(misValue);
+                xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+                Excel.Range CR = (Excel.Range)xlWorkSheet.Cells[1, 1];
+                CR.Select();
+                xlWorkSheet.PasteSpecial(CR, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
+                
+                Excel.Range aRange = xlWorkSheet.get_Range("A1", "J100");
+                aRange.EntireColumn.AutoFit();
+
+                int RowCount = dataGridView1.Rows.Count;
+                var columnHeadingsRange = xlWorkSheet.Range[
+                xlWorkSheet.Cells[1, 1],
+                xlWorkSheet.Cells[1, 9]];
+                columnHeadingsRange.Interior.Color = System.Drawing.Color.Yellow;
+                var table1 = xlWorkSheet.Range[
+                xlWorkSheet.Cells[1, 1],
+                xlWorkSheet.Cells[RowCount + 1, 9]];
+                table1.Borders.LineStyle = Excel.XlLineStyle.xlContinuous;
+                table1.Borders.Weight = Excel.XlBorderWeight.xlThin;
+            }
+            catch (Exception ex)
+            {
+                MetroFramework.MetroMessageBox.Show(this, ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnPrint_MouseHover(object sender, EventArgs e)

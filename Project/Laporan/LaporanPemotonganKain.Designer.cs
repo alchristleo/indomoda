@@ -42,18 +42,18 @@
             this.endDate = new MetroFramework.Controls.MetroDateTime();
             this.startDate = new MetroFramework.Controls.MetroDateTime();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.detailPemotonganKainBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.btnReset = new System.Windows.Forms.Button();
             this.no = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.noPemotonganKainDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.noFakturDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pONumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.employeeIDDataGridViewComboBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.datetimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusPemotongan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idPemotonganKainDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.detailPemotonganKainBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnReset = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.detailPemotonganKainBindingSource)).BeginInit();
@@ -232,29 +232,6 @@
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.Paint += new System.Windows.Forms.PaintEventHandler(this.dataGridView1_Paint);
             // 
-            // employeeBindingSource
-            // 
-            this.employeeBindingSource.DataSource = typeof(Project.Employee);
-            // 
-            // detailPemotonganKainBindingSource
-            // 
-            this.detailPemotonganKainBindingSource.DataSource = typeof(Project.DetailPemotonganKain);
-            // 
-            // btnReset
-            // 
-            this.btnReset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnReset.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnReset.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnReset.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnReset.Image = global::Project.Properties.Resources.btn_reset;
-            this.btnReset.Location = new System.Drawing.Point(444, 91);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(44, 33);
-            this.btnReset.TabIndex = 22;
-            this.btnReset.UseVisualStyleBackColor = false;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
-            this.btnReset.MouseHover += new System.EventHandler(this.btnReset_MouseHover);
-            // 
             // no
             // 
             this.no.HeaderText = "No";
@@ -300,6 +277,10 @@
             this.employeeIDDataGridViewComboBoxColumn.ValueMember = "EmployeeID";
             this.employeeIDDataGridViewComboBoxColumn.Width = 130;
             // 
+            // employeeBindingSource
+            // 
+            this.employeeBindingSource.DataSource = typeof(Project.Employee);
+            // 
             // datetimeDataGridViewTextBoxColumn
             // 
             this.datetimeDataGridViewTextBoxColumn.DataPropertyName = "Date_time";
@@ -332,6 +313,25 @@
             this.idPemotonganKainDataGridViewTextBoxColumn.ReadOnly = true;
             this.idPemotonganKainDataGridViewTextBoxColumn.Visible = false;
             // 
+            // detailPemotonganKainBindingSource
+            // 
+            this.detailPemotonganKainBindingSource.DataSource = typeof(Project.DetailPemotonganKain);
+            // 
+            // btnReset
+            // 
+            this.btnReset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnReset.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnReset.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnReset.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnReset.Image = global::Project.Properties.Resources.btn_reset;
+            this.btnReset.Location = new System.Drawing.Point(444, 91);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(44, 33);
+            this.btnReset.TabIndex = 22;
+            this.btnReset.UseVisualStyleBackColor = false;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            this.btnReset.MouseHover += new System.EventHandler(this.btnReset_MouseHover);
+            // 
             // LaporanPemotonganKain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -350,7 +350,7 @@
             this.Controls.Add(this.startDate);
             this.Controls.Add(this.dataGridView1);
             this.Name = "LaporanPemotonganKain";
-            this.Text = "LaporanPemotonganKain";
+            this.Text = "Laporan Pemotongan Kain";
             this.Load += new System.EventHandler(this.LaporanPemotonganKain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).EndInit();

@@ -43,6 +43,20 @@ namespace Project
             Excel.Range CR = (Excel.Range)xlWorkSheet.Cells[1, 1];
             CR.Select();
             xlWorkSheet.PasteSpecial(CR, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
+
+            Excel.Range aRange = xlWorkSheet.get_Range("A1", "M100");
+            aRange.EntireColumn.AutoFit();
+
+            int RowCount = dataGridView1.Rows.Count;
+            var columnHeadingsRange = xlWorkSheet.Range[
+            xlWorkSheet.Cells[1, 1],
+            xlWorkSheet.Cells[1, 12]];
+            columnHeadingsRange.Interior.Color = System.Drawing.Color.Yellow;
+            var table1 = xlWorkSheet.Range[
+            xlWorkSheet.Cells[1, 1],
+            xlWorkSheet.Cells[RowCount + 1, 12]];
+            table1.Borders.LineStyle = Excel.XlLineStyle.xlContinuous;
+            table1.Borders.Weight = Excel.XlBorderWeight.xlThin;
         }
 
         private void btnPrint_MouseHover(object sender, EventArgs e)

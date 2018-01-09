@@ -154,7 +154,7 @@ namespace Project
                             long po = Convert.ToInt64(txtPONumber.Text.ToString());
                             if (checkTempPK)
                             {
-                                MetroFramework.MetroMessageBox.Show(this, "You can not edit this detail PO pemotongan", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MetroFramework.MetroMessageBox.Show(this, "You can not edit this detail PO pemotongan again, this detail PO pemotongan has been updated before", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 List<FakturDetailPO> listFakturDetail = GenericQuery.SqlQuery<FakturDetailPO>("select df.idFaktur, df.NoFaktur, df.PONumber, df.status, dp.DetailPOID, dp.MaterialID, dp.ColorID, dp.DetailQty, dp.DetailStatus, dp.statusFaktur, dp.noPemotonganKain, dp.tempPemotongan from DetailFaktur df JOIN DetailPO dp on df.PONumber = dp.PONumber WHERE df.PONumber = '" + po + "'");
                                 detailPOBindingSource.DataSource = listFakturDetail.ToList();
 

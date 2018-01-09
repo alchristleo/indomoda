@@ -122,13 +122,15 @@ namespace Project
                     {
                         try
                         {
-                            int currentRow = dataGridView1.CurrentRow.Index;
-                            int currentDetailPOID = Convert.ToInt32(dataGridView1[7, dataGridView1.CurrentRow.Index].Value.ToString());
-                            bool setStatus = Convert.ToBoolean(dataGridView1.Rows[currentRow].Cells[6].Value);
-                            int a = GenericQuery.ExecSQLCommand("UPDATE DetailPO SET DetailStatus = @DetailStatus WHERE DetailPOID = '" + currentDetailPOID + "'", new[] {
-                                new SqlParameter("@DetailStatus", setStatus)
-                            });
-                            db.SaveChangesAsync().Wait();
+                            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                            {
+                                int currentDetailPOID = Convert.ToInt32(dataGridView1[7, i].Value.ToString());
+                                bool setStatus = Convert.ToBoolean(dataGridView1.Rows[i].Cells[6].Value);
+                                int a = GenericQuery.ExecSQLCommand("UPDATE DetailPO SET DetailStatus = @DetailStatus WHERE DetailPOID = '" + currentDetailPOID + "'", new[] {
+                                    new SqlParameter("@DetailStatus", setStatus)
+                                });
+                                db.SaveChangesAsync().Wait();
+                            }
                             dataGridView1.Refresh();
 
                             MetroFramework.MetroMessageBox.Show(this, "Success! This detail PO stauts has been updated", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);

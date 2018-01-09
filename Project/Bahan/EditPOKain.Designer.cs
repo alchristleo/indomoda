@@ -47,6 +47,7 @@
             this.txtAddColorCode = new MetroFramework.Controls.MetroTextBox();
             this.btnSavePOKain = new MetroFramework.Controls.MetroButton();
             this.btnExitPOKain = new MetroFramework.Controls.MetroButton();
+            this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
             ((System.ComponentModel.ISupportInitialize)(this.detailPOBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.materialBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).BeginInit();
@@ -112,7 +113,7 @@
             this.txtAddPrice.SelectionLength = 0;
             this.txtAddPrice.SelectionStart = 0;
             this.txtAddPrice.ShortcutsEnabled = true;
-            this.txtAddPrice.Size = new System.Drawing.Size(162, 23);
+            this.txtAddPrice.Size = new System.Drawing.Size(125, 23);
             this.txtAddPrice.TabIndex = 6;
             this.txtAddPrice.UseSelectable = true;
             this.txtAddPrice.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -218,6 +219,7 @@
             this.txtAddMaterialCode.MaxLength = 32767;
             this.txtAddMaterialCode.Name = "txtAddMaterialCode";
             this.txtAddMaterialCode.PasswordChar = '\0';
+            this.txtAddMaterialCode.ReadOnly = true;
             this.txtAddMaterialCode.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtAddMaterialCode.SelectedText = "";
             this.txtAddMaterialCode.SelectionLength = 0;
@@ -266,6 +268,7 @@
             this.txtAddColorCode.MaxLength = 32767;
             this.txtAddColorCode.Name = "txtAddColorCode";
             this.txtAddColorCode.PasswordChar = '\0';
+            this.txtAddColorCode.ReadOnly = true;
             this.txtAddColorCode.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtAddColorCode.SelectedText = "";
             this.txtAddColorCode.SelectionLength = 0;
@@ -299,11 +302,21 @@
             this.btnExitPOKain.UseSelectable = true;
             this.btnExitPOKain.Click += new System.EventHandler(this.btnExitPOKain_Click);
             // 
+            // metroLabel8
+            // 
+            this.metroLabel8.AutoSize = true;
+            this.metroLabel8.Location = new System.Drawing.Point(395, 316);
+            this.metroLabel8.Name = "metroLabel8";
+            this.metroLabel8.Size = new System.Drawing.Size(37, 19);
+            this.metroLabel8.TabIndex = 33;
+            this.metroLabel8.Text = " / Kg";
+            // 
             // EditPOKain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(627, 455);
+            this.Controls.Add(this.metroLabel8);
             this.Controls.Add(this.btnExitPOKain);
             this.Controls.Add(this.btnSavePOKain);
             this.Controls.Add(this.txtAddPrice);
@@ -349,5 +362,6 @@
         private System.Windows.Forms.BindingSource materialBindingSource;
         private System.Windows.Forms.BindingSource colorBindingSource;
         private System.Windows.Forms.BindingSource detailPOBindingSource;
+        private MetroFramework.Controls.MetroLabel metroLabel8;
     }
 }
