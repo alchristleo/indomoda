@@ -19,6 +19,18 @@ namespace Project
             InitializeComponent();
         }
 
+        private void setNumber()
+        {
+            int rowCount = dataGridView1.Rows.Count;
+            for (int i = 0; i < rowCount; i++)
+            {
+                dataGridView1.Columns[0].ValueType = typeof(int);
+                dataGridView1.Rows[i].Cells[0].Value = i + 1;
+                dataGridView1.UpdateCellValue(0, i);
+            }
+            dataGridView1.Refresh();
+        }
+
         private void cboFakturPenerimaanKain_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -35,14 +47,7 @@ namespace Project
                     List<FakturDetailPO> listFakturDetail = GenericQuery.SqlQuery<FakturDetailPO>("SELECT df.idFaktur, df.NoFaktur, df.PONumber, df.status, dp.DetailPOID, dp.MaterialID, dp.ColorID, dp.DetailQty, dp.DetailStatus, dp.statusFaktur, dp.noPemotonganKain, dp.tempPemotongan from DetailFaktur df JOIN DetailPO dp on df.PONumber = dp.PONumber WHERE df.PONumber = '" + poNumber + "'");
                     detailPOBindingSource.DataSource = listFakturDetail.ToList();
 
-                    int rowCount = dataGridView1.Rows.Count;
-                    for (int i = 0; i < rowCount; i++)
-                    {
-                        dataGridView1.Columns[0].ValueType = typeof(int);
-                        dataGridView1.Rows[i].Cells[0].Value = i + 1;
-                        dataGridView1.UpdateCellValue(0, i);
-                    }
-                    dataGridView1.Refresh();
+                    setNumber();
                 }
             }
             catch (NullReferenceException ex)
@@ -158,14 +163,7 @@ namespace Project
                                 List<FakturDetailPO> listFakturDetail = GenericQuery.SqlQuery<FakturDetailPO>("select df.idFaktur, df.NoFaktur, df.PONumber, df.status, dp.DetailPOID, dp.MaterialID, dp.ColorID, dp.DetailQty, dp.DetailStatus, dp.statusFaktur, dp.noPemotonganKain, dp.tempPemotongan from DetailFaktur df JOIN DetailPO dp on df.PONumber = dp.PONumber WHERE df.PONumber = '" + po + "'");
                                 detailPOBindingSource.DataSource = listFakturDetail.ToList();
 
-                                int rowCount = dataGridView1.Rows.Count;
-                                for (int i = 0; i < rowCount; i++)
-                                {
-                                    dataGridView1.Columns[0].ValueType = typeof(int);
-                                    dataGridView1.Rows[i].Cells[0].Value = i + 1;
-                                    dataGridView1.UpdateCellValue(0, i);
-                                }
-                                dataGridView1.Refresh();
+                                setNumber();
                             }
                             else
                             {
@@ -177,14 +175,7 @@ namespace Project
                                 List<FakturDetailPO> listFakturDetail = GenericQuery.SqlQuery<FakturDetailPO>("select df.idFaktur, df.NoFaktur, df.PONumber, df.status, dp.DetailPOID, dp.MaterialID, dp.ColorID, dp.DetailQty, dp.DetailStatus, dp.statusFaktur, dp.noPemotonganKain, dp.tempPemotongan from DetailFaktur df JOIN DetailPO dp on df.PONumber = dp.PONumber WHERE df.PONumber = '" + po + "'");
                                 detailPOBindingSource.DataSource = listFakturDetail.ToList();
 
-                                int rowCount = dataGridView1.Rows.Count;
-                                for (int i = 0; i < rowCount; i++)
-                                {
-                                    dataGridView1.Columns[0].ValueType = typeof(int);
-                                    dataGridView1.Rows[i].Cells[0].Value = i + 1;
-                                    dataGridView1.UpdateCellValue(0, i);
-                                }
-                                dataGridView1.Refresh();
+                                setNumber();
 
                                 MetroFramework.MetroMessageBox.Show(this, "Success! This detail PO pemotongan status has been updated", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
                             }
@@ -277,13 +268,7 @@ namespace Project
                                     List<FakturDetailPO> listFakturDetail = GenericQuery.SqlQuery<FakturDetailPO>("select df.idFaktur, df.NoFaktur, df.PONumber, df.status, dp.DetailPOID, dp.MaterialID, dp.ColorID, dp.DetailQty, dp.DetailStatus, dp.statusFaktur, dp.noPemotonganKain, dp.tempPemotongan from DetailFaktur df JOIN DetailPO dp on df.PONumber = dp.PONumber WHERE df.PONumber = '" + noPO + "'");
                                     detailPOBindingSource.DataSource = listFakturDetail.ToList();
 
-                                    int rowCount = dataGridView1.Rows.Count;
-                                    for (int i = 0; i < rowCount; i++)
-                                    {
-                                        dataGridView1.Columns[0].ValueType = typeof(int);
-                                        dataGridView1.Rows[i].Cells[0].Value = i + 1;
-                                        dataGridView1.UpdateCellValue(0, i);
-                                    }
+                                    setNumber();
                                 }
                             }
                             catch (Exception ex)

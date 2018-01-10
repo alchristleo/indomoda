@@ -18,10 +18,8 @@ namespace Project
 
         indomodaEntities db;
 
-        private void Supplier_Load(object sender, EventArgs e)
+        private void setNumber()
         {
-            db = new indomodaEntities();
-            supplierBindingSource.DataSource = db.IndomodaSuppliers.ToList();
             int rowCount = supplierDataGrid.Rows.Count;
             for (int i = 0; i < rowCount; i++)
             {
@@ -32,18 +30,18 @@ namespace Project
             supplierDataGrid.Refresh();
         }
 
+        private void Supplier_Load(object sender, EventArgs e)
+        {
+            db = new indomodaEntities();
+            supplierBindingSource.DataSource = db.IndomodaSuppliers.ToList();
+            setNumber();
+        }
+
         private void btnRefreshSup_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
             supplierBindingSource.DataSource = db.IndomodaSuppliers.ToList();
-            int rowCount = supplierDataGrid.Rows.Count;
-            for (int i = 0; i < rowCount; i++)
-            {
-                supplierDataGrid.Columns[0].ValueType = typeof(int);
-                supplierDataGrid.Rows[i].Cells[0].Value = i + 1;
-                supplierDataGrid.UpdateCellValue(0, i);
-            }
-            supplierDataGrid.Refresh();
+            setNumber();
             Cursor.Current = Cursors.Default;
         }
 
@@ -61,14 +59,7 @@ namespace Project
                         supplierBindingSource.Add(addSupplier.SupplierInfo);
                         db.IndomodaSuppliers.Add(addSupplier.SupplierInfo);
                         db.SaveChangesAsync().Wait();
-                        int rowCount = supplierDataGrid.Rows.Count;
-                        for (int i = 0; i < rowCount; i++)
-                        {
-                            supplierDataGrid.Columns[0].ValueType = typeof(int);
-                            supplierDataGrid.Rows[i].Cells[0].Value = i + 1;
-                            supplierDataGrid.UpdateCellValue(0, i);
-                        }
-                        supplierDataGrid.Refresh();
+                        setNumber();
                         MetroFramework.MetroMessageBox.Show(this, "Success! New supplier has been added to the database", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
                     catch (Exception ex)
@@ -124,14 +115,7 @@ namespace Project
                     db.SaveChangesAsync().Wait();
                     // Refresh id to sync with db
                     supplierBindingSource.DataSource = db.IndomodaSuppliers.ToList();
-                    int rowCount = supplierDataGrid.Rows.Count;
-                    for (int i = 0; i < rowCount; i++)
-                    {
-                        supplierDataGrid.Columns[0].ValueType = typeof(int);
-                        supplierDataGrid.Rows[i].Cells[0].Value = i + 1;
-                        supplierDataGrid.UpdateCellValue(0, i);
-                    }
-                    supplierDataGrid.Refresh();
+                    setNumber();
                     MetroFramework.MetroMessageBox.Show(this, "Success! This supplier has been removed from the database", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
                 }
             }

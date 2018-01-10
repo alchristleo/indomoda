@@ -20,10 +20,8 @@ namespace Project
 
         indomodaEntities db;
 
-        private void Karyawan_Load(object sender, EventArgs e)
+        private void setNumber()
         {
-            db = new indomodaEntities();
-            employeeBindingSource2.DataSource = db.Employees.ToList();
             int rowCount = employeeDataGrid.Rows.Count;
             for (int i = 0; i < rowCount; i++)
             {
@@ -34,18 +32,18 @@ namespace Project
             employeeDataGrid.Refresh();
         }
 
+        private void Karyawan_Load(object sender, EventArgs e)
+        {
+            db = new indomodaEntities();
+            employeeBindingSource2.DataSource = db.Employees.ToList();
+            setNumber();
+        }
+
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
             employeeBindingSource2.DataSource = db.Employees.ToList();
-            int rowCount = employeeDataGrid.Rows.Count;
-            for (int i = 0; i < rowCount; i++)
-            {
-                employeeDataGrid.Columns[0].ValueType = typeof(int);
-                employeeDataGrid.Rows[i].Cells[0].Value = i + 1;
-                employeeDataGrid.UpdateCellValue(0, i);
-            }
-            employeeDataGrid.Refresh();
+            setNumber();
             Cursor.Current = Cursors.Hand;
         }
 
@@ -62,14 +60,7 @@ namespace Project
                         employeeBindingSource2.Add(addKaryawan.EmployeeInfo);
                         db.Employees.Add(addKaryawan.EmployeeInfo);
                         db.SaveChangesAsync().Wait();
-                        int rowCount = employeeDataGrid.Rows.Count;
-                        for (int i = 0; i < rowCount; i++)
-                        {
-                            employeeDataGrid.Columns[0].ValueType = typeof(int);
-                            employeeDataGrid.Rows[i].Cells[0].Value = i + 1;
-                            employeeDataGrid.UpdateCellValue(0, i);
-                        }
-                        employeeDataGrid.Refresh();
+                        setNumber();
 
                         MetroFramework.MetroMessageBox.Show(this, "Success! New employee has been added to the database", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
@@ -126,14 +117,7 @@ namespace Project
                     db.SaveChangesAsync().Wait();
                     // Refresh id to sync with db
                     employeeBindingSource2.DataSource = db.Employees.ToList();
-                    int rowCount = employeeDataGrid.Rows.Count;
-                    for (int i = 0; i < rowCount; i++)
-                    {
-                        employeeDataGrid.Columns[0].ValueType = typeof(int);
-                        employeeDataGrid.Rows[i].Cells[0].Value = i + 1;
-                        employeeDataGrid.UpdateCellValue(0, i);
-                    }
-                    employeeDataGrid.Refresh();
+                    setNumber();
                     MetroFramework.MetroMessageBox.Show(this, "Success! This employee has been removed from the database", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
                 }
             }

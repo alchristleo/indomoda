@@ -18,10 +18,8 @@ namespace Project
 
         indomodaEntities db;
 
-        private void MasterBahan_Load(object sender, EventArgs e)
+        private void setNumber()
         {
-            db = new indomodaEntities();
-            materialBindingSource.DataSource = db.Materials.ToList();
             int rowCount = dataGridBahan.Rows.Count;
             for (int i = 0; i < rowCount; i++)
             {
@@ -32,18 +30,18 @@ namespace Project
             dataGridBahan.Refresh();
         }
 
+        private void MasterBahan_Load(object sender, EventArgs e)
+        {
+            db = new indomodaEntities();
+            materialBindingSource.DataSource = db.Materials.ToList();
+            setNumber();
+        }
+
         private void btnRefreshBahan_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
             materialBindingSource.DataSource = db.Materials.ToList();
-            int rowCount = dataGridBahan.Rows.Count;
-            for (int i = 0; i < rowCount; i++)
-            {
-                dataGridBahan.Columns[0].ValueType = typeof(int);
-                dataGridBahan.Rows[i].Cells[0].Value = i + 1;
-                dataGridBahan.UpdateCellValue(0, i);
-            }
-            dataGridBahan.Refresh();
+            setNumber();
             Cursor.Current = Cursors.Hand;
         }
 
@@ -62,14 +60,7 @@ namespace Project
                         db.Materials.Add(addMaterial.MaterialInfo);
                         db.SaveChangesAsync().Wait();
 
-                        int rowCount = dataGridBahan.Rows.Count;
-                        for (int i = 0; i < rowCount; i++)
-                        {
-                            dataGridBahan.Columns[0].ValueType = typeof(int);
-                            dataGridBahan.Rows[i].Cells[0].Value = i + 1;
-                            dataGridBahan.UpdateCellValue(0, i);
-                        }
-                        dataGridBahan.Refresh();
+                        setNumber();
 
                         MetroFramework.MetroMessageBox.Show(this, "Success! New material has been added to the database", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
@@ -126,14 +117,7 @@ namespace Project
                     db.SaveChangesAsync().Wait();
                     // Refresh id to sync with db
                     materialBindingSource.DataSource = db.Materials.ToList();
-                    int rowCount = dataGridBahan.Rows.Count;
-                    for (int i = 0; i < rowCount; i++)
-                    {
-                        dataGridBahan.Columns[0].ValueType = typeof(int);
-                        dataGridBahan.Rows[i].Cells[0].Value = i + 1;
-                        dataGridBahan.UpdateCellValue(0, i);
-                    }
-                    dataGridBahan.Refresh();
+                    setNumber();
                     MetroFramework.MetroMessageBox.Show(this, "Success! This material has been removed from the database", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
                 }
             }

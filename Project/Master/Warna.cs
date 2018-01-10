@@ -18,10 +18,8 @@ namespace Project
 
         indomodaEntities db;
 
-        private void Warna_Load(object sender, EventArgs e)
+        private void setNumber()
         {
-            db = new indomodaEntities();
-            colorBindingSource.DataSource = db.Colors.ToList();
             int rowCount = colorDataGrid.Rows.Count;
             for (int i = 0; i < rowCount; i++)
             {
@@ -32,18 +30,18 @@ namespace Project
             colorDataGrid.Refresh();
         }
 
+        private void Warna_Load(object sender, EventArgs e)
+        {
+            db = new indomodaEntities();
+            colorBindingSource.DataSource = db.Colors.ToList();
+            setNumber();
+        }
+
         private void btnRefreshWarna_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
             colorBindingSource.DataSource = db.Colors.ToList();
-            int rowCount = colorDataGrid.Rows.Count;
-            for (int i = 0; i < rowCount; i++)
-            {
-                colorDataGrid.Columns[0].ValueType = typeof(int);
-                colorDataGrid.Rows[i].Cells[0].Value = i + 1;
-                colorDataGrid.UpdateCellValue(0, i);
-            }
-            colorDataGrid.Refresh();
+            setNumber();
             Cursor.Current = Cursors.Default;
         }
 
@@ -61,14 +59,7 @@ namespace Project
                         colorBindingSource.Add(addWarna.ColorInfo);
                         db.Colors.Add(addWarna.ColorInfo);
                         db.SaveChangesAsync().Wait();
-                        int rowCount = colorDataGrid.Rows.Count;
-                        for (int i = 0; i < rowCount; i++)
-                        {
-                            colorDataGrid.Columns[0].ValueType = typeof(int);
-                            colorDataGrid.Rows[i].Cells[0].Value = i + 1;
-                            colorDataGrid.UpdateCellValue(0, i);
-                        }
-                        colorDataGrid.Refresh();
+                        setNumber();
                         MetroFramework.MetroMessageBox.Show(this, "Success! New color has been added to the database", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
                     catch (Exception ex)
@@ -124,14 +115,7 @@ namespace Project
                     db.SaveChangesAsync().Wait();
                     // Refresh id to sync with db
                     colorBindingSource.DataSource = db.Colors.ToList();
-                    int rowCount = colorDataGrid.Rows.Count;
-                    for (int i = 0; i < rowCount; i++)
-                    {
-                        colorDataGrid.Columns[0].ValueType = typeof(int);
-                        colorDataGrid.Rows[i].Cells[0].Value = i + 1;
-                        colorDataGrid.UpdateCellValue(0, i);
-                    }
-                    colorDataGrid.Refresh();
+                    setNumber();
                     MetroFramework.MetroMessageBox.Show(this, "Success! This color has been removed from the database", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
                 }
             }

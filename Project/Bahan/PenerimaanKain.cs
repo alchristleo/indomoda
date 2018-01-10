@@ -21,6 +21,18 @@ namespace Project
             cboNoPOKain.Text = "Select PO Number";
         }
 
+        private void setNumber()
+        {
+            int rowCount = dataGridView1.Rows.Count;
+            for (int i = 0; i < rowCount; i++)
+            {
+                dataGridView1.Columns[0].ValueType = typeof(int);
+                dataGridView1.Rows[i].Cells[0].Value = i + 1;
+                dataGridView1.UpdateCellValue(0, i);
+            }
+            dataGridView1.Refresh();
+        }
+
         private void btnExitPenerimaanKain_Click(object sender, EventArgs e)
         {
             cboNoPOKain.Text = "";
@@ -43,14 +55,7 @@ namespace Project
                     List<DetailPOModel> listPO = GenericQuery.SqlQuery<DetailPOModel>("SELECT * FROM DetailPO WHERE PONumber = '" + poNumber + "'");
                     detailPOBindingSource.DataSource = listPO.ToList();
 
-                    int rowCount = dataGridView1.Rows.Count;
-                    for (int i = 0; i < rowCount; i++)
-                    {
-                        dataGridView1.Columns[0].ValueType = typeof(int);
-                        dataGridView1.Rows[i].Cells[0].Value = i + 1;
-                        dataGridView1.UpdateCellValue(0, i);
-                    }
-                    dataGridView1.Refresh();
+                    setNumber();
                 }
             }
             catch (NullReferenceException ex)

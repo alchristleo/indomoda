@@ -18,10 +18,8 @@ namespace Project
 
         indomodaEntities db;
 
-        private void Pembeli_Load(object sender, EventArgs e)
+        private void setNumber()
         {
-            db = new indomodaEntities();
-            customerBindingSource.DataSource = db.Customers.ToList();
             int rowCount = customerDataGrid.Rows.Count;
             for (int i = 0; i < rowCount; i++)
             {
@@ -32,18 +30,18 @@ namespace Project
             customerDataGrid.Refresh();
         }
 
+        private void Pembeli_Load(object sender, EventArgs e)
+        {
+            db = new indomodaEntities();
+            customerBindingSource.DataSource = db.Customers.ToList();
+            setNumber();
+        }
+
         private void btnRefreshCust_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
             customerBindingSource.DataSource = db.Customers.ToList();
-            int rowCount = customerDataGrid.Rows.Count;
-            for (int i = 0; i < rowCount; i++)
-            {
-                customerDataGrid.Columns[0].ValueType = typeof(int);
-                customerDataGrid.Rows[i].Cells[0].Value = i + 1;
-                customerDataGrid.UpdateCellValue(0, i);
-            }
-            customerDataGrid.Refresh();
+            setNumber();
             Cursor.Current = Cursors.Hand;
         }
 
@@ -61,14 +59,7 @@ namespace Project
                         customerBindingSource.Add(addPembeli.CustomerInfo);
                         db.Customers.Add(addPembeli.CustomerInfo);
                         db.SaveChangesAsync().Wait();
-                        int rowCount = customerDataGrid.Rows.Count;
-                        for (int i = 0; i < rowCount; i++)
-                        {
-                            customerDataGrid.Columns[0].ValueType = typeof(int);
-                            customerDataGrid.Rows[i].Cells[0].Value = i + 1;
-                            customerDataGrid.UpdateCellValue(0, i);
-                        }
-                        customerDataGrid.Refresh();
+                        setNumber();
                         MetroFramework.MetroMessageBox.Show(this, "Success! New customer has been added to the database", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
                     catch (Exception ex)
@@ -124,14 +115,7 @@ namespace Project
                     db.SaveChangesAsync().Wait();
                     // Refresh id to sync with db
                     customerBindingSource.DataSource = db.Customers.ToList();
-                    int rowCount = customerDataGrid.Rows.Count;
-                    for (int i = 0; i < rowCount; i++)
-                    {
-                        customerDataGrid.Columns[0].ValueType = typeof(int);
-                        customerDataGrid.Rows[i].Cells[0].Value = i + 1;
-                        customerDataGrid.UpdateCellValue(0, i);
-                    }
-                    customerDataGrid.Refresh();
+                    setNumber();
                     MetroFramework.MetroMessageBox.Show(this, "Success! This customer hase been removed from the database", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
                 }
             }
