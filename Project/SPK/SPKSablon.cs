@@ -9,6 +9,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace Project
 {
@@ -128,6 +129,14 @@ namespace Project
             Close();
         }
 
+        private void afterSave()
+        {
+            btnAddSPKSablon.Enabled = false;
+            btnDeleteSPKSablon.Enabled = false;
+            btnSaveSPKSablon.Dispose();
+            btnExitSPKSablon.Location = new Point(490, 591);
+        }
+
         private void btnSaveSPKSablon_Click(object sender, EventArgs e)
         {
             if (txtNoSpkSablon.Text == "")
@@ -166,7 +175,19 @@ namespace Project
                         db.SaveChangesAsync().Wait();
 
                         MetroFramework.MetroMessageBox.Show(this, "Success! No SPK for this data has been added to the database", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                        this.Close();
+
+                        afterSave();
+                        List<SPKEmployeeModel> LI = GenericQuery.SqlQuery<SPKEmployeeModel>("SELECT a.idSPK, a.noSPK, a.EmployeeID, a.Datetime, a.type, a.status, b.EmployeeName, b.EmployeeCode FROM DetailSPK a JOIN Employees b ON a.EmployeeID = b.EmployeeID WHERE a.idSPK = '" + txtIDSPK.Text + "'");
+                        detailSPKBindingSource.DataSource = LI.ToList();
+                        int rowCount = dataGridView2.Rows.Count;
+                        for (int i = 0; i < rowCount; i++)
+                        {
+                            dataGridView2.Columns[0].ValueType = typeof(int);
+                            dataGridView2.Rows[i].Cells[0].Value = i + 1;
+                            dataGridView2.UpdateCellValue(0, i);
+                        }
+                        dataGridView2.Columns[5].DefaultCellStyle.Format = "dd-MM-yyyy HH:mm:ss tt";
+                        dataGridView2.Refresh();
                     }
                 }
                 catch (Exception ex)
@@ -300,6 +321,100 @@ namespace Project
                 dataGridView1.UpdateCellValue(0, i);
             }
             dataGridView1.Refresh();
+        }
+
+        private void copyAlltoClipboard()
+        {
+            dataGridView1.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
+            dataGridView1.MultiSelect = true;
+            dataGridView1.SelectAll();
+            DataObject dataObj = dataGridView1.GetClipboardContent();
+            if (dataObj != null)
+                Clipboard.SetDataObject(dataObj);
+        }
+
+        private void copyAlltoClipboard2()
+        {
+            dataGridView2.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
+            dataGridView2.MultiSelect = true;
+            dataGridView2.SelectAll();
+            DataObject dataObj = dataGridView2.GetClipboardContent();
+            if (dataObj != null)
+                Clipboard.SetDataObject(dataObj);
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.Rows.Count < 1)
+            {
+                MetroFramework.MetroMessageBox.Show(this, "List data is empty", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (dataGridView2.Rows.Count < 1)
+            {
+                MetroFramework.MetroMessageBox.Show(this, "You must save this No. SPK Sablon to database first!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                try
+                {
+                    int currentRow = dataGridView1.Rows.Count;
+
+                    copyAlltoClipboard2();
+                    Microsoft.Office.Interop.Excel.Application xlexcel;
+                    Microsoft.Office.Interop.Excel.Workbook xlWorkBook;
+                    Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet;
+                    object misValue = System.Reflection.Missing.Value;
+                    xlexcel = new Excel.Application();
+                    xlexcel.Visible = true;
+                    xlWorkBook = xlexcel.Workbooks.Add(misValue);
+                    xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+                    Excel.Range CR = (Excel.Range)xlWorkSheet.Cells[1, 1];
+                    CR.EntireColumn.AutoFit();
+                    CR.Select();
+                    xlWorkSheet.PasteSpecial(CR, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
+
+                    copyAlltoClipboard();
+                    object misValue2 = System.Reflection.Missing.Value;
+                    Excel.Range CR2 = (Excel.Range)xlWorkSheet.Cells[4, 1];
+                    CR2.EntireColumn.AutoFit();
+                    CR2.Select();
+                    xlWorkSheet.PasteSpecial(CR2, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
+                    Excel.Range aRange = xlWorkSheet.get_Range("A1", "M100");
+                    aRange.EntireColumn.AutoFit();
+
+                    var columnHeadingsRange = xlWorkSheet.Range[
+                    xlWorkSheet.Cells[1, 1],
+                    xlWorkSheet.Cells[1, 6]];
+                    var columnHeadingsRange2 = xlWorkSheet.Range[
+                    xlWorkSheet.Cells[4, 1],
+                    xlWorkSheet.Cells[4, 10]];
+                    var table1 = xlWorkSheet.Range[
+                    xlWorkSheet.Cells[1, 1],
+                    xlWorkSheet.Cells[2, 6]];
+                    var table2 = xlWorkSheet.Range[
+                    xlWorkSheet.Cells[4, 1],
+                    xlWorkSheet.Cells[4 + currentRow, 10]];
+                    columnHeadingsRange.Interior.Color = System.Drawing.Color.Yellow;
+                    columnHeadingsRange2.Interior.Color = System.Drawing.Color.Yellow;
+                    table1.Borders.LineStyle = Excel.XlLineStyle.xlContinuous;
+                    table1.Borders.Weight = Excel.XlBorderWeight.xlThin;
+                    table2.Borders.LineStyle = Excel.XlLineStyle.xlContinuous;
+                    table2.Borders.Weight = Excel.XlBorderWeight.xlThin;
+                }
+                catch (Exception ex)
+                {
+                    MetroFramework.MetroMessageBox.Show(this, ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void btnPrint_MouseHover(object sender, EventArgs e)
+        {
+            ToolTip ToolTip1 = new ToolTip();
+            ToolTip1.AutoPopDelay = 3000;
+            ToolTip1.InitialDelay = 1000;
+            ToolTip1.ReshowDelay = 500;
+            ToolTip1.SetToolTip(this.btnPrint, "Print current data in table");
         }
     }
 }

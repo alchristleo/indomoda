@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PenerimaanTukangPotong));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.NUMBER = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.noSeriDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -70,6 +70,17 @@
             this.detailPOIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.detailPOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnPrint = new System.Windows.Forms.Button();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.detailPenerimaanTukangPotongBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.startNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.noPenerimaanTukangPotongDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.noPemotonganKainDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EmployeeCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EmployeeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.datetimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idPenerimaanTukangPotongDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.listPenerimaanTukangPotongBindingSource)).BeginInit();
@@ -77,6 +88,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.materialBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.detailPOBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.detailPenerimaanTukangPotongBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -85,14 +99,14 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Menu;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Bisque;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.Bisque;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
             this.dataGridView1.ColumnHeadersHeight = 30;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NUMBER,
@@ -285,7 +299,7 @@
             // metroLabel3
             // 
             this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(529, 169);
+            this.metroLabel3.Location = new System.Drawing.Point(529, 160);
             this.metroLabel3.Name = "metroLabel3";
             this.metroLabel3.Size = new System.Drawing.Size(65, 19);
             this.metroLabel3.TabIndex = 39;
@@ -410,7 +424,7 @@
             this.txtPICCode.CustomButton.UseSelectable = true;
             this.txtPICCode.CustomButton.Visible = false;
             this.txtPICCode.Lines = new string[0];
-            this.txtPICCode.Location = new System.Drawing.Point(625, 169);
+            this.txtPICCode.Location = new System.Drawing.Point(625, 160);
             this.txtPICCode.MaxLength = 32767;
             this.txtPICCode.Name = "txtPICCode";
             this.txtPICCode.PasswordChar = '\0';
@@ -462,14 +476,14 @@
             this.dataGridView2.AllowUserToDeleteRows = false;
             this.dataGridView2.AutoGenerateColumns = false;
             this.dataGridView2.BackgroundColor = System.Drawing.Color.LightGreen;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Aquamarine;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.Color.Aquamarine;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle18;
             this.dataGridView2.ColumnHeadersHeight = 25;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NO,
@@ -570,12 +584,109 @@
             this.btnPrint.Size = new System.Drawing.Size(61, 33);
             this.btnPrint.TabIndex = 50;
             this.btnPrint.UseVisualStyleBackColor = false;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            this.btnPrint.MouseHover += new System.EventHandler(this.btnPrint_MouseHover);
+            // 
+            // dataGridView3
+            // 
+            this.dataGridView3.AllowUserToAddRows = false;
+            this.dataGridView3.AllowUserToDeleteRows = false;
+            this.dataGridView3.AutoGenerateColumns = false;
+            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.startNumber,
+            this.noPenerimaanTukangPotongDataGridViewTextBoxColumn,
+            this.noPemotonganKainDataGridViewTextBoxColumn,
+            this.EmployeeCode,
+            this.EmployeeName,
+            this.datetimeDataGridViewTextBoxColumn,
+            this.statusDataGridViewTextBoxColumn,
+            this.idPenerimaanTukangPotongDataGridViewTextBoxColumn});
+            this.dataGridView3.DataSource = this.detailPenerimaanTukangPotongBindingSource;
+            this.dataGridView3.Location = new System.Drawing.Point(51, 270);
+            this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.ReadOnly = true;
+            this.dataGridView3.RowHeadersVisible = false;
+            this.dataGridView3.Size = new System.Drawing.Size(737, 81);
+            this.dataGridView3.TabIndex = 51;
+            this.dataGridView3.Visible = false;
+            // 
+            // detailPenerimaanTukangPotongBindingSource
+            // 
+            this.detailPenerimaanTukangPotongBindingSource.DataSource = typeof(Project.DetailPenerimaanTukangPotong);
+            // 
+            // employeeBindingSource
+            // 
+            this.employeeBindingSource.DataSource = typeof(Project.Employee);
+            // 
+            // startNumber
+            // 
+            this.startNumber.HeaderText = "No.";
+            this.startNumber.Name = "startNumber";
+            this.startNumber.ReadOnly = true;
+            this.startNumber.Width = 40;
+            // 
+            // noPenerimaanTukangPotongDataGridViewTextBoxColumn
+            // 
+            this.noPenerimaanTukangPotongDataGridViewTextBoxColumn.DataPropertyName = "noPenerimaanTukangPotong";
+            this.noPenerimaanTukangPotongDataGridViewTextBoxColumn.HeaderText = "No. Penerimaan Tukang Potong";
+            this.noPenerimaanTukangPotongDataGridViewTextBoxColumn.Name = "noPenerimaanTukangPotongDataGridViewTextBoxColumn";
+            this.noPenerimaanTukangPotongDataGridViewTextBoxColumn.ReadOnly = true;
+            this.noPenerimaanTukangPotongDataGridViewTextBoxColumn.Width = 180;
+            // 
+            // noPemotonganKainDataGridViewTextBoxColumn
+            // 
+            this.noPemotonganKainDataGridViewTextBoxColumn.DataPropertyName = "noPemotonganKain";
+            this.noPemotonganKainDataGridViewTextBoxColumn.HeaderText = "No. Pemotongan Kain";
+            this.noPemotonganKainDataGridViewTextBoxColumn.Name = "noPemotonganKainDataGridViewTextBoxColumn";
+            this.noPemotonganKainDataGridViewTextBoxColumn.ReadOnly = true;
+            this.noPemotonganKainDataGridViewTextBoxColumn.Width = 140;
+            // 
+            // EmployeeCode
+            // 
+            this.EmployeeCode.DataPropertyName = "EmployeeCode";
+            this.EmployeeCode.HeaderText = "PIC Code";
+            this.EmployeeCode.Name = "EmployeeCode";
+            this.EmployeeCode.ReadOnly = true;
+            // 
+            // EmployeeName
+            // 
+            this.EmployeeName.DataPropertyName = "EmployeeName";
+            this.EmployeeName.HeaderText = "PIC Name";
+            this.EmployeeName.Name = "EmployeeName";
+            this.EmployeeName.ReadOnly = true;
+            this.EmployeeName.Width = 140;
+            // 
+            // datetimeDataGridViewTextBoxColumn
+            // 
+            this.datetimeDataGridViewTextBoxColumn.DataPropertyName = "Date_time";
+            this.datetimeDataGridViewTextBoxColumn.HeaderText = "Date";
+            this.datetimeDataGridViewTextBoxColumn.Name = "datetimeDataGridViewTextBoxColumn";
+            this.datetimeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.datetimeDataGridViewTextBoxColumn.Width = 155;
+            // 
+            // statusDataGridViewTextBoxColumn
+            // 
+            this.statusDataGridViewTextBoxColumn.DataPropertyName = "status";
+            this.statusDataGridViewTextBoxColumn.HeaderText = "status";
+            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
+            this.statusDataGridViewTextBoxColumn.ReadOnly = true;
+            this.statusDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // idPenerimaanTukangPotongDataGridViewTextBoxColumn
+            // 
+            this.idPenerimaanTukangPotongDataGridViewTextBoxColumn.DataPropertyName = "idPenerimaanTukangPotong";
+            this.idPenerimaanTukangPotongDataGridViewTextBoxColumn.HeaderText = "idPenerimaanTukangPotong";
+            this.idPenerimaanTukangPotongDataGridViewTextBoxColumn.Name = "idPenerimaanTukangPotongDataGridViewTextBoxColumn";
+            this.idPenerimaanTukangPotongDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idPenerimaanTukangPotongDataGridViewTextBoxColumn.Visible = false;
             // 
             // PenerimaanTukangPotong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(841, 693);
+            this.Controls.Add(this.dataGridView3);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.txtIDPenerimaanTukangPotong);
@@ -605,6 +716,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.materialBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.detailPOBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.detailPenerimaanTukangPotongBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -649,5 +763,16 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idListPTPDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.BindingSource employeeBindingSource;
+        private System.Windows.Forms.BindingSource detailPenerimaanTukangPotongBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn startNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn noPenerimaanTukangPotongDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn noPemotonganKainDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EmployeeCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EmployeeName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn datetimeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idPenerimaanTukangPotongDataGridViewTextBoxColumn;
     }
 }

@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SPKSablon));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtIDSPK = new MetroFramework.Controls.MetroTextBox();
             this.btnDeleteSPKSablon = new MetroFramework.Controls.MetroTile();
             this.btnAddSPKSablon = new MetroFramework.Controls.MetroTile();
@@ -70,10 +70,22 @@
             this.idListPTPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.listPenerimaanTukangPotongBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnPrint = new System.Windows.Forms.Button();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.detailSPKBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.number = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.noSPKDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EmployeeCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EmployeeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.datetimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idSPKDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.listPenerimaanTukangPotongBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.detailSPKBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // txtIDSPK
@@ -290,14 +302,14 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Menu;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Bisque;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle25.BackColor = System.Drawing.Color.Bisque;
+            dataGridViewCellStyle25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle25.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle25;
             this.dataGridView1.ColumnHeadersHeight = 30;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NO,
@@ -396,8 +408,8 @@
             // 
             // SPKSablonStatus
             // 
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Thistle;
-            this.SPKSablonStatus.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle26.BackColor = System.Drawing.Color.Thistle;
+            this.SPKSablonStatus.DefaultCellStyle = dataGridViewCellStyle26;
             this.SPKSablonStatus.HeaderText = "SPK Sablon";
             this.SPKSablonStatus.Name = "SPKSablonStatus";
             this.SPKSablonStatus.ReadOnly = true;
@@ -405,8 +417,8 @@
             // 
             // SPKBordirStatus
             // 
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightGreen;
-            this.SPKBordirStatus.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle27.BackColor = System.Drawing.Color.LightGreen;
+            this.SPKBordirStatus.DefaultCellStyle = dataGridViewCellStyle27;
             this.SPKBordirStatus.HeaderText = "SPK Bordir";
             this.SPKBordirStatus.Name = "SPKBordirStatus";
             this.SPKBordirStatus.ReadOnly = true;
@@ -414,8 +426,8 @@
             // 
             // SPKCMTStatus
             // 
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.SPKCMTStatus.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle28.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.SPKCMTStatus.DefaultCellStyle = dataGridViewCellStyle28;
             this.SPKCMTStatus.HeaderText = "SPK CMT";
             this.SPKCMTStatus.Name = "SPKCMTStatus";
             this.SPKCMTStatus.ReadOnly = true;
@@ -500,12 +512,105 @@
             this.btnPrint.Size = new System.Drawing.Size(61, 33);
             this.btnPrint.TabIndex = 49;
             this.btnPrint.UseVisualStyleBackColor = false;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            this.btnPrint.MouseHover += new System.EventHandler(this.btnPrint_MouseHover);
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToDeleteRows = false;
+            this.dataGridView2.AutoGenerateColumns = false;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.number,
+            this.noSPKDataGridViewTextBoxColumn,
+            this.EmployeeCode,
+            this.EmployeeName,
+            this.datetimeDataGridViewTextBoxColumn,
+            this.typeDataGridViewTextBoxColumn,
+            this.statusDataGridViewTextBoxColumn,
+            this.idSPKDataGridViewTextBoxColumn});
+            this.dataGridView2.DataSource = this.detailSPKBindingSource;
+            this.dataGridView2.Location = new System.Drawing.Point(32, 345);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
+            this.dataGridView2.RowHeadersVisible = false;
+            this.dataGridView2.Size = new System.Drawing.Size(1030, 150);
+            this.dataGridView2.TabIndex = 50;
+            this.dataGridView2.Visible = false;
+            // 
+            // detailSPKBindingSource
+            // 
+            this.detailSPKBindingSource.DataSource = typeof(Project.DetailSPK);
+            // 
+            // number
+            // 
+            this.number.HeaderText = "No.";
+            this.number.Name = "number";
+            this.number.ReadOnly = true;
+            // 
+            // noSPKDataGridViewTextBoxColumn
+            // 
+            this.noSPKDataGridViewTextBoxColumn.DataPropertyName = "noSPK";
+            this.noSPKDataGridViewTextBoxColumn.HeaderText = "No. SPK Sablon";
+            this.noSPKDataGridViewTextBoxColumn.Name = "noSPKDataGridViewTextBoxColumn";
+            this.noSPKDataGridViewTextBoxColumn.ReadOnly = true;
+            this.noSPKDataGridViewTextBoxColumn.Width = 140;
+            // 
+            // EmployeeCode
+            // 
+            this.EmployeeCode.DataPropertyName = "EmployeeCode";
+            this.EmployeeCode.HeaderText = "PIC Code";
+            this.EmployeeCode.Name = "EmployeeCode";
+            this.EmployeeCode.ReadOnly = true;
+            this.EmployeeCode.Width = 130;
+            // 
+            // EmployeeName
+            // 
+            this.EmployeeName.DataPropertyName = "EmployeeName";
+            this.EmployeeName.HeaderText = "PIC Name";
+            this.EmployeeName.Name = "EmployeeName";
+            this.EmployeeName.ReadOnly = true;
+            this.EmployeeName.Width = 130;
+            // 
+            // datetimeDataGridViewTextBoxColumn
+            // 
+            this.datetimeDataGridViewTextBoxColumn.DataPropertyName = "Datetime";
+            this.datetimeDataGridViewTextBoxColumn.HeaderText = "Date";
+            this.datetimeDataGridViewTextBoxColumn.Name = "datetimeDataGridViewTextBoxColumn";
+            this.datetimeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.datetimeDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // typeDataGridViewTextBoxColumn
+            // 
+            this.typeDataGridViewTextBoxColumn.DataPropertyName = "type";
+            this.typeDataGridViewTextBoxColumn.HeaderText = "Type";
+            this.typeDataGridViewTextBoxColumn.Name = "typeDataGridViewTextBoxColumn";
+            this.typeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.typeDataGridViewTextBoxColumn.Width = 120;
+            // 
+            // statusDataGridViewTextBoxColumn
+            // 
+            this.statusDataGridViewTextBoxColumn.DataPropertyName = "status";
+            this.statusDataGridViewTextBoxColumn.HeaderText = "status";
+            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
+            this.statusDataGridViewTextBoxColumn.ReadOnly = true;
+            this.statusDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // idSPKDataGridViewTextBoxColumn
+            // 
+            this.idSPKDataGridViewTextBoxColumn.DataPropertyName = "idSPK";
+            this.idSPKDataGridViewTextBoxColumn.HeaderText = "idSPK";
+            this.idSPKDataGridViewTextBoxColumn.Name = "idSPKDataGridViewTextBoxColumn";
+            this.idSPKDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idSPKDataGridViewTextBoxColumn.Visible = false;
             // 
             // SPKSablon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1097, 684);
+            this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.txtIDSPK);
             this.Controls.Add(this.btnDeleteSPKSablon);
@@ -528,6 +633,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.listPenerimaanTukangPotongBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.detailSPKBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -571,5 +678,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn idPenerimaanTukangPotongDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idListPTPDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.BindingSource detailSPKBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn number;
+        private System.Windows.Forms.DataGridViewTextBoxColumn noSPKDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EmployeeCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EmployeeName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn datetimeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idSPKDataGridViewTextBoxColumn;
     }
 }

@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using Project.Helpers;
 using Project.Models;
 using System.Data.SqlClient;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace Project
 {
@@ -180,6 +181,15 @@ namespace Project
             }
         }
 
+        private void afterSave()
+        {
+            btnAddPenerimaanTukangPotong.Enabled = false;
+            btnEditPenerimaanTukangPotong.Enabled = false;
+            btnDeletePenerimaanTukangPotong.Enabled = false;
+            btnSavePenerimaanTukangPotong.Dispose();
+            btnExitPenerimaanTukangPotong.Location = new Point(370, 622);
+        }
+
         private void btnSavePenerimaanTukangPotong_Click(object sender, EventArgs e)
         {
             if (txtNoPenerimaanTukangPotong.Text == "")
@@ -234,7 +244,19 @@ namespace Project
                         }
 
                         MetroFramework.MetroMessageBox.Show(this, "Success! Penerimaan tukang potong for this data has been added to the database", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                        this.Close();
+
+                        afterSave();
+                        List<DetailPTPModel> LI = GenericQuery.SqlQuery<DetailPTPModel>("SELECT a.idPenerimaanTukangPotong, a.noPenerimaanTukangPotong, a.noPemotonganKain, a.Date_time, a.status, b.EmployeeID, c.EmployeeName, c.EmployeeCode FROM DetailPenerimaanTukangPotong a JOIN DetailPemotonganKain b ON a.noPemotonganKain = b.noPemotonganKain JOIN Employees c ON b.EmployeeID = c.EmployeeID WHERE a.idPenerimaanTukangPotong = '" + txtIDPenerimaanTukangPotong.Text + "'");
+                        detailPenerimaanTukangPotongBindingSource.DataSource = LI.ToList();
+                        int rowCount = dataGridView3.Rows.Count;
+                        for (int i = 0; i < rowCount; i++)
+                        {
+                            dataGridView3.Columns[0].ValueType = typeof(int);
+                            dataGridView3.Rows[i].Cells[0].Value = i + 1;
+                            dataGridView3.UpdateCellValue(0, i);
+                        }
+                        dataGridView3.Columns[5].DefaultCellStyle.Format = "dd-MM-yyyy HH:mm:ss tt";
+                        dataGridView3.Refresh();
                     }
                 }
                 catch (Exception ex)
@@ -242,6 +264,100 @@ namespace Project
                     MetroFramework.MetroMessageBox.Show(this, ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void copyAlltoClipboard()
+        {
+            dataGridView1.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
+            dataGridView1.MultiSelect = true;
+            dataGridView1.SelectAll();
+            DataObject dataObj = dataGridView1.GetClipboardContent();
+            if (dataObj != null)
+                Clipboard.SetDataObject(dataObj);
+        }
+
+        private void copyAlltoClipboard2()
+        {
+            dataGridView3.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
+            dataGridView3.MultiSelect = true;
+            dataGridView3.SelectAll();
+            DataObject dataObj = dataGridView3.GetClipboardContent();
+            if (dataObj != null)
+                Clipboard.SetDataObject(dataObj);
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.Rows.Count < 1)
+            {
+                MetroFramework.MetroMessageBox.Show(this, "List data is empty", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (dataGridView2.Rows.Count < 1)
+            {
+                MetroFramework.MetroMessageBox.Show(this, "You must save this No. Penerimaan Tukang Potong to database first!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                try
+                {
+                    int currentRow = dataGridView1.Rows.Count;
+
+                    copyAlltoClipboard2();
+                    Microsoft.Office.Interop.Excel.Application xlexcel;
+                    Microsoft.Office.Interop.Excel.Workbook xlWorkBook;
+                    Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet;
+                    object misValue = System.Reflection.Missing.Value;
+                    xlexcel = new Excel.Application();
+                    xlexcel.Visible = true;
+                    xlWorkBook = xlexcel.Workbooks.Add(misValue);
+                    xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+                    Excel.Range CR = (Excel.Range)xlWorkSheet.Cells[1, 1];
+                    CR.EntireColumn.AutoFit();
+                    CR.Select();
+                    xlWorkSheet.PasteSpecial(CR, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
+
+                    copyAlltoClipboard();
+                    object misValue2 = System.Reflection.Missing.Value;
+                    Excel.Range CR2 = (Excel.Range)xlWorkSheet.Cells[4, 1];
+                    CR2.EntireColumn.AutoFit();
+                    CR2.Select();
+                    xlWorkSheet.PasteSpecial(CR2, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
+                    Excel.Range aRange = xlWorkSheet.get_Range("A1", "M100");
+                    aRange.EntireColumn.AutoFit();
+
+                    var columnHeadingsRange = xlWorkSheet.Range[
+                    xlWorkSheet.Cells[1, 1],
+                    xlWorkSheet.Cells[1, 6]];
+                    var columnHeadingsRange2 = xlWorkSheet.Range[
+                    xlWorkSheet.Cells[4, 1],
+                    xlWorkSheet.Cells[4, 7]];
+                    var table1 = xlWorkSheet.Range[
+                    xlWorkSheet.Cells[1, 1],
+                    xlWorkSheet.Cells[2, 6]];
+                    var table2 = xlWorkSheet.Range[
+                    xlWorkSheet.Cells[4, 1],
+                    xlWorkSheet.Cells[4 + currentRow, 7]];
+                    columnHeadingsRange.Interior.Color = System.Drawing.Color.Yellow;
+                    columnHeadingsRange2.Interior.Color = System.Drawing.Color.Yellow;
+                    table1.Borders.LineStyle = Excel.XlLineStyle.xlContinuous;
+                    table1.Borders.Weight = Excel.XlBorderWeight.xlThin;
+                    table2.Borders.LineStyle = Excel.XlLineStyle.xlContinuous;
+                    table2.Borders.Weight = Excel.XlBorderWeight.xlThin;
+                }
+                catch (Exception ex)
+                {
+                    MetroFramework.MetroMessageBox.Show(this, ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void btnPrint_MouseHover(object sender, EventArgs e)
+        {
+            ToolTip ToolTip1 = new ToolTip();
+            ToolTip1.AutoPopDelay = 3000;
+            ToolTip1.InitialDelay = 1000;
+            ToolTip1.ReshowDelay = 500;
+            ToolTip1.SetToolTip(this.btnPrint, "Print current data in table");
         }
     }
 }

@@ -128,7 +128,7 @@
             // 
             this.btnSaveWarna.ActiveControl = null;
             this.btnSaveWarna.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSaveWarna.Location = new System.Drawing.Point(457, 78);
+            this.btnSaveWarna.Location = new System.Drawing.Point(349, 78);
             this.btnSaveWarna.Name = "btnSaveWarna";
             this.btnSaveWarna.Size = new System.Drawing.Size(88, 67);
             this.btnSaveWarna.TabIndex = 6;
@@ -144,7 +144,7 @@
             // 
             this.btnDeleteWarna.ActiveControl = null;
             this.btnDeleteWarna.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDeleteWarna.Location = new System.Drawing.Point(350, 78);
+            this.btnDeleteWarna.Location = new System.Drawing.Point(455, 78);
             this.btnDeleteWarna.Name = "btnDeleteWarna";
             this.btnDeleteWarna.Size = new System.Drawing.Size(87, 67);
             this.btnDeleteWarna.TabIndex = 5;
@@ -154,6 +154,7 @@
             this.btnDeleteWarna.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnDeleteWarna.UseSelectable = true;
             this.btnDeleteWarna.UseTileImage = true;
+            this.btnDeleteWarna.Visible = false;
             this.btnDeleteWarna.Click += new System.EventHandler(this.btnDeleteWarna_Click);
             // 
             // btnEditWarna

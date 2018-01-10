@@ -30,20 +30,20 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Supplier));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnSaveSup = new MetroFramework.Controls.MetroTile();
             this.btnDeleteSup = new MetroFramework.Controls.MetroTile();
             this.btnEditSup = new MetroFramework.Controls.MetroTile();
             this.btnAddSup = new MetroFramework.Controls.MetroTile();
             this.btnRefreshSup = new MetroFramework.Controls.MetroTile();
             this.supplierDataGrid = new System.Windows.Forms.DataGridView();
-            this.supplierBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.supplierBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.supplierDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -52,7 +52,7 @@
             // 
             this.btnSaveSup.ActiveControl = null;
             this.btnSaveSup.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSaveSup.Location = new System.Drawing.Point(461, 82);
+            this.btnSaveSup.Location = new System.Drawing.Point(353, 82);
             this.btnSaveSup.Name = "btnSaveSup";
             this.btnSaveSup.Size = new System.Drawing.Size(88, 67);
             this.btnSaveSup.TabIndex = 17;
@@ -68,7 +68,7 @@
             // 
             this.btnDeleteSup.ActiveControl = null;
             this.btnDeleteSup.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDeleteSup.Location = new System.Drawing.Point(354, 82);
+            this.btnDeleteSup.Location = new System.Drawing.Point(461, 82);
             this.btnDeleteSup.Name = "btnDeleteSup";
             this.btnDeleteSup.Size = new System.Drawing.Size(87, 67);
             this.btnDeleteSup.TabIndex = 16;
@@ -78,6 +78,7 @@
             this.btnDeleteSup.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnDeleteSup.UseSelectable = true;
             this.btnDeleteSup.UseTileImage = true;
+            this.btnDeleteSup.Visible = false;
             this.btnDeleteSup.Click += new System.EventHandler(this.btnDeleteSup_Click);
             // 
             // btnEditSup
@@ -134,14 +135,14 @@
             this.supplierDataGrid.AllowUserToDeleteRows = false;
             this.supplierDataGrid.AutoGenerateColumns = false;
             this.supplierDataGrid.BackgroundColor = System.Drawing.SystemColors.Menu;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Bisque;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.supplierDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Bisque;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.supplierDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.supplierDataGrid.ColumnHeadersHeight = 30;
             this.supplierDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NO,
@@ -163,10 +164,6 @@
             this.supplierDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.supplierDataGrid.Size = new System.Drawing.Size(617, 305);
             this.supplierDataGrid.TabIndex = 12;
-            // 
-            // supplierBindingSource
-            // 
-            this.supplierBindingSource.DataSource = typeof(Project.IndomodaSupplier);
             // 
             // NO
             // 
@@ -212,6 +209,10 @@
             this.dataGridViewTextBoxColumn1.HeaderText = "Supplier ID";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // supplierBindingSource
+            // 
+            this.supplierBindingSource.DataSource = typeof(Project.IndomodaSupplier);
             // 
             // Supplier
             // 

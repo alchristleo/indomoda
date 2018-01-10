@@ -102,7 +102,7 @@ namespace Project
 
             if (tempBordir.Count > 0)
             {
-                for (int i = 0; i < tempSablon.Count; i++)
+                for (int i = 0; i < tempBordir.Count; i++)
                 {
                     labels3.Add(new MetroFramework.Controls.MetroLabel());
                     System.Drawing.Point productLabelsPoint = new System.Drawing.Point(0, (i * 40) + (tempSablon.Count * 40));
