@@ -17,6 +17,37 @@ namespace Project
             InitializeComponent();
         }
 
+        private void dataGridSetup()
+        {
+            int rowCount = dataGridView1.Rows.Count;
+            for (int i = 0; i < rowCount; i++)
+            {
+                string status = dataGridView1.Rows[i].Cells[9].Value.ToString();
+                dataGridView1.Columns[0].ValueType = typeof(int);
+                dataGridView1.Rows[i].Cells[0].Value = i + 1;
+                dataGridView1.UpdateCellValue(0, i);
+
+                if (status == "True")
+                {
+                    dataGridView1.Rows[i].Cells[8].Style.BackColor = System.Drawing.Color.LightGreen;
+                    dataGridView1.Rows[i].Cells[8].Value = "Sudah diterima";
+                    dataGridView1.UpdateCellValue(8, i);
+                }
+                else
+                {
+                    dataGridView1.Rows[i].Cells[8].Style.BackColor = System.Drawing.Color.LightPink;
+                    dataGridView1.Rows[i].Cells[8].Value = "Belum diterima";
+                    dataGridView1.UpdateCellValue(8, i);
+                }
+            }
+
+            dataGridView1.Columns[5].DefaultCellStyle.Format = "C";
+            dataGridView1.Columns[5].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("id-ID");
+            dataGridView1.Columns[6].DefaultCellStyle.Format = "C";
+            dataGridView1.Columns[6].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("id-ID");
+            dataGridView1.Columns[7].DefaultCellStyle.Format = "dd-MM-yyyy HH:mm:ss tt";
+        }
+
         private void fetchButton_Click(object sender, EventArgs e)
         {
             string date1 = startDate.Value.ToString("yyyy-MM-dd 00:00:00");
@@ -24,13 +55,16 @@ namespace Project
             DateTime StartDate = startDate.Value;
             DateTime EndDate = endDate.Value;
             int diff = EndDate.Date.Subtract(StartDate.Date).Days;
+            txtSearch.Clear();
 
             if (StartDate.ToShortDateString() == EndDate.ToShortDateString())
             {
+                dataGridView1.Rows.Clear();
                 MetroFramework.MetroMessageBox.Show(this, "Start Date and End Date can not be same", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (diff < 1)
             {
+                dataGridView1.Rows.Clear();
                 MetroFramework.MetroMessageBox.Show(this, "Start Date can not be greated than End Date", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
@@ -39,33 +73,7 @@ namespace Project
                 List<LaporanStokKain> withRange = GenericQuery.SqlQuery<LaporanStokKain>("SELECT a.DetailPOID, a.PONumber, a.MaterialID, a.ColorID, a.DetailQty, a.DetailPrice, a.DetailTotal, a.DetailStatus, b.Date_time FROM DetailPO a JOIN PreOrderKains b ON a.PONumber = b.PONumber WHERE b.Date_time BETWEEN '" + date1 + "' AND '" + date2 + "'");
                 detailPOBindingSource.DataSource = withRange.ToList();
 
-                int rowCount = dataGridView1.Rows.Count;
-                for (int i = 0; i < rowCount; i++)
-                {
-                    string status = dataGridView1.Rows[i].Cells[9].Value.ToString();
-                    dataGridView1.Columns[0].ValueType = typeof(int);
-                    dataGridView1.Rows[i].Cells[0].Value = i + 1;
-                    dataGridView1.UpdateCellValue(0, i);
-
-                    if (status == "True")
-                    {
-                        dataGridView1.Rows[i].Cells[8].Style.BackColor = System.Drawing.Color.LightGreen;
-                        dataGridView1.Rows[i].Cells[8].Value = "Sudah diterima";
-                        dataGridView1.UpdateCellValue(8, i);
-                    }
-                    else
-                    {
-                        dataGridView1.Rows[i].Cells[8].Style.BackColor = System.Drawing.Color.LightPink;
-                        dataGridView1.Rows[i].Cells[8].Value = "Belum diterima";
-                        dataGridView1.UpdateCellValue(8, i);
-                    }
-                }
-
-                dataGridView1.Columns[5].DefaultCellStyle.Format = "C";
-                dataGridView1.Columns[5].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("id-ID");
-                dataGridView1.Columns[6].DefaultCellStyle.Format = "C";
-                dataGridView1.Columns[6].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("id-ID");
-                dataGridView1.Columns[7].DefaultCellStyle.Format = "dd-MM-yyyy HH:mm:ss tt";
+                dataGridSetup();
             }
         }
 
@@ -78,32 +86,7 @@ namespace Project
                 List<LaporanStokKain> all = GenericQuery.SqlQuery<LaporanStokKain>("SELECT a.DetailPOID, a.PONumber, a.MaterialID, a.ColorID, a.DetailQty, a.DetailPrice, a.DetailTotal, a.DetailStatus, b.Date_time FROM DetailPO a JOIN PreOrderKains b ON a.PONumber = b.PONumber");
                 detailPOBindingSource.DataSource = all.ToList();
 
-                int rowCount = dataGridView1.Rows.Count;
-                for (int i = 0; i < rowCount; i++)
-                {
-                    string status = dataGridView1.Rows[i].Cells[9].Value.ToString();
-                    dataGridView1.Columns[0].ValueType = typeof(int);
-                    dataGridView1.Rows[i].Cells[0].Value = i + 1;
-                    dataGridView1.UpdateCellValue(0, i);
-
-                    if (status == "True")
-                    {
-                        dataGridView1.Rows[i].Cells[8].Style.BackColor = System.Drawing.Color.LightGreen;
-                        dataGridView1.Rows[i].Cells[8].Value = "Sudah diterima";
-                        dataGridView1.UpdateCellValue(8, i);
-                    }
-                    else
-                    {
-                        dataGridView1.Rows[i].Cells[8].Style.BackColor = System.Drawing.Color.LightPink;
-                        dataGridView1.Rows[i].Cells[8].Value = "Belum diterima";
-                        dataGridView1.UpdateCellValue(8, i);
-                    }
-                }
-                dataGridView1.Columns[5].DefaultCellStyle.Format = "C";
-                dataGridView1.Columns[5].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("id-ID");
-                dataGridView1.Columns[6].DefaultCellStyle.Format = "C";
-                dataGridView1.Columns[6].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("id-ID");
-                dataGridView1.Columns[7].DefaultCellStyle.Format = "dd-MM-yyyy HH:mm:ss tt";
+                dataGridSetup();
             }
         }
 
@@ -131,66 +114,15 @@ namespace Project
                 List<LaporanStokKain> all = GenericQuery.SqlQuery<LaporanStokKain>("SELECT a.DetailPOID, a.PONumber, a.MaterialID, a.ColorID, a.DetailQty, a.DetailPrice, a.DetailTotal, a.DetailStatus, b.Date_time FROM DetailPO a JOIN PreOrderKains b ON a.PONumber = b.PONumber");
                 detailPOBindingSource.DataSource = all.ToList();
 
-                int rowCount = dataGridView1.Rows.Count;
-                for (int i = 0; i < rowCount; i++)
-                {
-                    string status = dataGridView1.Rows[i].Cells[9].Value.ToString();
-                    dataGridView1.Columns[0].ValueType = typeof(int);
-                    dataGridView1.Rows[i].Cells[0].Value = i + 1;
-                    dataGridView1.UpdateCellValue(0, i);
-
-                    if (status == "True")
-                    {
-                        dataGridView1.Rows[i].Cells[8].Style.BackColor = System.Drawing.Color.LightGreen;
-                        dataGridView1.Rows[i].Cells[8].Value = "Sudah diterima";
-                        dataGridView1.UpdateCellValue(8, i);
-                    }
-                    else
-                    {
-                        dataGridView1.Rows[i].Cells[8].Style.BackColor = System.Drawing.Color.LightPink;
-                        dataGridView1.Rows[i].Cells[8].Value = "Belum diterima";
-                        dataGridView1.UpdateCellValue(8, i);
-                    }
-                }
-                dataGridView1.Columns[5].DefaultCellStyle.Format = "C";
-                dataGridView1.Columns[5].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("id-ID");
-                dataGridView1.Columns[6].DefaultCellStyle.Format = "C";
-                dataGridView1.Columns[6].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("id-ID");
-                dataGridView1.Columns[7].DefaultCellStyle.Format = "dd-MM-yyyy HH:mm:ss tt";
+                dataGridSetup();
             }
             else
             {
                 dataGridView1.Rows.Clear();
-                List<LaporanStokKain> withRange = GenericQuery.SqlQuery<LaporanStokKain>("SELECT a.DetailPOID, a.PONumber, a.MaterialID, a.ColorID, a.DetailQty, a.DetailPrice, a.DetailTotal, a.DetailStatus, b.Date_time FROM DetailPO a JOIN PreOrderKains b ON a.PONumber = b.PONumber WHERE a.PONumber = '" + query + "'");
+                List<LaporanStokKain> withRange = GenericQuery.SqlQuery<LaporanStokKain>("SELECT a.DetailPOID, a.PONumber, a.MaterialID, a.ColorID, a.DetailQty, a.DetailPrice, a.DetailTotal, a.DetailStatus, b.Date_time FROM DetailPO a JOIN PreOrderKains b ON a.PONumber = b.PONumber WHERE a.PONumber LIKE '%"+query+"%'");
                 detailPOBindingSource.DataSource = withRange.ToList();
 
-                int rowCount = dataGridView1.Rows.Count;
-                for (int i = 0; i < rowCount; i++)
-                {
-                    string status = dataGridView1.Rows[i].Cells[9].Value.ToString();
-                    dataGridView1.Columns[0].ValueType = typeof(int);
-                    dataGridView1.Rows[i].Cells[0].Value = i + 1;
-                    dataGridView1.UpdateCellValue(0, i);
-
-                    if (status == "True")
-                    {
-                        dataGridView1.Rows[i].Cells[8].Style.BackColor = System.Drawing.Color.LightGreen;
-                        dataGridView1.Rows[i].Cells[8].Value = "Sudah diterima";
-                        dataGridView1.UpdateCellValue(8, i);
-                    }
-                    else
-                    {
-                        dataGridView1.Rows[i].Cells[8].Style.BackColor = System.Drawing.Color.LightPink;
-                        dataGridView1.Rows[i].Cells[8].Value = "Belum diterima";
-                        dataGridView1.UpdateCellValue(8, i);
-                    }
-                }
-
-                dataGridView1.Columns[5].DefaultCellStyle.Format = "C";
-                dataGridView1.Columns[5].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("id-ID");
-                dataGridView1.Columns[6].DefaultCellStyle.Format = "C";
-                dataGridView1.Columns[6].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("id-ID");
-                dataGridView1.Columns[7].DefaultCellStyle.Format = "dd-MM-yyyy HH:mm:ss tt";
+                dataGridSetup();
             }
         }
 
@@ -285,32 +217,7 @@ namespace Project
             List<LaporanStokKain> all = GenericQuery.SqlQuery<LaporanStokKain>("SELECT a.DetailPOID, a.PONumber, a.MaterialID, a.ColorID, a.DetailQty, a.DetailPrice, a.DetailTotal, a.DetailStatus, b.Date_time FROM DetailPO a JOIN PreOrderKains b ON a.PONumber = b.PONumber");
             detailPOBindingSource.DataSource = all.ToList();
 
-            int rowCount = dataGridView1.Rows.Count;
-            for (int i = 0; i < rowCount; i++)
-            {
-                string status = dataGridView1.Rows[i].Cells[9].Value.ToString();
-                dataGridView1.Columns[0].ValueType = typeof(int);
-                dataGridView1.Rows[i].Cells[0].Value = i + 1;
-                dataGridView1.UpdateCellValue(0, i);
-
-                if (status == "True")
-                {
-                    dataGridView1.Rows[i].Cells[8].Style.BackColor = System.Drawing.Color.LightGreen;
-                    dataGridView1.Rows[i].Cells[8].Value = "Sudah diterima";
-                    dataGridView1.UpdateCellValue(8, i);
-                }
-                else
-                {
-                    dataGridView1.Rows[i].Cells[8].Style.BackColor = System.Drawing.Color.LightPink;
-                    dataGridView1.Rows[i].Cells[8].Value = "Belum diterima";
-                    dataGridView1.UpdateCellValue(8, i);
-                }
-            }
-            dataGridView1.Columns[5].DefaultCellStyle.Format = "C";
-            dataGridView1.Columns[5].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("id-ID");
-            dataGridView1.Columns[6].DefaultCellStyle.Format = "C";
-            dataGridView1.Columns[6].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("id-ID");
-            dataGridView1.Columns[7].DefaultCellStyle.Format = "dd-MM-yyyy HH:mm:ss tt";
+            dataGridSetup();
         }
 
         private void btnReset_MouseHover(object sender, EventArgs e)

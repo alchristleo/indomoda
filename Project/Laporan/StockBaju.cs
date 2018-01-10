@@ -19,6 +19,33 @@ namespace Project
             InitializeComponent();
         }
 
+        private void dataGridSetup()
+        {
+            int rowCount = dataGridView1.Rows.Count;
+            for (int i = 0; i < rowCount; i++)
+            {
+                double stock = Convert.ToDouble(dataGridView1.Rows[i].Cells[8].Value.ToString());
+                dataGridView1.Columns[0].ValueType = typeof(int);
+                dataGridView1.Rows[i].Cells[0].Value = i + 1;
+                dataGridView1.UpdateCellValue(0, i);
+
+                if (stock == 0)
+                {
+                    dataGridView1.Columns[7].ValueType = typeof(string);
+                    dataGridView1.Rows[i].Cells[7].Style.BackColor = System.Drawing.Color.LightPink;
+                    dataGridView1.Rows[i].Cells[7].Value = "Stock habis";
+                    dataGridView1.UpdateCellValue(7, i);
+                }
+                else
+                {
+                    dataGridView1.Columns[7].ValueType = typeof(double);
+                    dataGridView1.Rows[i].Cells[7].Value = stock;
+                    dataGridView1.UpdateCellValue(7, i);
+                }
+            }
+            dataGridView1.Columns[6].DefaultCellStyle.Format = "dd-MM-yyyy HH:mm:ss tt";
+        }
+
         private void searchButton_Click(object sender, EventArgs e)
         {
             string query = txtSearch.Text;
@@ -29,45 +56,15 @@ namespace Project
                 List<ListBajuJadi> lbj = GenericQuery.SqlQuery<ListBajuJadi>("SELECT a.idBJ, a.noSeri, a.model, a.ColorID, a.merk, a.ukuran, a.stock, a.Datetime FROM ListBajuJadi a");
                 listBajuJadiBindingSource.DataSource = lbj.ToList();
 
-                int rowCount = dataGridView1.Rows.Count;
-                for (int i = 0; i < rowCount; i++)
-                {
-                    double stock = Convert.ToDouble(dataGridView1.Rows[i].Cells[7].Value.ToString());
-                    dataGridView1.Columns[0].ValueType = typeof(int);
-                    dataGridView1.Rows[i].Cells[0].Value = i + 1;
-                    dataGridView1.UpdateCellValue(0, i);
-
-                    if (stock == 0)
-                    {
-                        dataGridView1.Rows[i].Cells[7].Style.BackColor = System.Drawing.Color.LightPink;
-                        dataGridView1.Rows[i].Cells[7].Value = "Stock habis";
-                        dataGridView1.UpdateCellValue(7, i);
-                    }
-                }
-                dataGridView1.Columns[6].DefaultCellStyle.Format = "dd-MM-yyyy HH:mm:ss tt";
+                dataGridSetup();
             }
             else
             {
                 dataGridView1.Rows.Clear();
-                List<ListBajuJadi> lbj = GenericQuery.SqlQuery<ListBajuJadi>("SELECT a.idBJ, a.noSeri, a.model, a.ColorID, a.merk, a.ukuran, a.stock, a.Datetime FROM ListBajuJadi a WHERE a.noSeri = '" + query + "'");
+                List<ListBajuJadi> lbj = GenericQuery.SqlQuery<ListBajuJadi>("SELECT a.idBJ, a.noSeri, a.model, a.ColorID, a.merk, a.ukuran, a.stock, a.Datetime FROM ListBajuJadi a WHERE a.noSeri LIKE '%"+query+"%'");
                 listBajuJadiBindingSource.DataSource = lbj.ToList();
 
-                int rowCount = dataGridView1.Rows.Count;
-                for (int i = 0; i < rowCount; i++)
-                {
-                    double stock = Convert.ToDouble(dataGridView1.Rows[i].Cells[7].Value.ToString());
-                    dataGridView1.Columns[0].ValueType = typeof(int);
-                    dataGridView1.Rows[i].Cells[0].Value = i + 1;
-                    dataGridView1.UpdateCellValue(0, i);
-
-                    if (stock == 0)
-                    {
-                        dataGridView1.Rows[i].Cells[7].Style.BackColor = System.Drawing.Color.LightPink;
-                        dataGridView1.Rows[i].Cells[7].Value = "Stock habis";
-                        dataGridView1.UpdateCellValue(7, i);
-                    }
-                }
-                dataGridView1.Columns[6].DefaultCellStyle.Format = "dd-MM-yyyy HH:mm:ss tt";
+                dataGridSetup();
             }
         }
 
@@ -100,22 +97,7 @@ namespace Project
                 List<ListBajuJadi> lbj = GenericQuery.SqlQuery<ListBajuJadi>("SELECT a.idBJ, a.noSeri, a.model, a.ColorID, a.merk, a.ukuran, a.stock, a.Datetime FROM ListBajuJadi a");
                 listBajuJadiBindingSource.DataSource = lbj.ToList();
 
-                int rowCount = dataGridView1.Rows.Count;
-                for (int i = 0; i < rowCount; i++)
-                {
-                    double stock = Convert.ToDouble(dataGridView1.Rows[i].Cells[7].Value.ToString());
-                    dataGridView1.Columns[0].ValueType = typeof(int);
-                    dataGridView1.Rows[i].Cells[0].Value = i + 1;
-                    dataGridView1.UpdateCellValue(0, i);
-
-                    if (stock == 0)
-                    {
-                        dataGridView1.Rows[i].Cells[7].Style.BackColor = System.Drawing.Color.LightPink;
-                        dataGridView1.Rows[i].Cells[7].Value = "Stock habis";
-                        dataGridView1.UpdateCellValue(7, i);
-                    }
-                }
-                dataGridView1.Columns[6].DefaultCellStyle.Format = "dd-MM-yyyy HH:mm:ss tt";
+                dataGridSetup();
             }
         }
 
@@ -126,13 +108,16 @@ namespace Project
             DateTime StartDate = startDate.Value;
             DateTime EndDate = endDate.Value;
             int diff = EndDate.Date.Subtract(StartDate.Date).Days;
+            txtSearch.Clear();
 
             if (StartDate.ToShortDateString() == EndDate.ToShortDateString())
             {
+                dataGridView1.Rows.Clear();
                 MetroFramework.MetroMessageBox.Show(this, "Start Date and End Date can not be same", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (diff < 1)
             {
+                dataGridView1.Rows.Clear();
                 MetroFramework.MetroMessageBox.Show(this, "Start Date can not be greated than End Date", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
@@ -141,22 +126,7 @@ namespace Project
                 List<ListBajuJadi> withRange = GenericQuery.SqlQuery<ListBajuJadi>("SELECT a.idBJ, a.noSeri, a.model, a.ColorID, a.merk, a.ukuran, a.stock, a.Datetime FROM ListBajuJadi a WHERE a.Datetime BETWEEN '" + date1 + "' AND '" + date2 + "'");
                 listBajuJadiBindingSource.DataSource = withRange.ToList();
 
-                int rowCount = dataGridView1.Rows.Count;
-                for (int i = 0; i < rowCount; i++)
-                {
-                    double stock = Convert.ToDouble(dataGridView1.Rows[i].Cells[7].Value.ToString());
-                    dataGridView1.Columns[0].ValueType = typeof(int);
-                    dataGridView1.Rows[i].Cells[0].Value = i + 1;
-                    dataGridView1.UpdateCellValue(0, i);
-
-                    if (stock == 0)
-                    {
-                        dataGridView1.Rows[i].Cells[7].Style.BackColor = System.Drawing.Color.LightPink;
-                        dataGridView1.Rows[i].Cells[7].Value = "Stock habis";
-                        dataGridView1.UpdateCellValue(7, i);
-                    }
-                }
-                dataGridView1.Columns[6].DefaultCellStyle.Format = "dd-MM-yyyy HH:mm:ss tt";
+                dataGridSetup();
             }
         }
 
@@ -229,22 +199,7 @@ namespace Project
             List<ListBajuJadi> lbj = GenericQuery.SqlQuery<ListBajuJadi>("SELECT a.idBJ, a.noSeri, a.model, a.ColorID, a.merk, a.ukuran, a.stock, a.Datetime FROM ListBajuJadi a");
             listBajuJadiBindingSource.DataSource = lbj.ToList();
 
-            int rowCount = dataGridView1.Rows.Count;
-            for (int i = 0; i < rowCount; i++)
-            {
-                double stock = Convert.ToDouble(dataGridView1.Rows[i].Cells[7].Value.ToString());
-                dataGridView1.Columns[0].ValueType = typeof(int);
-                dataGridView1.Rows[i].Cells[0].Value = i + 1;
-                dataGridView1.UpdateCellValue(0, i);
-
-                if (stock == 0)
-                {
-                    dataGridView1.Rows[i].Cells[7].Style.BackColor = System.Drawing.Color.LightPink;
-                    dataGridView1.Rows[i].Cells[7].Value = "Stock habis";
-                    dataGridView1.UpdateCellValue(7, i);
-                }
-            }
-            dataGridView1.Columns[6].DefaultCellStyle.Format = "dd-MM-yyyy HH:mm:ss tt";
+            dataGridSetup();
         }
 
         private void btnReset_MouseHover(object sender, EventArgs e)
