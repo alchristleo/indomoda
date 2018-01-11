@@ -145,6 +145,22 @@ namespace Project
             Close();
         }
 
+        private void afterSave()
+        {
+            txtNOTransaksi.Enabled = false;
+            txtNOTransaksi.ReadOnly = true;
+            cboCustomerName.Enabled = false;
+            lblCustomerCode.Enabled = false;
+            lblCustomerAddress.Enabled = false;
+            lblGrandTotal.Enabled = false;
+            btnAddPB.Enabled = false;
+            btnEditPB.Enabled = false;
+            btnDeletePB.Enabled = false;
+            btnCountGTPB.Enabled = false;
+            btnSave.Dispose();
+            btnExit.Location = new Point(410, 635);
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (txtNOTransaksi.Text == "")
@@ -209,7 +225,8 @@ namespace Project
                             listPenjualanBajuBindingSource.EndEdit();
 
                             MetroFramework.MetroMessageBox.Show(this, "Success! Transaction has been added to the database", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                            this.Close();
+
+                            afterSave();
                         }
                         catch (Exception ex)
                         {

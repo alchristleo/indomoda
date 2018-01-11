@@ -49,31 +49,33 @@ namespace Project
 
         private void btnUpdateStatusPemotongan_Click(object sender, EventArgs e)
         {
-            string f = dataGridView1[1, dataGridView1.CurrentRow.Index].Value.ToString();
-            var dbb =  GenericQuery.SqlQuerySingle<QuantityRecord>("SELECT qr.id, qr.noSeri, qr.qtyAwalSablon, qr.qtySablonBS, qr.qtySablonHilang, qr.qtyAwalBordir, qr.qtyBordirBS, qr.qtyBordirHilang, qr.qtyAwalCMT, qr.qtyCMTBS, qr.qtyCMTHilang FROM QuantityRecord qr WHERE qr.noSeri = '" + f + "'");
-
             if (dataGridView1.Rows.Count < 1)
             {
                 MetroFramework.MetroMessageBox.Show(this, "List No. Seri is empty!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (dbb.qtyAwalSablon == null && dbb.qtyAwalBordir == null)
-            {
-                MetroFramework.MetroMessageBox.Show(this, "No. Seri ini belum dimasukkan kedalam Penerimaan Sablon maupun Bordir!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
             else
             {
-                int idSPK = Convert.ToInt32(cboNoSpkCMTPenerimaan.SelectedValue.ToString());
-                var dba = GenericQuery.SqlQuerySingle<DetailSPK>("SELECT sp.idSPK, sp.noSPK, sp.EmployeeID, sp.Datetime, sp.type, sp.status FROM DetailSPK sp WHERE sp.idSPK = '" + idSPK + "'");
-                string noSPK = dba.noSPK;
-                CS = noSPK;
-                CR = dataGridView1.CurrentRow.Index;
-                UpdateCMT uq = new UpdateCMT();
-                int currentIDPTP = Convert.ToInt32(dataGridView1[17, dataGridView1.CurrentRow.Index].Value.ToString());
-                listPTPQR = GenericQuery.SqlQuery<QuantityRecordPTPModel>("SELECT df.idListPTP, df.idPenerimaanTukangPotong, df.noSeri, df.model, df.ColorID, df.merk, df.ukuran, df.quantity, df.statusSPKSablon, df.statusSPKBordir, df.statusSPKCMT, df.statusNoSeri, df.idSPKSablon, df.idSPKBordir, df.idSPKCMT, qr.id, qr.qtyAwalSablon, qr.qtySablonBS, qr.qtySablonHilang, qr.qtyAwalBordir, qr.qtyBordirBS, qr.qtyBordirHilang, qr.qtyAwalCMT, qr.qtyCMTBS, qr.qtyCMTHilang FROM ListPenerimaanTukangPotong df JOIN QuantityRecord qr on df.noSeri = qr.noSeri WHERE df.idListPTP = '" + currentIDPTP + "'");
-                uq.setDPO(ref listPTPQR);
-                uq.setDGV(ref dataGridView1);
-                uq.setBS(ref listPenerimaanTukangPotongBindingSource);
-                uq.Show();
+                string f = dataGridView1[1, dataGridView1.CurrentRow.Index].Value.ToString();
+                var dbb = GenericQuery.SqlQuerySingle<QuantityRecord>("SELECT qr.id, qr.noSeri, qr.qtyAwalSablon, qr.qtySablonBS, qr.qtySablonHilang, qr.qtyAwalBordir, qr.qtyBordirBS, qr.qtyBordirHilang, qr.qtyAwalCMT, qr.qtyCMTBS, qr.qtyCMTHilang FROM QuantityRecord qr WHERE qr.noSeri = '" + f + "'");
+                if (dbb.qtyAwalSablon == null && dbb.qtyAwalBordir == null)
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "No. Seri ini belum dimasukkan kedalam Penerimaan Sablon maupun Bordir!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    int idSPK = Convert.ToInt32(cboNoSpkCMTPenerimaan.SelectedValue.ToString());
+                    var dba = GenericQuery.SqlQuerySingle<DetailSPK>("SELECT sp.idSPK, sp.noSPK, sp.EmployeeID, sp.Datetime, sp.type, sp.status FROM DetailSPK sp WHERE sp.idSPK = '" + idSPK + "'");
+                    string noSPK = dba.noSPK;
+                    CS = noSPK;
+                    CR = dataGridView1.CurrentRow.Index;
+                    UpdateCMT uq = new UpdateCMT();
+                    int currentIDPTP = Convert.ToInt32(dataGridView1[17, dataGridView1.CurrentRow.Index].Value.ToString());
+                    listPTPQR = GenericQuery.SqlQuery<QuantityRecordPTPModel>("SELECT df.idListPTP, df.idPenerimaanTukangPotong, df.noSeri, df.model, df.ColorID, df.merk, df.ukuran, df.quantity, df.statusSPKSablon, df.statusSPKBordir, df.statusSPKCMT, df.statusNoSeri, df.idSPKSablon, df.idSPKBordir, df.idSPKCMT, qr.id, qr.qtyAwalSablon, qr.qtySablonBS, qr.qtySablonHilang, qr.qtyAwalBordir, qr.qtyBordirBS, qr.qtyBordirHilang, qr.qtyAwalCMT, qr.qtyCMTBS, qr.qtyCMTHilang FROM ListPenerimaanTukangPotong df JOIN QuantityRecord qr on df.noSeri = qr.noSeri WHERE df.idListPTP = '" + currentIDPTP + "'");
+                    uq.setDPO(ref listPTPQR);
+                    uq.setDGV(ref dataGridView1);
+                    uq.setBS(ref listPenerimaanTukangPotongBindingSource);
+                    uq.Show();
+                }
             }
         }
 

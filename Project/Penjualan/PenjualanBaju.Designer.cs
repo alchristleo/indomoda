@@ -50,14 +50,11 @@
             this.lblCustomerCode = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.listPenjualanBajuBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.colorBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.metroDateTime1 = new MetroFramework.Controls.MetroDateTime();
             this.NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.noSeriDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colorIDDataGridViewComboBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.colorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.merkDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ukuranDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.qtyLPBDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,10 +63,13 @@
             this.statusLPBDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.idLPBDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idDPBDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.listPenjualanBajuBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.metroDateTime1 = new MetroFramework.Controls.MetroDateTime();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.listPenjualanBajuBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listPenjualanBajuBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCountGTPB
@@ -421,32 +421,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(846, 242);
             this.dataGridView1.TabIndex = 35;
             // 
-            // listPenjualanBajuBindingSource
-            // 
-            this.listPenjualanBajuBindingSource.DataSource = typeof(Project.ListPenjualanBaju);
-            // 
-            // colorBindingSource
-            // 
-            this.colorBindingSource.DataSource = typeof(Project.Color);
-            // 
-            // metroLabel1
-            // 
-            this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(635, 49);
-            this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(36, 19);
-            this.metroLabel1.TabIndex = 46;
-            this.metroLabel1.Text = "Date";
-            // 
-            // metroDateTime1
-            // 
-            this.metroDateTime1.CausesValidation = false;
-            this.metroDateTime1.Location = new System.Drawing.Point(672, 45);
-            this.metroDateTime1.MinimumSize = new System.Drawing.Size(0, 29);
-            this.metroDateTime1.Name = "metroDateTime1";
-            this.metroDateTime1.Size = new System.Drawing.Size(213, 29);
-            this.metroDateTime1.TabIndex = 45;
-            // 
             // NO
             // 
             this.NO.HeaderText = "No.";
@@ -480,6 +454,10 @@
             this.colorIDDataGridViewComboBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.colorIDDataGridViewComboBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.colorIDDataGridViewComboBoxColumn.ValueMember = "ColorID";
+            // 
+            // colorBindingSource
+            // 
+            this.colorBindingSource.DataSource = typeof(Project.Color);
             // 
             // merkDataGridViewTextBoxColumn
             // 
@@ -540,6 +518,28 @@
             this.idDPBDataGridViewTextBoxColumn.ReadOnly = true;
             this.idDPBDataGridViewTextBoxColumn.Visible = false;
             // 
+            // listPenjualanBajuBindingSource
+            // 
+            this.listPenjualanBajuBindingSource.DataSource = typeof(Project.ListPenjualanBaju);
+            // 
+            // metroLabel1
+            // 
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.Location = new System.Drawing.Point(635, 49);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(36, 19);
+            this.metroLabel1.TabIndex = 46;
+            this.metroLabel1.Text = "Date";
+            // 
+            // metroDateTime1
+            // 
+            this.metroDateTime1.CausesValidation = false;
+            this.metroDateTime1.Location = new System.Drawing.Point(672, 45);
+            this.metroDateTime1.MinimumSize = new System.Drawing.Size(0, 29);
+            this.metroDateTime1.Name = "metroDateTime1";
+            this.metroDateTime1.Size = new System.Drawing.Size(213, 29);
+            this.metroDateTime1.TabIndex = 45;
+            // 
             // PenjualanBaju
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -570,8 +570,8 @@
             this.Load += new System.EventHandler(this.PenjualanBaju_Load);
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.listPenjualanBajuBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listPenjualanBajuBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
