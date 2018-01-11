@@ -72,61 +72,63 @@ namespace Project
 
         private void btnResetPenerimaanBordir_Click(object sender, EventArgs e)
         {
-            string noSeri = dataGridView1[1, dataGridView1.CurrentRow.Index].Value.ToString();
-            var dba = GenericQuery.SqlQuerySingle<QuantityRecord>("SELECT qr.id, qr.noSeri, qr.qtyAwalSablon, qr.qtySablonBS, qr.qtySablonHilang, qr.qtyAwalBordir, qr.qtyBordirBS, qr.qtyBordirHilang, qr.qtyAwalCMT, qr.qtyCMTBS, qr.qtyCMTHilang FROM QuantityRecord qr WHERE qr.noSeri = '" + noSeri + "'");
-
             if (dataGridView1.Rows.Count < 1)
             {
                 MetroFramework.MetroMessageBox.Show(this, "List penerimaan tukang potong is empty!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (dataGridView1.Rows.Count > 0 && (dba.qtyBordirBS == null && dba.qtyBordirHilang == null))
-            {
-                MetroFramework.MetroMessageBox.Show(this, "You can't reset this quantity, quantity havent been updated", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
             else
             {
-                if (MetroFramework.MetroMessageBox.Show(this, "Are you sure want to reset this quantity?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
+                string noSeri = dataGridView1[1, dataGridView1.CurrentRow.Index].Value.ToString();
+                var dba = GenericQuery.SqlQuerySingle<QuantityRecord>("SELECT qr.id, qr.noSeri, qr.qtyAwalSablon, qr.qtySablonBS, qr.qtySablonHilang, qr.qtyAwalBordir, qr.qtyBordirBS, qr.qtyBordirHilang, qr.qtyAwalCMT, qr.qtyCMTBS, qr.qtyCMTHilang FROM QuantityRecord qr WHERE qr.noSeri = '" + noSeri + "'");
+                if (dataGridView1.Rows.Count > 0 && (dba.qtyBordirBS == null && dba.qtyBordirHilang == null))
                 {
-                    using (indomodaEntities db = new indomodaEntities())
+                    MetroFramework.MetroMessageBox.Show(this, "You can't reset this quantity, quantity havent been updated", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    if (MetroFramework.MetroMessageBox.Show(this, "Are you sure want to reset this quantity?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
                     {
-                        try
+                        using (indomodaEntities db = new indomodaEntities())
                         {
-                            int currentIDPTP = Convert.ToInt32(dataGridView1[17, dataGridView1.CurrentRow.Index].Value.ToString());
-                            int a = GenericQuery.ExecSQLCommand("UPDATE QuantityRecord SET qtyAwalBordir = @qtyAwalBordir, qtyBordirBS = @qtyBordirBS, qtyBordirHilang = @qtyBordirHilang WHERE noSeri = '" + noSeri + "'", new[] {
+                            try
+                            {
+                                int currentIDPTP = Convert.ToInt32(dataGridView1[17, dataGridView1.CurrentRow.Index].Value.ToString());
+                                int a = GenericQuery.ExecSQLCommand("UPDATE QuantityRecord SET qtyAwalBordir = @qtyAwalBordir, qtyBordirBS = @qtyBordirBS, qtyBordirHilang = @qtyBordirHilang WHERE noSeri = '" + noSeri + "'", new[] {
                                 new SqlParameter("@qtyAwalBordir", DBNull.Value),
                                 new SqlParameter("@qtyBordirBS", DBNull.Value),
                                 new SqlParameter("@qtyBordirHilang", DBNull.Value)
                             });
-                            db.SaveChangesAsync().Wait();
+                                db.SaveChangesAsync().Wait();
 
-                            double quantity = Convert.ToDouble(dba.qtyAwalBordir.ToString());
-                            int b = GenericQuery.ExecSQLCommand("UPDATE ListPenerimaanTukangPotong SET quantity = @quantity WHERE noSeri = '" + noSeri + "'", new[] {
+                                double quantity = Convert.ToDouble(dba.qtyAwalBordir.ToString());
+                                int b = GenericQuery.ExecSQLCommand("UPDATE ListPenerimaanTukangPotong SET quantity = @quantity WHERE noSeri = '" + noSeri + "'", new[] {
                                 new SqlParameter("@quantity", quantity)
                             });
-                            db.SaveChangesAsync().Wait();
+                                db.SaveChangesAsync().Wait();
 
-                            string setType = "bordir";
-                            int c = GenericQuery.ExecSQLCommand("DELETE FROM DetailPenerimaanSBC WHERE noSeri = '" + noSeri + "' AND type = '" + setType + "'");
-                            db.SaveChangesAsync().Wait();
+                                string setType = "bordir";
+                                int c = GenericQuery.ExecSQLCommand("DELETE FROM DetailPenerimaanSBC WHERE noSeri = '" + noSeri + "' AND type = '" + setType + "'");
+                                db.SaveChangesAsync().Wait();
 
-                            dataGridView1.Refresh();
-                            dataGridView1.Columns[7].ValueType = typeof(string);
-                            dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[7].Value = "-";
-                            dataGridView1.UpdateCellValue(7, dataGridView1.CurrentRow.Index);
+                                dataGridView1.Refresh();
+                                dataGridView1.Columns[7].ValueType = typeof(string);
+                                dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[7].Value = "-";
+                                dataGridView1.UpdateCellValue(7, dataGridView1.CurrentRow.Index);
 
-                            dataGridView1.Columns[8].ValueType = typeof(string);
-                            dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[8].Value = "-";
-                            dataGridView1.UpdateCellValue(8, dataGridView1.CurrentRow.Index);
+                                dataGridView1.Columns[8].ValueType = typeof(string);
+                                dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[8].Value = "-";
+                                dataGridView1.UpdateCellValue(8, dataGridView1.CurrentRow.Index);
 
-                            dataGridView1.Columns[9].ValueType = typeof(string);
-                            dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[9].Value = "-";
-                            dataGridView1.UpdateCellValue(9, dataGridView1.CurrentRow.Index);
-                            dataGridView1.Refresh();
-                            MetroFramework.MetroMessageBox.Show(this, "Success! This quantity has been reset", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                        }
-                        catch (Exception ex)
-                        {
-                            MetroFramework.MetroMessageBox.Show(this, ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                dataGridView1.Columns[9].ValueType = typeof(string);
+                                dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[9].Value = "-";
+                                dataGridView1.UpdateCellValue(9, dataGridView1.CurrentRow.Index);
+                                dataGridView1.Refresh();
+                                MetroFramework.MetroMessageBox.Show(this, "Success! This quantity has been reset", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                            }
+                            catch (Exception ex)
+                            {
+                                MetroFramework.MetroMessageBox.Show(this, ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
                     }
                 }
@@ -261,120 +263,133 @@ namespace Project
         {
             if (cboNoSpkBordirPenerimaan.Items.Count > 0 && cboNoSpkBordirPenerimaan.Text != "")
             {
-                cboNoSpkBordirPenerimaan.Refresh();
-                int idSPK = Convert.ToInt32(cboNoSpkBordirPenerimaan.SelectedValue.ToString());
-                List<QuantityRecordPTPModel> listPTP = GenericQuery.SqlQuery<QuantityRecordPTPModel>("SELECT df.idListPTP, df.idPenerimaanTukangPotong, df.noSeri, df.model, df.ColorID, df.merk, df.ukuran, df.quantity, df.statusSPKSablon, df.statusSPKBordir, df.statusSPKCMT, df.statusNoSeri, df.idSPKSablon, df.idSPKBordir, df.idSPKCMT, qr.id, qr.qtyAwalSablon, qr.qtySablonBS, qr.qtySablonHilang, qr.qtyAwalBordir, qr.qtyBordirBS, qr.qtyBordirHilang, qr.qtyAwalCMT, qr.qtyCMTBS, qr.qtyCMTHilang FROM ListPenerimaanTukangPotong df JOIN QuantityRecord qr on df.noSeri = qr.noSeri WHERE df.idSPKBordir = '" + idSPK + "' AND df.statusNoSeri = '" + 0 + "'");
-                listPenerimaanTukangPotongBindingSource.DataSource = listPTP.ToList();
-
-                int rowCount = dataGridView1.Rows.Count;
-                for (int i = 0; i < rowCount; i++)
+                try
                 {
-                    string sablon = dataGridView1.Rows[i].Cells[13].Value.ToString();
-                    string bordir = dataGridView1.Rows[i].Cells[14].Value.ToString();
-                    string cmt = dataGridView1.Rows[i].Cells[15].Value.ToString();
-                    string noSeri = dataGridView1.Rows[i].Cells[1].Value.ToString();
-                    var dba = GenericQuery.SqlQuerySingle<QuantityRecord>("SELECT qr.id, qr.noSeri, qr.qtyAwalSablon, qr.qtySablonBS, qr.qtySablonHilang, qr.qtyAwalBordir, qr.qtyBordirBS, qr.qtyBordirHilang, qr.qtyAwalCMT, qr.qtyCMTBS, qr.qtyCMTHilang FROM QuantityRecord qr WHERE qr.noSeri = '" + noSeri + "'");
-                    double? x = dba.qtyAwalBordir;
-                    double? y = dba.qtyBordirHilang;
-                    double? z = dba.qtyBordirBS;
-                    var qtyAwal = x ?? x;
-                    var qtyHilang = y ?? y;
-                    var qtyBS = z ?? z;
-                    var qtyAkhir = qtyAwal - (qtyHilang + qtyBS);
+                    cboNoSpkBordirPenerimaan.Refresh();
+                    int idSPK = Convert.ToInt32(cboNoSpkBordirPenerimaan.SelectedValue.ToString());
+                    List<QuantityRecordPTPModel> listPTP = GenericQuery.SqlQuery<QuantityRecordPTPModel>("SELECT df.idListPTP, df.idPenerimaanTukangPotong, df.noSeri, df.model, df.ColorID, df.merk, df.ukuran, df.quantity, df.statusSPKSablon, df.statusSPKBordir, df.statusSPKCMT, df.statusNoSeri, df.idSPKSablon, df.idSPKBordir, df.idSPKCMT, qr.id, qr.qtyAwalSablon, qr.qtySablonBS, qr.qtySablonHilang, qr.qtyAwalBordir, qr.qtyBordirBS, qr.qtyBordirHilang, qr.qtyAwalCMT, qr.qtyCMTBS, qr.qtyCMTHilang FROM ListPenerimaanTukangPotong df JOIN QuantityRecord qr on df.noSeri = qr.noSeri WHERE df.idSPKBordir = '" + idSPK + "' AND df.statusNoSeri = '" + 0 + "'");
+                    listPenerimaanTukangPotongBindingSource.DataSource = listPTP.ToList();
 
-                    if (sablon == "True")
+                    int rowCount = dataGridView1.Rows.Count;
+                    for (int i = 0; i < rowCount; i++)
                     {
-                        dataGridView1.Columns[10].ValueType = typeof(String);
-                        dataGridView1.Rows[i].Cells[10].Value = "Sudah di sablon";
-                        dataGridView1.UpdateCellValue(10, i);
-                    }
-                    else
-                    {
+                        string sablon = dataGridView1.Rows[i].Cells[13].Value.ToString();
+                        string bordir = dataGridView1.Rows[i].Cells[14].Value.ToString();
+                        string cmt = dataGridView1.Rows[i].Cells[15].Value.ToString();
+                        string noSeri = dataGridView1.Rows[i].Cells[1].Value.ToString();
+                        int idSPKBordir = Convert.ToInt32(dataGridView1.Rows[i].Cells[18].Value.ToString());
+                        var dba = GenericQuery.SqlQuerySingle<QRIDnoSeriModel>("SELECT qr.id, qr.noSeri, qr.qtyAwalSablon, qr.qtySablonBS, qr.qtySablonHilang, qr.qtyAwalBordir, qr.qtyBordirBS, qr.qtyBordirHilang, qr.qtyAwalCMT, qr.qtyCMTBS, qr.qtyCMTHilang, c.idSPKBordir FROM QuantityRecord qr JOIN ListPenerimaanTukangPotong c ON qr.noSeri = c.noSeri WHERE qr.noSeri = '" + noSeri + "' AND c.idSPKBordir = '" + idSPKBordir + "'");
+                        double? x = dba.qtyAwalBordir;
+                        double? y = dba.qtyBordirHilang;
+                        double? z = dba.qtyBordirBS;
+                        var qtyAwal = x ?? x;
+                        var qtyHilang = y ?? y;
+                        var qtyBS = z ?? z;
+                        var qtyAkhir = qtyAwal - (qtyHilang + qtyBS);
 
-                        dataGridView1.Columns[10].ValueType = typeof(String);
-                        dataGridView1.Rows[i].Cells[10].Value = "-";
-                        dataGridView1.UpdateCellValue(10, i);
-                    }
+                        if (sablon == "True")
+                        {
+                            dataGridView1.Columns[10].ValueType = typeof(String);
+                            dataGridView1.Rows[i].Cells[10].Value = "Sudah di sablon";
+                            dataGridView1.UpdateCellValue(10, i);
+                        }
+                        else
+                        {
 
-                    if (bordir == "True")
-                    {
-                        dataGridView1.Columns[11].ValueType = typeof(String);
-                        dataGridView1.Rows[i].Cells[11].Value = "Sudah di bordir";
-                        dataGridView1.UpdateCellValue(11, i);
-                    }
-                    else
-                    {
+                            dataGridView1.Columns[10].ValueType = typeof(String);
+                            dataGridView1.Rows[i].Cells[10].Value = "-";
+                            dataGridView1.UpdateCellValue(10, i);
+                        }
 
-                        dataGridView1.Columns[11].ValueType = typeof(String);
-                        dataGridView1.Rows[i].Cells[11].Value = "-";
-                        dataGridView1.UpdateCellValue(11, i);
-                    }
+                        if (bordir == "True")
+                        {
+                            dataGridView1.Columns[11].ValueType = typeof(String);
+                            dataGridView1.Rows[i].Cells[11].Value = "Sudah di bordir";
+                            dataGridView1.UpdateCellValue(11, i);
+                        }
+                        else
+                        {
 
-                    if (cmt == "True")
-                    {
-                        dataGridView1.Columns[12].ValueType = typeof(String);
-                        dataGridView1.Rows[i].Cells[12].Value = "Sudah di CMT";
-                        dataGridView1.UpdateCellValue(12, i);
-                    }
-                    else
-                    {
+                            dataGridView1.Columns[11].ValueType = typeof(String);
+                            dataGridView1.Rows[i].Cells[11].Value = "-";
+                            dataGridView1.UpdateCellValue(11, i);
+                        }
 
-                        dataGridView1.Columns[12].ValueType = typeof(String);
-                        dataGridView1.Rows[i].Cells[12].Value = "-";
-                        dataGridView1.UpdateCellValue(12, i);
-                    }
+                        if (cmt == "True")
+                        {
+                            dataGridView1.Columns[12].ValueType = typeof(String);
+                            dataGridView1.Rows[i].Cells[12].Value = "Sudah di CMT";
+                            dataGridView1.UpdateCellValue(12, i);
+                        }
+                        else
+                        {
 
-                    if (!String.IsNullOrEmpty(qtyAwal.ToString()))
-                    {
-                        dataGridView1.Columns[6].ValueType = typeof(double);
-                        dataGridView1.Rows[i].Cells[6].Value = qtyAwal;
-                        dataGridView1.UpdateCellValue(6, i);
-                    }
+                            dataGridView1.Columns[12].ValueType = typeof(String);
+                            dataGridView1.Rows[i].Cells[12].Value = "-";
+                            dataGridView1.UpdateCellValue(12, i);
+                        }
 
-                    dataGridView1.Columns[0].ValueType = typeof(int);
-                    dataGridView1.Rows[i].Cells[0].Value = i + 1;
-                    dataGridView1.UpdateCellValue(0, i);
+                        if (!String.IsNullOrEmpty(qtyAwal.ToString()))
+                        {
+                            dataGridView1.Columns[6].ValueType = typeof(double);
+                            dataGridView1.Rows[i].Cells[6].Value = qtyAwal;
+                            dataGridView1.UpdateCellValue(6, i);
+                        }
 
-                    if (qtyHilang == null)
-                    {
-                        dataGridView1.Columns[7].ValueType = typeof(string);
-                        dataGridView1.Rows[i].Cells[7].Value = "-";
-                        dataGridView1.UpdateCellValue(7, i);
-                    }
-                    else
-                    {
-                        dataGridView1.Columns[7].ValueType = typeof(double);
-                        dataGridView1.Rows[i].Cells[7].Value = qtyHilang;
-                        dataGridView1.UpdateCellValue(7, i);
-                    }
+                        dataGridView1.Columns[0].ValueType = typeof(int);
+                        dataGridView1.Rows[i].Cells[0].Value = i + 1;
+                        dataGridView1.UpdateCellValue(0, i);
 
-                    if (qtyBS == null)
-                    {
-                        dataGridView1.Columns[8].ValueType = typeof(string);
-                        dataGridView1.Rows[i].Cells[8].Value = "-";
-                        dataGridView1.UpdateCellValue(8, i);
-                    }
-                    else
-                    {
-                        dataGridView1.Columns[8].ValueType = typeof(double);
-                        dataGridView1.Rows[i].Cells[8].Value = qtyBS;
-                        dataGridView1.UpdateCellValue(8, i);
-                    }
+                        if (qtyHilang == null)
+                        {
+                            dataGridView1.Columns[7].ValueType = typeof(string);
+                            dataGridView1.Rows[i].Cells[7].Value = "-";
+                            dataGridView1.UpdateCellValue(7, i);
+                        }
+                        else
+                        {
+                            dataGridView1.Columns[7].ValueType = typeof(double);
+                            dataGridView1.Rows[i].Cells[7].Value = qtyHilang;
+                            dataGridView1.UpdateCellValue(7, i);
+                        }
 
-                    if (qtyAkhir == null)
-                    {
-                        dataGridView1.Columns[9].ValueType = typeof(string);
-                        dataGridView1.Rows[i].Cells[9].Value = "-";
-                        dataGridView1.UpdateCellValue(9, i);
+                        if (qtyBS == null)
+                        {
+                            dataGridView1.Columns[8].ValueType = typeof(string);
+                            dataGridView1.Rows[i].Cells[8].Value = "-";
+                            dataGridView1.UpdateCellValue(8, i);
+                        }
+                        else
+                        {
+                            dataGridView1.Columns[8].ValueType = typeof(double);
+                            dataGridView1.Rows[i].Cells[8].Value = qtyBS;
+                            dataGridView1.UpdateCellValue(8, i);
+                        }
+
+                        if (qtyAkhir == null)
+                        {
+                            dataGridView1.Columns[9].ValueType = typeof(string);
+                            dataGridView1.Rows[i].Cells[9].Value = "-";
+                            dataGridView1.UpdateCellValue(9, i);
+                        }
+                        else
+                        {
+                            dataGridView1.Columns[9].ValueType = typeof(double);
+                            dataGridView1.Rows[i].Cells[9].Value = qtyAkhir;
+                            dataGridView1.UpdateCellValue(9, i);
+                        }
                     }
-                    else
-                    {
-                        dataGridView1.Columns[9].ValueType = typeof(double);
-                        dataGridView1.Rows[i].Cells[9].Value = qtyAkhir;
-                        dataGridView1.UpdateCellValue(9, i);
-                    }
+                    dataGridView1.Refresh();
+
+                    var dbb = GenericQuery.SqlQuerySingle<DetailSPK>("SELECT a.idSPK, a.noSPK, a.EmployeeID, a.Datetime, a.type, a.status FROM DetailSPK a WHERE a.idSPK = '" + idSPK + "'");
+                    cboPicPenerimaanBordir.SelectedValue = dbb.EmployeeID;
+                    var dbc = GenericQuery.SqlQuerySingle<Employee>("SELECT e.EmployeeID, e.EmployeeName, e.EmployeeCode, e.EmployeeEmail, e.EmployeePhone, e.EmployeePosition from Employees e WHERE e.EmployeeID = '" + cboPicPenerimaanBordir.SelectedValue + "'");
+                    txtPICCodePenerimaan.Text = dbc.EmployeeCode.ToString();
                 }
-                dataGridView1.Refresh();
+                catch (Exception ex)
+                {
+                    MetroFramework.MetroMessageBox.Show(this, ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 

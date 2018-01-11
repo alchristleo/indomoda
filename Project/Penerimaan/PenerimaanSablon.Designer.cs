@@ -29,30 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.noSeriDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.modelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colorIDDataGridViewComboBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.colorBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.merkDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ukuranDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qtyRusak = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qtyBS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qtyAkhir = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SPKSablonStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SPKBordirStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SPKCMTStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusSPKSablonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusSPKBordirDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusSPKCMTDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusNoSeriDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idListPTPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.listPenerimaanTukangPotongBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
@@ -70,6 +55,25 @@
             this.btnSavePenerimaanSablon = new MetroFramework.Controls.MetroButton();
             this.btnUpdateStatusPemotongan = new MetroFramework.Controls.MetroTile();
             this.btnResetPenerimaanSablon = new MetroFramework.Controls.MetroTile();
+            this.NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.noSeriDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.modelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colorIDDataGridViewComboBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.merkDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ukuranDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtyRusak = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtyBS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtyAkhir = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SPKSablonStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SPKBordirStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SPKCMTStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusSPKSablonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusSPKBordirDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusSPKCMTDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusNoSeriDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idListPTPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idSPKSablon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.listPenerimaanTukangPotongBindingSource)).BeginInit();
@@ -83,14 +87,14 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Menu;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Bisque;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.Bisque;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridView1.ColumnHeadersHeight = 30;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NO,
@@ -110,7 +114,8 @@
             this.statusSPKBordirDataGridViewTextBoxColumn,
             this.statusSPKCMTDataGridViewTextBoxColumn,
             this.statusNoSeriDataGridViewTextBoxColumn,
-            this.idListPTPDataGridViewTextBoxColumn});
+            this.idListPTPDataGridViewTextBoxColumn,
+            this.idSPKSablon});
             this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dataGridView1.DataSource = this.listPenerimaanTukangPotongBindingSource;
             this.dataGridView1.EnableHeadersVisualStyles = false;
@@ -125,154 +130,9 @@
             this.dataGridView1.Size = new System.Drawing.Size(1306, 255);
             this.dataGridView1.TabIndex = 5;
             // 
-            // NO
-            // 
-            this.NO.HeaderText = "No.";
-            this.NO.Name = "NO";
-            this.NO.ReadOnly = true;
-            this.NO.Width = 40;
-            // 
-            // noSeriDataGridViewTextBoxColumn
-            // 
-            this.noSeriDataGridViewTextBoxColumn.DataPropertyName = "noSeri";
-            this.noSeriDataGridViewTextBoxColumn.HeaderText = "No Seri";
-            this.noSeriDataGridViewTextBoxColumn.Name = "noSeriDataGridViewTextBoxColumn";
-            this.noSeriDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // modelDataGridViewTextBoxColumn
-            // 
-            this.modelDataGridViewTextBoxColumn.DataPropertyName = "model";
-            this.modelDataGridViewTextBoxColumn.HeaderText = "Model";
-            this.modelDataGridViewTextBoxColumn.Name = "modelDataGridViewTextBoxColumn";
-            this.modelDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // colorIDDataGridViewComboBoxColumn
-            // 
-            this.colorIDDataGridViewComboBoxColumn.DataPropertyName = "ColorID";
-            this.colorIDDataGridViewComboBoxColumn.DataSource = this.colorBindingSource;
-            this.colorIDDataGridViewComboBoxColumn.DisplayMember = "ColorName";
-            this.colorIDDataGridViewComboBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.colorIDDataGridViewComboBoxColumn.HeaderText = "Color Name";
-            this.colorIDDataGridViewComboBoxColumn.Name = "colorIDDataGridViewComboBoxColumn";
-            this.colorIDDataGridViewComboBoxColumn.ReadOnly = true;
-            this.colorIDDataGridViewComboBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colorIDDataGridViewComboBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.colorIDDataGridViewComboBoxColumn.ValueMember = "ColorID";
-            // 
             // colorBindingSource
             // 
             this.colorBindingSource.DataSource = typeof(Project.Color);
-            // 
-            // merkDataGridViewTextBoxColumn
-            // 
-            this.merkDataGridViewTextBoxColumn.DataPropertyName = "merk";
-            this.merkDataGridViewTextBoxColumn.HeaderText = "Merk";
-            this.merkDataGridViewTextBoxColumn.Name = "merkDataGridViewTextBoxColumn";
-            this.merkDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // ukuranDataGridViewTextBoxColumn
-            // 
-            this.ukuranDataGridViewTextBoxColumn.DataPropertyName = "ukuran";
-            this.ukuranDataGridViewTextBoxColumn.HeaderText = "Ukuran";
-            this.ukuranDataGridViewTextBoxColumn.Name = "ukuranDataGridViewTextBoxColumn";
-            this.ukuranDataGridViewTextBoxColumn.ReadOnly = true;
-            this.ukuranDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // quantityDataGridViewTextBoxColumn
-            // 
-            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "quantity";
-            this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity Awal (pcs)";
-            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
-            this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
-            this.quantityDataGridViewTextBoxColumn.Width = 130;
-            // 
-            // qtyRusak
-            // 
-            this.qtyRusak.HeaderText = "Barang Rusak (pcs)";
-            this.qtyRusak.Name = "qtyRusak";
-            this.qtyRusak.ReadOnly = true;
-            this.qtyRusak.Width = 120;
-            this.qtyRusak.DefaultCellStyle.BackColor = System.Drawing.Color.Pink;
-            // 
-            // qtyBS
-            // 
-            this.qtyBS.HeaderText = "Barang BS (pcs) ";
-            this.qtyBS.Name = "qtyBS";
-            this.qtyBS.ReadOnly = true;
-            this.qtyBS.Width = 120;
-            this.qtyBS.DefaultCellStyle.BackColor = System.Drawing.Color.LightPink;
-            // 
-            // qtyAkhir
-            // 
-            this.qtyAkhir.HeaderText = "Quantity Akhir (pcs)";
-            this.qtyAkhir.Name = "qtyAkhir";
-            this.qtyAkhir.ReadOnly = true;
-            this.qtyAkhir.Width = 120;
-            this.qtyAkhir.DefaultCellStyle.BackColor = System.Drawing.Color.Plum;
-            // 
-            // SPKSablonStatus
-            // 
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Thistle;
-            this.SPKSablonStatus.DefaultCellStyle = dataGridViewCellStyle2;
-            this.SPKSablonStatus.HeaderText = "SPK Sablon";
-            this.SPKSablonStatus.Name = "SPKSablonStatus";
-            this.SPKSablonStatus.ReadOnly = true;
-            // 
-            // SPKBordirStatus
-            // 
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightGreen;
-            this.SPKBordirStatus.DefaultCellStyle = dataGridViewCellStyle3;
-            this.SPKBordirStatus.HeaderText = "SPK Bordir";
-            this.SPKBordirStatus.Name = "SPKBordirStatus";
-            this.SPKBordirStatus.ReadOnly = true;
-            // 
-            // SPKCMTStatus
-            // 
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.SPKCMTStatus.DefaultCellStyle = dataGridViewCellStyle4;
-            this.SPKCMTStatus.HeaderText = "SPK CMT";
-            this.SPKCMTStatus.Name = "SPKCMTStatus";
-            this.SPKCMTStatus.ReadOnly = true;
-            // 
-            // statusSPKSablonDataGridViewTextBoxColumn
-            // 
-            this.statusSPKSablonDataGridViewTextBoxColumn.DataPropertyName = "statusSPKSablon";
-            this.statusSPKSablonDataGridViewTextBoxColumn.HeaderText = "statusSPKSablon";
-            this.statusSPKSablonDataGridViewTextBoxColumn.Name = "statusSPKSablonDataGridViewTextBoxColumn";
-            this.statusSPKSablonDataGridViewTextBoxColumn.ReadOnly = true;
-            this.statusSPKSablonDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // statusSPKBordirDataGridViewTextBoxColumn
-            // 
-            this.statusSPKBordirDataGridViewTextBoxColumn.DataPropertyName = "statusSPKBordir";
-            this.statusSPKBordirDataGridViewTextBoxColumn.HeaderText = "statusSPKBordir";
-            this.statusSPKBordirDataGridViewTextBoxColumn.Name = "statusSPKBordirDataGridViewTextBoxColumn";
-            this.statusSPKBordirDataGridViewTextBoxColumn.ReadOnly = true;
-            this.statusSPKBordirDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // statusSPKCMTDataGridViewTextBoxColumn
-            // 
-            this.statusSPKCMTDataGridViewTextBoxColumn.DataPropertyName = "statusSPKCMT";
-            this.statusSPKCMTDataGridViewTextBoxColumn.HeaderText = "statusSPKCMT";
-            this.statusSPKCMTDataGridViewTextBoxColumn.Name = "statusSPKCMTDataGridViewTextBoxColumn";
-            this.statusSPKCMTDataGridViewTextBoxColumn.ReadOnly = true;
-            this.statusSPKCMTDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // statusNoSeriDataGridViewTextBoxColumn
-            // 
-            this.statusNoSeriDataGridViewTextBoxColumn.DataPropertyName = "statusNoSeri";
-            this.statusNoSeriDataGridViewTextBoxColumn.HeaderText = "statusNoSeri";
-            this.statusNoSeriDataGridViewTextBoxColumn.Name = "statusNoSeriDataGridViewTextBoxColumn";
-            this.statusNoSeriDataGridViewTextBoxColumn.ReadOnly = true;
-            this.statusNoSeriDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // idListPTPDataGridViewTextBoxColumn
-            // 
-            this.idListPTPDataGridViewTextBoxColumn.DataPropertyName = "idListPTP";
-            this.idListPTPDataGridViewTextBoxColumn.HeaderText = "idListPTP";
-            this.idListPTPDataGridViewTextBoxColumn.Name = "idListPTPDataGridViewTextBoxColumn";
-            this.idListPTPDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idListPTPDataGridViewTextBoxColumn.Visible = false;
             // 
             // listPenerimaanTukangPotongBindingSource
             // 
@@ -376,7 +236,9 @@
             // 
             this.cboPicPenerimaanSablon.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cboPicPenerimaanSablon.DataSource = this.employeeBindingSource;
+            this.cboPicPenerimaanSablon.DisplayFocus = true;
             this.cboPicPenerimaanSablon.DisplayMember = "EmployeeName";
+            this.cboPicPenerimaanSablon.Enabled = false;
             this.cboPicPenerimaanSablon.FormattingEnabled = true;
             this.cboPicPenerimaanSablon.ItemHeight = 23;
             this.cboPicPenerimaanSablon.Location = new System.Drawing.Point(176, 145);
@@ -410,6 +272,7 @@
             this.txtPICCodePenerimaan.MaxLength = 32767;
             this.txtPICCodePenerimaan.Name = "txtPICCodePenerimaan";
             this.txtPICCodePenerimaan.PasswordChar = '\0';
+            this.txtPICCodePenerimaan.ReadOnly = true;
             this.txtPICCodePenerimaan.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtPICCodePenerimaan.SelectedText = "";
             this.txtPICCodePenerimaan.SelectionLength = 0;
@@ -483,6 +346,162 @@
             this.btnResetPenerimaanSablon.UseTileImage = true;
             this.btnResetPenerimaanSablon.Click += new System.EventHandler(this.btnResetPenerimaanSablon_Click);
             // 
+            // NO
+            // 
+            this.NO.HeaderText = "No.";
+            this.NO.Name = "NO";
+            this.NO.ReadOnly = true;
+            this.NO.Width = 40;
+            // 
+            // noSeriDataGridViewTextBoxColumn
+            // 
+            this.noSeriDataGridViewTextBoxColumn.DataPropertyName = "noSeri";
+            this.noSeriDataGridViewTextBoxColumn.HeaderText = "No Seri";
+            this.noSeriDataGridViewTextBoxColumn.Name = "noSeriDataGridViewTextBoxColumn";
+            this.noSeriDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // modelDataGridViewTextBoxColumn
+            // 
+            this.modelDataGridViewTextBoxColumn.DataPropertyName = "model";
+            this.modelDataGridViewTextBoxColumn.HeaderText = "Model";
+            this.modelDataGridViewTextBoxColumn.Name = "modelDataGridViewTextBoxColumn";
+            this.modelDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // colorIDDataGridViewComboBoxColumn
+            // 
+            this.colorIDDataGridViewComboBoxColumn.DataPropertyName = "ColorID";
+            this.colorIDDataGridViewComboBoxColumn.DataSource = this.colorBindingSource;
+            this.colorIDDataGridViewComboBoxColumn.DisplayMember = "ColorName";
+            this.colorIDDataGridViewComboBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.colorIDDataGridViewComboBoxColumn.HeaderText = "Color Name";
+            this.colorIDDataGridViewComboBoxColumn.Name = "colorIDDataGridViewComboBoxColumn";
+            this.colorIDDataGridViewComboBoxColumn.ReadOnly = true;
+            this.colorIDDataGridViewComboBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colorIDDataGridViewComboBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.colorIDDataGridViewComboBoxColumn.ValueMember = "ColorID";
+            // 
+            // merkDataGridViewTextBoxColumn
+            // 
+            this.merkDataGridViewTextBoxColumn.DataPropertyName = "merk";
+            this.merkDataGridViewTextBoxColumn.HeaderText = "Merk";
+            this.merkDataGridViewTextBoxColumn.Name = "merkDataGridViewTextBoxColumn";
+            this.merkDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // ukuranDataGridViewTextBoxColumn
+            // 
+            this.ukuranDataGridViewTextBoxColumn.DataPropertyName = "ukuran";
+            this.ukuranDataGridViewTextBoxColumn.HeaderText = "Ukuran";
+            this.ukuranDataGridViewTextBoxColumn.Name = "ukuranDataGridViewTextBoxColumn";
+            this.ukuranDataGridViewTextBoxColumn.ReadOnly = true;
+            this.ukuranDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // quantityDataGridViewTextBoxColumn
+            // 
+            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "quantity";
+            this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity Awal (pcs)";
+            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
+            this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
+            this.quantityDataGridViewTextBoxColumn.Width = 130;
+            // 
+            // qtyRusak
+            // 
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.Pink;
+            this.qtyRusak.DefaultCellStyle = dataGridViewCellStyle9;
+            this.qtyRusak.HeaderText = "Barang Rusak (pcs)";
+            this.qtyRusak.Name = "qtyRusak";
+            this.qtyRusak.ReadOnly = true;
+            this.qtyRusak.Width = 120;
+            // 
+            // qtyBS
+            // 
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.LightPink;
+            this.qtyBS.DefaultCellStyle = dataGridViewCellStyle10;
+            this.qtyBS.HeaderText = "Barang BS (pcs) ";
+            this.qtyBS.Name = "qtyBS";
+            this.qtyBS.ReadOnly = true;
+            this.qtyBS.Width = 120;
+            // 
+            // qtyAkhir
+            // 
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.Plum;
+            this.qtyAkhir.DefaultCellStyle = dataGridViewCellStyle11;
+            this.qtyAkhir.HeaderText = "Quantity Akhir (pcs)";
+            this.qtyAkhir.Name = "qtyAkhir";
+            this.qtyAkhir.ReadOnly = true;
+            this.qtyAkhir.Width = 120;
+            // 
+            // SPKSablonStatus
+            // 
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.Thistle;
+            this.SPKSablonStatus.DefaultCellStyle = dataGridViewCellStyle12;
+            this.SPKSablonStatus.HeaderText = "SPK Sablon";
+            this.SPKSablonStatus.Name = "SPKSablonStatus";
+            this.SPKSablonStatus.ReadOnly = true;
+            // 
+            // SPKBordirStatus
+            // 
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.LightGreen;
+            this.SPKBordirStatus.DefaultCellStyle = dataGridViewCellStyle13;
+            this.SPKBordirStatus.HeaderText = "SPK Bordir";
+            this.SPKBordirStatus.Name = "SPKBordirStatus";
+            this.SPKBordirStatus.ReadOnly = true;
+            // 
+            // SPKCMTStatus
+            // 
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.SPKCMTStatus.DefaultCellStyle = dataGridViewCellStyle14;
+            this.SPKCMTStatus.HeaderText = "SPK CMT";
+            this.SPKCMTStatus.Name = "SPKCMTStatus";
+            this.SPKCMTStatus.ReadOnly = true;
+            // 
+            // statusSPKSablonDataGridViewTextBoxColumn
+            // 
+            this.statusSPKSablonDataGridViewTextBoxColumn.DataPropertyName = "statusSPKSablon";
+            this.statusSPKSablonDataGridViewTextBoxColumn.HeaderText = "statusSPKSablon";
+            this.statusSPKSablonDataGridViewTextBoxColumn.Name = "statusSPKSablonDataGridViewTextBoxColumn";
+            this.statusSPKSablonDataGridViewTextBoxColumn.ReadOnly = true;
+            this.statusSPKSablonDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // statusSPKBordirDataGridViewTextBoxColumn
+            // 
+            this.statusSPKBordirDataGridViewTextBoxColumn.DataPropertyName = "statusSPKBordir";
+            this.statusSPKBordirDataGridViewTextBoxColumn.HeaderText = "statusSPKBordir";
+            this.statusSPKBordirDataGridViewTextBoxColumn.Name = "statusSPKBordirDataGridViewTextBoxColumn";
+            this.statusSPKBordirDataGridViewTextBoxColumn.ReadOnly = true;
+            this.statusSPKBordirDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // statusSPKCMTDataGridViewTextBoxColumn
+            // 
+            this.statusSPKCMTDataGridViewTextBoxColumn.DataPropertyName = "statusSPKCMT";
+            this.statusSPKCMTDataGridViewTextBoxColumn.HeaderText = "statusSPKCMT";
+            this.statusSPKCMTDataGridViewTextBoxColumn.Name = "statusSPKCMTDataGridViewTextBoxColumn";
+            this.statusSPKCMTDataGridViewTextBoxColumn.ReadOnly = true;
+            this.statusSPKCMTDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // statusNoSeriDataGridViewTextBoxColumn
+            // 
+            this.statusNoSeriDataGridViewTextBoxColumn.DataPropertyName = "statusNoSeri";
+            this.statusNoSeriDataGridViewTextBoxColumn.HeaderText = "statusNoSeri";
+            this.statusNoSeriDataGridViewTextBoxColumn.Name = "statusNoSeriDataGridViewTextBoxColumn";
+            this.statusNoSeriDataGridViewTextBoxColumn.ReadOnly = true;
+            this.statusNoSeriDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // idListPTPDataGridViewTextBoxColumn
+            // 
+            this.idListPTPDataGridViewTextBoxColumn.DataPropertyName = "idListPTP";
+            this.idListPTPDataGridViewTextBoxColumn.HeaderText = "idListPTP";
+            this.idListPTPDataGridViewTextBoxColumn.Name = "idListPTPDataGridViewTextBoxColumn";
+            this.idListPTPDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idListPTPDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // idSPKSablon
+            // 
+            this.idSPKSablon.DataPropertyName = "idSPKSablon";
+            this.idSPKSablon.HeaderText = "idSPKSablon";
+            this.idSPKSablon.Name = "idSPKSablon";
+            this.idSPKSablon.ReadOnly = true;
+            this.idSPKSablon.Visible = false;
+            // 
             // PenerimaanSablon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -535,6 +554,7 @@
         private MetroFramework.Controls.MetroButton btnExitPenerimaanSablon;
         private MetroFramework.Controls.MetroButton btnSavePenerimaanSablon;
         private MetroFramework.Controls.MetroTile btnUpdateStatusPemotongan;
+        private MetroFramework.Controls.MetroTile btnResetPenerimaanSablon;
         private System.Windows.Forms.DataGridViewTextBoxColumn NO;
         private System.Windows.Forms.DataGridViewTextBoxColumn noSeriDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn modelDataGridViewTextBoxColumn;
@@ -553,6 +573,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn statusSPKCMTDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn statusNoSeriDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idListPTPDataGridViewTextBoxColumn;
-        private MetroFramework.Controls.MetroTile btnResetPenerimaanSablon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idSPKSablon;
     }
 }
