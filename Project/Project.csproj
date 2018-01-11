@@ -303,6 +303,7 @@
     <Compile Include="Models\POKainModel.cs" />
     <Compile Include="Models\POKainSupplierModel.cs" />
     <Compile Include="Models\QRIDnoSeriModel.cs" />
+    <Compile Include="Models\QRNotificationModel.cs" />
     <Compile Include="Models\QuantityRecordPTPModel.cs" />
     <Compile Include="Models\SPKEmployeeModel.cs" />
     <Compile Include="Models\SPKNotifierModel.cs" />
