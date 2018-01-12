@@ -150,6 +150,11 @@ namespace Project
 
         private void afterSave()
         {
+            lblPONumber.Enabled = false;
+            lblSupplierAddress.Enabled = false;
+            lblSupplierCode.Enabled = false;
+            cboSupplierName.Enabled = false;
+            lblGrandTotal.Enabled = false;
             btnAddPoKain.Enabled = false;
             btnEditPoKain.Enabled = false;
             btnDeletePoKain.Enabled = false;

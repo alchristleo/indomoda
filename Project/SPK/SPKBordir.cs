@@ -90,6 +90,9 @@ namespace Project
 
         private void afterSave()
         {
+            txtNoSpkBordir.Enabled = false;
+            txtPicCodeBordir.Enabled = false;
+            cboPICBordir.Enabled = false;
             btnAddSPKBordir.Enabled = false;
             btnDeleteSPKBordir.Enabled = false;
             btnSaveSPKBordir.Dispose();

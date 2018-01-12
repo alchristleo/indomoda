@@ -183,6 +183,10 @@ namespace Project
 
         private void afterSave()
         {
+            txtNoPenerimaanTukangPotong.Enabled = false;
+            cboNoPemotonganKain.Enabled = false;
+            txtPICCode.Enabled = false;
+            txtPICName.Enabled = false;
             btnAddPenerimaanTukangPotong.Enabled = false;
             btnEditPenerimaanTukangPotong.Enabled = false;
             btnDeletePenerimaanTukangPotong.Enabled = false;

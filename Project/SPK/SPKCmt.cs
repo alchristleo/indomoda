@@ -49,6 +49,9 @@ namespace Project
 
         private void afterSave()
         {
+            txtNoSpkCMT.Enabled = false;
+            txtPicCodeCMT.Enabled = false;
+            cboPICCMT.Enabled = false;
             btnAddSPKCMT.Enabled = false;
             btnDeleteSPKCMT.Enabled = false;
             btnSaveSPKCMT.Dispose();

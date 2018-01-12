@@ -131,6 +131,9 @@ namespace Project
 
         private void afterSave()
         {
+            txtNoSpkSablon.Enabled = false;
+            txtPicCodeSablon.Enabled = false;
+            cboPICSablon.Enabled = false;
             btnAddSPKSablon.Enabled = false;
             btnDeleteSPKSablon.Enabled = false;
             btnSaveSPKSablon.Dispose();
