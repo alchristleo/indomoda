@@ -18,9 +18,6 @@ C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x
 C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Debug\Project.Properties.Resources.resources
 C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Debug\Project.SPKSablon.resources
 C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Debug\Project.csproj.GenerateResource.Cache
-C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\bin\Debug\Project.exe.config
-C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\bin\Debug\Project.exe
-C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\bin\Debug\Project.pdb
 C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\bin\Debug\EntityFramework.dll
 C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\bin\Debug\MetroFramework.Design.dll
@@ -30,8 +27,6 @@ C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\bin\D
 C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\bin\Debug\EntityFramework.xml
 C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\bin\Debug\nunit.framework.xml
-C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Debug\Project.exe
-C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Debug\Project.pdb
 C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Debug\Project.AddEditWarna.resources
 C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Debug\Project.Warna.resources
 C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Debug\Project.AddEditMaterial.resources
@@ -66,4 +61,8 @@ C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x
 C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Debug\Project.LaporanPenjualan.resources
 C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Debug\Project.DetailPenjualanBaju.resources
 C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Debug\Project.DetailLPB.resources
-C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Debug\Project.csprojResolveAssemblyReference.cache
+C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\bin\Debug\Indomoda Utama Database.exe.config
+C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\bin\Debug\Indomoda Utama Database.exe
+C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\bin\Debug\Indomoda Utama Database.pdb
+C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Debug\Indomoda Utama Database.exe
+C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Debug\Indomoda Utama Database.pdb

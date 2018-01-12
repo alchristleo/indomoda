@@ -36,6 +36,8 @@ namespace Project
             }
         }
 
+        public static int attempts = 3;
+
         private void btnLogin_Click(object sender, EventArgs e)
         {
             db = new indomodaEntities();
@@ -60,6 +62,7 @@ namespace Project
                     var query = from o in login.Users
                                 where o.UserName == txtUsernameLogin.Text && o.UserPassword == txtPasswordLogin.Text
                                 select o;
+
                     if (query.SingleOrDefault() != null)
                     {
                         MetroFramework.MetroMessageBox.Show(this, "Successfully login", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
@@ -95,9 +98,18 @@ namespace Project
                     }
                     else
                     {
-                        MetroFramework.MetroMessageBox.Show(this, "Your username or password is incorrect", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        txtUsernameLogin.Clear();
-                        txtPasswordLogin.Clear();
+                        attempts--;
+                        if (attempts > 0)
+                        {
+                            MetroFramework.MetroMessageBox.Show(this, "Your username or password is incorrect", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            txtUsernameLogin.Clear();
+                            txtPasswordLogin.Clear();
+                        }
+                        else
+                        {
+                            MetroFramework.MetroMessageBox.Show(this, "You have failed 3 attempts to login! Please contact administrator for more information", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Application.Exit();
+                        }
                     }
                 }
             }
