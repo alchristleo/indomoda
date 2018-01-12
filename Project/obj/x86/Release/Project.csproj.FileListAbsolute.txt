@@ -1,6 +1,3 @@
-C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\bin\Release\Project.exe.config
-C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\bin\Release\Project.exe
-C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\bin\Release\Project.pdb
 C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\bin\Release\EntityFramework.dll
 C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\bin\Release\EntityFramework.SqlServer.dll
 C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\bin\Release\MetroFramework.Design.dll
@@ -10,7 +7,6 @@ C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\bin\R
 C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\bin\Release\EntityFramework.xml
 C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\bin\Release\EntityFramework.SqlServer.xml
 C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\bin\Release\nunit.framework.xml
-C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Release\Project.csprojResolveAssemblyReference.cache
 C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Release\Project.csproj.ResolveComReference.cache
 C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Release\Project.EditPenerimaanTukangPotong.resources
 C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Release\Project.EditPOKain.resources
@@ -65,5 +61,8 @@ C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x
 C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Release\Project.UpdateBordir.resources
 C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Release\Project.UpdateCMT.resources
 C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Release\Project.csproj.GenerateResource.Cache
-C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Release\Project.exe
-C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Release\Project.pdb
+C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\bin\Release\Indomoda Utama Database.exe.config
+C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\bin\Release\Indomoda Utama Database.exe
+C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\bin\Release\Indomoda Utama Database.pdb
+C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Release\Indomoda Utama Database.exe
+C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Release\Indomoda Utama Database.pdb

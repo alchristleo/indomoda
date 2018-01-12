@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using Project.Helpers;
 using System.Data.SqlClient;
 using Project.Models;
+using System.Deployment.Application;
 
 namespace Project
 {
@@ -233,7 +234,7 @@ namespace Project
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.FormClosed += new FormClosedEventHandler(MainMenu_FormClosed);
-            Close();
+            Application.Exit();
         }
 
         private void supplierToolStripMenuItem_Click(object sender, EventArgs e)
@@ -517,7 +518,7 @@ namespace Project
 
         private void MainMenu_FormClosed(object sender, FormClosedEventArgs e)
         {
-            
+            Application.Exit();
         }
 
         private void MainMenu_FormClosed_1(object sender, FormClosedEventArgs e)
@@ -552,6 +553,7 @@ namespace Project
             {
                 File.Delete(path);
             }
+            Application.Exit();
         }
 
         private void stockKainToolStripMenuItem_Click(object sender, EventArgs e)
@@ -672,5 +674,53 @@ namespace Project
                 }
             }
         }
+
+        //private void checkForUpdatesToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    UpdateCheckInfo info;
+        //    if (ApplicationDeployment.IsNetworkDeployed)
+        //    {
+        //        ApplicationDeployment ad = ApplicationDeployment.CurrentDeployment;
+        //        try
+        //        {
+        //            info = ad.CheckForDetailedUpdate();
+        //        }
+        //        catch (DeploymentDownloadException dde)
+        //        {
+        //            MetroFramework.MetroMessageBox.Show(this, "The new verion of the application can't be downloaded at this time. \n\nPlease check your network connection or try again later. Error: " + dde.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //            return;
+        //        }
+        //        catch (InvalidDeploymentException ide)
+        //        {
+        //            MetroFramework.MetroMessageBox.Show(this, "Can't check the new version of the application. The ClickOnce deployment is corrupt. Please redeploy the application and try again later. Error: " + ide.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //            return;
+        //        }
+        //        catch (InvalidOperationException ioe)
+        //        {
+        //            MetroFramework.MetroMessageBox.Show(this, "This application can't be updated. It's likely not a ClickOnce application Error: " + ioe.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //            return;
+        //        }
+        //        if (info.UpdateAvailable)
+        //        {
+        //            if (MetroFramework.MetroMessageBox.Show(this, "A newer version is available. Would you like to update it now?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+        //            {
+        //                try
+        //                {
+        //                    ad.Update();
+        //                    Application.Restart();
+        //                }
+        //                catch (Exception ex)
+        //                {
+        //                    MetroFramework.MetroMessageBox.Show(this, ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //                    return;
+        //                }
+        //            }
+        //        }
+        //        else
+        //        {
+        //            MetroFramework.MetroMessageBox.Show(this, "You are running the latest version.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
+        //        }
+        //    }
+        //}
     }
 }

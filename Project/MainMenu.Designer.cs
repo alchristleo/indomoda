@@ -62,13 +62,13 @@
             this.sablonToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.bordirToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.cMTToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.laporanPenjualanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.metroDateTime1 = new MetroFramework.Controls.MetroDateTime();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.labelCount = new MetroFramework.Controls.MetroLabel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.laporanPenjualanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -290,7 +290,7 @@
             this.stockKainToolStripMenuItem,
             this.stockBajuToolStripMenuItem});
             this.laporanStockToolStripMenuItem.Name = "laporanStockToolStripMenuItem";
-            this.laporanStockToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.laporanStockToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.laporanStockToolStripMenuItem.Text = "Laporan Stock";
             // 
             // stockKainToolStripMenuItem
@@ -315,7 +315,7 @@
             this.bordirToolStripMenuItem1,
             this.cMTToolStripMenuItem1});
             this.laporanProduksiToolStripMenuItem.Name = "laporanProduksiToolStripMenuItem";
-            this.laporanProduksiToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.laporanProduksiToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.laporanProduksiToolStripMenuItem.Text = "Laporan Produksi";
             // 
             // pemotonganKainToolStripMenuItem1
@@ -345,6 +345,13 @@
             this.cMTToolStripMenuItem1.Size = new System.Drawing.Size(169, 22);
             this.cMTToolStripMenuItem1.Text = "CMT";
             this.cMTToolStripMenuItem1.Click += new System.EventHandler(this.cMTToolStripMenuItem1_Click);
+            // 
+            // laporanPenjualanToolStripMenuItem
+            // 
+            this.laporanPenjualanToolStripMenuItem.Name = "laporanPenjualanToolStripMenuItem";
+            this.laporanPenjualanToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.laporanPenjualanToolStripMenuItem.Text = "Laporan Penjualan";
+            this.laporanPenjualanToolStripMenuItem.Click += new System.EventHandler(this.laporanPenjualanToolStripMenuItem_Click);
             // 
             // metroDateTime1
             // 
@@ -417,13 +424,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(971, 240);
             this.panel2.TabIndex = 7;
-            // 
-            // laporanPenjualanToolStripMenuItem
-            // 
-            this.laporanPenjualanToolStripMenuItem.Name = "laporanPenjualanToolStripMenuItem";
-            this.laporanPenjualanToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
-            this.laporanPenjualanToolStripMenuItem.Text = "Laporan Penjualan";
-            this.laporanPenjualanToolStripMenuItem.Click += new System.EventHandler(this.laporanPenjualanToolStripMenuItem_Click);
             // 
             // MainMenu
             // 

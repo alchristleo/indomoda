@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project", "Project\Project.csproj", "{B48561CC-B664-43F8-BFE3-0DDDE9A6E890}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{B50531CE-4789-49B3-BEEB-726C822A3426}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -15,6 +17,8 @@ Global
 		{B48561CC-B664-43F8-BFE3-0DDDE9A6E890}.Debug|x86.Build.0 = Debug|x86
 		{B48561CC-B664-43F8-BFE3-0DDDE9A6E890}.Release|x86.ActiveCfg = Release|x86
 		{B48561CC-B664-43F8-BFE3-0DDDE9A6E890}.Release|x86.Build.0 = Release|x86
+		{B50531CE-4789-49B3-BEEB-726C822A3426}.Debug|x86.ActiveCfg = Debug
+		{B50531CE-4789-49B3-BEEB-726C822A3426}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
