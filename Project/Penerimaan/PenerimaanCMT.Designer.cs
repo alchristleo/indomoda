@@ -53,12 +53,11 @@
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.colorBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.listPenerimaanTukangPotongBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.noSeriDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colorIDDataGridViewComboBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.colorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.merkDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ukuranDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -74,6 +73,7 @@
             this.statusNoSeriDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idListPTPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idSPKCMT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.listPenerimaanTukangPotongBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.detailSPKBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -138,7 +138,7 @@
             // metroDateTime1
             // 
             this.metroDateTime1.Location = new System.Drawing.Point(1047, 39);
-            this.metroDateTime1.MinimumSize = new System.Drawing.Size(0, 29);
+            this.metroDateTime1.MinimumSize = new System.Drawing.Size(4, 29);
             this.metroDateTime1.Name = "metroDateTime1";
             this.metroDateTime1.Size = new System.Drawing.Size(219, 29);
             this.metroDateTime1.TabIndex = 54;
@@ -178,6 +178,7 @@
             this.cboPicPenerimaanCMT.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cboPicPenerimaanCMT.DataSource = this.employeeBindingSource;
             this.cboPicPenerimaanCMT.DisplayMember = "EmployeeName";
+            this.cboPicPenerimaanCMT.Enabled = false;
             this.cboPicPenerimaanCMT.FormattingEnabled = true;
             this.cboPicPenerimaanCMT.ItemHeight = 23;
             this.cboPicPenerimaanCMT.Location = new System.Drawing.Point(176, 144);
@@ -335,14 +336,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(1306, 255);
             this.dataGridView1.TabIndex = 44;
             // 
-            // colorBindingSource
-            // 
-            this.colorBindingSource.DataSource = typeof(Project.Color);
-            // 
-            // listPenerimaanTukangPotongBindingSource
-            // 
-            this.listPenerimaanTukangPotongBindingSource.DataSource = typeof(Project.ListPenerimaanTukangPotong);
-            // 
             // NO
             // 
             this.NO.HeaderText = "No.";
@@ -376,6 +369,10 @@
             this.colorIDDataGridViewComboBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.colorIDDataGridViewComboBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.colorIDDataGridViewComboBoxColumn.ValueMember = "ColorID";
+            // 
+            // colorBindingSource
+            // 
+            this.colorBindingSource.DataSource = typeof(Project.Color);
             // 
             // merkDataGridViewTextBoxColumn
             // 
@@ -498,6 +495,10 @@
             this.idSPKCMT.Name = "idSPKCMT";
             this.idSPKCMT.ReadOnly = true;
             this.idSPKCMT.Visible = false;
+            // 
+            // listPenerimaanTukangPotongBindingSource
+            // 
+            this.listPenerimaanTukangPotongBindingSource.DataSource = typeof(Project.ListPenerimaanTukangPotong);
             // 
             // PenerimaanCMT
             // 

@@ -250,16 +250,16 @@ namespace Project
                             {
                                 int currentIDPTP = Convert.ToInt32(dataGridView1[17, dataGridView1.CurrentRow.Index].Value.ToString());
                                 int a = GenericQuery.ExecSQLCommand("UPDATE QuantityRecord SET qtyAwalSablon = @qtyAwalSablon, qtySablonBS = @qtySablonBS, qtySablonHilang = @qtySablonHilang WHERE noSeri = '" + noSeri + "'", new[] {
-                                new SqlParameter("@qtyAwalSablon", DBNull.Value),
-                                new SqlParameter("@qtySablonBS", DBNull.Value),
-                                new SqlParameter("@qtySablonHilang", DBNull.Value)
-                            });
+                                    new SqlParameter("@qtyAwalSablon", DBNull.Value),
+                                    new SqlParameter("@qtySablonBS", DBNull.Value),
+                                    new SqlParameter("@qtySablonHilang", DBNull.Value)
+                                });
                                 db.SaveChangesAsync().Wait();
 
                                 double quantity = Convert.ToDouble(dba.qtyAwalSablon.ToString());
                                 int b = GenericQuery.ExecSQLCommand("UPDATE ListPenerimaanTukangPotong SET quantity = @quantity WHERE noSeri = '" + noSeri + "'", new[] {
-                                new SqlParameter("@quantity", quantity)
-                            });
+                                    new SqlParameter("@quantity", quantity)
+                                });
                                 db.SaveChangesAsync().Wait();
 
                                 string setType = "sablon";
@@ -322,6 +322,8 @@ namespace Project
                             string setType = "sablon";
                             for (int i = 0; i < dataGridView1.Rows.Count; i++)
                             {
+                                var x1 = dataGridView1.Rows[i].Cells[7].Value.ToString();
+                                var x2 = dataGridView1.Rows[i].Cells[8].Value.ToString();
                                 var x = dataGridView1.Rows[i].Cells[9].Value.ToString();
                                 string noSeri = dataGridView1.Rows[i].Cells[1].Value.ToString();
                                 int idDetail = db.DetailPenerimaanSBCs.AsEnumerable().LastOrDefault() == null ? 1 : db.DetailPenerimaanSBCs.AsEnumerable().LastOrDefault().idDetail + 1;
@@ -333,7 +335,7 @@ namespace Project
                                     var z = dbb.quantity.ToString();
                                     double qtyUpdate = Convert.ToDouble(x);
 
-                                    if (x != z)
+                                    if (x1 != "-" && x2 != "-")
                                     {
                                         int a = GenericQuery.ExecSQLCommand("UPDATE ListPenerimaanTukangPotong SET quantity = @quantity WHERE noSeri = '" + noSeri + "'", new[] {
                                             new SqlParameter("@quantity", qtyUpdate)

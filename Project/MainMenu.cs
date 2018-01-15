@@ -233,8 +233,51 @@ namespace Project
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.FormClosed += new FormClosedEventHandler(MainMenu_FormClosed);
+            this.FormClosing -= new FormClosingEventHandler(MainMenu_FormClosing_1);
             Application.Exit();
+            onCloseFunction();
+        }
+
+        private void onCloseFunction()
+        {
+            using (indomodaEntities db = new indomodaEntities())
+            {
+                try
+                {
+                    using (StreamReader streamReader = new StreamReader("temp.txt"))
+                    {
+                        string decryptText = EncryptDecrypt.Decrypt(streamReader.ReadLine());
+                        var dba = GenericQuery.SqlQuerySingle<User>("SELECT u.UserID, u.UserName, u.UserPassword, u.UserRole FROM Users u WHERE u.UserName = '" + decryptText + "'");
+                        string logAct = dba.UserRole.ToString() + " is logged out";
+                        string uName = decryptText;
+                        int uID = Convert.ToInt32(dba.UserID.ToString());
+                        int a = GenericQuery.ExecSQLCommand("INSERT INTO DetailLogs (id, UserID, Datetime, activity) VALUES(@id, @UserID, @Datetime, @activity)", new[] {
+                                new SqlParameter("@id", db.DetailLogs.AsEnumerable().LastOrDefault() == null ? 1 : db.DetailLogs.AsEnumerable().LastOrDefault().id + 1),
+                                new SqlParameter("@UserID", uID),
+                                new SqlParameter("@Datetime", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")),
+                                new SqlParameter("@activity", logAct)
+                            });
+                        db.SaveChangesAsync().Wait();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MetroFramework.MetroMessageBox.Show(this, ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+            }
+            Application.Exit();
+        }
+
+        private void MainMenu_FormClosing_1(object sender, FormClosingEventArgs e)
+        {
+            this.FormClosing -= new FormClosingEventHandler(MainMenu_FormClosing_1);
+            Application.Exit();
+            onCloseFunction();
         }
 
         private void supplierToolStripMenuItem_Click(object sender, EventArgs e)
@@ -514,46 +557,6 @@ namespace Project
                     penjualanBaju.Show();
                 }
             }
-        }
-
-        private void MainMenu_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void MainMenu_FormClosed_1(object sender, FormClosedEventArgs e)
-        {
-            using (indomodaEntities db = new indomodaEntities())
-            {
-                try
-                {
-                    using (StreamReader streamReader = new StreamReader("temp.txt"))
-                    {
-                        string decryptText = EncryptDecrypt.Decrypt(streamReader.ReadLine());
-                        var dba = GenericQuery.SqlQuerySingle<User>("SELECT u.UserID, u.UserName, u.UserPassword, u.UserRole FROM Users u WHERE u.UserName = '" + decryptText + "'");
-                        string logAct = dba.UserRole.ToString() + " is logged out";
-                        string uName = decryptText;
-                        int uID = Convert.ToInt32(dba.UserID.ToString());
-                        int a = GenericQuery.ExecSQLCommand("INSERT INTO DetailLogs (id, UserID, Datetime, activity) VALUES(@id, @UserID, @Datetime, @activity)", new[] {
-                                new SqlParameter("@id", db.DetailLogs.AsEnumerable().LastOrDefault() == null ? 1 : db.DetailLogs.AsEnumerable().LastOrDefault().id + 1),
-                                new SqlParameter("@UserID", uID),
-                                new SqlParameter("@Datetime", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")),
-                                new SqlParameter("@activity", logAct)
-                            });
-                        db.SaveChangesAsync().Wait();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MetroFramework.MetroMessageBox.Show(this, ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-
-            if (File.Exists(path))
-            {
-                File.Delete(path);
-            }
-            Application.Exit();
         }
 
         private void stockKainToolStripMenuItem_Click(object sender, EventArgs e)

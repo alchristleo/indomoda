@@ -122,6 +122,10 @@ namespace Project
                             listFaktur.Remove(new FakturKainModel() { NoFaktur = noFaktur });
                             detailFakturBindingSourceCbo.DataSource = listFaktur.ToList();
 
+                            txtSupplierCode.Clear();
+                            txtSupplierName.Clear();
+                            dataGridView1.Rows.Clear();
+
                             MetroFramework.MetroMessageBox.Show(this, "Success! This PO has been deleted from the database", "Message", MessageBoxButtons.OK, MessageBoxIcon.Question);
                         }
                         catch (Exception ex)

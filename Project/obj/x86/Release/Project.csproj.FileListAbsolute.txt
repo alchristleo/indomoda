@@ -66,3 +66,4 @@ C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\bin\R
 C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\bin\Release\Indomoda Utama Database.pdb
 C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Release\Indomoda Utama Database.exe
 C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Release\Indomoda Utama Database.pdb
+C:\Users\alchrist lc\Documents\Visual Studio 2017\Projects\Project\Project\obj\x86\Release\Project.csprojResolveAssemblyReference.cache
